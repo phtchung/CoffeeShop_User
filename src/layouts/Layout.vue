@@ -1,8 +1,8 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" >
     <Header v-model="expandOnHover"></Header>
     <Sidebar :expand-on-hover.sync="expandOnHover"></Sidebar>
-    <v-content>
+    <v-content style="background-color: white">
       <v-container rounded-0 class="fill-height" fluid>
         <router-view />
       </v-container>
@@ -44,5 +44,6 @@ export default {
 .fill-height {
   align-items: start !important;
   margin-top: 42px;
+
 }
 </style>
