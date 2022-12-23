@@ -1,8 +1,9 @@
 <template>
   <v-card
 
-      max-width="344"
       color="transparent"
+      flat
+
 
   >
     <img :src= 'imageURL' alt="" style="height: 16.875rem;width: 16.875rem">
