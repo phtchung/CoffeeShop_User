@@ -1,5 +1,5 @@
-<template class="mt-0 bg "  >
-  <v-container fluid class="down-top-padding " style="margin-top: -54px;width: 1200px" >
+<template class="mt-0  "  >
+  <v-container fluid class="down-top-padding " style="margin-top: -66px;width: 1200px" >
 
     <headerIntro></headerIntro>
 

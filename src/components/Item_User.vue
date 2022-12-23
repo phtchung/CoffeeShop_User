@@ -13,6 +13,7 @@
     <div class="price_product_item">{{price}}</div>
     </div>
   </div>
+
 </template>
 
 <script>
