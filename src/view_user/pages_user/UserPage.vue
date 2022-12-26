@@ -1,6 +1,11 @@
 <template>
     <div>
-        <userHeader/>
+        <header>
+            <userHeader/>
+        </header>
+        <div>
+        <userInfo/>
+        </div>
         <!-- <mainHeader/> -->
     </div>
 </template>
@@ -14,7 +19,7 @@ export default {
 //   },
    components: {
     userHeader: () => import("@/layouts/Header/userHeader"),
-    
+    userInfo: () => import("@/components/userComponents/userInfo")
   },
 }
 </script>
