@@ -4,6 +4,33 @@
     <headerIntro></headerIntro>
 
     <mainHeader></mainHeader>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg" alt="Third slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
     <v-tabs fixed-tabs>
       <v-tab v-for="menuItem in menuItems" :key="menuItem.name" @click="menuType=menuItem.name">
         {{menuItem.name}}
@@ -175,8 +202,10 @@
   </v-container>
 </template>
 <script>
+
 export default {
   name: "Mainpage",
+
   components: {
     Item_User: () => import("@/components/Item_User"),
     menuMenu: () => import('@/components/userComponents/menuMenu'),
@@ -256,7 +285,5 @@ export default {
   margin-bottom: 16px;
 }
 
-.bg{
-  background-color: white !important;
-}
+
 </style>
