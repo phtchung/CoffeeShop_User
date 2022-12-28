@@ -232,7 +232,7 @@
                   type="text"
                   disabled="disabled"
                   class="form-control"
-                  :value="userInfomation.birthday"
+                  :value="userInfomation.email"
                 />
               </div>
               <div class="d-flex justify-content-start" >
