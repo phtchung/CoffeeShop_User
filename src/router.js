@@ -45,6 +45,11 @@ export default new Router({
                     path: 'product-list',
                     component: () => import('@/view_user/pages_user/ProductList'),
                 },
+                {
+                    name: 'productInStore',
+                    path: 'product',
+                    component: () => import('@/components/productInterface/productInStore'),
+                },
             ],
         },
     ],
