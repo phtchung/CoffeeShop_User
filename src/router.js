@@ -18,6 +18,23 @@ export default new Router({
                     path: 'mainpage',
                     component: () => import('@/view_user/pages_user/Mainpage'),
                 },
+
+                {
+                    name: 'menuCategory_withoutTree',
+                    path: 'cafe',
+                    component: () => import('@/components/userComponents/menuOthers'),
+                },
+                {
+                    name: 'menuCategory_withoutTree',
+                    path: 'tra',
+                    component: () => import('@/components/userComponents/menuOthers'),
+                },
+                {
+                    name: 'menuCategory',
+                    path: 'menu',
+                    component: () => import('@/components/userComponents/menuMenu'),
+                },
+
                 {
                     name: 'UserPage',
                     path: 'user',

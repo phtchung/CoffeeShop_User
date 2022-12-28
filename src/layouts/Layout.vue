@@ -3,10 +3,14 @@
     <Header v-model="expandOnHover"></Header>
     <Sidebar :expand-on-hover.sync="expandOnHover"></Sidebar>
     <v-content style="background-color: white">
+      <headerIntro></headerIntro>
+      <mainHeader></mainHeader>
       <v-container rounded-0 class="fill-height" fluid>
         <router-view />
+
       </v-container>
     </v-content>
+    <Footer></Footer>
   </v-app>
 </template>
 
@@ -14,12 +18,18 @@
 // import Header from "./header/Header";
 // import Sidebar from "./sidebar/Sidebar";
 import { mapState, mapMutations } from "vuex";
+import headerIntro from "./Header/headerIntro";
+import mainHeader from "./Header/mainHeader";
+import Footer from "./footer/Footer";
+
 export default {
   name: "Layout",
 
   components: {
     // Header,
-    // Sidebar
+    headerIntro,
+    mainHeader,
+    Footer
   },
 
   props: {

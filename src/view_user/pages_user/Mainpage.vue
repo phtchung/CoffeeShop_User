@@ -1,62 +1,69 @@
 <template class="mt-0  "  >
-  <v-container fluid class="down-top-padding " style="margin-top: -66px;width: 1200px" >
 
-    <headerIntro></headerIntro>
-
-    <mainHeader></mainHeader>
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg" alt="Third slide">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <v-tabs fixed-tabs>
-      <v-tab v-for="menuItem in menuItems" :key="menuItem.name" @click="menuType=menuItem.name">
-        {{menuItem.name}}
-      </v-tab>
-    </v-tabs>
-
-
-    <div v-if="menuType === 'The Coffee House'">
-      <v-row>
-        <!--     ảnh to mainpage , chiếm 1/2 width -->
-        <v-col cols="12" md="6" sm="12" lg="6" >
+  <v-container fluid class="down-top-padding " style="margin-top: -66px;padding: 0" >
+    <div>
+    <template>
+      <v-carousel
+          cycle
+          hide-delimiter-background
+          show-arrows
+      >
+        <v-carousel-item
+            v-for="(url_header, i) in urls_header"
+            :key="i"
+        >
           <div >
             <a href="#" >
-              <img style="width: 100%;padding: 48px 0 24px 0" src="https://file.hstatic.net/1000075078/file/banner_app_59792ee4e6074b33aca7f140433e9292.jpg" alt="">
+              <img :src= url_header alt="" style="width: 100%;">
             </a>
           </div>
-        </v-col>
+        </v-carousel-item>
+      </v-carousel>
+    </template>
+    </div>
+<!--    <v-tabs fixed-tabs >-->
+<!--      <v-tab v-for="menuItem in menuItems" :key="menuItem.name" @click="menuType=menuItem.name">-->
+<!--        {{menuItem.name}}-->
+<!--      </v-tab>-->
+<!--    </v-tabs>-->
 
-        <v-col cols="12" md="6" sm="12" lg="6" style="font-size: 16px;padding: 48px 0 24px 12px;display: flex">
+<!--    <productInStore>-->
+<!--    </productInStore>-->
+    <div  style="width: 1200px;margin: 20px auto;padding: 0 0 32px;">
+      <v-row style="padding: 12px">
+        <!--     ảnh to mainpage , chiếm 1/2 width -->
+          <v-col
+              cols="12"
+              sm="12"
+              md="6"
+              lg="6"
+              style="padding: 0 26px;margin: 12px 0"
+          >
+            <v-row>
+            <a href="#" style=" border-radius: 10px;
+                                overflow: hidden;
+                                display: block;
+                                width: 100%;
+                                position: relative;
+                                -webkit-box-shadow: 0 0 13px 0 #00000040;
+                                box-shadow: 0 0 13px 0 #00000040;">
+              <img src="https://file.hstatic.net/1000075078/file/banner_app_59792ee4e6074b33aca7f140433e9292.jpg" alt=""
+              style="width: 100%; height: 100%"
+              >
+            </a>
+            </v-row>
+          </v-col>
+
+
+
+        <v-col cols="12" md="6" sm="12" lg="6" style="font-size: 16px;display: flex">
           <v-row>
             <v-col
                 cols="12"
                 sm="6"
                 md="6"
                 lg="6"
-
+                style="padding: 0;margin: 12px 0"
                 v-for="item in items.slice(0,2)"
                 :key="item.name"
             >
@@ -75,7 +82,7 @@
             sm="6"
             md="3"
             lg="3"
-            style="margin-bottom: 36px"
+            style="padding: 0;margin: 36px 0 36px"
             v-for="item in items.slice(2)"
             :key="item.name"
         >
@@ -87,7 +94,18 @@
           />
         </v-col>
       </v-row>
+    </div>
 
+<!--    <div v-else-if="menuType === 'Menu'">-->
+<!--      <menuMenu></menuMenu>-->
+<!--    </div>-->
+<!--    <div v-else-if="menuType === 'Trà'">-->
+<!--      <menuMenuOthers></menuMenuOthers>-->
+<!--    </div>-->
+<!--    <div v-if="menuType === 'Cà phê'">-->
+<!--      <menuMenuOthers></menuMenuOthers>-->
+<!--    </div>-->
+    <div class="advertisement">
       <v-row>
         <v-col cols="12" md="6" lg="6" sm="12">
           <img src="https://file.hstatic.net/1000075078/file/cloudtea_1_5dc49fd17ba04030993d2f797dc570f2.png" alt="">
@@ -104,7 +122,6 @@
             Kế tiếp là tầng trà sữa sóng sánh, đậm hương, rõ vị. Và tầng thạch nguyên chất, dai giòn giúp giữ trọn vị trà sữa đến
             ngụm cuối cùng. 3 tầng hòa quyện, nhấp một ngụm là ghiền, nhớ mãi không thôi.
           </div>
-
 
           <v-col
               cols="12"
@@ -124,12 +141,15 @@
 
         </v-col>
       </v-row>
+    </div>
 
+    <div class="advertisement1" >
       <v-row>
         <v-col cols="12" sm="12" md="5" lg="5" style="display:flex;flex-wrap: wrap;
                                                                   align-content: center;
                                                                   flex-direction: column;
-                                                                  justify-content: center;">
+                                                                  justify-content: center;
+" >
           <h3 style="    font-size: 28px;
                         color: #000000D9;
                         font-family: 'SF Pro Display', sans-serif;
@@ -160,44 +180,33 @@
             </v-btn>
           </v-hover>
         </v-col>
-
         <v-col cols="12" sm="12" md="7" lg="7">
-          <template>
-            <v-carousel
-                cycle
-                height="400"
-                hide-delimiter-background
-                show-arrows
-            >
-              <v-carousel-item
-                  v-for="(url, i) in urls"
-                  :key="i"
+            <template>
+              <v-carousel
+                  cycle
+
+                  hide-delimiter-background
+                  show-arrows
               >
-                <div style="margin: 36px 0;position: relative">
-                  <a href="#" >
-                    <img :src=url alt="" style="width: 100%;">
-                  </a>
-                </div>
-              </v-carousel-item>
-            </v-carousel>
-          </template>
-        </v-col>
+                <v-carousel-item
+                    v-for="(url, i) in urls"
+                    :key="i"
+                >
+                  <div style="position: relative">
+                    <a href="#" >
+                      <img :src= url alt="" style="width: 100%;">
+                    </a>
+                  </div>
+                </v-carousel-item>
+              </v-carousel>
+            </template>
+          </v-col>
+
       </v-row>
-      <v-row ></v-row>
-
-
 
     </div>
 
-    <div v-else-if="menuType === 'Menu'">
-      <menuMenu></menuMenu>
-    </div>
-    <div v-else-if="menuType === 'Trà'">
-      <menuMenuOthers></menuMenuOthers>
-    </div>
-    <div v-if="menuType === 'Cà phê'">
-      <menuMenuOthers></menuMenuOthers>
-    </div>
+
 
   </v-container>
 </template>
@@ -208,14 +217,20 @@ export default {
 
   components: {
     Item_User: () => import("@/components/Item_User"),
-    menuMenu: () => import('@/components/userComponents/menuMenu'),
-    menuMenuOthers: () => import('@/components/userComponents/menuOthers'),
-    headerIntro: () => import('@/layouts/Header/headerIntro'),
-    mainHeader: () => import('@/layouts/Header/mainHeader'),
+    // menuMenu: () => import('@/components/userComponents/menuMenu'),
+    // menuMenuOthers: () => import('@/components/userComponents/menuOthers'),
+    // headerIntro: () => import('@/layouts/Header/headerIntro'),
+    // mainHeader: () => import('@/layouts/Header/mainHeader'),
+    // productInStore:() => import("@/components/productInterface/productInStore"),
   },
   data: () => {
     return{
       menuType: 'The Coffee House',
+      urls_header: [
+        'https://file.hstatic.net/1000075078/file/hiteaday_desktop_564c8568fc48441badd3a492cdd127d9.jpg',
+        'https://file.hstatic.net/1000075078/file/daitiec_desktop_2cd63f8cf8454da3ade2c990b9415c8b.jpg',
+
+      ],
       urls: [
         'https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg',
         'https://file.hstatic.net/1000075078/file/_kh_9308_71dd5f99cfe4431a82bbf9dae99f71ea_master.jpg',
@@ -266,14 +281,15 @@ export default {
         },
       ],
       // menuType: 'NULL',
-      menuItems: [
-        {name: 'The Coffee House'},
-        {name: 'Cà phê'},
-        {name: 'Trà'},
-        {name:'Menu'},
-      ],
+      // menuItems: [
+      //   {name: 'The Coffee House'},
+      //   {name: 'Cà phê'},
+      //   {name: 'Trà'},
+      //   {name:'Menu'},
+      // ],
     }
   },
+
 };
 </script>
 
@@ -283,6 +299,16 @@ export default {
   line-height: 24px;
   color: rgba(0, 0, 0, 0.85);
   margin-bottom: 16px;
+}
+
+.advertisement{
+  width: 1200px;
+  margin: 36px auto;
+
+}
+.advertisement1{
+  padding-left: 63.125px;
+
 }
 
 

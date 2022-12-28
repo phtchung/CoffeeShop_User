@@ -215,4 +215,31 @@ export default {
 .menu_item .original_price {
     color: #EA8025;
 }
+
+.menu_item .menu_item_info{
+  padding: 12px 0 0;
+}
+.menu_item .menu_item_info h3{
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #191919;
+  font-size: 16px;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+  .menu_item .menu_item_info h3 a {
+    color: #000000;
+    text-decoration: none;
+    font-family: 'SF Pro Display', sans-serif;
+  }
+  .menu_item .menu_item_info .price_product_item{
+    font-size: 14px;
+    color: #00000099;
+    margin-bottom: 10px;
+    font-family: 'SF Pro Display', sans-serif;
+  }
+
 </style>

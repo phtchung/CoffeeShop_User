@@ -1,29 +1,22 @@
 <template>
   <v-container>
-  <div class="main_header">
+  <div class="main_header"  ref="myHeader" >
     <div style="width: 17%;margin-right: 39px" class="categories_item" >
     <a href="">
       <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/03/logo-the-coffee-house-chieu-dai.png" alt="" style="width: 100%">
     </a>
     </div>
 
-    <div class="categories_item">
-      <a href="">
-        <span class="header_color">Cà phê</span>
+    <div
+      v-for="header_path in header_paths"
+      :key = header_path.header_id
+      :class="{has_child : header_path.header_active }"
+      class="categories_item"
+    >
+      <a :href = "header_path.header_path">
+        <span class="header_color">{{header_path.header_name}}</span>
       </a>
-    </div>
-
-    <div class="categories_item ">
-      <a href="">
-        <span class="header_color">Trà</span>
-      </a>
-    </div>
-
-    <div class="categories_item has_child">
-      <a href="">
-        <span class="header_color">Menu</span>
-      </a>
-      <ul class=" menu_list">
+      <ul class="menu_list" v-if="header_path.header_active ==='true'">
         <li>
           <a href="" title="Tất cả">Tất cả</a>
           <ul class="list_item">
@@ -36,64 +29,129 @@
 
           </ul>
         </li>
-
         <li>
           <a href="" title="Cà phê">Cà phê</a>
         </li>
-
         <li>
           <a href="" title="CloudFee">CloudFee</a>
         </li>
-
         <li>
           <a href="" title="CloudTea">CloudTea</a>
         </li>
-
         <li>
           <a href="" title="Trà">Trà</a>
         </li>
-
         <li>
           <a href="" title="Hi-Tea Healthy">Hi-Tea Healthy</a>
         </li>
-
         <li>
           <a href="" title="Bánh & Snack">Bánh & Snack</a>
         </li>
-
         <li>
           <a href="" title="Tại nhà">Tại nhà</a>
         </li>
-
         <li>
           <a href="" title="Thức uống khác">Thức uống khác</a>
         </li>
       </ul>
-<!--      <v-icon mdi-menu-down-outline></v-icon>-->
+
     </div>
 
-    <div class="categories_item">
-      <a href="">
-        <span class="header_color">Cảm hứng CloudFee</span>
-      </a>
-    </div>
+<!--    <div class="categories_item">-->
+<!--      <a href="">-->
+<!--        <span class="header_color">Cà phê</span>-->
+<!--      </a>-->
+<!--    </div>-->
 
-    <div class="categories_item">
-      <a href="">
-        <span class="header_color">Cửa hàng</span>
-      </a>
-    </div>
+<!--    <div class="categories_item ">-->
+<!--      <a href="">-->
+<!--        <span class="header_color">Trà</span>-->
+<!--      </a>-->
+<!--    </div>-->
 
-    <div class="categories_item">
-      <a href="">
-        <span class="header_color">Tuyển dụng</span>
-      </a>
-    </div>
+<!--    <div class="categories_item has_child">-->
+<!--      <a href="">-->
+<!--        <span class="header_color">Menu</span>-->
+<!--      </a>-->
+<!--      <ul class="menu_list">-->
+<!--        <li>-->
+<!--          <a href="" title="Tất cả">Tất cả</a>-->
+<!--          <ul class="list_item">-->
+<!--            <li class="item_font">-->
+<!--              <a href="" title="Cà phê Việt Nam" >Cà phê Việt Nam</a>-->
+<!--            </li>-->
+<!--            <li class="item_font">-->
+<!--              <a href="" title="Cà phê Máy">Cà phê Máy</a>-->
+<!--            </li>-->
+
+<!--          </ul>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--          <a href="" title="Cà phê">Cà phê</a>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--          <a href="" title="CloudFee">CloudFee</a>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--          <a href="" title="CloudTea">CloudTea</a>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--          <a href="" title="Trà">Trà</a>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--          <a href="" title="Hi-Tea Healthy">Hi-Tea Healthy</a>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--          <a href="" title="Bánh & Snack">Bánh & Snack</a>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--          <a href="" title="Tại nhà">Tại nhà</a>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--          <a href="" title="Thức uống khác">Thức uống khác</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--&lt;!&ndash;      <v-icon mdi-menu-down-outline></v-icon>&ndash;&gt;-->
+<!--    </div>-->
+
+<!--    <div class="categories_item">-->
+<!--      <a href="">-->
+<!--        <span class="header_color">Chuyện nhà</span>-->
+<!--      </a>-->
+<!--    </div>-->
+
+<!--    <div class="categories_item">-->
+<!--      <a href="">-->
+<!--        <span class="header_color">Cảm hứng CloudFee</span>-->
+<!--      </a>-->
+<!--    </div>-->
+
+<!--    <div class="categories_item">-->
+<!--      <a href="">-->
+<!--        <span class="header_color">Cửa hàng</span>-->
+<!--      </a>-->
+<!--    </div>-->
+
+<!--    <div class="categories_item">-->
+<!--      <a href="">-->
+<!--        <span class="header_color">Tuyển dụng</span>-->
+<!--      </a>-->
+<!--    </div>-->
 
 
   </div>
 
+<!--  <checkOut>-->
 
+<!--  </checkOut>-->
 
 
   </v-container>
@@ -101,9 +159,69 @@
 
 <script>
 
+// import CheckOut from "../../components/checkOut";
 export default {
   name: "mainHeader",
+  components:{
+    // CheckOut
+    // Mainpage: () => import("@/view_user/pages_user/Mainpage"),
 
+  },
+  data() {
+    return {
+      header_paths: [
+        {
+          header_id : "0",
+          header_name : "",
+          header_path : "mainpage",
+          header_active : "false",
+        },
+        {
+          header_id : "1",
+          header_name : "Cà phê",
+          header_path : "http://localhost:8080/#/cafe",
+          header_active : "false",
+        },
+        {
+          header_id : "2",
+          header_name : "Trà",
+          header_path : "http://localhost:8080/#/tra",
+          header_active : "false"
+        },
+        {
+          header_id : "3",
+          header_name : "Menu",
+          header_path : "http://localhost:8080/#/menu",
+          header_active : "true"
+        },
+        {
+          header_id : "4",
+          header_name : "Truyện nhà",
+          header_path : "#",
+          header_active : "false"
+        },
+        {
+          header_id : "5",
+          header_name : "Cảm hứng CloudFee",
+          header_path : "#",
+          header_active : "false"
+        },
+        {
+          header_id : "6",
+          header_name : "Cửa hàng",
+          header_path : "#",
+          header_active : "false"
+        },
+        {
+          header_id : "7",
+          header_name : "Tuyển dụng",
+          header_path : "#",
+          header_active : "false"
+        },
+
+      ],
+    }
+  },
 }
 </script>
 
