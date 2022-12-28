@@ -35,8 +35,16 @@ export default new Router({
                     component: () => import('@/components/userComponents/menuMenu'),
                 },
 
-
-
+                {
+                    name: 'UserPage',
+                    path: 'user',
+                    component: () => import('@/view_user/pages_user/UserPage'),
+                },
+                {
+                    name: 'ProductList',
+                    path: 'product-list',
+                    component: () => import('@/view_user/pages_user/ProductList'),
+                },
             ],
         },
     ],
