@@ -31,8 +31,8 @@
             <span class="armorial-point-txt">Tích điểm</span>
           </div>
           <div class="user-info-card-header">
-            <span class="user-card-code">Phạm</span>
-            <p class="user-bean">0 bean - Mới</p>
+            <span class="user-card-code">{{userInfomation.lastName}}</span>
+            <p class="user-bean">{{userInfomation.score}} bean - Mới</p>
           </div>
           <div class="user-card-barcode d-flex flex-column align-items-center">
             <canvas class="barcode" width="244" height="122"></canvas>
@@ -160,6 +160,7 @@
                     required="required"
                     class="form-control"
                     style="margin-top: 10px;"
+                    :value="userInfomation.firstName"
                   />
                   <!-- <div data-v-3a213b80="" class="invalid-feedback">
                     Vui lòng nhập Tên
@@ -184,6 +185,7 @@
                     required="required"
                     class="form-control"
                     style="margin-top: 10px;"
+                    :value="userInfomation.lastName"
                   />
                   <!-- <div data-v-3a213b80="" class="invalid-feedback">
                     Vui lòng nhập Họ
@@ -205,6 +207,7 @@
                   type="text"
                   disabled="disabled"
                   class="form-control"
+                  :value="userInfomation.phone"
                 />
               </div>
               <div data-v-3a213b80="" class="form-group row">
@@ -216,6 +219,7 @@
                   type="text"
                   class="form-control"
                   disabled="disabled"
+                  :value="userInfomation.birthday"
                 />
               </div>
               <div class="form-group row">
@@ -228,6 +232,7 @@
                   type="text"
                   disabled="disabled"
                   class="form-control"
+                  :value="userInfomation.birthday"
                 />
               </div>
               <div class="d-flex justify-content-start" >
@@ -247,6 +252,7 @@
                     name="gender-mapping"
                     id="1"
                     class="custom-control-input"
+                    :checked='userInfomation.sex == "male"'
                   />
                   <label
                     data-v-3a213b80=""
@@ -281,6 +287,8 @@
                     name="gender-mapping"
                     id="2"
                     class="custom-control-input"
+                    :checked='userInfomation.sex == "female"'
+                    
                   />
                   <label
                     data-v-3a213b80=""
@@ -320,6 +328,20 @@
 <script>
 export default {
   name: "userInfo",
+  data () {
+    return {
+      userInfomation : {
+        id: "",
+        score: "0",
+        lastName: "Phạm",
+        firstName: "Đức Huy",
+        phone: "0972521125",
+        birthday: "01/10/2001",
+        email: "duchuy01102001@gmail.com",
+        sex: "male",
+      }
+    }
+  }
 };
 </script>
 
@@ -975,4 +997,12 @@ div {
     max-height: 102px;
   }
 }
+
+/* .custom-control-input {
+    position: unset;
+    opacity: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: #495057;
+} */
 </style>
