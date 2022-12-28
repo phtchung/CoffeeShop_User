@@ -18,6 +18,16 @@ export default new Router({
                     path: 'mainpage',
                     component: () => import('@/view_user/pages_user/Mainpage'),
                 },
+                {
+                    name: 'UserPage',
+                    path: 'user',
+                    component: () => import('@/view_user/pages_user/UserPage'),
+                },
+                {
+                    name: 'ProductList',
+                    path: 'product-list',
+                    component: () => import('@/view_user/pages_user/ProductList'),
+                },
             ],
         },
     ],
