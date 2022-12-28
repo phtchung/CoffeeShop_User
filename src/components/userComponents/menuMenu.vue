@@ -16,6 +16,7 @@
             item-key="name"
             open-on-click
             transition
+            @input = "categoryType = items.id"
         >
           <template v-slot:prepend="{ item, open }">
             <v-icon v-if="!item.file">
@@ -24,6 +25,7 @@
             <v-icon v-else>
               {{ files[item.file] }}
             </v-icon>
+
           </template>
         </v-treeview>
       </v-col>
@@ -68,6 +70,7 @@ export default {
   // this data below is manually set up, neet to get from backend when have a api
   data() {
     return {
+      categoryType: 1,
       initiallyOpen: ["public"],
       tree: [],
       files: {
@@ -76,43 +79,53 @@ export default {
       menuItems: [
         {
           name: "Tất cả",
+          id: '1',
         },
         {
           name: "Cafe",
+          id : '2',
           children: [
             {
               name: "Cafe Việt Nam",
               file: "dots",
+              id :'3',
             },
             {
               name: "Cafe máy",
               file: "dots",
+              id :'4',
             },
             {
               name: "Cold Brew",
               file: "dots",
+              id :'5',
             },
           ],
         },
         {
           name: "CloudFee",
+          id :'6',
           children: [
             {
               name: "CloudFee",
               file: "dots",
+              id:'7',
             },
           ],
         },
         {
           name: "Trà",
+          id:'8',
           children: [
             {
               name: "Trà trái cây",
               file: "dots",
+              id:'9',
             },
             {
               name: "Trà sữa Machiato",
               file: "dots",
+              id:'10',
             },
           ],
         },
