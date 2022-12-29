@@ -5,7 +5,8 @@
           <Item :imageURL="item.imageURL" :name="item.name" :description="item.description" :price="item.price"/>
       </v-col>
   </v-row> -->
-
+    <mainHeader>
+    </mainHeader>
     <v-row>
       <v-col cols="12" md="4" lg="3" style="margin: 24px 0">
         <v-treeview
@@ -46,7 +47,7 @@
             </BtnNew>
           </v-card-actions>
         </v-card> -->
-            <Item
+            <Item_User
                 :imageURL="item.imageURL"
                 :name="item.name"
                 :description="item.description"
@@ -199,14 +200,15 @@ export default {
     };
   },
   components: {
-    Item: () => import("@/components/Item"),
+    Item_User: () => import("@/components/Item_User"),
+    mainHeader: () => import("@/layouts/Header/mainHeader")
     // BtnNew: () => import("@/components/vuetifyComponents/BtnNew")
   },
 
 };
 </script>
 
-<style>
+<style scoped>
 .menu_bar::after {
   content: "";
   position: absolute;

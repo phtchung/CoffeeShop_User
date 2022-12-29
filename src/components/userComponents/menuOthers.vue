@@ -1,5 +1,7 @@
 <template>
   <v-container>
+    <mainHeader>
+    </mainHeader>
     <!-- <v-row>
       <v-col cols="12" sm="12" md="6" lg="3" v-for="item in items" :key="item.name">
           <Item :imageURL="item.imageURL" :name="item.name" :description="item.description" :price="item.price"/>
@@ -153,13 +155,14 @@ export default {
   },
   components: {
     Item_User: () => import("@/components/Item_User"),
+    mainHeader: () => import("@/layouts/Header/mainHeader")
     // BtnNew: () => import("@/components/vuetifyComponents/BtnNew")
   },
 
 };
 </script>
 
-<style>
+<style scoped>
 .menu_bar::after {
   content: "";
   position: absolute;

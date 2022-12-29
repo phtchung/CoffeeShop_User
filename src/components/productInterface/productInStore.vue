@@ -10,7 +10,7 @@
                 </div>
                 <div class="thumb_carousel">
                   <div class="thumb">
-                    <img src="https://product.hstatic.net/1000075078/product/choco-pp_c043519a9788468aaf8ca26fb4626216.jpg" alt="">
+                    <img src="https://product.hstatic.net/1000075078/product/choco-pp_c043519a9788468aaf8ca26fb4626216.jpg" alt="" style="margin-top: 10px;">
                   </div>
                 </div>
               </div>
@@ -371,7 +371,7 @@ export default {
   hr{
     margin: 32px 0;
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #d6d4d4;
   }
   .des_detail{
     margin-bottom: 10px;

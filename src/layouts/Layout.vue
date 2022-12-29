@@ -4,7 +4,6 @@
     <Sidebar :expand-on-hover.sync="expandOnHover"></Sidebar>
     <v-content style="background-color: white">
       <headerIntro></headerIntro>
-      <mainHeader></mainHeader>
       <v-container rounded-0 class="fill-height" fluid>
         <router-view />
 
@@ -19,7 +18,6 @@
 // import Sidebar from "./sidebar/Sidebar";
 import { mapState, mapMutations } from "vuex";
 import headerIntro from "./Header/headerIntro";
-import mainHeader from "./Header/mainHeader";
 import Footer from "./footer/Footer";
 
 export default {
@@ -28,7 +26,6 @@ export default {
   components: {
     // Header,
     headerIntro,
-    mainHeader,
     Footer
   },
 
