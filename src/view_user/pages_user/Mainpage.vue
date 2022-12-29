@@ -1,6 +1,8 @@
 <template class="mt-0  "  >
 
   <v-container fluid class="down-top-padding " style="margin-top: -66px;padding: 0" >
+
+
     <div>
     <template>
       <v-carousel
@@ -307,7 +309,7 @@ export default {
 
 }
 .advertisement1{
-  padding-left: 63.125px;
+  padding-left: 63px;
 
 }
 

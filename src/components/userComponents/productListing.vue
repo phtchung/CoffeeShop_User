@@ -283,7 +283,7 @@ export default {
 
 .tch-category-card__title {
   color: #b2b2b2;
-  font-weight: 0.75rem;
+  /*font-weight: 0.75rem;*/
   font-size: 12px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
