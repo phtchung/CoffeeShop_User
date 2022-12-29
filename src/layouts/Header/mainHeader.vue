@@ -149,9 +149,9 @@
 
   </div>
 
-<!--  <checkOut>-->
+  <checkOut>
 
-<!--  </checkOut>-->
+  </checkOut>
 
 
   </v-container>
@@ -159,11 +159,11 @@
 
 <script>
 
-// import CheckOut from "../../components/checkOut";
+
 export default {
   name: "mainHeader",
   components:{
-    // CheckOut
+
     // Mainpage: () => import("@/view_user/pages_user/Mainpage"),
 
   },
