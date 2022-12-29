@@ -28,7 +28,8 @@
             class="div-deliver-text"
           >
             <h5
-              style="deliver-giaohang; font-size: 13.4px; margin-bottom:0; line-height: 1.2; font-weight: 500;"
+            class="deliver-giaohang"
+              style=" font-size: 13.4px; margin-bottom:0; line-height: 1.2; font-weight: 500;"
             >
               Giao hàng
             </h5>
@@ -251,7 +252,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .headerUser {
   /* color: coral; */
   /* background-color:radial-gradient(100% 501.4% at 0% 100%,#ffb141 0%,#fb8d17 100%); */

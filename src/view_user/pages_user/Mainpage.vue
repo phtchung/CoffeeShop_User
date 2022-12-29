@@ -2,6 +2,8 @@
 
   <v-container fluid class="down-top-padding " style="margin-top: -66px;padding: 0" >
 
+    <mainHeader>
+    </mainHeader>
 
     <div>
     <template>
@@ -48,7 +50,8 @@
                                 width: 100%;
                                 position: relative;
                                 -webkit-box-shadow: 0 0 13px 0 #00000040;
-                                box-shadow: 0 0 13px 0 #00000040;">
+                                box-shadow: 0 0 13px 0 #00000040;
+                                padding: 0 !important;">
               <img src="https://file.hstatic.net/1000075078/file/banner_app_59792ee4e6074b33aca7f140433e9292.jpg" alt=""
               style="width: 100%; height: 100%"
               >
@@ -219,6 +222,7 @@ export default {
 
   components: {
     Item_User: () => import("@/components/Item_User"),
+    mainHeader: () => import("@/layouts/Header/mainHeader")
     // menuMenu: () => import('@/components/userComponents/menuMenu'),
     // menuMenuOthers: () => import('@/components/userComponents/menuOthers'),
     // headerIntro: () => import('@/layouts/Header/headerIntro'),
