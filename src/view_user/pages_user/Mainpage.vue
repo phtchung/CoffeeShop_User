@@ -5,6 +5,10 @@
     <mainHeader>
     </mainHeader>
 
+
+
+
+
     <div>
     <template>
       <v-carousel
@@ -33,6 +37,9 @@
 
 <!--    <productInStore>-->
 <!--    </productInStore>-->
+
+      <Card_User></Card_User>
+
     <div  style="width: 1200px;margin: 20px auto;padding: 0 0 32px;">
       <v-row style="padding: 12px">
         <!--     ảnh to mainpage , chiếm 1/2 width -->
@@ -189,7 +196,6 @@
             <template>
               <v-carousel
                   cycle
-
                   hide-delimiter-background
                   show-arrows
               >
@@ -206,23 +212,171 @@
               </v-carousel>
             </template>
           </v-col>
-
       </v-row>
-
     </div>
 
+    <section class="blog_home">
+      <div class="container_blog">
+        <div class="clear_fix">
+        <h2 class="blog_home_title">
+          <img src="https://file.hstatic.net/1000075078/file/coffee-2_2_92db24958ff14ac4b4249b3256f7a415.png">
+          Chuyện Nhà
+        </h2>
+        </div>
+        <h3 class="blog_home_blogtitle">
+          <a href="" style="text-decoration: none;color: #191919;">
+            Coffeeholic
+          </a>
+        </h3>
+        <div class="blog_lists " style="display: flex">
+          <v-row>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+              <img class="article_item_image" style="background-size: cover; background-position: center center; background-repeat: no-repeat;"  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+              <div class="article_item_info">
+                <div class="article_published_at">
+                  <span >01/01/2023</span>
+                </div>
+                <h3>
+                  <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                </h3>
+                <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+              </div>
+            </v-col>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+              <img class="article_item_image" src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+              <div class="article_item_info">
+                <div class="article_published_at">
+                  <span >01/01/2023</span>
+                </div>
+                <h3>
+                  <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                </h3>
+                <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+              </div>
+            </v-col>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+              <img class="article_item_image" src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+              <div class="article_item_info">
+                <div class="article_published_at">
+                  <span >01/01/2023</span>
+                </div>
+                <h3>
+                  <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                </h3>
+                <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+              </div>
+            </v-col>
+          </v-row>
+        </div>
+        <h3 class="blog_home_blogtitle">
+          <a href="" style="text-decoration: none;color: #191919;">
+            Teaholic
+          </a>
+        </h3>
+        <div class="blog_lists " style="display: flex">
+          <v-row>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+              <img class="article_item_image" style="background-size: cover; background-position: center center; background-repeat: no-repeat;"  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+              <div class="article_item_info">
+                <div class="article_published_at">
+                  <span >01/01/2023</span>
+                </div>
+                <h3>
+                  <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                </h3>
+                <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+              </div>
+            </v-col>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+              <img class="article_item_image" src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+              <div class="article_item_info">
+                <div class="article_published_at">
+                  <span >01/01/2023</span>
+                </div>
+                <h3>
+                  <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                </h3>
+                <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+              </div>
+            </v-col>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+              <img class="article_item_image" src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+              <div class="article_item_info">
+                <div class="article_published_at">
+                  <span >01/01/2023</span>
+                </div>
+                <h3>
+                  <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                </h3>
+                <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+              </div>
+            </v-col>
+          </v-row>
+        </div>
 
+        <h3 class="blog_home_blogtitle">
+          <a href="" style="text-decoration: none;color: #191919;">
+            Blog
+          </a>
+        </h3>
+
+        <div class="blog_lists " style="display: flex">
+          <v-row>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+                  <img class="article_item_image" style="background-size: cover; background-position: center center; background-repeat: no-repeat;"  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+                  <div class="article_item_info">
+                    <div class="article_published_at">
+                      <span >01/01/2023</span>
+                    </div>
+                    <h3>
+                      <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                    </h3>
+                    <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+                  </div>
+                </v-col>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+                  <img class="article_item_image" src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+                  <div class="article_item_info">
+                    <div class="article_published_at">
+                      <span >01/01/2023</span>
+                    </div>
+                    <h3>
+                      <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                    </h3>
+                    <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+                  </div>
+                </v-col>
+            <v-col cols="12" md="4" lg="4" sm="12" class="blog_item" style="display: flex;flex-direction: column;" >
+                  <img class="article_item_image" src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg" alt="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">
+                  <div class="article_item_info">
+                    <div class="article_published_at">
+                      <span >01/01/2023</span>
+                    </div>
+                    <h3>
+                      <a href="" title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
+                    </h3>
+                    <p style="font-size: 14px;line-height: 24px">Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương vị cà phê đậm đà từ 100% cà phê Robusta cùng vị sữa béo nhẹ cho bạn một trải nghiệm...</p>
+                  </div>
+                </v-col>
+          </v-row>
+        </div>
+
+      </div>
+    </section>
 
   </v-container>
 </template>
 <script>
+
+
 
 export default {
   name: "Mainpage",
 
   components: {
     Item_User: () => import("@/components/Item_User"),
-    mainHeader: () => import("@/layouts/Header/mainHeader")
+    mainHeader: () => import("@/layouts/Header/mainHeader"),
+    Card_User: () => import("@/components/userComponents/Card_User"),
     // menuMenu: () => import('@/components/userComponents/menuMenu'),
     // menuMenuOthers: () => import('@/components/userComponents/menuOthers'),
     // headerIntro: () => import('@/layouts/Header/headerIntro'),
@@ -232,6 +386,7 @@ export default {
   data: () => {
     return{
       menuType: 'The Coffee House',
+
       urls_header: [
         'https://file.hstatic.net/1000075078/file/hiteaday_desktop_564c8568fc48441badd3a492cdd127d9.jpg',
         'https://file.hstatic.net/1000075078/file/daitiec_desktop_2cd63f8cf8454da3ade2c990b9415c8b.jpg',
@@ -316,6 +471,70 @@ export default {
   padding-left: 63px;
 
 }
+.blog_home{
+  background: #FFF7E6;
+  padding-bottom: 11%;
+  margin: 7rem -12px -52px;
+}
+.container_blog{
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+}
+.blog_home_title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 28px;
+  padding-top: 40px;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.4;
+  color: #000;
+  font-weight: 600;
+  font-family: 'SF Pro Display', sans-serif;
+}
+.blog_home_blogtitle{
+  font-size: 24px;
+  margin: 24px 0;
+  padding-left: 12px;
+  border-left: 4px solid #E57905;
+}
+.article_item_info{
+  padding: 16px 0;
+  background: #FFF7E6 50%;
+}
 
+.article_published_at{
+  color: #00000099;
+}
 
+a{
+  text-decoration: none;
+  color: #191919;
+
+}
+.article_item_image{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+
+}
+.article_published_at span{
+  font-family: 'SF Pro Text', sans-serif;
+  line-height: 1.42857143;
+  font-weight: 400;
+  font-size: 14px;
+}
+.blog_item .article_item_info h3 {
+  font-size: 18px;
+  margin: 8px 0;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  height: 25px;
+}
 </style>
