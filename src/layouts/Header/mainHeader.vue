@@ -13,7 +13,7 @@
       :class="{has_child : header_path.header_active }"
       class="categories_item"
     >
-      <a :href = "header_path.header_path">
+      <a :href = "header_path.header_path" @click="getCategories(header_path.header_id)">
         <span class="header_color">{{header_path.header_name}}</span>
       </a>
       <ul class="menu_list" v-if="header_path.header_active ==='true'">
@@ -169,59 +169,69 @@ export default {
   },
   data() {
     return {
+      categories_id:"1",
       header_paths: [
         {
           header_id : "0",
           header_name : "",
           header_path : "mainpage",
-          header_active : "false",
+          header_active : false,
         },
         {
           header_id : "1",
           header_name : "Cà phê",
           header_path : "http://localhost:8080/#/cafe",
-          header_active : "false",
+          header_active : false,
         },
         {
           header_id : "2",
           header_name : "Trà",
           header_path : "http://localhost:8080/#/tra",
-          header_active : "false"
+          header_active : false
         },
         {
           header_id : "3",
           header_name : "Menu",
           header_path : "http://localhost:8080/#/menu",
-          header_active : "true"
+          header_active : true
         },
         {
           header_id : "4",
           header_name : "Truyện nhà",
           header_path : "#",
-          header_active : "false"
+          header_active : false
         },
         {
           header_id : "5",
           header_name : "Cảm hứng CloudFee",
           header_path : "#",
-          header_active : "false"
+          header_active : false,
         },
         {
           header_id : "6",
           header_name : "Cửa hàng",
           header_path : "#",
-          header_active : "false"
+          header_active : false
         },
         {
           header_id : "7",
           header_name : "Tuyển dụng",
           header_path : "#",
-          header_active : "false"
+          header_active : false
         },
 
       ],
     }
   },
+  methods:{
+    getCategories(x) {
+      this.categories_id = x;
+      console.log(this.categories_id);
+    }
+  },
+  created() {
+    this.test();
+  }
 }
 </script>
 
@@ -326,5 +336,8 @@ export default {
   .has_child:hover .menu_list{
     display: flex;
   }
-
+  .menu_list a:hover{
+    color: #EA8025;
+    text-decoration: none;
+  }
 </style>
