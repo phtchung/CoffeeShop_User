@@ -96,7 +96,12 @@
                         <!-- Nut + -->
                         
                         
-                        <Card_User style="z-index : 999" > </Card_User>
+                        <Card_User style="z-index : 999" 
+                          :image_url="product.image_url"
+                          :name="product.name"
+                          :description="product.description"
+                          :price="product.price"> 
+                        </Card_User>
                        
                         
                       </div>

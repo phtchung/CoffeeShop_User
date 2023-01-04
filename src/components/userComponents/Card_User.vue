@@ -39,17 +39,17 @@
                 <v-row class="ma-0">
                   <v-col cols="12" md="5" lg="5" sm="5">
                     <div style="border-radius: 0.5rem">
-                      <img style="height: 8.75rem;width: 8.75rem;" src="https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png" alt="">
+                      <img style="height: 8.75rem;width: 8.75rem;" :src="image_url" alt="">
                     </div>
                   </v-col>
 
                   <v-col cols="12" md="7" lg="7" sm="7">
                     <div style="display: flex; flex-direction: column">
-                      <span class="card_product_name">{{ product_items[0].name}}</span>
-                      <span class="card-product-description">{{product_items[0].description }}
+                      <span class="card_product_name">{{ name}}</span>
+                      <span class="card-product-description">{{description }}
                       </span>
                       <div class="card-product-footer" style="display: flex;justify-content: space-between;align-items: center;margin-top: 1.25rem">
-                        <span class="card-product-price">{{ separator(product_items[0].price) }}</span>
+                        <span class="card-product-price">{{ separator(price) }}</span>
                         <div class="card-product-quantity-config " style="display: flex" >
                           <v-icon color="#fa8c16" large style="cursor: pointer" @click = "countProductsDecrea" >
                             mdi-minus-circle
@@ -269,14 +269,20 @@
 <script>
 export default {
   name: "Card_User",
+  props: {
+    image_url: String,
+    name: String,
+    description: String,
+    price: String,
+  },
   data: () => {
     return {
       dialog: false,
-      count : 1,
+      count : 0,
       count_topping : 0,
       product_items: [
         {
-          imageURL: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
+          image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
           name: "CloudTea Very Berry Mochi",
           description: "CloudTea Very Berry Mochi với với mochi Phúc Bồn Tử cùng lớp foam cheese beo béo, vụn bánh quy phô mai giòn tan. Đặc biệt, trà sữa Lài thơm ngát hoà quyện cùng dâu tây ngọt ngào *Lưu ý: - Mochi có thể bị chìm do ảnh hưởng trong quá trình vận chuyển. - SẢN PHẨM KHÔNG ÁP DỤNG ĐỂ ĐÁ RIÊNG HOẶC KHÔNG ĐÁ",
           price: "69000",
@@ -310,7 +316,7 @@ export default {
       }
     },
     check_price(){
-      let price  = this.product_items[0].price * this.count + this.count_topping*10000;
+      let price  = this.price * this.count + this.count_topping*10000;
       return this.separator(price);
     },
     separator(numb) {
