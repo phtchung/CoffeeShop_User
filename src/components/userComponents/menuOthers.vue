@@ -31,6 +31,7 @@
 </template>
 
 <script>
+/* global axios */
 export default {
   name: "menuCategory_withoutTree",
   props: {
@@ -157,9 +158,25 @@ export default {
   created() {
     this.category_id = this.$route.params.category_id;
     console.log(this.category_id);
+    this.getCategories();
+    console.log("Start\n");
+    this.categories()
+    console.log("END\n");
   },
   methods: {
-
+    getCategories() {
+      axios
+          .get("http://127.0.0.1:8000/api/admin/category/index")
+          .then((response) => {
+            // console.log("RES:\n")
+            // console.log(response);
+            // console.log("END RES\n")
+            this.categories = response.data.Categories;
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
+    },
   },
   components: {
     Item_User: () => import("@/components/Item_User"),
