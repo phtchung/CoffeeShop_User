@@ -42,7 +42,7 @@ export default {
   // this data below is manually set up, neet to get from backend when have a api
   data() {
     return {
-      category_id: "-1",
+      category_id: this.$route.params.category_id,
       menuItems: [
         {
           name: "Tất cả",
@@ -156,13 +156,6 @@ export default {
       // ],
     };
   },
-  created() {
-    this.category_id = this.$route.params.category_id;
-    console.log(this.category_id);
-  },
-  methods: {
-
-  },
   components: {
     Item_User: () => import("@/components/Item_User"),
     mainHeader: () => import("@/layouts/Header/mainHeader")
@@ -170,24 +163,60 @@ export default {
   },
 
   created(){
+    // this.category_id = this.$route.params.category_id;
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        console.log(toParams);
+        console.log(previousParams);
+        this.category_id = this.$route.params.category_id;
+        // react to route changes...
+      }
+    ),
     this.getItems();
   },
 
-  methods: {
-    async getItems() {
-      axios
-        .get("http://127.0.0.1:8000/api/admin/product/index")
-        .then((response) => {
-          console.log("START\n");
-          console.log(response);
-          console.log("END\n");
-          this.items = response.data.products;
-        })
-        .catch((error) => {
-          console.log(error.response);
-        });
-      // const response = await abc();
+  watch: {
+    category_id() {
+      this.getItems();
     },
+  },
+
+  methods: {
+    // async getItems() {
+    //   axios
+    //     .get("http://127.0.0.1:8000/api/admin/product/index")
+    //     .then((response) => {
+    //       console.log("START\n");
+    //       console.log(response);
+    //       console.log("END\n");
+    //       this.items = response.data.products;
+    //     })
+    //     .catch((error) => {
+    //       console.log(error.response);
+    //     });
+    //   // const response = await abc();
+    // },
+
+    getItems() {
+      this.category_id = this.$route.params.category_id;
+      // console.log(this.category_id);
+      axios
+      .post("http://127.0.0.1:8000/api/admin/product/indexByCategoryId", 
+      {
+        category_id: this.category_id
+      }
+      )
+      .then((response) => {
+        this.items = response.data.products;
+        // console.log(response);
+      })
+      .catch((error) => {
+        console.log("Start\n");
+        console.log(error.response)
+        console.log("END\n");
+      });
+    }
   }
 
 };
