@@ -42,6 +42,7 @@ export default {
   // this data below is manually set up, neet to get from backend when have a api
   data() {
     return {
+      category_id: "-1",
       menuItems: [
         {
           name: "Tất cả",
@@ -154,6 +155,13 @@ export default {
       //   },
       // ],
     };
+  },
+  created() {
+    this.category_id = this.$route.params.category_id;
+    console.log(this.category_id);
+  },
+  methods: {
+
   },
   components: {
     Item_User: () => import("@/components/Item_User"),

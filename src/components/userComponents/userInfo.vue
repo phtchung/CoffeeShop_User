@@ -1549,12 +1549,7 @@ div {
     justify-content: center;
   }
   .user-list-mobile .active {
-    background: radial-gradient(
-      100% 828.83% at 0,
-      at 100%,
-      #e87800 0,
-      #fa8c16 100%
-    );
+
     background: radial-gradient(
       100% 828.83% at 0 100%,
       #e87800 0,
