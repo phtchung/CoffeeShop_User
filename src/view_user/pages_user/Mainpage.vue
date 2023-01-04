@@ -38,7 +38,7 @@
 <!--    <productInStore>-->
 <!--    </productInStore>-->
 
-      <Card_User></Card_User>
+      
 
     <div  style="width: 1200px;margin: 20px auto;padding: 0 0 32px;">
       <v-row style="padding: 12px">
@@ -376,7 +376,7 @@ export default {
   components: {
     Item_User: () => import("@/components/Item_User"),
     mainHeader: () => import("@/layouts/Header/mainHeader"),
-    Card_User: () => import("@/components/userComponents/Card_User"),
+    // Card_User: () => import("@/components/userComponents/Card_User"),
     // menuMenu: () => import('@/components/userComponents/menuMenu'),
     // menuMenuOthers: () => import('@/components/userComponents/menuOthers'),
     // headerIntro: () => import('@/layouts/Header/headerIntro'),
