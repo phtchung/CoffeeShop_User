@@ -3,18 +3,22 @@
     <v-row justify="center">
       <v-dialog
           v-model="dialog"
+          open-on-click
           width="400px"
           height="100px"
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-              color="primary"
-              dark
+          <div>
+          <v-icon color="#fa8c16" large style="cursor: pointer" @click="countProductsIncrea" 
               v-bind="attrs"
-              v-on="on"
-          >
-            Open Dialog
-          </v-btn>
+              v-on="on">
+                            mdi-plus-circle
+              <v-btn class="card-product-decrease
+                             quantity-product add-to-cart ">
+              </v-btn>
+          </v-icon>
+          </div>
+        
         </template>
         <v-card >
           <div style="display: flex;padding: 16px;align-items: center;justify-content: flex-start">
@@ -267,7 +271,7 @@ export default {
   name: "Card_User",
   data: () => {
     return {
-      dialog: "false",
+      dialog: false,
       count : 1,
       count_topping : 0,
       product_items: [

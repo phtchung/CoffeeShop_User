@@ -150,9 +150,9 @@
 
   </div>
 
-  <checkOut>
+  <!-- <checkOut>
 
-  </checkOut>
+  </checkOut> -->
 
 
   </v-container>

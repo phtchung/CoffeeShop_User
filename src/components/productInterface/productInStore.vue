@@ -215,8 +215,42 @@
 
 <script>
 export default {
-  name: "productInStore"
+  name: "productInStore",
+  data () {
+    return {
+      product_id: "-1",
+    }
+  },
+  created(){
+    // this.category_id = this.$route.params.category_id;
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        console.log(toParams);
+        console.log(previousParams);
+        this.product_id = this.$route.params.product_id;
+        // react to route changes...
+      }
+    ),
+    this.getItems();
+  },
+
+  watch: {
+    product_id() {
+      this.getItems();
+      console.log(this.product_id)
+    },
+  },
+
+  methods: {
+
+    getItems() {
+      this.product_id = this.$route.params.product_id;
+    }
+  }
 }
+
+
 </script>
 
 <style scoped>

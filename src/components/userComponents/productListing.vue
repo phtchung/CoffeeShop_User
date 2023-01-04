@@ -88,24 +88,17 @@
                       <div class="blockPriceAdd">
                         <!-- price -->
                         <p class="mb-0">
-                          <span data-v-3b22f2d6="" class="d-block">{{
+                          <span  class="d-block">{{
                             product.price
                           }}</span
                           ><!---->
                         </p>
                         <!-- Nut + -->
-                        <div
-                          data-v-3b22f2d6=""
-                          data-toggle="modal"
-                          data-target="#cardModal"
-                          class="btn btn--orange-1 add-to-cart p-0"
-                        >
-                          <img
-                            data-v-3b22f2d6=""
-                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuODU3MTQgNi44NTcxNFYwSDkuMTQyODZWNi44NTcxNEgxNlY5LjE0Mjg2SDkuMTQyODZWMTZINi44NTcxNFY5LjE0Mjg2SDBWNi44NTcxNEg2Ljg1NzE0WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg=="
-                            alt="the coffee house"
-                          />
-                        </div>
+                        
+                        
+                        <Card_User style="z-index : 999" > </Card_User>
+                       
+                        
                       </div>
                     </div>
                   </div>
@@ -123,8 +116,12 @@
 import axios from "axios";
 export default {
   name: "productListing",
+  components:{
+    Card_User: () => import("@/components/userComponents/Card_User"),
+  },
   data() {
     return {
+      dialog:false,
       category_type: 1,
       categories: [],
       products: [],
