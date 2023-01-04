@@ -12,8 +12,9 @@
       :key = header_path.header_id
       :class="{has_child : header_path.header_active }"
       class="categories_item"
+      @click="logout(header_path.header_id,header_path.header_path)"
     >
-      <a :href = "header_path.header_path" @click="getCategories(header_path.header_id)">
+      <a  >
         <span class="header_color">{{header_path.header_name}}</span>
       </a>
       <ul class="menu_list" v-if="header_path.header_active ==='true'">
@@ -170,6 +171,7 @@ export default {
   data() {
     return {
       categories_id:"1",
+      name:"",
       header_paths: [
         {
           header_id : "0",
@@ -180,13 +182,13 @@ export default {
         {
           header_id : "1",
           header_name : "Cà phê",
-          header_path : "http://localhost:8080/#/cafe",
+          header_path : "caphe",
           header_active : false,
         },
         {
           header_id : "2",
           header_name : "Trà",
-          header_path : "http://localhost:8080/#/tra",
+          header_path : "",
           header_active : false
         },
         {
@@ -224,14 +226,19 @@ export default {
     }
   },
   methods:{
-    getCategories(x) {
-      this.categories_id = x;
-      console.log(this.categories_id);
-    }
+    // getCategories(x) {
+    //   this.categories_id = x;
+    //   console.log(this.categories_id);
+    // },
+    logout(category_id,product_name){
+      this.categories_id = category_id
+      this.name = product_name
+      this.$router.push({path:`/${this.categories_id}`,name:'product', params: { category_id: `${this.categories_id}` }});
+      // console.log(category_id,product_name);
+      },
+
   },
-  created() {
-    this.test();
-  }
+
 }
 </script>
 
