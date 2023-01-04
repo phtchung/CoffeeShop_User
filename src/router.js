@@ -18,28 +18,6 @@ export default new Router({
                     path: 'mainpage',
                     component: () => import('@/view_user/pages_user/Mainpage'),
                 },
-
-                {
-                    name: 'product',
-                    path: '/:category_id',
-                    component: () => import('@/components/userComponents/menuOthers'),
-                },
-                // {
-                //     name: 'menuCategory_withoutTree',
-                //     path: 'tra',
-                //     component: () => import('@/components/userComponents/menuOthers'),
-                // },
-                {
-                    name: 'menuCategory_withoutTree',
-                    path: '/:category',
-                    component: () => import('@/components/userComponents/menuOthers'),
-                },
-                {
-                    name: 'menu',
-                    path: 'menu',
-                    component: () => import('@/components/userComponents/menuMenu'),
-                },
-
                 {
                     name: 'UserPage',
                     path: 'user',
@@ -60,6 +38,22 @@ export default new Router({
                     path: 'thanh-toan',
                     component: () => import('@/view_user/pages_user/ThanhToan'),
                 },
+                {
+                    name: 'product',
+                    path: '/:category_id',
+                    component: () => import('@/components/userComponents/menuOthers'),
+                },
+                {
+                    name: 'menuCategory_withoutTree',
+                    path: '/:category',
+                    component: () => import('@/components/userComponents/menuOthers'),
+                },
+                {
+                    name: 'menu',
+                    path: 'menu',
+                    component: () => import('@/components/userComponents/menuMenu'),
+                },
+                
             ],
         },
     ],
