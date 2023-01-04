@@ -5,7 +5,7 @@
       color="transparent"
   >
     <v-img
-        :src= 'imageURL'
+        :src= 'image_url'
         height="200px"
     ></v-img>
 
@@ -25,7 +25,7 @@
         Button
       </v-btn> -->
       <BtnEdit
-          :imageURL="imageURL"
+          :image_url="image_url"
           :name="name"
           :price="price"
           :description="description"
@@ -59,7 +59,7 @@
 // import BtnEdit from './vuetifyComponents/BtnEdit.vue'
 export default {
   props: {
-    imageURL: String,
+    image_url: String,
     name: String,
     description: String,
     price: String,
