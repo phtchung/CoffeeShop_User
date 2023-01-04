@@ -18,17 +18,7 @@
               </v-btn>
           </v-icon>
           </div>
-          <!-- <v-btn
-             color=" #fa861c"
-             class="add-to-cart"
-              v-bind="attrs"
-              style="padding :0;"
-              v-on="on"
-              fixed
-          > 
         
-          
-          </v-btn> -->
         </template>
         <v-card >
           <div style="display: flex;padding: 16px;align-items: center;justify-content: flex-start">
