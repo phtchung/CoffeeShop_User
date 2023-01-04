@@ -20,13 +20,18 @@ export default new Router({
                 },
 
                 {
-                    name: 'menuCategory_withoutTree',
-                    path: 'cafe',
+                    name: 'product',
+                    path: '/:category_id',
                     component: () => import('@/components/userComponents/menuOthers'),
                 },
+                // {
+                //     name: 'menuCategory_withoutTree',
+                //     path: 'tra',
+                //     component: () => import('@/components/userComponents/menuOthers'),
+                // },
                 {
                     name: 'menuCategory_withoutTree',
-                    path: 'tra',
+                    path: '/:category',
                     component: () => import('@/components/userComponents/menuOthers'),
                 },
                 {
