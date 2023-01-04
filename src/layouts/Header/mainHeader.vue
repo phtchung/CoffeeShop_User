@@ -239,7 +239,7 @@ export default {
       }
       else{
         this.$router.push({path:`/${this.categories_id}`,name:'product', params: { category_id: `${this.categories_id}` }});
-        console.log(category_id,product_name);
+        // console.log(category_id,product_name);
       }
       },
 
