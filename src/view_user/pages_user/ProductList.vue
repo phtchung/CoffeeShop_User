@@ -1,10 +1,12 @@
 <template>
     <v-container rounded-0 fluid style="margin-top: 42px;">
-        <header>
+        
             <userHeader/>
-        </header>
-        <div>
+            
+       
         <productListing/>
+        <div>
+        
         </div>
         <!-- <mainHeader/> -->
     </v-container>

@@ -34,14 +34,10 @@
                   style="margin-left: 1rem"
                 >
                   <a
-                    role="tab"
-                    data-toggle="tab"
-                    href="Cà phê"
-                    aria-controls="Cà phê"
                     aria-selected="true"
                     class="nav-link"
                   >
-                    <div class="tch-category-card">
+                    <div class="tch-category-card" @click="category_type = category.id">
                       <!-- Picture of category -->
                       <div
                         class="
@@ -92,24 +88,17 @@
                       <div class="blockPriceAdd">
                         <!-- price -->
                         <p class="mb-0">
-                          <span data-v-3b22f2d6="" class="d-block">{{
+                          <span  class="d-block">{{
                             product.price
                           }}</span
                           ><!---->
                         </p>
                         <!-- Nut + -->
-                        <div
-                          data-v-3b22f2d6=""
-                          data-toggle="modal"
-                          data-target="#cardModal"
-                          class="btn btn--orange-1 add-to-cart p-0"
-                        >
-                          <img
-                            data-v-3b22f2d6=""
-                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuODU3MTQgNi44NTcxNFYwSDkuMTQyODZWNi44NTcxNEgxNlY5LjE0Mjg2SDkuMTQyODZWMTZINi44NTcxNFY5LjE0Mjg2SDBWNi44NTcxNEg2Ljg1NzE0WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg=="
-                            alt="the coffee house"
-                          />
-                        </div>
+                        
+                        
+                        <Card_User style="z-index : 999" > </Card_User>
+                       
+                        
                       </div>
                     </div>
                   </div>
@@ -127,9 +116,15 @@
 /* global axios */
 export default {
   name: "productListing",
+  components:{
+    Card_User: () => import("@/components/userComponents/Card_User"),
+  },
   data() {
     return {
+      dialog:false,
+      category_type: 1,
       categories: [],
+      products: [],
       // categories: [
       //   {
       //     category_id: "1",
@@ -175,77 +170,79 @@ export default {
       //   },
       // ],
 
-      products: [
-        {
-          product_id: "1",
-          name: "ca phe den",
-          price: "100000",
-          image_url:
-            "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-        },
-        {
-          product_id: "2",
-          name: "ca phe den da",
-          price: "100000",
-          image_url:
-            "	https://minio.thecoffeehouse.com/image/admin/1639377770_cfsua-nong_400x400.jpg",
-        },
-        {
-          product_id: "3",
-          name: "ca phe a",
-          price: "100000",
-          image_url:
-            "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-        },
-        {
-          product_id: "4",
-          name: "ca phe b",
-          price: "100000",
-          image_url:
-            "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-        },
-        {
-          product_id: "5",
-          name: "ca phe c",
-          price: "100000",
-          image_url:
-            "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-        },
-        {
-          product_id: "6",
-          name: "ca phe d",
-          price: "100000",
-          image_url:
-            "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-        },
-        {
-          product_id: "7",
-          name: "ca phe e",
-          price: "100000",
-          image_url:
-            "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-        },
-        {
-          product_id: "8",
-          name: "ca phe f",
-          price: "100000",
-          image_url:
-            "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-        },
-        {
-          product_id: "9",
-          name: "ca phe g",
-          price: "100000",
-          image_url:
-            "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-        },
-      ],
+      // products: [
+      //   {
+      //     product_id: "1",
+      //     name: "ca phe den",
+      //     price: "100000",
+      //     image_url:
+      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
+      //   },
+      //   {
+      //     product_id: "2",
+      //     name: "ca phe den da",
+      //     price: "100000",
+      //     image_url:
+      //       "	https://minio.thecoffeehouse.com/image/admin/1639377770_cfsua-nong_400x400.jpg",
+      //   },
+      //   {
+      //     product_id: "3",
+      //     name: "ca phe a",
+      //     price: "100000",
+      //     image_url:
+      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
+      //   },
+      //   {
+      //     product_id: "4",
+      //     name: "ca phe b",
+      //     price: "100000",
+      //     image_url:
+      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
+      //   },
+      //   {
+      //     product_id: "5",
+      //     name: "ca phe c",
+      //     price: "100000",
+      //     image_url:
+      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
+      //   },
+      //   {
+      //     product_id: "6",
+      //     name: "ca phe d",
+      //     price: "100000",
+      //     image_url:
+      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
+      //   },
+      //   {
+      //     product_id: "7",
+      //     name: "ca phe e",
+      //     price: "100000",
+      //     image_url:
+      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
+      //   },
+      //   {
+      //     product_id: "8",
+      //     name: "ca phe f",
+      //     price: "100000",
+      //     image_url:
+      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
+      //   },
+      //   {
+      //     product_id: "9",
+      //     name: "ca phe g",
+      //     price: "100000",
+      //     image_url:
+      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
+      //   },
+      // ],
     };
   },
   created() {
     this.getCategories();
+    this.getProducts();
     console.log("Start\n");
     console.log(this.categories);
+    console.log(this.products)
     console.log("END\n");
   },
   methods: {
@@ -262,7 +259,30 @@ export default {
           console.log(error.response);
         });
     },
+    getProducts() {
+      axios
+      .post("http://127.0.0.1:8000/api/admin/product/indexByCategoryId", 
+      {
+        category_id: this.category_type
+      }
+      )
+      .then((response) => {
+        this.products = response.data.products;
+        // console.log(response);
+      })
+      .catch((error) => {
+        console.log("Start\n");
+        console.log(error.response)
+        console.log("END\n");
+      });
+    }
   },
+
+  watch: {
+    category_type() {
+      this.getProducts();
+    }
+  }
 };
 </script>
 

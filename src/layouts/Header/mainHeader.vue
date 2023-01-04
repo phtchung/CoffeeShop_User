@@ -150,9 +150,9 @@
 
   </div>
 
-  <checkOut>
+  <!-- <checkOut>
 
-  </checkOut>
+  </checkOut> -->
 
 
   </v-container>
@@ -174,7 +174,7 @@ export default {
       name:"",
       header_paths: [
         {
-          header_id : "0",
+          header_id : "-1",
           header_name : "",
           header_path : "mainpage",
           header_active : false,
@@ -192,7 +192,7 @@ export default {
           header_active : false
         },
         {
-          header_id : "3",
+          header_id : "0",
           header_name : "Menu",
           header_path : "http://localhost:8080/#/menu",
           header_active : true
@@ -231,10 +231,16 @@ export default {
     //   console.log(this.categories_id);
     // },
     logout(category_id,product_name){
-      this.categories_id = category_id
-      this.name = product_name
-      this.$router.push({path:`/${this.categories_id}`,name:'product', params: { category_id: `${this.categories_id}` }});
-      // console.log(category_id,product_name);
+      this.categories_id = category_id;
+      this.name = product_name;
+      if(category_id=="0")
+      {
+        this.$router.push({path:`/menu`,name:'menu'});
+      }
+      else{
+        this.$router.push({path:`/${this.categories_id}`,name:'product', params: { category_id: `${this.categories_id}` }});
+        // console.log(category_id,product_name);
+      }
       },
 
   },
