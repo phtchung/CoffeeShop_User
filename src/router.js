@@ -35,7 +35,7 @@ export default new Router({
                     component: () => import('@/components/userComponents/menuOthers'),
                 },
                 {
-                    name: 'menuCategory',
+                    name: 'menu',
                     path: 'menu',
                     component: () => import('@/components/userComponents/menuMenu'),
                 },
