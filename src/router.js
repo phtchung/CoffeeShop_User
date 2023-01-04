@@ -20,13 +20,18 @@ export default new Router({
                 },
 
                 {
-                    name: 'menuCategory_withoutTree',
-                    path: 'cafe',
+                    name: 'product',
+                    path: '/:category_id',
                     component: () => import('@/components/userComponents/menuOthers'),
                 },
+                // {
+                //     name: 'menuCategory_withoutTree',
+                //     path: 'tra',
+                //     component: () => import('@/components/userComponents/menuOthers'),
+                // },
                 {
                     name: 'menuCategory_withoutTree',
-                    path: 'tra',
+                    path: '/:category',
                     component: () => import('@/components/userComponents/menuOthers'),
                 },
                 {
@@ -44,6 +49,16 @@ export default new Router({
                     name: 'ProductList',
                     path: 'product-list',
                     component: () => import('@/view_user/pages_user/ProductList'),
+                },
+                {
+                    name: 'productInStore',
+                    path: 'product',
+                    component: () => import('@/components/productInterface/productInStore'),
+                },
+                {
+                    name: 'ThanhToan',
+                    path: 'thanh-toan',
+                    component: () => import('@/view_user/pages_user/ThanhToan'),
                 },
             ],
         },

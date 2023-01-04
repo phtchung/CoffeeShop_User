@@ -12,8 +12,9 @@
       :key = header_path.header_id
       :class="{has_child : header_path.header_active }"
       class="categories_item"
+      @click="logout(header_path.header_id,header_path.header_path)"
     >
-      <a :href = "header_path.header_path">
+      <a  >
         <span class="header_color">{{header_path.header_name}}</span>
       </a>
       <ul class="menu_list" v-if="header_path.header_active ==='true'">
@@ -149,9 +150,9 @@
 
   </div>
 
-<!--  <checkOut>-->
+  <checkOut>
 
-<!--  </checkOut>-->
+  </checkOut>
 
 
   </v-container>
@@ -159,69 +160,85 @@
 
 <script>
 
-// import CheckOut from "../../components/checkOut";
+
 export default {
   name: "mainHeader",
   components:{
-    // CheckOut
+
     // Mainpage: () => import("@/view_user/pages_user/Mainpage"),
 
   },
   data() {
     return {
+      categories_id:"1",
+      name:"",
       header_paths: [
         {
           header_id : "0",
           header_name : "",
           header_path : "mainpage",
-          header_active : "false",
+          header_active : false,
         },
         {
           header_id : "1",
           header_name : "Cà phê",
-          header_path : "http://localhost:8080/#/cafe",
-          header_active : "false",
+          header_path : "caphe",
+          header_active : false,
         },
         {
           header_id : "2",
           header_name : "Trà",
-          header_path : "http://localhost:8080/#/tra",
-          header_active : "false"
+          header_path : "",
+          header_active : false
         },
         {
           header_id : "3",
           header_name : "Menu",
           header_path : "http://localhost:8080/#/menu",
-          header_active : "true"
+          header_active : true
         },
         {
           header_id : "4",
           header_name : "Truyện nhà",
           header_path : "#",
-          header_active : "false"
+          header_active : false
         },
         {
           header_id : "5",
           header_name : "Cảm hứng CloudFee",
           header_path : "#",
-          header_active : "false"
+          header_active : false,
         },
         {
           header_id : "6",
           header_name : "Cửa hàng",
           header_path : "#",
-          header_active : "false"
+          header_active : false
         },
         {
           header_id : "7",
           header_name : "Tuyển dụng",
           header_path : "#",
-          header_active : "false"
+          header_active : false
         },
 
       ],
     }
   },
+  methods:{
+    // getCategories(x) {
+    //   this.categories_id = x;
+    //   console.log(this.categories_id);
+    // },
+    logout(category_id,product_name){
+      this.categories_id = category_id
+      this.name = product_name
+      this.$router.push({path:`/${this.categories_id}`,name:'product', params: { category_id: `${this.categories_id}` }});
+      // console.log(category_id,product_name);
+      },
+
+  },
+
 }
 </script>
 
@@ -326,5 +343,8 @@ export default {
   .has_child:hover .menu_list{
     display: flex;
   }
-
+  .menu_list a:hover{
+    color: #EA8025;
+    text-decoration: none;
+  }
 </style>

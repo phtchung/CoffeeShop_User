@@ -1,5 +1,7 @@
 <template>
   <v-container>
+    <mainHeader>
+    </mainHeader>
     <!-- <v-row>
       <v-col cols="12" sm="12" md="6" lg="3" v-for="item in items" :key="item.name">
           <Item :imageURL="item.imageURL" :name="item.name" :description="item.description" :price="item.price"/>
@@ -39,6 +41,7 @@ export default {
   // this data below is manually set up, neet to get from backend when have a api
   data() {
     return {
+      category_id: "-1",
       menuItems: [
         {
           name: "Tất cả",
@@ -151,15 +154,23 @@ export default {
       ],
     };
   },
+  created() {
+    this.category_id = this.$route.params.category_id;
+    console.log(this.category_id);
+  },
+  methods: {
+
+  },
   components: {
     Item_User: () => import("@/components/Item_User"),
+    mainHeader: () => import("@/layouts/Header/mainHeader")
     // BtnNew: () => import("@/components/vuetifyComponents/BtnNew")
   },
 
 };
 </script>
 
-<style>
+<style scoped>
 .menu_bar::after {
   content: "";
   position: absolute;
