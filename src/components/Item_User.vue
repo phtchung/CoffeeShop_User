@@ -2,7 +2,7 @@
   <div class="menu_item">
     <div class="menu_item_image">
       <a href="#" title="CloudFee Hạnh Nhân Nướng">
-        <img :src="imageURL" class="lazyloaded"/>
+        <img :src="image_url" class="lazyloaded"/>
       </a>
     </div>
 
@@ -19,15 +19,17 @@
 <script>
 export default {
   props: {
-    imageURL: String,
+    image_url: String,
     name: String,
     description: String,
     price: String,
   },
   name: "Item_User",
   data: () => ({
+    // product_id: "0",
     show: false,
   }),
+
 };
 </script>
 
