@@ -368,7 +368,18 @@
 </template>
 <script>
 
-
+// window.onscroll = function() {myFunction()};
+//
+// let header = document.getElementById("myHeader");
+// let sticky = header.offsetTop;
+//
+// function myFunction() {
+//   if (window.pageYOffset > sticky) {
+//     header.classList.add("sticky");
+//   } else {
+//     header.classList.remove("sticky");
+//   }
+// }
 
 export default {
   name: "Mainpage",
@@ -441,20 +452,22 @@ export default {
           price: "19896",
         },
       ],
-      // menuType: 'NULL',
-      // menuItems: [
-      //   {name: 'The Coffee House'},
-      //   {name: 'Cà phê'},
-      //   {name: 'Trà'},
-      //   {name:'Menu'},
-      // ],
+
     }
   },
+
+
 
 };
 </script>
 
 <style scoped>
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 .text_mainpage{
   font-size: 16px;
   line-height: 24px;
