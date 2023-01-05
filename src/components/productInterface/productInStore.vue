@@ -285,7 +285,6 @@ export default {
       str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       return str.join(".");
     },
-
     get_total_price(){
       let total_price  =  parseInt(this.product_details[0].price) + ( 10000 * this.checked_topping.length);
       if(this.big === true && this.small === false && this.medium === false){
@@ -298,9 +297,7 @@ export default {
   }
 }
 
-
 </script>
-
 <style scoped>
   .prodcutStore_Wrap{
     width: 75rem;
