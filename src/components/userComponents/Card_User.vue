@@ -310,7 +310,7 @@ export default {
       }
     },
     check_price(){
-      let price  = this.product_items[0].price * this.count + this.count_topping*10000;
+      let price  = (this.product_items[0].price) * this.count + this.count_topping*10000;
       return this.separator(price);
     },
     separator(numb) {
