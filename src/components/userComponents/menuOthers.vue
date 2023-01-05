@@ -31,7 +31,7 @@
 </template>
 
 <script>
-// /* global axios */
+ // /* global axios */
 import axios from "axios";
 
 export default {
