@@ -1,8 +1,8 @@
 <template class="mt-0  "  >
   <v-container
-    fluid
-    class="down-top-padding"
-    style="margin-top: -66px; padding: 0"
+      fluid
+      class="down-top-padding"
+      style="margin-top: -66px; padding: 0"
   >
     <mainHeader> </mainHeader>
 
@@ -32,16 +32,16 @@
       <v-row style="padding: 12px">
         <!--     ảnh to mainpage , chiếm 1/2 width -->
         <v-col
-          cols="12"
-          sm="12"
-          md="6"
-          lg="6"
-          style="padding: 0 26px; margin: 12px 0"
+            cols="12"
+            sm="12"
+            md="6"
+            lg="6"
+            style="padding: 0 26px; margin: 12px 0"
         >
           <v-row>
             <a
-              href="#"
-              style="
+                href="#"
+                style="
                 border-radius: 10px;
                 overflow: hidden;
                 display: block;
@@ -53,31 +53,31 @@
               "
             >
               <img
-                src="https://file.hstatic.net/1000075078/file/banner_app_59792ee4e6074b33aca7f140433e9292.jpg"
-                alt=""
-                style="width: 100%; height: 100%"
+                  src="https://file.hstatic.net/1000075078/file/banner_app_59792ee4e6074b33aca7f140433e9292.jpg"
+                  alt=""
+                  style="width: 100%; height: 100%"
               />
             </a>
           </v-row>
         </v-col>
 
         <v-col
-          cols="12"
-          md="6"
-          sm="12"
-          lg="6"
-          style="font-size: 16px; display: flex"
+            cols="12"
+            md="6"
+            sm="12"
+            lg="6"
+            style="font-size: 16px; display: flex"
         >
           <v-row>
             <v-col
-              cols="12"
-              sm="6"
-              md="6"
-              lg="6"
-              style="padding: 0; margin: 12px 0"
-              v-for="item in items.slice(0, 2)"
-              :key="item.id"
-              @click="handleProduct(item.id)"
+                cols="12"
+                sm="6"
+                md="6"
+                lg="6"
+                style="padding: 0; margin: 12px 0"
+                v-for="item in items.slice(0, 2)"
+                :key="item.id"
+                @click="handleProduct(item.id)"
             >
               <Item_User
                 :image_url="item.image_url"
@@ -90,14 +90,14 @@
         </v-col>
 
         <v-col
-          cols="12"
-          sm="6"
-          md="3"
-          lg="3"
-          style="padding: 0; margin: 36px 0 36px"
-          v-for="item in items.slice(2)"
-          :key="item.id"
-          @click="handleProduct(item.id)"
+            cols="12"
+            sm="6"
+            md="3"
+            lg="3"
+            style="padding: 0; margin: 36px 0 36px"
+            v-for="item in items.slice(2)"
+            :key="item.id"
+            @click="handleProduct(item.id)"
         >
           <Item_User
             :image_url="item.image_url"
@@ -122,16 +122,16 @@
       <v-row>
         <v-col cols="12" md="6" lg="6" sm="12">
           <img
-            src="https://file.hstatic.net/1000075078/file/cloudtea_1_5dc49fd17ba04030993d2f797dc570f2.png"
-            alt=""
+              src="https://file.hstatic.net/1000075078/file/cloudtea_1_5dc49fd17ba04030993d2f797dc570f2.png"
+              alt=""
           />
         </v-col>
 
         <v-col cols="12" md="6" lg="6" sm="12">
           <div>
             <img
-              src="https://file.hstatic.net/1000075078/file/cloudtea_tagline_1_c39d8fd0d46b4144be9cebd05e318796.png"
-              alt=""
+                src="https://file.hstatic.net/1000075078/file/cloudtea_tagline_1_c39d8fd0d46b4144be9cebd05e318796.png"
+                alt=""
             />
           </div>
 
@@ -147,9 +147,9 @@
 
           <v-col cols="12" sm="6" md="6" lg="6" class="pa-0">
             <a
-              href="#"
-              class="my-2"
-              style="text-decoration: none; padding: 0; border-radius: 8px"
+                href="#"
+                class="my-2"
+                style="text-decoration: none; padding: 0; border-radius: 8px"
             >
               <v-btn x-large color="#B3DDCA" dark width="100%">
                 Thử ngay
@@ -163,11 +163,11 @@
     <div class="advertisement1">
       <v-row>
         <v-col
-          cols="12"
-          sm="12"
-          md="5"
-          lg="5"
-          style="
+            cols="12"
+            sm="12"
+            md="5"
+            lg="5"
+            style="
             display: flex;
             flex-wrap: wrap;
             align-content: center;
@@ -176,7 +176,7 @@
           "
         >
           <h3
-            style="
+              style="
               font-size: 28px;
               color: #000000d9;
               font-family: 'SF Pro Display', sans-serif;
@@ -189,7 +189,7 @@
             The Grace Tower
           </h3>
           <p
-            style="
+              style="
               font-size: 16px;
               line-height: 24px;
               max-width: 75%;
@@ -231,7 +231,7 @@
         <div class="clear_fix">
           <h2 class="blog_home_title">
             <img
-              src="https://file.hstatic.net/1000075078/file/coffee-2_2_92db24958ff14ac4b4249b3256f7a415.png"
+                src="https://file.hstatic.net/1000075078/file/coffee-2_2_92db24958ff14ac4b4249b3256f7a415.png"
             />
             Chuyện Nhà
           </h2>
@@ -244,23 +244,23 @@
         <div class="blog_lists" style="display: flex">
           <v-row>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                style="
+                  class="article_item_image"
+                  style="
                   background-size: cover;
                   background-position: center center;
                   background-repeat: no-repeat;
                 "
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -268,9 +268,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>
@@ -282,18 +282,18 @@
               </div>
             </v-col>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  class="article_item_image"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -301,9 +301,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>
@@ -315,18 +315,18 @@
               </div>
             </v-col>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  class="article_item_image"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -334,9 +334,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>
@@ -357,23 +357,23 @@
         <div class="blog_lists" style="display: flex">
           <v-row>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                style="
+                  class="article_item_image"
+                  style="
                   background-size: cover;
                   background-position: center center;
                   background-repeat: no-repeat;
                 "
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -381,9 +381,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>
@@ -395,18 +395,18 @@
               </div>
             </v-col>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  class="article_item_image"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -414,9 +414,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>
@@ -428,18 +428,18 @@
               </div>
             </v-col>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  class="article_item_image"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -447,9 +447,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>
@@ -470,23 +470,23 @@
         <div class="blog_lists" style="display: flex">
           <v-row>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                style="
+                  class="article_item_image"
+                  style="
                   background-size: cover;
                   background-position: center center;
                   background-repeat: no-repeat;
                 "
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -494,9 +494,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>
@@ -508,18 +508,18 @@
               </div>
             </v-col>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  class="article_item_image"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -527,9 +527,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>
@@ -541,18 +541,18 @@
               </div>
             </v-col>
             <v-col
-              cols="12"
-              md="4"
-              lg="4"
-              sm="12"
-              class="blog_item"
-              style="display: flex; flex-direction: column"
+                cols="12"
+                md="4"
+                lg="4"
+                sm="12"
+                class="blog_item"
+                style="display: flex; flex-direction: column"
             >
               <img
-                class="article_item_image"
-                src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
-                alt=""
-                title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  class="article_item_image"
+                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  alt=""
+                  title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
               <div class="article_item_info">
                 <div class="article_published_at">
@@ -560,9 +560,9 @@
                 </div>
                 <h3>
                   <a
-                    href=""
-                    title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                    >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
+                      href=""
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
+                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
                     NGON</a
                   >
                 </h3>

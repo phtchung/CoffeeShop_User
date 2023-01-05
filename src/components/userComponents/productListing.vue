@@ -118,7 +118,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios  from "axios";
+// /* global axios */
 export default {
   name: "productListing",
   components:{

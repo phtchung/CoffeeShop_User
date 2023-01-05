@@ -6,7 +6,7 @@
             <v-col cols="12" xs="12" md="6" lg="6" sm="12">
               <div class="product_carousel">
                 <div class="product_image">
-                  <img src="https://product.hstatic.net/1000075078/product/choco-pp_c043519a9788468aaf8ca26fb4626216.jpg" alt="">
+                  <img :src = product_details[0].imageURL alt="">
                 </div>
                 <div class="thumb_carousel">
                   <div class="thumb">
@@ -19,17 +19,17 @@
             <div>
               <div class="inforr_product">
                 <div>
-                  <p class="infor_pro__title">Cloud Tes's more Choco MasrchMallow</p>
+                  <p class="infor_pro__title">{{ product_details[0].name}}</p>
                 </div>
                 <div class="infor_pro_price">
-                  <span class="price">69.000 đ</span>
+                  <span class="price">{{get_total_price()}} đ</span>
                 </div>
               </div>
 
               <div class="option_size">
                 <p class="option_title">Chọn size (bắt buộc)</p>
                 <div class="product_option">
-                  <div class="opt_size">
+                  <div class="opt_size" @click="small = true ; medium = false ; big = false;  " :class="{ active: small}"  >
                     <div class="opt_img">
                       <img src="" alt="">
                     </div>
@@ -37,7 +37,7 @@
                       Nhỏ + 0 đ
                     </div>
                   </div>
-                  <div class="opt_size">
+                  <div class="opt_size" @click="small = false ; medium = true ; big = false" :class="{ active: medium}" >
                     <div class="opt_img">
                       <img src="" alt="">
                     </div>
@@ -45,7 +45,7 @@
                       Vừa + 6000 đ
                     </div>
                   </div>
-                  <div class="opt_size">
+                  <div class="opt_size" @click="small = false ; medium = false ; big = true" :class="{ active: big}"  >
                     <div class="opt_img">
                       <img src="" alt="">
                     </div>
@@ -58,21 +58,40 @@
               <div class="option_topping">
                 <p class="option_title">Topping</p>
                 <div class="product_option">
-                  <label class="option_item " type="checkbox" title="Kem Phô Mai Macchiato">
-                      <div class="top_detail">
-                        <div class="name">Kem Phô Mai Macchiato + 10.000 đ</div>
+
+                  <label class="option_item  " type="checkbox"  title="Kem Phô Mai Macchiato">
+                    <input type="checkbox" class="checkbox"   name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Kem Phô Mai">
+                      <div  class="top_detail active_normal"   >
+                        <div  class="name">Kem Phô Mai Macchiato + 10.000 đ</div>
                       </div>
                   </label>
 
-                  <label class="option_item "  type="checkbox" title="Trân châu trắng">
-                    <div class="top_detail">
-                      <div class="name">Trân châu trắng + 10.000 đ</div>
+                  <label class="option_item  " type="checkbox"    title="Kem Phô Mai Macchiato">
+                    <input type="checkbox" class="checkbox"  name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Expresso">
+                    <div  class="top_detail active_normal"   >
+                      <div  class="name">Shot Expresso + 10.000đ</div>
                     </div>
                   </label>
 
-                  <label class="option_item "  type="checkbox" title="Trân châu trắng">
-                    <div class="top_detail">
-                      <div class="name">Trái vải + 10.000 đ</div>
+                  <label class="option_item  " type="checkbox"   title="Kem Phô Mai Macchiato">
+                    <input type="checkbox" class="checkbox"  name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Trân châu trắng">
+                    <div  class="top_detail active_normal"   >
+                      <div  class="name">Trân châu trắng + 10.000 đ</div>
+                    </div>
+                  </label>
+
+                  <label class="option_item  " type="checkbox"   title="Kem Phô Mai Macchiato">
+                    <input type="checkbox" class="checkbox"  name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Sốt Caramels">
+                    <div  class="top_detail active_normal"   >
+                      <div  class="name">Sốt Caramel + 10.000 đ</div>
+                    </div>
+                  </label>
+
+
+                  <label class="option_item  " type="checkbox"   title="Kem Phô Mai Macchiato">
+                    <input type="checkbox" class="checkbox"  name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Thạch Cà Phê">
+                    <div  class="top_detail active_normal"   >
+                      <div  class="name">Thạch Cà Phê + 10.000 đ</div>
                     </div>
                   </label>
 
@@ -106,7 +125,7 @@
                 <hr>
                 <div>
                   <h4 class="product_des_title">Mô tả sản phẩm</h4>
-                  <p class="des_detail"> Thức uống mang hương vị của nhãn, của sen, của trà Oolong đầy thanh mát cho tất cả các thành viên trong dịp Tết này. An lành, thư thái và đậm đà chính là những gì The Coffee House mong muốn gửi trao đến bạn và gia đình.</p>
+                  <p class="des_detail"> {{product_details[0].description}}</p>
                 </div>
                 <hr>
               </v-col>
@@ -219,6 +238,20 @@ export default {
   data () {
     return {
       product_id: "-1",
+      checked_topping:[],
+      small:false,
+      medium: false,
+      big: false,
+      checked_size:0,
+      product_details: [
+        {
+          imageURL: "https://product.hstatic.net/1000075078/product/choco-pp_c043519a9788468aaf8ca26fb4626216.jpg",
+          name: "Cloud Tes's more Choco MasrchMallow",
+          description: "Thức uống mang hương vị của nhãn, của sen, của trà Oolong đầy thanh mát cho tất cả các thành viên trong dịp Tết này. An lành, thư thái và đậm đà chính là những gì The Coffee House mong muốn gửi trao đến bạn và gia đình.",
+          price: "69000",
+        },
+
+      ],
     }
   },
   created(){
@@ -246,17 +279,46 @@ export default {
 
     getItems() {
       this.product_id = this.$route.params.product_id;
-    }
+    },
+    separator(numb) {
+      var str = numb.toString().split(".");
+      str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return str.join(".");
+    },
+    get_total_price(){
+      let total_price  =  parseInt(this.product_details[0].price) + ( 10000 * this.checked_topping.length);
+      if(this.big === true && this.small === false && this.medium === false){
+        total_price += 10000 ;
+      }else if(this.big === false && this.small === false && this.medium === true){
+        total_price += 6000 ;
+      }
+      return this.separator(total_price);
+    },
   }
 }
 
-
 </script>
-
 <style scoped>
   .prodcutStore_Wrap{
     width: 75rem;
   }
+  .option_item .checkbox:checked ~ .active_normal{
+    background: #E57905;
+    border-color: #E57905;
+    color: #fff;
+  }
+  .active{
+    background: #E57905;
+    border-color: #E57905;
+    color: #fff !important;
+  }
+
+  .active_normal{
+    background: #fff;
+    color: #666666;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
   .product_carousel{
     max-width: 650px;
     margin: 0 auto;
@@ -344,16 +406,16 @@ export default {
     opacity: 0;
   }
   .top_detail{
-    background: #fff;
+
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
-    color: #666666;
+
     height: 40px;
     padding: 0 15px;
     display: inline-flex;
     align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+
     position: relative;
   }
   .name{

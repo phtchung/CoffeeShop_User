@@ -7,7 +7,6 @@
           <Item :image_url="item.image_url" :name="item.name" :description="item.description" :price="item.price"/>
       </v-col>
   </v-row> -->
-
     <v-row class="menu_bar">
       <v-col
           cols="12"
@@ -31,7 +30,9 @@
 </template>
 
 <script>
+ // /* global axios */
 import axios from "axios";
+
 export default {
   name: "menuCategory_withoutTree",
   props: {
@@ -156,32 +157,30 @@ export default {
       // ],
     };
   },
+
   components: {
     Item_User: () => import("@/components/Item_User"),
     mainHeader: () => import("@/layouts/Header/mainHeader")
     // BtnNew: () => import("@/components/vuetifyComponents/BtnNew")
   },
-
   created(){
     // this.category_id = this.$route.params.category_id;
     this.$watch(
-      () => this.$route.params,
-      (toParams, previousParams) => {
-        console.log(toParams);
-        console.log(previousParams);
-        this.category_id = this.$route.params.category_id;
-        // react to route changes...
-      }
+        () => this.$route.params,
+        (toParams, previousParams) => {
+          console.log(toParams);
+          console.log(previousParams);
+          this.category_id = this.$route.params.category_id;
+          // react to route changes...
+        }
     ),
-    this.getItems();
+        this.getItems();
   },
-
   watch: {
     category_id() {
       this.getItems();
     },
   },
-
   methods: {
     // async getItems() {
     //   axios
@@ -197,28 +196,26 @@ export default {
     //     });
     //   // const response = await abc();
     // },
-
     getItems() {
       this.category_id = this.$route.params.category_id;
       // console.log(this.category_id);
       axios
-      .post("http://127.0.0.1:8000/api/admin/product/indexByCategoryId", 
-      {
-        category_id: this.category_id
-      }
-      )
-      .then((response) => {
-        this.items = response.data.products;
-        // console.log(response);
-      })
-      .catch((error) => {
-        console.log("Start\n");
-        console.log(error.response)
-        console.log("END\n");
-      });
+          .post("http://127.0.0.1:8000/api/admin/product/indexByCategoryId",
+              {
+                category_id: this.category_id
+              }
+          )
+          .then((response) => {
+            this.items = response.data.products;
+            // console.log(response);
+          })
+          .catch((error) => {
+            console.log("Start\n");
+            console.log(error.response)
+            console.log("END\n");
+          });
     }
   }
-
 };
 </script>
 
