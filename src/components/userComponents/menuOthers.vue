@@ -7,7 +7,6 @@
           <Item :image_url="item.image_url" :name="item.name" :description="item.description" :price="item.price"/>
       </v-col>
   </v-row> -->
-
     <v-row class="menu_bar">
       <v-col
           cols="12"
