@@ -1,5 +1,5 @@
 <template>
-  <div  @click="closePopUp">
+  <div @click="closePopUp">
     <header class="headerUser">
       <div class="divHeaderUser">
         <!-- icon the coffee house -->
@@ -14,47 +14,122 @@
         <a href="/" style="margin-right: 24px"></a>
 
         <!-- Nut an giao hang -->
-        <div
-          class="div_deliver_header align-items-center d-lg-flex"
-          @click="displayDialog = 'flex'"
-        >
-          <img
-            src="https://minio.thecoffeehouse.com/images/tch-web-order/Delivery2.png"
-            class="img-deliver"
-          />
-          <div
-            data-toggle="modal"
-            data-target="#search-modal"
-            class="div-deliver-text"
-          >
-            <h5
-            class="deliver-giaohang"
-              style=" font-size: 13.4px; margin-bottom:0; line-height: 1.2; font-weight: 500;"
+        <v-dialog v-model="dialog" open-on-click>
+          <template v-slot:activator="{ on, attrs }">
+            <div>
+              <div
+                class="div_deliver_header align-items-center d-lg-flex"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <img
+                  src="https://minio.thecoffeehouse.com/images/tch-web-order/Delivery2.png"
+                  class="img-deliver"
+                />
+                <div
+                  data-toggle="modal"
+                  data-target="#search-modal"
+                  class="div-deliver-text"
+                >
+                  <h5
+                    class="deliver-giaohang"
+                    style="
+                      font-size: 13.4px;
+                      margin-bottom: 0;
+                      line-height: 1.2;
+                      font-weight: 500;
+                    "
+                  >
+                    Giao hàng
+                  </h5>
+                  <p
+                    class="text-limit-1-line address-font"
+                    style="font-size: 14px; margin-bottom: 0; font-weight: 400"
+                  >
+                    Tại: 30/24 Phan Đình Giót, Phường 2, Tân Bình, Thành phố Hồ
+                    Chí Minh, Việt Nam
+                  </p>
+                </div>
+                <img
+                  data-v-e4be98d0=""
+                  style="width: 8px; height: 12px"
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEzIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik02LjUgNC40NTQ4N0wxMS4xNjY5IDBMMTIuNSAxLjI3MjU2TDYuNSA3TDAuNSAxLjI3MjU2TDEuODMzMTIgMEw2LjUgNC40NTQ4N1oiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuNSIvPgo8L3N2Zz4K"
+                  alt=""
+                  class="icon-vertor"
+                />
+              </div>
+            </div>
+          </template>
+          <v-card>
+            <div
+              style="margin-top: 3.8125rem; position: relative;"
+              class="header-delivery_content pl-2 delivery-block"
             >
-              Giao hàng
-            </h5>
-            <p
-              class="text-limit-1-line address-font"
-              style="font-size: 14px; margin-bottom: 0; font-weight: 400"
-            >
-              Tại: 30/24 Phan Đình Giót, Phường 2, Tân Bình, Thành phố Hồ Chí
-              Minh, Việt Nam
-            </p>
-          </div>
-          <img
-            data-v-e4be98d0=""
-            style="width: 8px; height: 12px"
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEzIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik02LjUgNC40NTQ4N0wxMS4xNjY5IDBMMTIuNSAxLjI3MjU2TDYuNSA3TDAuNSAxLjI3MjU2TDEuODMzMTIgMEw2LjUgNC40NTQ4N1oiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuNSIvPgo8L3N2Zz4K"
-            alt=""
-            class="icon-vertor"
-          />
-        </div>
+              <div class="pop-up-block">
+                <div class="pop-up-delivery">
+                  <img
+                    style="width: 40px; height: 40px"
+                    src="https://minio.thecoffeehouse.com/images/tch-web-order/Delivery2.png"
+                    alt=""
+                  />
+                  <h5
+                    style="deliver-giaohang; font-weight: 600; font-size: 13.4px; color: #fff; line-height: 22px;   font-family: -apple-system, system-ui, BlinkMacSystemFont; margin-left: 1rem; margin-bottom: 0rem;"
+                  >
+                    Giao hàng
+                  </h5>
+                </div>
+              </div>
+              <div class="div-deliver-text text-block" style="background-color: #fff;">
+                <div class="address-detail">
+                  <p class="text-limit-1-line" style="margin-bottom: 0">
+                    Tại: 30/24 Phan Đình Giót, Phường 2, Tân Bình, Thành phố Hồ
+                    Chí Minh, Việt Nam
+                  </p>
+                  <button data-v-2659de6e="" type="button" class="btn border-0">
+                    <div data-v-2659de6e="">
+                      <img
+                        data-v-2659de6e=""
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGYSURBVHgBrZTbccIwEEVXmoFv//MYuwNSQUIFSSoI6SCpAKggoQLoIKQCJhXEHZjw+Oebl3OvxwqKLRtC2BmwtCsf35V2pcRhURR5lUqlo5S6juO4BZefhkL4prvd7r3ZbI5c76qsYzab3Wmthxh6UmIpuJ8Fa3uyWCxeAHs7BqNBuc8PL5fLrlMhA1jUk/PstV6vP/8AoayDx1D+Yfv9/h7pjw0wksPG27aSfPouX+LfbDaBTtX52SjS72PBFYZT4+NB0MeYA5hUhsaiW9fXttvtKAgCAtqEErZer9v0MZYqzYq4UVD4iXErG7QBqEufPjOGkokrK75DYCwFZkM5L4MZ03JhI3AqR9RRGX/2nhbwQh5K6AisbBjTrFarkwzUdShfGn8fDqAHwIO9Z2w1A2VMHLWINWOV3iyRFBSrnFjY3KJarRZopLBC2zyK27wTfcKbh8/klNmDkDuQM42dY66xX/fhfD7vQXr3j7BBo9F4MvPcBZv2NqG+lFuyVczOdqqi1QSzz3m6cmhN9nTIykDpsNdzpfMNzwr4YQY4/g8AAAAASUVORK5CYII="
+                        alt=""
+                      />
+                    </div>
+                    <!---->
+                  </button>
+                </div>
+                <div>
+                  <button
+                    class="btn-delivery"
+                    style="
+                      margin-right: 10px;
+                      font-family: -apple-system, system-ui, BlinkMacSystemFont;
+                    "
+                  >
+                    Chọn địa chỉ này
+                  </button>
+                  <button
+                    class="btn-delivery"
+                    style="
+                      background: #fff;
+                      color: rgba(0, 0, 0, 0.85);
+                      border: 1px solid rgba(0, 0, 0, 0.15);
+                      font-family: -apple-system, system-ui, BlinkMacSystemFont;
+                    "
+                  >
+                    Nhập địa chỉ mới
+                  </button>
+                </div>
+              </div>
+              <v-icon small> mdi-down </v-icon>
+            </div>
+          </v-card>
+        </v-dialog>
+        
 
         <!-- Cac muc chon -->
         <nav class="menu-nav">
           <ul class="menu-list">
             <li>
-              <a class="menu-list-item" href="/" aria-current="page"
+              <a class="menu-list-item" href="/product-list" aria-current="page"
                 >Đặt hàng</a
               >
             </li>
@@ -101,7 +176,7 @@
               /> </span
           ></a>
           <span class="user-name" style="margin-right: 37px">Phạm</span>
-          <a href="/" style="text-decoration: none"
+          <a href="thanh-toan" style="text-decoration: none"
             ><!---->
             <div
               style="
@@ -174,7 +249,7 @@
     <div
       style="margin-top: 15rem; position: relative"
       class="header-delivery_content pl-2 delivery-block"
-      :style="{ display: displayDialog }"
+      :style="{ display: this.displayDialog }"
     >
       <div class="pop-up-block">
         <div class="pop-up-delivery">
@@ -248,8 +323,8 @@ export default {
     //   if (event.target == modal) {
     //     modal.style.display = "none";
     //   }
-    },
-}
+  },
+};
 </script>
 
 <style scoped>
