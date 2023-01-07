@@ -1,5 +1,5 @@
 <template>
-  <div @click="closePopUp">
+  <div>
     <header class="headerUser">
       <div class="divHeaderUser">
         <!-- icon the coffee house -->
@@ -14,7 +14,8 @@
         <a href="/" style="margin-right: 24px"></a>
 
         <!-- Nut an giao hang -->
-        <v-dialog v-model="dialog" open-on-click>
+        <div>
+          <v-dialog v-model="dialog" open-on-click max-width="47rem" style="margin-top: -19rem !important">
           <template v-slot:activator="{ on, attrs }">
             <div>
               <div
@@ -27,8 +28,6 @@
                   class="img-deliver"
                 />
                 <div
-                  data-toggle="modal"
-                  data-target="#search-modal"
                   class="div-deliver-text"
                 >
                   <h5
@@ -61,6 +60,7 @@
             </div>
           </template>
           <v-card>
+            <!-- Khi an giao hang se hien ra hop thoai -->
             <div
               style="margin-top: 3.8125rem; position: relative;"
               class="header-delivery_content pl-2 delivery-block"
@@ -123,6 +123,7 @@
             </div>
           </v-card>
         </v-dialog>
+        </div>
         
 
         <!-- Cac muc chon -->
@@ -140,8 +141,6 @@
               <a class="menu-list-item" href="/store">Cửa hàng</a>
             </li>
             <li
-              data-toggle="modal"
-              data-target="#sale-modal"
               style="cursor: pointer"
             >
               <a
@@ -164,10 +163,12 @@
             </li>
           </ul>
         </nav>
-        <div class="avatar-cart">
-          <a class="link-avatar"
+
+        <div class="avatar-cart" style="postion: relative;"> 
+          <!-- nut click avatar khi click se hien ra danh muc chon -->
+          <a class="link-avatar" @click="displayClick = !displayClick"
             ><!---->
-            <span>
+            <span  >
               <img
                 style="height: 50px; width: 50px"
                 alt=""
@@ -175,7 +176,9 @@
                 src="https://minio.thecoffeehouse.com/image/tchmobileapp/user_avt/default.png"
               /> </span
           ></a>
+          <!-- name -->
           <span class="user-name" style="margin-right: 37px">Phạm</span>
+          <!-- icon thanh toan -->
           <a href="thanh-toan" style="text-decoration: none"
             ><!---->
             <div
@@ -199,44 +202,48 @@
               </div>
             </div>
           </a>
-          <div style="display: none">
+          <!-- Cac danh muc chon khi an vao avatar -->
+          <div class="p-absolute" v-bind:class="{dBlockAvt: displayClick}">
             <img
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMTUuMzg0NkwxNS4zODQ2IDBMMTYgMC42MTUzODRMMC42MTUzODQgMTZMMCAxNS4zODQ2WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTYuNjM5NzVlLTA2IDAuNjE1Mzk1TDE1LjM4NDYgMTZMMTYgMTUuMzg0NkwwLjYxNTM5MSAxLjAzNzQ2ZS0wNUw2LjYzOTc1ZS0wNiAwLjYxNTM5NVoiIGZpbGw9ImJsYWNrIi8+Cjwvc3ZnPgo="
-            />
-            <ul style="margin-top: 15px">
+              class="icon-close-card-avt"
+              />
+            <ul style="margin-top: 15px; margin-bottom: 15px;">
               <!---->
               <!---->
               <div>
-                <li>
-                  <img src="/_nuxt/img/user.db835c0.svg" alt="" />
-                  <a href="/user-info/accountUser"
-                    ><span>Thông tin tài khoản</span></a
+                <li class="header-option-authen-item">
+                  <img src="https://order.thecoffeehouse.com/_nuxt/img/user.db835c0.svg" alt="" />
+                  <a href="/user/user-info" class="show-more"
+                    ><span class = "text-authen">Thông tin tài khoản</span></a
                   >
                 </li>
                 <hr />
-                <li>
-                  <img src="/_nuxt/img/address-book.11e8849.svg" alt="" />
-                  <a href="#"><span>Sổ địa chỉ</span></a>
+                <li class="header-option-authen-item">
+                  <img src="https://order.thecoffeehouse.com/_nuxt/img/address-book.11e8849.svg" alt="" />
+                  <a href="/user/so-dia-chi" class="show-more"><span class = "text-authen">Sổ địa chỉ</span></a>
                 </li>
                 <hr />
-                <li>
-                  <img src="/icon/history-order.svg" alt="" />
-                  <div>
-                    <span>Lịch sử mua hàng</span>
-                    <ul style="margin-left: 20px; display: none">
-                      <a href="/user-info/orderHistory"
-                        ><span>Xem thêm...</span></a
+                <li class="header-option-authen-item">
+                  <img src="https://order.thecoffeehouse.com/icon/history-order.svg" alt="" />
+                  <a href="/user/lich-su" class="show-more">
+                    <span class= "text-authen">Lịch sử mua hàng</span>
+                    <!-- <ul style="margin-left: 20px; display: none">
+                      <a href="/user-info/orderHistory" class="show-more"
+                        ><span class = "text-authen">Xem thêm...</span></a
                       >
-                    </ul>
-                  </div>
+                    </ul> -->
+                  </a>
                 </li>
                 <hr />
-                <li>
+                <li class="header-option-authen-item">
                   <img
                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxOSAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTZINVYxOEgxN1YySDVWNEgzVjFDMyAwLjczNDc4NCAzLjEwNTM2IDAuNDgwNDMgMy4yOTI4OSAwLjI5Mjg5M0MzLjQ4MDQzIDAuMTA1MzU3IDMuNzM0NzggMCA0IDBIMThDMTguMjY1MiAwIDE4LjUxOTYgMC4xMDUzNTcgMTguNzA3MSAwLjI5Mjg5M0MxOC44OTQ2IDAuNDgwNDMgMTkgMC43MzQ3ODQgMTkgMVYxOUMxOSAxOS4yNjUyIDE4Ljg5NDYgMTkuNTE5NiAxOC43MDcxIDE5LjcwNzFDMTguNTE5NiAxOS44OTQ2IDE4LjI2NTIgMjAgMTggMjBINEMzLjczNDc4IDIwIDMuNDgwNDMgMTkuODk0NiAzLjI5Mjg5IDE5LjcwNzFDMy4xMDUzNiAxOS41MTk2IDMgMTkuMjY1MiAzIDE5VjE2Wk01IDlIMTJWMTFINVYxNEwwIDEwTDUgNlY5WiIgZmlsbD0iI0M0QzRDNCIvPgo8L3N2Zz4K"
                     alt=""
                   />
-                  <span>Thoát</span>
+                  <a href="#" class="show-more">
+                  <span class = "text-authen">Thoát</span>
+                  </a>
                 </li>
               </div>
             </ul>
@@ -244,69 +251,7 @@
         </div>
       </div>
     </header>
-
-    <!-- Khi an giao hang se hien ra hop thoai -->
-    <div
-      style="margin-top: 15rem; position: relative"
-      class="header-delivery_content pl-2 delivery-block"
-      :style="{ display: this.displayDialog }"
-    >
-      <div class="pop-up-block">
-        <div class="pop-up-delivery">
-          <img
-            style="width: 40px; height: 40px"
-            src="https://minio.thecoffeehouse.com/images/tch-web-order/Delivery2.png"
-            alt=""
-          />
-          <h5
-            style="deliver-giaohang; font-weight: 600; font-size: 13.4px; color: #fff; line-height: 22px;   font-family: -apple-system, system-ui, BlinkMacSystemFont; margin-left: 1rem; margin-bottom: 0rem;"
-          >
-            Giao hàng
-          </h5>
-        </div>
-      </div>
-      <div class="div-deliver-text text-block">
-        <div class="address-detail">
-          <p class="text-limit-1-line" style="margin-bottom: 0">
-            Tại: 30/24 Phan Đình Giót, Phường 2, Tân Bình, Thành phố Hồ Chí
-            Minh, Việt Nam
-          </p>
-          <button data-v-2659de6e="" type="button" class="btn border-0">
-            <div data-v-2659de6e="">
-              <img
-                data-v-2659de6e=""
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGYSURBVHgBrZTbccIwEEVXmoFv//MYuwNSQUIFSSoI6SCpAKggoQLoIKQCJhXEHZjw+Oebl3OvxwqKLRtC2BmwtCsf35V2pcRhURR5lUqlo5S6juO4BZefhkL4prvd7r3ZbI5c76qsYzab3Wmthxh6UmIpuJ8Fa3uyWCxeAHs7BqNBuc8PL5fLrlMhA1jUk/PstV6vP/8AoayDx1D+Yfv9/h7pjw0wksPG27aSfPouX+LfbDaBTtX52SjS72PBFYZT4+NB0MeYA5hUhsaiW9fXttvtKAgCAtqEErZer9v0MZYqzYq4UVD4iXErG7QBqEufPjOGkokrK75DYCwFZkM5L4MZ03JhI3AqR9RRGX/2nhbwQh5K6AisbBjTrFarkwzUdShfGn8fDqAHwIO9Z2w1A2VMHLWINWOV3iyRFBSrnFjY3KJarRZopLBC2zyK27wTfcKbh8/klNmDkDuQM42dY66xX/fhfD7vQXr3j7BBo9F4MvPcBZv2NqG+lFuyVczOdqqi1QSzz3m6cmhN9nTIykDpsNdzpfMNzwr4YQY4/g8AAAAASUVORK5CYII="
-                alt=""
-              />
-            </div>
-            <!---->
-          </button>
-        </div>
-        <div>
-          <button
-            class="btn-delivery"
-            style="
-              margin-right: 10px;
-              font-family: -apple-system, system-ui, BlinkMacSystemFont;
-            "
-          >
-            Chọn địa chỉ này
-          </button>
-          <button
-            class="btn-delivery"
-            style="
-              background: #fff;
-              color: rgba(0, 0, 0, 0.85);
-              border: 1px solid rgba(0, 0, 0, 0.15);
-              font-family: -apple-system, system-ui, BlinkMacSystemFont;
-            "
-          >
-            Nhập địa chỉ mới
-          </button>
-        </div>
-      </div>
-      <v-icon small> mdi-down </v-icon>
-    </div>
+    
   </div>
 </template>
 
@@ -315,7 +260,7 @@ export default {
   name: "userHeader",
   data: () => {
     return {
-      displayDialog: "none",
+      displayClick: false,
     };
   },
   methods: {
@@ -323,11 +268,76 @@ export default {
     //   if (event.target == modal) {
     //     modal.style.display = "none";
     //   }
+    handleClick() {
+      this.displayClick = ! this.displayClick;
+      console.log(this.displayClick);
+      document.getElementById()
+    }
   },
 };
 </script>
 
 <style scoped>
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
+.history-list-wrap {
+    display: flex;
+    flex-direction: column;
+}
+.text-authen {
+    margin-left: 17px;
+    flex-shrink: 0;
+}
+.show-more {
+  text-align: center;
+    display: block;
+    color: #000;
+    text-decoration: none;
+}
+.header-option-authen-item {
+    display: flex;
+    align-items: center;
+    color: #000;
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.icon-close-card-avt {
+    float: right;
+    transform: translate(-1px,-8px);
+    width: 12px;
+    cursor: pointer;
+}
+.dBlockAvt {
+  display: block !important;
+}
+
+.p-absolute {
+  display: none;
+  position: absolute;
+  margin-top: 15rem;
+  padding-left: 0px !important;
+  background-color: #fff;
+  padding: 22px;
+  transform: translate(-102px,10px);
+  box-shadow: 0 5px 12px rgb(0 0 0 / 15%);
+  border-radius: 10px;
+  font-size: 14px;
+  top: -238%;
+  right: 12%;
+}
 .headerUser {
   /* color: coral; */
   /* background-color:radial-gradient(100% 501.4% at 0% 100%,#ffb141 0%,#fb8d17 100%); */
