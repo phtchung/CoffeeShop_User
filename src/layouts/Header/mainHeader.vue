@@ -17,8 +17,10 @@
       <a  >
         <span class="header_color">{{header_path.header_name}}</span>
       </a>
-      <ul class="menu_list"   v-if="header_path.header_active ===true">
-        <li  >
+
+      <ul class="menu_list" v-if="header_path.header_active ===true">
+        <li>
+
           <a href="" title="Tất cả">Tất cả</a>
           <ul class="list_item">
             <li class="item_font">
