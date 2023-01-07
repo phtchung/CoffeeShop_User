@@ -30,7 +30,7 @@
                   <img style="vertical-align: middle;margin-right: 4px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDI0LjM2NTdDMTguNjI3NCAyNC4zNjU3IDI0IDE4Ljk5MzEgMjQgMTIuMzY1N0MyNCA1LjczODMxIDE4LjYyNzQgMC4zNjU3MjMgMTIgMC4zNjU3MjNDNS4zNzI1OCAwLjM2NTcyMyAwIDUuNzM4MzEgMCAxMi4zNjU3QzAgMTguOTkzMSA1LjM3MjU4IDI0LjM2NTcgMTIgMjQuMzY1N1oiIGZpbGw9IiNGNTIyMkQiLz4KPHBhdGggZD0iTTEyLjAwMTYgMTUuMTY1OEwxNS45NjE2IDE3Ljk2NThMMTQuNDgxNiAxMy40MDU4TDE4LjQwMTYgMTAuNDQ1OEgxMy41MjE2TDEyLjAwMTYgNS45NjU4MkwxMC41MjE2IDEwLjQ0NThINS42MDE1Nkw5LjUyMTU2IDEzLjQwNThMOC4wNDE1NiAxNy45NjU4TDEyLjAwMTYgMTUuMTY1OFoiIGZpbGw9IiNGRkU2MkUiLz4KPC9zdmc+Cg==" alt="">
                   <span>+84</span>
                 </div>
-                <input type="text" class="phone-input" placeholder="Nhập số điện thoại">
+                <input type="text" class="phone-input" placeholder="Nhập số điện thoại" v-model="phone">
               </div>
 
               <v-btn @click="otpActive = !otpActive;loginHidden = !loginHidden" width="100%" block depressed  color="#e87800" class="login_btn">Đăng nhập</v-btn>
@@ -40,35 +40,36 @@
             <div :class="{ activeOtp : otpActive}" class="get-otp_content" style="background-color: white">
               <div class="welcome-login">Xác thực mã OTP</div>
               <div class="welcome-login" style="text-align: center">Một mã xác thực gồm 6 số đã được gửi đến số điện thoại
-              <span class="font-weight-bold" >0971751698</span>
+              <span class="font-weight-bold" >{{phone}}</span>
               </div>
               <div class="welcome-login">Nhập mã để tiếp tục</div>
               <div class="cover-input-otp">
 <!--                nhập otp-->
               <div style="display: flex;justify-content: space-around">
-                <div style="display: flex;align-items: center" >
-                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]" >
+                <div style="display: flex;align-items: center"  >
+                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]"  id="input1" @keyup="inputenter()">
                 </div>
                 <div style="display: flex;align-items: center">
-                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]">
+                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]" id="input2" @keyup="inputenter()">
                 </div>
                 <div style="display: flex;align-items: center">
-                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]">
+                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]" id="input3" @keyup="inputenter()">
                 </div>
                 <div style="display: flex;align-items: center">
-                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]">
+                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]" id="input4" @keyup="inputenter()">
                 </div>
                 <div style="display: flex;align-items: center">
-                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]">
+                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]" id="input5" @keyup="inputenter()">
                 </div>
                 <div style="display: flex;align-items: center">
-                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]">
+                  <input type="tel" class="otp-input" min="0" max="9" maxlength="1" pattern="[0-9]" id="input6" @keyup="inputenter()">
                 </div>
               </div>
               </div>
               <div class="welcome-login" style="margin-bottom: 0.5rem"> Bạn không nhận được mã ?
                 <a class="addborder" style="text-decoration: none;cursor: pointer;margin-left: 0.25rem" href=""> Gửi lại</a>
               </div>
+              <v-btn  width="100%" block depressed  color="#e87800" class="login_btn">Đăng nhập</v-btn>
             </div>
 
 
@@ -82,11 +83,39 @@
 <script>
 export default {
   name: "Authentication_User",
+  phone:'',
   data: () => {
     return {
       dialog:false,
       otpActive:false,
       loginHidden:false,
+    }
+  },
+  methods:{
+    inputenter() {
+      const inputs = document.querySelectorAll('.otp-input');
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('keydown', function(event) {
+          if (event.key === "Backspace") {
+            inputs[i].value = '';
+            if (i !== 0) inputs[i - 1].focus();
+          } else {
+            if (i === inputs.length - 1 && inputs[i].value !== '') {
+              return true;
+            } else if (event.keyCode > 47 && event.keyCode < 58) {
+              inputs[i].value = event.key;
+              if (i !== inputs.length - 1) inputs[i + 1].focus();
+              event.preventDefault();
+            }
+            else if (event.keyCode > 64 && event.keyCode < 91) {
+              inputs[i].value = String.fromCharCode(event.keyCode);
+              if (i !== inputs.length - 1) inputs[i + 1].focus();
+              event.preventDefault();
+            }
+          }
+        });
+      }
+
     }
   },
 
@@ -98,12 +127,7 @@ export default {
 /deep/.my-custom-dialog {
   align-self: flex-start;
 }
-.width_2625{
-  max-width: 26.25rem;
-}
-.width_275{
-  max-width: 27.5rem;
-}
+
 .activeOtp{
   display: flex !important;
 }
@@ -209,7 +233,10 @@ input {
   background: #fafafa;
 }
 .addborder:hover{
-  text-decoration: #1e88e5;
+  text-decoration: #1e88e5!important;
 
+}
+.otp-input:focus{
+  border: 2px solid #000000;
 }
 </style>
