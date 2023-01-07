@@ -1,6 +1,6 @@
 <template>
   <v-container>
-  <div class="main_header"  ref="myHeader" >
+  <div class="main_header"  id="myHeader" >
     <div style="width: 17%;margin-right: 39px" class="categories_item" >
     <a href="">
       <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/03/logo-the-coffee-house-chieu-dai.png" alt="" style="width: 100%">
@@ -17,8 +17,10 @@
       <a  >
         <span class="header_color">{{header_path.header_name}}</span>
       </a>
+
       <ul class="menu_list" v-if="header_path.header_active ===true">
         <li>
+
           <a href="" title="Tất cả">Tất cả</a>
           <ul class="list_item">
             <li class="item_font">
@@ -195,7 +197,7 @@ export default {
           header_id : "0",
           header_name : "Menu",
           header_path : "http://localhost:8080/#/menu",
-          header_active : true
+          header_active : true,
         },
         {
           header_id : "4",
@@ -244,12 +246,32 @@ export default {
       },
 
   },
+  mounted() {
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+      if (window.scrollY > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+  },
 
 }
 </script>
 
 <style scoped>
 
+.sticky + .content {
+  padding-top: 44px;
+}
+  .header_hidden{
+    display: block !important;
+  }
   .main_header{
     display: flex;
     justify-content: flex-start;
@@ -266,6 +288,7 @@ export default {
     position: fixed;
     top: 0;
     width: 100%;
+
   }
 
 
