@@ -1,10 +1,13 @@
 <template class="mt-0  "  >
   <v-container
       fluid
-      class="down-top-padding"
-      style="margin-top: -66px; padding: 0"
+      class="down-top-padding "
+      style="margin-top: -66px; padding: 0;"
+
   >
-    <mainHeader> </mainHeader>
+
+    <mainHeader > </mainHeader>
+
 
     <div>
       <template>
@@ -226,12 +229,14 @@
       </v-row>
     </div>
 
+      <Authentication_User></Authentication_User>
+
     <section class="blog_home">
       <div class="container_blog">
         <div class="clear_fix">
           <h2 class="blog_home_title">
             <img
-                src="https://file.hstatic.net/1000075078/file/coffee-2_2_92db24958ff14ac4b4249b3256f7a415.png"
+                src="https://file.hstatic.net/1000075078/file/coffee-2_2_92db24958ff14ac4b4249b3256f7a415.png" alt=""
             />
             Chuyện Nhà
           </h2>
@@ -580,12 +585,20 @@
   </v-container>
 </template>
 <script>
+
+
+// const $ = document.querySelector.bind(document);
+// const header = $('#my')
+
+// const header = document.getElementById('my')
+// console.log(header)
 export default {
   name: "Mainpage",
 
   components: {
     Item_User: () => import("@/components/Item_User"),
     mainHeader: () => import("@/layouts/Header/mainHeader"),
+    Authentication_User: () => import("@/components/userComponents/Authentication_User"),
     // Card_User: () => import("@/components/userComponents/Card_User"),
     // menuMenu: () => import('@/components/userComponents/menuMenu'),
     // menuMenuOthers: () => import('@/components/userComponents/menuOthers'),
@@ -597,6 +610,9 @@ export default {
     return {
       menuType: "The Coffee House",
       product_id: "-1",
+      activeHeader:false,
+      dialog:0,
+
       urls_header: [
         "https://file.hstatic.net/1000075078/file/hiteaday_desktop_564c8568fc48441badd3a492cdd127d9.jpg",
         "https://file.hstatic.net/1000075078/file/daitiec_desktop_2cd63f8cf8454da3ade2c990b9415c8b.jpg",
@@ -612,7 +628,7 @@ export default {
         {
           id: 1,
           image_url:
-            "https://product.hstatic.net/1000075078/product/1639377770_cfsua-nong_016e05cb3a334141898e5677fec34784_large.jpg",
+              "https://product.hstatic.net/1000075078/product/1639377770_cfsua-nong_016e05cb3a334141898e5677fec34784_large.jpg",
           name: "Cà Phê Sữa Nóng",
           description: "Oishii1",
           price: "19891",
@@ -620,7 +636,7 @@ export default {
         {
           id: 2,
           image_url:
-            "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_e0737a64b29e452f9c7eadb23300821a_large.jpg",
+              "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_e0737a64b29e452f9c7eadb23300821a_large.jpg",
           name: "The Coffee House Sữa Đá",
           description: "Oishii2",
           price: "19892",
@@ -628,7 +644,7 @@ export default {
         {
           id: 3,
           image_url:
-            "https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_966117a7eb0e42d398937f44cc63aca9_large.png",
+              "https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_966117a7eb0e42d398937f44cc63aca9_large.png",
           name: "Cà Phê Sữa Đá",
           description: "Oishii3",
           price: "19893",
@@ -636,7 +652,7 @@ export default {
         {
           id: 4,
           image_url:
-            "https://product.hstatic.net/1000075078/product/1639377904_bac-siu_3df6607180474c2c81dfe213010be685_large.jpg",
+              "https://product.hstatic.net/1000075078/product/1639377904_bac-siu_3df6607180474c2c81dfe213010be685_large.jpg",
           name: "Bạc Sỉu",
           description: "Oishii4",
           price: "19894",
@@ -666,20 +682,18 @@ export default {
     };
   },
 
+
   methods: {
     handleProduct(product_id) {
       this.product_id = product_id;
       this.$router.push({
         path: `/${this.product_id}`,
         name: "item",
-        params: { product_id: `${this.product_id}` },
+        params: {product_id: `${this.product_id}`},
       });
-      console.log("In main page\n");
-      console.log(this.product_id);
-      console.log("End mainpage\n")
     },
   },
-};
+}
 </script>
 
 <style scoped>
@@ -765,5 +779,43 @@ a {
   overflow: hidden;
   display: -webkit-box;
   height: 25px;
+}
+
+/*::-webkit-scrollbar {*/
+/*  -webkit-appearance: none;*/
+/*  width: 7px;*/
+/*}*/
+/*::-webkit-scrollbar-thumb {*/
+/*  border-radius: 4px;*/
+/*  background-color: rgba(0,0,0,.5);*/
+/*  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);*/
+/*}*/
+
+</style>
+
+<style>
+:root {
+  --scrollbar-width: 12px;
+  --scrollbar-default: 234 236 240;
+  --scrollbar-active: 208 213 221;
+  --scrollbar-hover: 152 162 179;
+}
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--scrollbar-default));
+  border-radius: var(--scrollbar-width);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(var(--scrollbar-hover));
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: rgb(var(--scrollbar-active));
 }
 </style>
