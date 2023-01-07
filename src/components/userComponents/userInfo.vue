@@ -83,7 +83,7 @@
           <ul class="user-list">
             <li
               class="user-item"
-              @click="select = 1"
+              @click="handleClick1"
               :class="{ iconActive: select == 1 }"
             >
               <img
@@ -96,7 +96,7 @@
             </li>
             <li
               class="user-item"
-              @click="select = 2"
+              @click="handleClick2"
               :class="{ active: select == 2 }"
             >
               <img
@@ -109,7 +109,7 @@
             </li>
             <li
               class="user-item"
-              @click="select = 3"
+              @click="handleClick3"
               :class="{ iconActive: select == 3 }"
             >
               <img
@@ -122,7 +122,7 @@
             </li>
             <li
               class="user-item"
-              @click="select = 4"
+              @click="handleClick4"
               :class="{ active: select == 4 }"
             >
               <img
@@ -443,6 +443,7 @@
                 role="tabpanel"
                 aria-labelledby="nav-2-tab"
                 class="tab-pane fade"
+                style="display: none"
               >
                 <div data-v-1a516702="" class="cover-all-benefit row">
                   <div
@@ -516,6 +517,7 @@
                 role="tabpanel"
                 aria-labelledby="nav-3-tab"
                 class="tab-pane fade"
+                style="display: none"
               >
                 <div data-v-1a516702="" class="cover-all-benefit row">
                   <div
@@ -585,6 +587,7 @@
                 role="tabpanel"
                 aria-labelledby="nav-4-tab"
                 class="tab-pane fade"
+                style="display: none"
               >
                 <div data-v-1a516702="" class="cover-all-benefit row">
                   <div
@@ -656,6 +659,7 @@
                 role="tabpanel"
                 aria-labelledby="nav-5-tab"
                 class="tab-pane fade"
+                style="display: none"
               >
                 <div data-v-1a516702="" class="cover-all-benefit row">
                   <div
@@ -815,6 +819,7 @@ export default {
   data() {
     return {
       select: 1,
+      currentPath: this.$route.path,
       userInfomation: {
         id: "",
         score: "0",
@@ -827,6 +832,50 @@ export default {
       },
     };
   },
+  created() {
+    this.handleChange();
+  },
+  methods: {
+    handleClick1() {
+      this.select = 1;
+      // this.$router.push({path:`/user-info`,name:'user', replace: true});
+      this.$router.push({path:`/user/user-info`});
+    },
+    handleClick2() {
+      this.select = 2;
+      // this.$router.push({path:`/so-dia-chi`,name:'user', replace: true});
+      this.$router.push({path:`/user/so-dia-chi`});
+    },
+    handleClick3() {
+      this.select = 3;
+      // this.$router.push({path:`/quyen-loi-thanh-vien`,name:'user', replace: true});
+      this.$router.push({path:`/user/quyen-loi-thanh-vien`});
+    },
+    handleClick4() {
+      this.select = 4;
+      // this.$router.push({path:`/lich-su`,name:'user', replace: true});
+      this.$router.push({path:`/user/lich-su`});
+    },
+    handleChange(){
+      if (this.currentPath === "/user/user-info") 
+      {
+        this.select = 1;
+        // console.log(this.select)
+      }
+      else if(this.currentPath === "/user/so-dia-chi")
+      {
+        this.select = 2;
+      }
+      else if(this.currentPath === "/user/quyen-loi-thanh-vien")
+      {
+        this.select = 3;
+      }
+      else if(this.currentPath === "/user/lich-su")
+      {
+        this.select = 4;
+      }
+    }
+  }
 };
 </script>
 
