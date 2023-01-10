@@ -20,7 +20,7 @@
 export default {
   props: {
     image_url: String,
-    name: String,
+    name: Number,
     description: String,
     price: String,
   },
