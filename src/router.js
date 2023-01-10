@@ -46,7 +46,7 @@ export default new Router({
                 },
                 {
                     name: 'categoryMain',
-                    path: 'collections/:path_name',
+                    path: 'collections/product/:path_name',
                     component: () => import('@/components/userComponents/menuOthers'),
                 },
                 {
