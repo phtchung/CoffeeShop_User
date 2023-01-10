@@ -8,8 +8,9 @@
           height="100px"
       >
         <template v-slot:activator="{ on, attrs }">
-          <div>
-          <v-icon color="#fa8c16" large style="cursor: pointer" @click="countProductsIncrea" 
+          <div style="width: 36px;height: 24px">
+          <v-icon color="#fa8c16" large style="cursor: pointer" @click="countProductsIncrea"
+                  class="fix_icon"
               v-bind="attrs"
               v-on="on">
                             mdi-plus-circle
@@ -21,15 +22,16 @@
         
         </template>
         <v-card >
-          <div style="display: flex;padding: 16px;align-items: center;justify-content: flex-start">
-            <v-icon large color=" darken-1"
-                    style="padding: 1px 15px"
+          <div style="display: flex;padding: 16px;align-items: center;justify-content: flex-start;border-bottom: 1px solid #dee2e6">
+            <div>
+              <v-icon large color=" darken-1"
+                    style="padding: 1px 15px; line-height: 1.5rem"
                     @click="dialog = false">
-
-              mdi-close
-            </v-icon>
+                  mdi-close
+              </v-icon>
+            </div>
             <div style="margin: 0 auto">
-              <span  style="font-size: 0.875rem;font-weight: 500 ;line-height: 24px;color: #262626;">Thêm món mới</span>
+              <span  style="font-size: 0.8375rem;font-weight: 500 ;line-height: 24px;color: #262626;">Thêm món mới</span>
             </div>
           </div>
           <!--              thân của dialog-->
@@ -72,7 +74,7 @@
               </div>
 <!----------------Ghi chú -->
               <div class="card-product-note-item">
-                <img src="" alt="">
+                <img style="    width: 18px;height: 20px;margin: 12px 11px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxOCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3IDIwSDFDMC43MzQ3ODQgMjAgMC40ODA0MyAxOS44OTQ2IDAuMjkyODkzIDE5LjcwNzFDMC4xMDUzNTcgMTkuNTE5NiAwIDE5LjI2NTIgMCAxOVYxQzAgMC43MzQ3ODQgMC4xMDUzNTcgMC40ODA0MyAwLjI5Mjg5MyAwLjI5Mjg5M0MwLjQ4MDQzIDAuMTA1MzU3IDAuNzM0Nzg0IDAgMSAwSDE3QzE3LjI2NTIgMCAxNy41MTk2IDAuMTA1MzU3IDE3LjcwNzEgMC4yOTI4OTNDMTcuODk0NiAwLjQ4MDQzIDE4IDAuNzM0Nzg0IDE4IDFWMTlDMTggMTkuMjY1MiAxNy44OTQ2IDE5LjUxOTYgMTcuNzA3MSAxOS43MDcxQzE3LjUxOTYgMTkuODk0NiAxNy4yNjUyIDIwIDE3IDIwWk01IDVWN0gxM1Y1SDVaTTUgOVYxMUgxM1Y5SDVaTTUgMTNWMTVIMTBWMTNINVoiIGZpbGw9IiNFNEU0RTQiLz4KPC9zdmc+Cg==" alt="">
                 <input type="text" placeholder="Ghi chú thêm cho món này" class="card-product-text">
               </div>
 <!--              chọn size -->
@@ -82,7 +84,7 @@
                 </div>
                 <div class=" card-product-option-size-item" style="display: flex;justify-content: space-between;align-items: center">
                   <div class=" custom-control card-product-option-item mb-0">
-                    <input  type="radio" name="size-product" id="Lớn" class="custom-control-input">
+                    <input  type="radio" name="size-product" id="Lớn" class="custom-control-input" value="L" @click="size = 'L'" >
                     <label  for="Lớn" class="custom-control-label card-product-option-label  tch-custom-radio">
                       <div class="card-product-option-value">
                         <span  class="text card-product-option-size">Lớn</span>
@@ -92,8 +94,8 @@
                   </div>
 
                   <div class=" custom-control card-product-option-item mb-0">
-                    <input  type="radio" name="size-product" id="Vừa" class="custom-control-input">
-                    <label  for="vừa" class="custom-control-label card-product-option-label  tch-custom-radio">
+                    <input  type="radio" name="size-product" id="Vừa" class="custom-control-input" value="M" @click="size = 'M'" >
+                    <label  for="Vừa" class="custom-control-label card-product-option-label  tch-custom-radio">
                       <div class="card-product-option-value">
                         <span  class="text card-product-option-size">Vừa</span>
                         <span >+ 6.000đ</span>
@@ -102,7 +104,7 @@
                   </div>
 
                   <div class=" custom-control card-product-option-item mb-0">
-                    <input  type="radio" name="size-product" id="Nhỏ" class="custom-control-input">
+                    <input  type="radio" name="size-product" id="Nhỏ" class="custom-control-input" value="S" @click="size = 'S'"  >
                     <label  for="Nhỏ" class="custom-control-label card-product-option-label  tch-custom-radio">
                       <div class="card-product-option-value">
                         <span  class="text card-product-option-size">Nhỏ</span>
@@ -118,51 +120,28 @@
                 <div class="card-product-option">
                   <span  class="card-product-option-text">CHỌN topping (TÙY CHỌN)</span>
                 </div>
-                <div class="card-product-option-topping-item" style="margin: 0 16px;">
+
+                <div class="card-product-option-topping-item" style="margin: 0 16px;"
+                v-for="(topping_item) in topping_items"
+                     :key = topping_item.id >
                   <div class="card-product-option-topping" style="display: flex">
                     <div class="left-col">
-                      <span class="card-product-option-topping-name">Kem Phô Mai Macchiato</span>
-                      <span class="card-product-option-topping-price">+ 10.000đ</span>
+                      <span class="card-product-option-topping-name">{{topping_item.name}}</span>
+                      <span class="card-product-option-topping-price">+ {{ topping_item.price}}đ</span>
                     </div>
 
                     <div class="card-product-quantity-config " style="display: flex;justify-content: space-between" >
                       <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4"  @click = "countProductsDecrea_Top" style="cursor: pointer" >
+                        <v-icon color="#e4e4e4"  @click = "countProductsDecrea_Top(topping_item)" style="cursor: pointer" >
                           mdi-minus-circle
                           <v-btn class="card-product-decrease
                              quantity-product add-to-cart">
                           </v-btn>
                         </v-icon>
                       </div>
-                      <span class="card-product-quantity">{{ count_topping}}</span>
+                      <span class="card-product-quantity">{{ topping_item.count }}</span>
                       <div style="cursor: pointer">
-                      <v-icon color="#e4e4e4" @click = "countProductsIncrea_Top" style="cursor: pointer">
-                        mdi-plus-circle
-                        <v-btn class="card-product-decrease
-                             quantity-product add-to-cart ">
-                        </v-btn>
-                      </v-icon>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-product-option-topping" style="display: flex">
-                    <div class="left-col">
-                      <span class="card-product-option-topping-name">Shot Espresso</span>
-                      <span class="card-product-option-topping-price">+ 10.000đ</span>
-                    </div>
-
-                    <div class="card-product-quantity-config " style="display: flex;justify-content: space-between" >
-                      <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4"  >
-                          mdi-minus-circle
-                          <v-btn class="card-product-decrease
-                             quantity-product add-to-cart">
-                          </v-btn>
-                        </v-icon>
-                      </div>
-                      <span class="card-product-quantity">0</span>
-                      <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4" >
+                        <v-icon color="#e4e4e4" @click = "countProductsIncrea_Top(topping_item)" style="cursor: pointer">
                           mdi-plus-circle
                           <v-btn class="card-product-decrease
                              quantity-product add-to-cart ">
@@ -171,84 +150,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="card-product-option-topping" style="display: flex">
-                    <div class="left-col">
-                      <span class="card-product-option-topping-name">Trân châu trắng</span>
-                      <span class="card-product-option-topping-price">+ 10.000đ</span>
-                    </div>
 
-                    <div class="card-product-quantity-config " style="display: flex;justify-content: space-between" >
-                      <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4"  >
-                          mdi-minus-circle
-                          <v-btn class="card-product-decrease
-                             quantity-product add-to-cart">
-                          </v-btn>
-                        </v-icon>
-                      </div>
-                      <span class="card-product-quantity">0</span>
-                      <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4" >
-                          mdi-plus-circle
-                          <v-btn class="card-product-decrease
-                             quantity-product add-to-cart ">
-                          </v-btn>
-                        </v-icon>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-product-option-topping" style="display: flex">
-                    <div class="left-col">
-                      <span class="card-product-option-topping-name">Sốt Caramel</span>
-                      <span class="card-product-option-topping-price">+ 10.000đ</span>
-                    </div>
-
-                    <div class="card-product-quantity-config " style="display: flex;justify-content: space-between" >
-                      <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4"  >
-                          mdi-minus-circle
-                          <v-btn class="card-product-decrease
-                             quantity-product add-to-cart">
-                          </v-btn>
-                        </v-icon>
-                      </div>
-                      <span class="card-product-quantity">0</span>
-                      <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4" >
-                          mdi-plus-circle
-                          <v-btn class="card-product-decrease
-                             quantity-product add-to-cart ">
-                          </v-btn>
-                        </v-icon>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-product-option-topping" style="display: flex">
-                    <div class="left-col">
-                      <span class="card-product-option-topping-name">Thạch Cà Phê</span>
-                      <span class="card-product-option-topping-price">+ 10.000đ</span>
-                    </div>
-
-                    <div class="card-product-quantity-config " style="display: flex;justify-content: space-between" >
-                      <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4"  >
-                          mdi-minus-circle
-                          <v-btn class="card-product-decrease
-                             quantity-product add-to-cart">
-                          </v-btn>
-                        </v-icon>
-                      </div>
-                      <span class="card-product-quantity">0</span>
-                      <div style="cursor: pointer">
-                        <v-icon color="#e4e4e4" >
-                          mdi-plus-circle
-                          <v-btn class="card-product-decrease
-                             quantity-product add-to-cart ">
-                          </v-btn>
-                        </v-icon>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -279,7 +181,8 @@ export default {
     return {
       dialog: false,
       count : 0,
-      count_topping : 0,
+      count_topping: Array(8).fill(0),
+      size:'',
       product_items: [
         {
           image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
@@ -289,8 +192,35 @@ export default {
         },
 
       ],
+      topping_items: [
+        {
+          id :"1",
+          name:"Kem Phô Mai Macchiato",
+          price:"10000",
+          count: 0,
+        },{
+          id :"2",
+          name:"Shot Espresso",
+          price:"10000",
+          count: 0,
+        },
+        {
+          id :"3",
+          name:"Trân châu trắng",
+          price:"10000",
+          count: 0,
+        },
+        {
+          id :"4",
+          name:"Sốt Caramel",
+          price:"10000",
+          count: 0,
+        },
+      ],
     }
   },
+
+
   methods: {
     countProductsIncrea() {
       this.count += 1;
@@ -302,21 +232,32 @@ export default {
         this.count = 1 ;
       }
     },
-    countProductsIncrea_Top(){
-      if(this.count_topping >=2){
-        this.count_topping = 2;
+
+    countProductsIncrea_Top(item){
+      if(item.count >=2){
+        item.count = 2;
       }else
-      this.count_topping += 1;
+      item.count += 1;
     },
-    countProductsDecrea_Top(){
-      if (this.count_topping > 0 ){
-        this.count_topping -= 1;
-      }else if ( this.count_topping <=0 ){
-        this.count_topping = 0 ;
+    countProductsDecrea_Top(item){
+      if (item.count > 0 ){
+        item.count -= 1;
+      }else if ( item.count <=0 ){
+        item.count = 0 ;
       }
     },
     check_price(){
-      let price  = this.price * this.count + this.count_topping*10000;
+      let price_topp = 0;
+      for( let i = 0;i < this.topping_items.length ; i++){
+          price_topp = price_topp + this.topping_items[i].count * parseInt(this.topping_items[i].price);
+      }
+      console.log(this.count)
+      let price  =  ( parseInt(this.price)  + price_topp)*this.count;
+      if(this.size === 'L'){
+        price += 10000* this.count;
+      }else if (this.size === 'M'){
+        price += 6000* this.count;
+      }
       return this.separator(price);
     },
     separator(numb) {
@@ -333,7 +274,9 @@ export default {
 </script>
 
 <style scoped>
-
+  /deep/.fix_icon::after{
+    background-color: #ededee!important;
+  }
   .card_product_name{
     font-weight: 600;
     font-size: 1.125rem;
@@ -375,6 +318,7 @@ export default {
   }
 
   .card-product-text{
+    background-color: white;
     flex: 1;
     border: none;
     width: 12.5rem;
@@ -389,7 +333,7 @@ export default {
     border-radius: 0.25rem;
     height: 2.75rem;
     display: flex;
-    margin-top: 20px;
+    margin: 20px 12px 0;
   }
 
   .card-product-option{
@@ -470,16 +414,36 @@ export default {
     box-sizing: border-box;
   }
 
-  .custom-control-label::after{
-    top: 7px;
-    left: -17px;
+  /*.custom-control-label:focus{*/
+  /*  top: 36px;*/
+  /*  left: -25px;*/
+  /*  width: 10px;*/
+  /*  height: 10px;*/
+  /*  background: 50%/50% 50% no-repeat;*/
+  /*  position: absolute;*/
+  /*  -webkit-box-sizing: border-box;*/
+  /*  box-sizing: border-box;*/
+  /*  display: block;*/
+  /*  content: "";*/
+  /*  background-image: unset;*/
+  /*  background-color: orange;*/
+  /*  border-radius: 100%;*/
+
+  /*}*/
+
+  .custom-control-input:checked ~ .custom-control-label:after{
+    top: 36px;
+    left: -25px;
     width: 10px;
     height: 10px;
-    background: 50%/50% 50% no-repeat;
     position: absolute;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: block;
     content: "";
+    /*background: orange unset no-repeat 50% 50%;*/
+    background-color: orange;
+    border-radius: 100%;
   }
   .card-product-option-size{
     padding-bottom: 8px;

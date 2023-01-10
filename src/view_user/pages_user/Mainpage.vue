@@ -5,9 +5,7 @@
       style="margin-top: -66px; padding: 0;"
 
   >
-
     <mainHeader > </mainHeader>
-
 
     <div>
       <template>
@@ -228,8 +226,6 @@
         </v-col>
       </v-row>
     </div>
-
-      <Authentication_User></Authentication_User>
 
     <section class="blog_home">
       <div class="container_blog">
@@ -582,6 +578,9 @@
         </div>
       </div>
     </section>
+
+
+
   </v-container>
 </template>
 <script>
@@ -598,12 +597,10 @@ export default {
   components: {
     Item_User: () => import("@/components/Item_User"),
     mainHeader: () => import("@/layouts/Header/mainHeader"),
-    Authentication_User: () => import("@/components/userComponents/Authentication_User"),
-    // Card_User: () => import("@/components/userComponents/Card_User"),
+    // Authentication_User: () => import("@/components/userComponents/Authentication_User"),
+    // checkOut: () => import("@/view_user/pages_user/checkOut"),
     // menuMenu: () => import('@/components/userComponents/menuMenu'),
     // menuMenuOthers: () => import('@/components/userComponents/menuOthers'),
-    // headerIntro: () => import('@/layouts/Header/headerIntro'),
-    // mainHeader: () => import('@/layouts/Header/mainHeader'),
     // productInStore:() => import("@/components/productInterface/productInStore"),
   },
   data: () => {
@@ -632,7 +629,7 @@ export default {
               "https://product.hstatic.net/1000075078/product/1639377770_cfsua-nong_016e05cb3a334141898e5677fec34784_large.jpg",
           name: "Cà Phê Sữa Nóng",
           description: "Oishii1",
-          price: "19891",
+          price: "34000",
         },
         {
           id: 2,
