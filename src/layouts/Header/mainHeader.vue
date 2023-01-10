@@ -21,7 +21,7 @@
       <ul class="menu_list" v-if="header_path.header_active ===true">
         <li>
 
-          <a href="" title="Tất cả">Tất cả</a>
+          <a href="menu" title="Tất cả">Tất cả</a>
           <ul class="list_item">
             <li class="item_font">
               <a href="" title="Cà phê Việt Nam" >Cà phê Việt Nam</a>
@@ -60,96 +60,6 @@
 
     </div>
 
-<!--    <div class="categories_item">-->
-<!--      <a href="">-->
-<!--        <span class="header_color">Cà phê</span>-->
-<!--      </a>-->
-<!--    </div>-->
-
-<!--    <div class="categories_item ">-->
-<!--      <a href="">-->
-<!--        <span class="header_color">Trà</span>-->
-<!--      </a>-->
-<!--    </div>-->
-
-<!--    <div class="categories_item has_child">-->
-<!--      <a href="">-->
-<!--        <span class="header_color">Menu</span>-->
-<!--      </a>-->
-<!--      <ul class="menu_list">-->
-<!--        <li>-->
-<!--          <a href="" title="Tất cả">Tất cả</a>-->
-<!--          <ul class="list_item">-->
-<!--            <li class="item_font">-->
-<!--              <a href="" title="Cà phê Việt Nam" >Cà phê Việt Nam</a>-->
-<!--            </li>-->
-<!--            <li class="item_font">-->
-<!--              <a href="" title="Cà phê Máy">Cà phê Máy</a>-->
-<!--            </li>-->
-
-<!--          </ul>-->
-<!--        </li>-->
-
-<!--        <li>-->
-<!--          <a href="" title="Cà phê">Cà phê</a>-->
-<!--        </li>-->
-
-<!--        <li>-->
-<!--          <a href="" title="CloudFee">CloudFee</a>-->
-<!--        </li>-->
-
-<!--        <li>-->
-<!--          <a href="" title="CloudTea">CloudTea</a>-->
-<!--        </li>-->
-
-<!--        <li>-->
-<!--          <a href="" title="Trà">Trà</a>-->
-<!--        </li>-->
-
-<!--        <li>-->
-<!--          <a href="" title="Hi-Tea Healthy">Hi-Tea Healthy</a>-->
-<!--        </li>-->
-
-<!--        <li>-->
-<!--          <a href="" title="Bánh & Snack">Bánh & Snack</a>-->
-<!--        </li>-->
-
-<!--        <li>-->
-<!--          <a href="" title="Tại nhà">Tại nhà</a>-->
-<!--        </li>-->
-
-<!--        <li>-->
-<!--          <a href="" title="Thức uống khác">Thức uống khác</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--&lt;!&ndash;      <v-icon mdi-menu-down-outline></v-icon>&ndash;&gt;-->
-<!--    </div>-->
-
-<!--    <div class="categories_item">-->
-<!--      <a href="">-->
-<!--        <span class="header_color">Chuyện nhà</span>-->
-<!--      </a>-->
-<!--    </div>-->
-
-<!--    <div class="categories_item">-->
-<!--      <a href="">-->
-<!--        <span class="header_color">Cảm hứng CloudFee</span>-->
-<!--      </a>-->
-<!--    </div>-->
-
-<!--    <div class="categories_item">-->
-<!--      <a href="">-->
-<!--        <span class="header_color">Cửa hàng</span>-->
-<!--      </a>-->
-<!--    </div>-->
-
-<!--    <div class="categories_item">-->
-<!--      <a href="">-->
-<!--        <span class="header_color">Tuyển dụng</span>-->
-<!--      </a>-->
-<!--    </div>-->
-
-
   </div>
 
   <!-- <checkOut>
@@ -161,7 +71,7 @@
 </template>
 
 <script>
-
+// import header_paths from './headerConstant.js'
 
 export default {
   name: "mainHeader",
@@ -173,7 +83,7 @@ export default {
   data() {
     return {
       categories_id:"1",
-      name:"",
+      name: "",
       header_paths: [
         {
           header_id : "-1",
@@ -184,13 +94,13 @@ export default {
         {
           header_id : "1",
           header_name : "Cà phê",
-          header_path : "caphe",
+          header_path : "ca-phe",
           header_active : false,
         },
         {
           header_id : "2",
           header_name : "Trà",
-          header_path : "",
+          header_path : "tra",
           header_active : false
         },
         {
@@ -202,29 +112,30 @@ export default {
         {
           header_id : "4",
           header_name : "Truyện nhà",
-          header_path : "#",
+          header_path : "truyen-nha",
           header_active : false
         },
         {
           header_id : "5",
           header_name : "Cảm hứng CloudFee",
-          header_path : "#",
+          header_path : "cam-hung",
           header_active : false,
         },
         {
           header_id : "6",
           header_name : "Cửa hàng",
-          header_path : "#",
+          header_path : "cua-hang",
           header_active : false
         },
         {
           header_id : "7",
           header_name : "Tuyển dụng",
-          header_path : "#",
+          header_path : "tuyen-dung",
           header_active : false
         },
-
+    
       ],
+      // header_paths: headerConstant.header_paths,
     }
   },
   methods:{
@@ -232,15 +143,16 @@ export default {
     //   this.categories_id = x;
     //   console.log(this.categories_id);
     // },
-    logout(category_id,product_name){
+    logout(category_id,path_name){
       this.categories_id = category_id;
-      this.name = product_name;
+      this.name = path_name;
       if(category_id=="0")
       {
         this.$router.push({path:`/menu`,name:'menu'});
       }
       else{
-        this.$router.push({path:`/${this.categories_id}`,name:'product', params: { category_id: `${this.categories_id}` }});
+        console.log(path_name)
+        this.$router.push({path:`/${category_id}`,name:'categoryMain', params: { category_id: `${this.categories_id}`, path_name: `${path_name}`}});
         // console.log(category_id,product_name);
       }
       },
