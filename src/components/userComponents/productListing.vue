@@ -131,116 +131,6 @@ export default {
       category_type: 1,
       categories: [],
       products: [],
-      // categories: [
-      //   {
-      //     category_id: "1",
-      //     name: "Ca phe",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/tch-web-order/category-thumbnails/ca-phe.png",
-      //   },
-      //   {
-      //     category_id: "2",
-      //     name: "Tra",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/tch-web-order/category-thumbnails/cloudfee.png",
-      //   },
-      //   {
-      //     category_id: "3",
-      //     name: "Bim bim",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/tch-web-order/category-thumbnails/cloudtea.png",
-      //   },
-      //   {
-      //     category_id: "4",
-      //     name: "Bim bim",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/tch-web-order/category-thumbnails/ca-phe.png",
-      //   },
-      //   {
-      //     category_id: "5",
-      //     name: "Bim bim",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/tch-web-order/category-thumbnails/ca-phe.png",
-      //   },
-      //   {
-      //     category_id: "6",
-      //     name: "Bim bim",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/tch-web-order/category-thumbnails/ca-phe.png",
-      //   },
-      //   {
-      //     category_id: "7",
-      //     name: "Bim bim",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/tch-web-order/category-thumbnails/ca-phe.png",
-      //   },
-      // ],
-
-      // products: [
-      //   {
-      //     product_id: "1",
-      //     name: "ca phe den",
-      //     price: "100000",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-      //   },
-      //   {
-      //     product_id: "2",
-      //     name: "ca phe den da",
-      //     price: "100000",
-      //     image_url:
-      //       "	https://minio.thecoffeehouse.com/image/admin/1639377770_cfsua-nong_400x400.jpg",
-      //   },
-      //   {
-      //     product_id: "3",
-      //     name: "ca phe a",
-      //     price: "100000",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-      //   },
-      //   {
-      //     product_id: "4",
-      //     name: "ca phe b",
-      //     price: "100000",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-      //   },
-      //   {
-      //     product_id: "5",
-      //     name: "ca phe c",
-      //     price: "100000",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-      //   },
-      //   {
-      //     product_id: "6",
-      //     name: "ca phe d",
-      //     price: "100000",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-      //   },
-      //   {
-      //     product_id: "7",
-      //     name: "ca phe e",
-      //     price: "100000",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-      //   },
-      //   {
-      //     product_id: "8",
-      //     name: "ca phe f",
-      //     price: "100000",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-      //   },
-      //   {
-      //     product_id: "9",
-      //     name: "ca phe g",
-      //     price: "100000",
-      //     image_url:
-      //       "https://minio.thecoffeehouse.com/image/admin/1665655345_tch-sua-da_400x400.jpg",
-      //   },
-      // ],
     };
   },
   created() {
@@ -254,14 +144,18 @@ export default {
   methods: {
     getCategories() {
       axios
-        .get("http://127.0.0.1:8000/api/admin/category/index")
+        .post("http://127.0.0.1:8000/api/admin/category/indexByParentId", 
+        {
+          parent_id: 0
+        })
         .then((response) => {
-          // console.log("RES:\n")
-          // console.log(response);
-          // console.log("END RES\n")
+          console.log("RES:\n")
+          console.log(response);
+          console.log("END RES\n")
           this.categories = response.data.Categories;
         })
         .catch((error) => {
+          console.log("ERR")
           console.log(error.response);
         });
     },

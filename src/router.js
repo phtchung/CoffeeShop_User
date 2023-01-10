@@ -19,8 +19,8 @@ export default new Router({
                     component: () => import('@/view_user/pages_user/Mainpage'),
                 },
                 {
-                    name: 'UserPage',
-                    path: 'user',
+                    name: 'user',
+                    path: 'user/:name',
                     component: () => import('@/view_user/pages_user/UserPage'),
                 },
                 {
@@ -41,12 +41,12 @@ export default new Router({
                 },
                 {
                     name: 'item',
-                    path: 'item/:product_id',
+                    path: 'item/:product_name_convert',
                     component: () => import('@/components/productInterface/productInStore'),
                 },
                 {
-                    name: 'product',
-                    path: '/:category_id',
+                    name: 'categoryMain',
+                    path: 'collections/:path_name',
                     component: () => import('@/components/userComponents/menuOthers'),
                 },
                 {
@@ -56,7 +56,7 @@ export default new Router({
                 },
                 {
                     name: 'menu',
-                    path: 'menu',
+                    path: 'collections/menu',
                     component: () => import('@/components/userComponents/menuMenu'),
                 },
                 
