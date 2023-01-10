@@ -9,7 +9,7 @@
     </mainHeader>
     <v-row>
         <v-col cols="12" md="4" lg="3" style="margin: 24px 0">
-            <v-treeview v-model="tree" :open="initiallyOpen" :items="menuItems" activatable item-key="name" open-on-click transition @input="categoryType = items.id" @update:open="clickParent" @update:active="clickParentActive">
+            <v-treeview v-model="selection" :open="initiallyOpen" :items="menuItems" activatable item-key="name" open-on-click transition @input="categoryType = items.id" @update:open="clickParent" @update:active="clickParentActive">
                 <template v-slot:prepend="{ item, open }">
                     <v-icon v-if="!item.file">
                         {{ open ? "mdi-coffee-to-go-outline" : "" }}
@@ -53,10 +53,12 @@ export default {
         return {
             categoryType: 1,
             initiallyOpen: ["public"],
-            tree: [],
+            selection: [],
             files: {
                 dots: "mdi-circle-small",
             },
+            parent_type: [],
+            children_type: [],
             // menuItems: [
             //   {
             //     name: "Tất cả",
@@ -122,11 +124,13 @@ export default {
             this.categoryType = 3
 
             console.log('toggle arrow clicked', e)
+            this.parent_type = e
         },
 
         clickParentActive(e) {
             console.log('active:')
             console.log(e)
+            this.children_type = e
         },
 
         // Get id of category by name of that category in this.categories
@@ -137,6 +141,7 @@ export default {
                     return category.id
                 }
             }
+            return 0
         },
         appendObjTo(thatArray, newObj) {
             const frozenObj = Object.freeze(newObj);
@@ -252,6 +257,59 @@ export default {
                 });
             // const response = await abc();
         },
+
+        getItemsbyProduct(){
+          axios
+          .post("http://127.0.0.1:8000/api/admin/product/indexByCategoryId",
+              {
+                category_id: this.categoryType
+              }
+          )
+          .then((response) => {
+            this.items = response.data.products;
+            // console.log(response);
+          })
+          .catch((error) => {
+            console.log("Start\n");
+            console.log(error.response)
+            console.log("END\n");
+          });
+      // localStorage.setItem("items", this.items)
+        },
+        onUpdate(selection) {
+            console.log(selection)
+        },
+
+    },
+    watch: {
+        selection(newValue) {
+            this.onUpdate(newValue)
+        },
+
+        children_type(){
+          this.categoryType = this.getIDByNameCatgory(this.children_type[0])
+          console.log(this.categoryType)
+        },
+
+        parent_type(newArr, oldArr){
+          let clickName = []
+          if(oldArr.length > newArr.length)
+            clickName = oldArr.filter(x => !newArr.includes(x))
+          else
+            clickName = newArr.filter(x => !oldArr.includes(x))
+          console.log(clickName)
+          this.categoryType = this.getIDByNameCatgory(clickName)
+          console.log(this.categoryType)
+        },
+
+        categoryType(){
+          if(this.categoryType == 0)
+          {
+            this.getItems()
+          }
+          else
+            this.getItemsbyProduct()
+        }
     },
     created() {
         console.log("START CREATED with items:");
