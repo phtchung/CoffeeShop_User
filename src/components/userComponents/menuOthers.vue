@@ -43,7 +43,7 @@ export default {
   // this data below is manually set up, neet to get from backend when have a api
   data() {
     return {
-      category_id: this.$route.params.category_id,
+      category_id: -1,
       menuItems: [
         {
           name: "Tất cả",
@@ -89,72 +89,6 @@ export default {
         },
       ],
       items: []
-      // items: [
-      //   {
-      //     image_url:
-      //         "https://product.hstatic.net/1000075078/product/1639377770_cfsua-nong_016e05cb3a334141898e5677fec34784_large.jpg",
-      //     name: "Cà Phê Sữa Nóng",
-      //     description: "Oishii1",
-      //     price: "19891",
-      //   },
-      //   {
-      //     image_url:
-      //         "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_e0737a64b29e452f9c7eadb23300821a_large.jpg",
-      //     name: "The Coffee House Sữa Đá",
-      //     description: "Oishii2",
-      //     price: "19892",
-      //   },
-      //   {
-      //     image_url:
-      //         "https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_966117a7eb0e42d398937f44cc63aca9_large.png",
-      //     name: "Cà Phê Sữa Đá",
-      //     description: "Oishii3",
-      //     price: "19893",
-      //   },
-      //   {
-      //     image_url:
-      //         "https://product.hstatic.net/1000075078/product/1639377904_bac-siu_3df6607180474c2c81dfe213010be685_large.jpg",
-      //     name: "Bạc Sỉu",
-      //     description: "Oishii4",
-      //     price: "19894",
-      //   },
-      //   {
-      //     image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-      //     name: "Tra dao 5",
-      //     description: "Oishii5",
-      //     price: "19895",
-      //   },
-      //   {
-      //     image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-      //     name: "Tra dao 6",
-      //     description: "Oishii6",
-      //     price: "19896",
-      //   },
-      //   {
-      //     image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-      //     name: "Tra dao 7",
-      //     description: "Oishii7",
-      //     price: "19897",
-      //   },
-      //   {
-      //     image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-      //     name: "Tra dao 8",
-      //     description: "Oishii8",
-      //     price: "19898",
-      //   },
-      //   {
-      //     image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-      //     name: "Tra dao 9",
-      //     description: "Oishii9",
-      //     price: "19899",
-      //   },
-      //   {
-      //     image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-      //     name: "Tra dao 0",
-      //     description: "Oishii0",
-      //     price: "19890",
-      //   },
-      // ],
     };
   },
 
@@ -165,16 +99,29 @@ export default {
   },
   created(){
     // this.category_id = this.$route.params.category_id;
+    if(this.$route.params.path_name == "ca-phe"){
+      this.category_id = 1
+    }
+    else if(this.$route.params.path_name == "tra"){
+      this.category_id = 2
+    }
     this.$watch(
         () => this.$route.params,
         (toParams, previousParams) => {
           console.log(toParams);
           console.log(previousParams);
-          this.category_id = this.$route.params.category_id;
+          if(this.$route.params.path_name == "ca-phe"){
+            this.category_id = 1
+          }
+          else if(this.$route.params.path_name == "tra"){
+            this.category_id = 2
+          }
+          // this.category_id = this.$route.params.category_id;
           // react to route changes...
         }
     ),
-        this.getItems();
+    this.getItems();
+    this.items = localStorage.getItem("items")
   },
   watch: {
     category_id() {
@@ -214,6 +161,7 @@ export default {
             console.log(error.response)
             console.log("END\n");
           });
+      localStorage.setItem("items", this.items)
     }
   }
 };
