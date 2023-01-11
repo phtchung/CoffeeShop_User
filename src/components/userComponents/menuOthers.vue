@@ -44,51 +44,7 @@ export default {
   data() {
     return {
       category_id: -1,
-      menuItems: [
-        {
-          name: "Tất cả",
-        },
-        {
-          name: "Cafe",
-          children: [
-            {
-              name: "Cafe Việt Nam",
-              file: "dots",
-            },
-            {
-              name: "Cafe máy",
-              file: "dots",
-            },
-            {
-              name: "Cold Brew",
-              file: "dots",
-            },
-          ],
-        },
-        {
-          name: "CloudFee",
-          children: [
-            {
-              name: "CloudFee",
-              file: "dots",
-            },
-          ],
-        },
-        {
-          name: "Trà",
-          children: [
-            {
-              name: "Trà trái cây",
-              file: "dots",
-            },
-            {
-              name: "Trà sữa Machiato",
-              file: "dots",
-            },
-          ],
-        },
-      ],
-      items: []
+      items: JSON.parse(localStorage.getItem("items"))
     };
   },
 
@@ -121,7 +77,7 @@ export default {
         }
     ),
     this.getItems();
-    this.items = localStorage.getItem("items")
+    this.items =  JSON.parse(localStorage.getItem("items"))
   },
   watch: {
     category_id() {
@@ -161,8 +117,11 @@ export default {
             console.log(error.response)
             console.log("END\n");
           });
-      localStorage.setItem("items", this.items)
+      localStorage.setItem("items", JSON.stringify(this.items))
     }
+  },
+  mounted(){
+    this.items =  JSON.parse(localStorage.getItem("items"))
   }
 };
 </script>
