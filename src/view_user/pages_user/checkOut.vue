@@ -182,124 +182,26 @@
                   </div>
 <!--                  list các món đã chọn-->
 <!--                  sp1-->
-                  <div  class="tch-order-card product_chose_item" >
+                  <div  class="tch-order-card product_chose_item"
+                  v-for="product_order_item in product_order_items"
+                        :key = product_order_item.id
+                  >
                     <div class="tch-order-card__left " style="display: flex">
                       <span  class="tch-order-card__icon " style="display:flex;align-items: center">
                         <v-icon small color="#fa8c16">mdi-pencil</v-icon>
                       </span>
                       <div class="tch-order-card__content">
-                        <h5 class="tch-order-card__title mb-0">1 x CloudFee Caramel</h5>
-                        <p class="tch-order-card__description mb-0">Vừa, 1 x Vừa</p>
+                        <h5 class="tch-order-card__title mb-0">{{product_order_item.quality}} x {{product_order_item.name}}</h5>
+                        <p class="tch-order-card__description mb-0">{{product_order_item.size}}, {{product_order_item.quality}} x {{product_order_item.size}}</p>
                         <p class="tch-order-card__description mb-0">Sốt Caramel,  x Sốt Caramel</p> <!---->
-                        <p class="tch-order-delete-item">Xóa</p>
+                        <p class="tch-order-delete-item" @click.prevent="removeProductFromCard(product_order_item)">Xóa</p>
                       </div>
                     </div>
                     <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">65.000đ</p>
-                    </div>
-                  </div>
-<!--                  sp2-->
-                  <div  class="tch-order-card product_chose_item" >
-                    <div class="tch-order-card__left " style="display: flex">
-                      <span  class="tch-order-card__icon " style="display:flex;align-items: center">
-                        <v-icon small color="#fa8c16">mdi-pencil</v-icon>
-                      </span>
-                      <div class="tch-order-card__content">
-                        <h5 class="tch-order-card__title mb-0">1 x CloudFee Caramel</h5>
-                        <p class="tch-order-card__description mb-0">Vừa, 1 x Vừa</p>
-                        <p class="tch-order-card__description mb-0">Sốt Caramel,  x Sốt Caramel</p> <!---->
-                        <p class="tch-order-delete-item">Xóa</p>
-                      </div>
-                    </div>
-                    <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">65.000đ</p>
+                      <p class="tch-order-card__price mb-0">{{separator(product_order_item.price)}}đ</p>
                     </div>
                   </div>
 
-                  <div  class="tch-order-card product_chose_item" >
-                    <div class="tch-order-card__left " style="display: flex">
-                      <span  class="tch-order-card__icon " style="display:flex;align-items: center">
-                        <v-icon small color="#fa8c16">mdi-pencil</v-icon>
-                      </span>
-                      <div class="tch-order-card__content">
-                        <h5 class="tch-order-card__title mb-0">1 x CloudFee Caramel</h5>
-                        <p class="tch-order-card__description mb-0">Vừa, 1 x Vừa</p>
-                        <p class="tch-order-card__description mb-0">Sốt Caramel,  x Sốt Caramel</p> <!---->
-                        <p class="tch-order-delete-item">Xóa</p>
-                      </div>
-                    </div>
-                    <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">65.000đ</p>
-                    </div>
-                  </div>
-
-                  <div  class="tch-order-card product_chose_item" >
-                    <div class="tch-order-card__left " style="display: flex">
-                      <span  class="tch-order-card__icon " style="display:flex;align-items: center">
-                        <v-icon small color="#fa8c16">mdi-pencil</v-icon>
-                      </span>
-                      <div class="tch-order-card__content">
-                        <h5 class="tch-order-card__title mb-0">1 x CloudFee Caramel</h5>
-                        <p class="tch-order-card__description mb-0">Vừa, 1 x Vừa</p>
-                        <p class="tch-order-card__description mb-0">Sốt Caramel,  x Sốt Caramel</p> <!---->
-                        <p class="tch-order-delete-item">Xóa</p>
-                      </div>
-                    </div>
-                    <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">65.000đ</p>
-                    </div>
-                  </div>
-
-                  <div  class="tch-order-card product_chose_item" >
-                    <div class="tch-order-card__left " style="display: flex">
-                      <span  class="tch-order-card__icon " style="display:flex;align-items: center">
-                        <v-icon small color="#fa8c16">mdi-pencil</v-icon>
-                      </span>
-                      <div class="tch-order-card__content">
-                        <h5 class="tch-order-card__title mb-0">1 x CloudFee Caramel</h5>
-                        <p class="tch-order-card__description mb-0">Vừa, 1 x Vừa</p>
-                        <p class="tch-order-card__description mb-0">Sốt Caramel,  x Sốt Caramel</p> <!---->
-                        <p class="tch-order-delete-item">Xóa</p>
-                      </div>
-                    </div>
-                    <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">65.000đ</p>
-                    </div>
-                  </div>
-
-                  <div  class="tch-order-card product_chose_item" >
-                    <div class="tch-order-card__left " style="display: flex">
-                      <span  class="tch-order-card__icon " style="display:flex;align-items: center">
-                        <v-icon small color="#fa8c16">mdi-pencil</v-icon>
-                      </span>
-                      <div class="tch-order-card__content">
-                        <h5 class="tch-order-card__title mb-0">1 x CloudFee Caramel</h5>
-                        <p class="tch-order-card__description mb-0">Vừa, 1 x Vừa</p>
-                        <p class="tch-order-card__description mb-0">Sốt Caramel,  x Sốt Caramel</p> <!---->
-                        <p class="tch-order-delete-item">Xóa</p>
-                      </div>
-                    </div>
-                    <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">65.000đ</p>
-                    </div>
-                  </div>
-
-                  <div  class="tch-order-card product_chose_item" >
-                    <div class="tch-order-card__left " style="display: flex">
-                      <span  class="tch-order-card__icon " style="display:flex;align-items: center">
-                        <v-icon small color="#fa8c16">mdi-pencil</v-icon>
-                      </span>
-                      <div class="tch-order-card__content">
-                        <h5 class="tch-order-card__title mb-0">1 x CloudFee Caramel</h5>
-                        <p class="tch-order-card__description mb-0">Vừa, 1 x Vừa</p>
-                        <p class="tch-order-card__description mb-0">Sốt Caramel,  x Sốt Caramel</p> <!---->
-                        <p class="tch-order-delete-item">Xóa</p>
-                      </div>
-                    </div>
-                    <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">65.000đ</p>
-                    </div>
-                  </div>
 <!--thanh toán -->
                   <div class="tch-checkout-box tch-checkout-box--list-total tch-checkout-border " style="padding: 14px 0 30px ">
                     <div class="tch_checkout_cus_deli">
@@ -310,7 +212,7 @@
                         <p  class="tch-order-card__text mb-0">Thành tiền</p>
                       </div>
                       <div  class="tch-order-card__right">
-                        <p  class="tch-order-card__price mb-0">310.000đ</p>
+                        <p  class="tch-order-card__price mb-0">{{get_totalprice(product_order_items)}}đ</p>
                       </div>
                     </div>
 
@@ -331,7 +233,7 @@
               <div class=" tch-checkout-box--list-submited position-static " style="display: flex;justify-content: space-between">
                 <div >
                   <p  class="tch-order-card__text text-white mb-0">Thành tiền</p>
-                  <p  class="tch-order-card__text text-white mb-0" style="font-weight: 600">310.000đ</p>
+                  <p  class="tch-order-card__text text-white mb-0" style="font-weight: 600">{{get_totalprice(product_order_items)}}đ</p>
                 </div> <button data-v-ccef1d60="" type="button" class="btn btn--white text-orange btn--radius-100">
                 Đặt hàng
               </button>
@@ -348,6 +250,60 @@
 <script>
 export default {
   name: "checkOut",
+  data () {
+    return {
+      card:[],
+      product_order_items: [
+        {
+          id : 1,
+          quality: 1,
+          name: "Cloud Tes's more Choco MasrchMallow",
+          size: 'Vừa',
+          price: "69000",
+        },
+        {
+          id :2,
+          quality: 2,
+          name: "Trà sen vàng",
+          size: 'Vừa',
+          price: "59000",
+        },
+        {
+          id: 3,
+          quality: 4,
+          name: "Cloud Tes's more Chocochoco",
+          size: 'Nhỏ',
+          price: "49000",
+        },
+      ],
+    }
+  },
+  created() {
+    this.card.push({
+      name: this.product_order_items[0].name,
+      size: this.product_order_items[0].size,
+      quality: this.product_order_items[0].quality,
+    })
+  },
+  methods:{
+    removeProductFromCard(product){
+      if(product.quality === 0){
+        this.card.splice(this.card.indexOf(product),1)
+      }
+    },
+    separator(numb) {
+      var str = numb.toString().split(".");
+      str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return str.join(".");
+    },
+    get_totalprice(item) {
+      let price = 0;
+      for(let i = 0 ; i < item.length ; i++){
+        price += parseInt(item[i].price)* item[i].quality
+      }
+      return this.separator(price);
+    }
+  },
   userHeader: () => import("@/layouts/Header/userHeader"),
 }
 </script>
