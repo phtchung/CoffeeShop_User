@@ -57,51 +57,20 @@
               </div>
               <div class="option_topping">
                 <p class="option_title">Topping</p>
-                <div class="product_option">
+                <div style="display: flex;flex-wrap: wrap" >
+                  <div class="product_option"
+                     v-for="topping_item in topping_items"
+                     :key = topping_item.id
+                  >
+                    <label class="option_item  " type="checkbox" >
+                      <input type="checkbox" class="checkbox"   name="topping_tch" :title=topping_item.name v-model="checked_topping"  :value=topping_item.name>
+                        <div  class="top_detail active_normal"   >
+                          <div  class="name">{{topping_item.name}} + {{separator(topping_item.price)}} đ</div>
+                        </div>
+                    </label>
 
-                  <label class="option_item  " type="checkbox"  title="Kem Phô Mai Macchiato">
-                    <input type="checkbox" class="checkbox"   name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Kem Phô Mai">
-                      <div  class="top_detail active_normal"   >
-                        <div  class="name">Kem Phô Mai Macchiato + 10.000 đ</div>
-                      </div>
-                  </label>
-
-                  <label class="option_item  " type="checkbox"    title="Kem Phô Mai Macchiato">
-                    <input type="checkbox" class="checkbox"  name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Expresso">
-                    <div  class="top_detail active_normal"   >
-                      <div  class="name">Shot Expresso + 10.000đ</div>
-                    </div>
-                  </label>
-
-                  <label class="option_item  " type="checkbox"   title="Kem Phô Mai Macchiato">
-                    <input type="checkbox" class="checkbox"  name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Trân châu trắng">
-                    <div  class="top_detail active_normal"   >
-                      <div  class="name">Trân châu trắng + 10.000 đ</div>
-                    </div>
-                  </label>
-
-                  <label class="option_item  " type="checkbox"   title="Kem Phô Mai Macchiato">
-                    <input type="checkbox" class="checkbox"  name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Sốt Caramels">
-                    <div  class="top_detail active_normal"   >
-                      <div  class="name">Sốt Caramel + 10.000 đ</div>
-                    </div>
-                  </label>
-
-
-                  <label class="option_item  " type="checkbox"   title="Kem Phô Mai Macchiato">
-                    <input type="checkbox" class="checkbox"  name="topping_tch" title="Trân châu trắng" v-model="checked_topping"  value="Thạch Cà Phê">
-                    <div  class="top_detail active_normal"   >
-                      <div  class="name">Thạch Cà Phê + 10.000 đ</div>
-                    </div>
-                  </label>
-
-                  <label class="option_item checkbox" type="checkbox" title="Đào miếng">
-                    <div class="top_detail">
-                      <div class="name">Đào miếng + 10.000 đ</div>
-                    </div>
-                  </label>
+                  </div>
                 </div>
-
               </div>
 
               <div class="product_tocard">
@@ -133,96 +102,25 @@
             <div id="product_des_title">
               <h4 class="product_des_title">Sản phẩm liên quan</h4>
               <v-row>
-                <v-col cols="12" md="2" lg="2" sm="6" class="list_product ">
+                <v-col cols="12" md="2" lg="2" sm="6" class="list_product"
+                v-for="product_relation in product_relations"
+                       :key = product_relation.id
+                >
                   <div class="menu__item_related">
                     <div class="menu__item_img">
-                      <a href="">
-                        <img src="//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg" alt="">
+                      <a href="" >
+                        <img :src = product_relation.img_url alt="">
                       </a>
                     </div>
                     <div class="menu__item_infor">
                       <h3>
-                        <a href="">Trà sen vàng</a>
+                        <a href="">{{product_relation.name}}</a>
                       </h3>
-                      <div class="item__price">55.000 đ</div>
+                      <div class="item__price">{{product_relation.price}} đ</div>
                     </div>
                   </div>
                 </v-col>
-                <v-col cols="12" md="2" lg="2" sm="6" class="list_product">
-                      <div class="menu__item_related">
-                        <div class="menu__item_img">
-                          <a href="">
-                            <img src="//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="menu__item_infor">
-                          <h3>
-                            <a href="">Trà sen vàng</a>
-                          </h3>
-                          <div class="item__price">55.000 đ</div>
-                        </div>
-                      </div>
-                    </v-col>
-                <v-col cols="12" md="2" lg="2" sm="6" class="list_product">
-                      <div class="menu__item_related">
-                        <div class="menu__item_img">
-                          <a href="">
-                            <img src="//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="menu__item_infor">
-                          <h3>
-                            <a href="">Trà sen vàng</a>
-                          </h3>
-                          <div class="item__price">55.000 đ</div>
-                        </div>
-                      </div>
-                    </v-col>
-                <v-col cols="12" md="2" lg="2" sm="6" class="list_product">
-                      <div class="menu__item_related">
-                        <div class="menu__item_img">
-                          <a href="">
-                            <img src="//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="menu__item_infor">
-                          <h3>
-                            <a href="">Trà sen vàng</a>
-                          </h3>
-                          <div class="item__price">55.000 đ</div>
-                        </div>
-                      </div>
-                    </v-col>
-                <v-col cols="12" md="2" lg="2" sm="6" class="list_product">
-                      <div class="menu__item_related">
-                        <div class="menu__item_img">
-                          <a href="">
-                            <img src="//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="menu__item_infor">
-                          <h3>
-                            <a href="">Trà sen vàng</a>
-                          </h3>
-                          <div class="item__price">55.000 đ</div>
-                        </div>
-                      </div>
-                    </v-col>
-                <v-col cols="12" md="2" lg="2" sm="6" class="list_product">
-                      <div class="menu__item_related">
-                        <div class="menu__item_img">
-                          <a href="">
-                            <img src="//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="menu__item_infor">
-                          <h3>
-                            <a href="">Trà sen vàng</a>
-                          </h3>
-                          <div class="item__price">55.000 đ</div>
-                        </div>
-                      </div>
-                    </v-col>
+
               </v-row>
             </div>
 
@@ -251,6 +149,63 @@ export default {
           price: "69000",
         },
 
+      ],
+      topping_items:[
+        {
+          id :1,
+          name:"Kem Phô Mai Macchiato",
+          price:"10000",
+          count: 0,
+        },{
+          id :2,
+          name:"Shot Espresso",
+          price:"10000",
+          count: 0,
+        },
+        {
+          id :3,
+          name:"Trân châu trắng",
+          price:"10000",
+          count: 0,
+        },
+        {
+          id :4,
+          name:"Sốt Caramel",
+          price:"10000",
+          count: 0,
+        },
+        {
+          id :5,
+          name:"Thạch Cà Phê",
+          price:"10000",
+          count: 0,
+        },
+      ],
+      product_relations:[
+        {
+          id:1,
+          name :"CloudFee Caramel",
+          price:"49000",
+          img_url:"//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
+        },
+        {
+          id:2,
+          name :"CloudFee Caramel",
+          price:"49000",
+          img_url:"//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
+        },
+        {
+          id:3,
+          name :"CloudFee Caramel",
+          price:"49000",
+          img_url:"//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
+        },
+        {
+          id:4,
+          name :"CloudFee Caramel",
+          price:"49000",
+          img_url:"//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
+        },
       ],
     }
   },
@@ -504,6 +459,10 @@ export default {
     padding-top: 100%;
     position: relative;
     box-shadow: 0 0 13px 0 #00000040;
+  }
+   a:hover{
+    color: #ea8025 !important;
+    text-decoration: none;
   }
   .menu__item_related .menu__item_infor{
     padding: 12px 0 0;
