@@ -2,7 +2,7 @@
   <v-container>
   <div class="main_header"  id="myHeader" >
     <div style="width: 17%;margin-right: 39px" class="categories_item" >
-    <a href="">
+    <a href="http://localhost:8080/">
       <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/03/logo-the-coffee-house-chieu-dai.png" alt="" style="width: 100%">
     </a>
     </div>
@@ -21,28 +21,28 @@
       <ul class="menu_list" v-if="header_path.header_active ===true">
         <li>
 
-          <a href="menu" title="Tất cả">Tất cả</a>
+          <a href="http://localhost:8080/collections/menu" title="Tất cả">Tất cả</a>
           <ul class="list_item">
             <li class="item_font">
-              <a href="" title="Cà phê Việt Nam" >Cà phê Việt Nam</a>
+              <a href="http://localhost:8080/collections/ca-phe-viet-nam" title="Cà phê Việt Nam" >Cà phê Việt Nam</a>
             </li>
             <li class="item_font">
-              <a href="" title="Cà phê Máy">Cà phê Máy</a>
+              <a href="http://localhost:8080/collections/ca-phe-may" title="Cà phê Máy">Cà phê Máy</a>
             </li>
 
           </ul>
         </li>
         <li>
-          <a href="" title="Cà phê">Cà phê</a>
+          <a href="http://localhost:8080/collections/product/ca-phe" title="Cà phê">Cà phê</a>
         </li>
         <li>
-          <a href="" title="CloudFee">CloudFee</a>
+          <a href="http://localhost:8080/collections/cloudfee" title="CloudFee">CloudFee</a>
         </li>
         <li>
-          <a href="" title="CloudTea">CloudTea</a>
+          <a href="http://localhost:8080/collections/cloudtee" title="CloudTea">CloudTea</a>
         </li>
         <li>
-          <a href="" title="Trà">Trà</a>
+          <a href="http://localhost:8080/collections/product/tra" title="Trà">Trà</a>
         </li>
         <li>
           <a href="" title="Hi-Tea Healthy">Hi-Tea Healthy</a>
