@@ -198,7 +198,7 @@
                 alt=""
               />
               <div class="quantity-items">
-                <span>7</span>
+                <span>{{this.itemCount}}</span>
               </div>
             </div>
           </a>
@@ -260,9 +260,27 @@ export default {
   name: "userHeader",
   data: () => {
     return {
+      itemCount: 0,
       displayClick: false,
     };
   },
+  created(){
+    console.log("local storage: ",JSON.parse(localStorage.getItem("order")))
+    if(JSON.parse(localStorage.getItem("order")) == null){
+      this.itemCount = 0
+    }
+    else {
+      this.itemCount = JSON.parse(localStorage.getItem("order")).length
+      console.log(localStorage.getItem("order"))
+    }
+    console.log("item count: ", this.itemCount)
+  },
+
+  // watch: {
+  //   globalOrder(){
+  //     console.log("Global order has: ", this.globalOrder.length)
+  //   }
+  // },
   methods: {
     // closePopUp: function (event) {
     //   if (event.target == modal) {
@@ -274,6 +292,17 @@ export default {
       document.getElementById()
     }
   },
+  mounted() {
+  window.addEventListener('order-localstorage-changed', (event) => {
+    console.log(event.detail.storage)
+    if(event.detail.storage == null){
+      this.itemCount = 0
+    }
+    else
+      this.itemCount = JSON.parse(event.detail.storage).length;
+    console.log("item count in mounted: ", this.itemCount)
+  });
+},
 };
 </script>
 
