@@ -51,7 +51,9 @@ export default {
     // this data below is manually set up, neet to get from backend when have a api
     data() {
         return {
-            categoryType: 1,
+            categoryType: 0,
+            categoryName: "tat-ca",
+            currentPath: this.$route.path,
             initiallyOpen: ["public"],
             selection: [],
             files: {
@@ -133,11 +135,55 @@ export default {
             this.children_type = e
         },
 
+        // bo het dau trong tieng Viet
+        removeVietnameseTones(str) {
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+            str = str.replace(/đ/g, "d");
+            str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+            str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+            str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+            str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+            str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+            str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+            str = str.replace(/Đ/g, "D");
+            // Some system encode vietnamese combining accent as individual utf-8 characters
+            // Một vài bộ encode coi các dấu mũ, dấu chữ như một kí tự riêng biệt nên thêm hai dòng này
+            str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // ̀ ́ ̃ ̉ ̣  huyền, sắc, ngã, hỏi, nặng
+            str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // ˆ ̆ ̛  Â, Ê, Ă, Ơ, Ư
+            return str;
+        },
         // Get id of category by name of that category in this.categories
         getIDByNameCatgory(name) {
             for (let index in this.categories) {
                 const category = this.categories[index]
                 if (category.name == name) {
+                    return category.id
+                }
+            }
+            return 0
+        },
+        getNameByIDCatgory(id) {
+            if(id == 0)
+              return "menu"
+            for (let index in this.categories) {
+                const category = this.categories[index]
+                if (category.id == id) {
+                    return this.removeVietnameseTones(category.name).replaceAll(' ', '-').toLowerCase()
+                }
+            }
+            return 0
+        },
+        getIDByPath(path){
+          console.log("input path: ", path)
+          for (let index in this.categories) {
+                const category = this.categories[index]
+                console.log(this.removeVietnameseTones(category.name).replaceAll(' ', '-').toLowerCase())
+                if (this.removeVietnameseTones(category.name).replaceAll(' ', '-').toLowerCase() == path) {
                     return category.id
                 }
             }
@@ -164,35 +210,35 @@ export default {
                 id: 0,
                 file: "dots",
             }
-            console.log(this.categories)
+            // console.log(this.categories)
             for (let index in this.categories) {
-                console.log("=====Singe category=====")
+                // console.log("=====Singe category=====")
                 const category = this.categories[index]
-                console.log(category.name)
+                // console.log(category.name)
                 if (category.parent_id == 0) {
-                    // console.log("1")
+                    // // console.log("1")
                     tmp_category.name = category.name
                     tmp_category.id = category.id
                     for (const index2 in this.categories) {
                         const category_child = this.categories[index2]
-                        console.log("Bat dau quet:")
-                        console.log(category_child.name)
+                        // console.log("Bat dau quet:")
+                        // console.log(category_child.name)
                         if (category_child.parent_id == category.id) {
-                            console.log("Child:", category_child.name)
+                            // console.log("Child:", category_child.name)
                             child_category.name = category_child.name
                             child_category.id = category_child.id
-                            console.log("Children truoc do:", tmp_category.children[0], tmp_category.children[1])
-                            console.log("Da them:", child_category.name)
+                            // console.log("Children truoc do:", tmp_category.children[0], tmp_category.children[1])
+                            // console.log("Da them:", child_category.name)
                             tmp_category.children.push({
                                 name: category_child.name,
                                 id: category_child.id,
                                 file: "dots"
                             })
                             // tmp_category.children = this.appendObjTo(tmp_category.children, child_category);
-                            console.log("Children hien tai:", tmp_category.children[0], tmp_category.children[1])
-                            console.log("tmp hien tai:")
-                            console.log(tmp_category)
-                            console.log(tmp_category.children[0], tmp_category.children[1])
+                            // console.log("Children hien tai:", tmp_category.children[0], tmp_category.children[1])
+                            // console.log("tmp hien tai:")
+                            // console.log(tmp_category)
+                            // console.log(tmp_category.children[0], tmp_category.children[1])
                         }
                     }
                     if (tmp_category.children.length == 0) {
@@ -202,22 +248,22 @@ export default {
                             file: "dots"
                         })
                     }
-                    // console.log("3")
+                    // // console.log("3")
                     this.menuItems.push({
                         name: tmp_category.name,
                         id: tmp_category.id,
                         children: tmp_category.children,
                     })
                     // this.menuItems = this.appendObjTo(this.menuItems, tmp_category)
-                    console.log("<><> menuItems luc nay:")
-                    console.log(this.menuItems)
-                    // console.log(this.menuItems[1].children[0], this.menuItems.children[1])
+                    // console.log("<><> menuItems luc nay:")
+                    // console.log(this.menuItems)
+                    // // console.log(this.menuItems[1].children[0], this.menuItems.children[1])
                     tmp_category.children = []
-                    // console.log(this.menuItems[1].children[0], this.menuItems.children[1])
+                    // // console.log(this.menuItems[1].children[0], this.menuItems.children[1])
                 }
             }
-            console.log("REAL MENUITEMS")
-            console.log(this.menuItems)
+            // console.log("REAL MENUITEMS")
+            // console.log(this.menuItems)
         },
 
         // get all categories from database => this.categories
@@ -225,14 +271,15 @@ export default {
             axios
                 .get("http://127.0.0.1:8000/api/admin/category/index")
                 .then((response) => {
-                    console.log("START get categories\n");
-                    // console.log(response);
-                    // console.log("END\n");
+                    // console.log("START get categories\n");
+                    // // console.log(response);
+                    // // console.log("END\n");
                     this.categories = response.data.Categories;
-                    console.log(this.categories)
-                    console.log("DONE CATEGORIES with length:", this.categories.length);
+                    // console.log(this.categories)
+                    // console.log("DONE CATEGORIES with length:", this.categories.length);
                     this.makeMenuItem();
-                    console.log("END\n");
+                    this.handlePath()
+                    // console.log("END\n");
                 })
                 .catch((error) => {
                     console.log(error.response);
@@ -249,8 +296,8 @@ export default {
                     // console.log(response);
                     // console.log("END\n");
                     this.items = response.data.products;
-                    console.log("ITEMS in function:")
-                    console.log(this.items)
+                    // console.log("ITEMS in function:")
+                    // console.log(this.items)
                 })
                 .catch((error) => {
                     console.log(error.response);
@@ -258,27 +305,29 @@ export default {
             // const response = await abc();
         },
 
-        getItemsbyProduct(){
-          axios
-          .post("http://127.0.0.1:8000/api/admin/product/indexByCategoryId",
-              {
-                category_id: this.categoryType
-              }
-          )
-          .then((response) => {
-            this.items = response.data.products;
-            // console.log(response);
-          })
-          .catch((error) => {
-            console.log("Start\n");
-            console.log(error.response)
-            console.log("END\n");
-          });
-      // localStorage.setItem("items", this.items)
+        getItemsbyProduct() {
+            axios
+                .post("http://127.0.0.1:8000/api/admin/product/indexByCategoryId", {
+                    category_id: this.categoryType
+                })
+                .then((response) => {
+                    this.items = response.data.products;
+                    // console.log(response);
+                })
+                .catch((error) => {
+                    // console.log("Start\n");
+                    console.log(error.response)
+                    // console.log("END\n");
+                });
+            // localStorage.setItem("items", this.items)
         },
         onUpdate(selection) {
             console.log(selection)
         },
+
+        handlePath() {
+          this.categoryType = this.getIDByPath(this.currentPath.replace("/collections/", ""))
+        }
 
     },
     watch: {
@@ -286,42 +335,54 @@ export default {
             this.onUpdate(newValue)
         },
 
-        children_type(){
-          this.categoryType = this.getIDByNameCatgory(this.children_type[0])
-          console.log(this.categoryType)
+        children_type(newArr, oldArr) {
+            let clickName = []
+            if (oldArr.length > newArr.length)
+                clickName = oldArr.filter(x => !newArr.includes(x))
+            else
+                clickName = newArr.filter(x => !oldArr.includes(x))
+            console.log(clickName)
+            this.categoryType = this.getIDByNameCatgory(clickName)
+            console.log(this.categoryType)
         },
 
-        parent_type(newArr, oldArr){
-          let clickName = []
-          if(oldArr.length > newArr.length)
-            clickName = oldArr.filter(x => !newArr.includes(x))
-          else
-            clickName = newArr.filter(x => !oldArr.includes(x))
-          console.log(clickName)
-          this.categoryType = this.getIDByNameCatgory(clickName)
-          console.log(this.categoryType)
+        parent_type(newArr, oldArr) {
+            let clickName = []
+            if (oldArr.length > newArr.length)
+                clickName = oldArr.filter(x => !newArr.includes(x))
+            else
+                clickName = newArr.filter(x => !oldArr.includes(x))
+            console.log(clickName)
+            this.categoryType = this.getIDByNameCatgory(clickName)
+            console.log(this.categoryType)
         },
 
-        categoryType(){
-          if(this.categoryType == 0)
-          {
-            this.getItems()
-          }
-          else
-            this.getItemsbyProduct()
-        }
+        categoryType() {
+            if (this.categoryType == 0) {
+                this.getItems()
+            } else
+                this.getItemsbyProduct()
+            this.categoryName = this.getNameByIDCatgory(this.categoryType)
+            console.log(this.categoryName)
+            this.$router.push({
+                path: `/${this.categoryName}`,
+                name: "menuMenu",
+                params: {category_name: `${this.categoryName}`, category_id: `${this.categoryType}` }
+            })
+        },
+
+        '$route.params' (to, from) {
+        console.log("To: ",to)
+        console.log("From: ", from)
+        this.categoryType = this.getIDByPath(to.category_name)
+      }
     },
     created() {
-        console.log("START CREATED with items:");
         this.getItems();
-        console.log(this.items)
         console.log("Categories:");
         this.getCategories();
-        console.log(this.categories);
-
-        console.log("DONE MENUITEMS")
-        console.log("MAKE MENU ITEMS")
-        console.log(this.menuItems)
+        console.log("path:", this.currentPath)
+        console.log("Category Type: ",this.categoryType)
     },
     components: {
         Item_User: () => import("@/components/Item_User"),

@@ -148,7 +148,7 @@ export default {
       this.name = path_name;
       if(category_id=="0")
       {
-        this.$router.push({path:`/menu`,name:'menu'});
+        this.$router.push({path:`/`,name:'menuMenu', params: { category_name: "menu"}});
       }
       else{
         console.log(path_name)
