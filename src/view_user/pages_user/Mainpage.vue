@@ -579,7 +579,7 @@
       </div>
     </section>
 
-
+<!--    <checkOut></checkOut>-->
 
   </v-container>
 </template>
