@@ -1,7 +1,7 @@
 <template>
   <!-- <userHeader/> -->
   <div style="margin-top: 20px; align-items: center" class="fill-weight">
-  <v-container style="margin: 26px auto 0 ;padding:0">
+  <v-container style="margin: 26px auto 0 ;padding:0" class="fix_font">
     <!-- <header> -->
         <!-- <userHeader/> -->
     <!-- </header> -->
@@ -183,27 +183,40 @@
 <!--                  list các món đã chọn-->
 <!--                  sp1-->
                   <div  class="tch-order-card product_chose_item"
-                  v-for="product_order_item in product_order_items"
-                        :key = product_order_item.id
+                  v-for="order in orders"
+                        :key="order.size"
+                        style="display:inherit;"
                   >
+                    <div v-for="product in order.product_items"
+                    :key="product.name"
+                         class="product_chose_item"
+                    
+                    >
                     <div class="tch-order-card__left " style="display: flex">
                       <span  class="tch-order-card__icon " style="display:flex;align-items: center">
                         <v-icon small color="#fa8c16">mdi-pencil</v-icon>
                       </span>
                       <div class="tch-order-card__content">
-                        <h5 class="tch-order-card__title mb-0">{{product_order_item.quality}} x {{product_order_item.name}}</h5>
-                        <p class="tch-order-card__description mb-0">{{product_order_item.size}}, {{product_order_item.quality}} x {{product_order_item.size}}</p>
-                        <p class="tch-order-card__description mb-0">Sốt Caramel,  x Sốt Caramel</p> <!---->
-                        <p class="tch-order-delete-item" @click.prevent="removeProductFromCard(product_order_item)">Xóa</p>
+                        <h5 class="tch-order-card__title mb-0">{{order.count}} x {{product.name}}</h5>
+                        <p class="tch-order-card__description mb-0">{{order.size}}, {{order.count}} x {{order.size}}</p>
+                        <p class="tch-order-card__description mb-0"
+                           v-for="topping in order.topping_items"
+                           :key="topping.id"
+                        >
+                          {{topping.name}}, x {{topping.name}}
+                        </p> <!---->
+                        <p class="tch-order-delete-item"  >Xóa</p>
                       </div>
                     </div>
                     <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">{{separator(product_order_item.price)}}đ</p>
+                      <p class="tch-order-card__price mb-0">{{separator(product.price)}}đ</p>
                     </div>
+                      </div>
                   </div>
 
 <!--thanh toán -->
-                  <div class="tch-checkout-box tch-checkout-box--list-total tch-checkout-border " style="padding: 14px 0 30px ">
+                  <div
+                      class="tch-checkout-box tch-checkout-box--list-total tch-checkout-border " style="padding: 14px 0 30px ">
                     <div class="tch_checkout_cus_deli">
                       <h4 class="checkout_delivery_text">Tổng cộng</h4>
                     </div>
@@ -211,8 +224,8 @@
                       <div  class="tch-order-card__left " style="display: flex">
                         <p  class="tch-order-card__text mb-0">Thành tiền</p>
                       </div>
-                      <div  class="tch-order-card__right">
-                        <p  class="tch-order-card__price mb-0">{{get_totalprice(product_order_items)}}đ</p>
+                      <div  class="tch-order-card__right" >
+                        <p   class="tch-order-card__price mb-0">{{get_totalprice()}}đ</p>
                       </div>
                     </div>
 
@@ -233,7 +246,7 @@
               <div class=" tch-checkout-box--list-submited position-static " style="display: flex;justify-content: space-between">
                 <div >
                   <p  class="tch-order-card__text text-white mb-0">Thành tiền</p>
-                  <p  class="tch-order-card__text text-white mb-0" style="font-weight: 600">{{get_totalprice(product_order_items)}}đ</p>
+                  <p  class="tch-order-card__text text-white mb-0" style="font-weight: 600">{{get_totalprice()}}đ</p>
                 </div> <button data-v-ccef1d60="" type="button" class="btn btn--white text-orange btn--radius-100">
                 Đặt hàng
               </button>
@@ -252,55 +265,83 @@ export default {
   name: "checkOut",
   data () {
     return {
-      card:[],
-      product_order_items: [
+      orders:[
         {
-          id : 1,
-          quality: 1,
-          name: "Cloud Tes's more Choco MasrchMallow",
-          size: 'Vừa',
-          price: "69000",
+          product_items: [
+            {
+              image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
+              name: "CloudTea Very Berry Mochi",
+              description: "CloudTea Very Berry Mochi với với mochi Phúc Bồn Tử cùng lớp foam cheese beo béo, vụn bánh quy phô mai giòn tan. Đặc biệt, trà sữa Lài thơm ngát hoà quyện cùng dâu tây ngọt ngào *Lưu ý: - Mochi có thể bị chìm do ảnh hưởng trong quá trình vận chuyển. - SẢN PHẨM KHÔNG ÁP DỤNG ĐỂ ĐÁ RIÊNG HOẶC KHÔNG ĐÁ",
+              price: "69000",
+            }
+          ],
+          size:"Vừa",
+          count:1,
+          topping_items: [{
+            id: "1",
+            name: "Kem Phô Mai Macchiato",
+            price: "10000",
+            count: 0,
+          }, {
+            id: "2",
+            name: "Shot Espresso",
+            price: "10000",
+            count: 0,
+          },
+            {
+              id: "3",
+              name: "Trân châu trắng",
+              price: "10000",
+              count: 0,
+            },
+          ],
+
         },
         {
-          id :2,
-          quality: 2,
-          name: "Trà sen vàng",
-          size: 'Vừa',
-          price: "59000",
-        },
-        {
-          id: 3,
-          quality: 4,
-          name: "Cloud Tes's more Chocochoco",
-          size: 'Nhỏ',
-          price: "49000",
+          product_items: [
+            {
+              image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
+              name: "CloudTea Very Berry Mochi",
+              description: "CloudTea Very Berry Mochi với với mochi Phúc Bồn Tử cùng lớp foam cheese beo béo, vụn bánh quy phô mai giòn tan. Đặc biệt, trà sữa Lài thơm ngát hoà quyện cùng dâu tây ngọt ngào *Lưu ý: - Mochi có thể bị chìm do ảnh hưởng trong quá trình vận chuyển. - SẢN PHẨM KHÔNG ÁP DỤNG ĐỂ ĐÁ RIÊNG HOẶC KHÔNG ĐÁ",
+              price: "69000",
+            }
+          ],
+          size:"Lớn",
+          count:2,
+          topping_items: [{
+            id: "1",
+            name: "Kem Phô Mai Macchiato",
+            price: "10000",
+            count: 0,
+          }, {
+            id: "2",
+            name: "Shot Espresso",
+            price: "10000",
+            count: 0,
+          },
+          ],
         },
       ],
     }
   },
-  created() {
-    this.card.push({
-      name: this.product_order_items[0].name,
-      size: this.product_order_items[0].size,
-      quality: this.product_order_items[0].quality,
-    })
-  },
+
   methods:{
-    removeProductFromCard(product){
-      if(product.quality === 0){
-        this.card.splice(this.card.indexOf(product),1)
-      }
-    },
+
     separator(numb) {
       var str = numb.toString().split(".");
       str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       return str.join(".");
     },
-    get_totalprice(item) {
+
+    get_totalprice() {
       let price = 0;
-      for(let i = 0 ; i < item.length ; i++){
-        price += parseInt(item[i].price)* item[i].quality
-      }
+
+      this.orders.forEach((order) => {
+        order.product_items.forEach((product) => {
+            price += parseInt(product.price)*order.count;
+        });
+      });
+
       return this.separator(price);
     }
   },
@@ -309,7 +350,9 @@ export default {
 </script>
 
 <style scoped>
-
+.fix_font{
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
 .fill-weight {
   /* width: auto !important; */
   min-width: 100%;
