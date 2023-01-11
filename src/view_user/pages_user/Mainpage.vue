@@ -579,7 +579,6 @@
       </div>
     </section>
 
-<!--    <checkOut></checkOut>-->
 
   </v-container>
 </template>
@@ -599,6 +598,7 @@ export default {
     mainHeader: () => import("@/layouts/Header/mainHeader"),
     // Authentication_User: () => import("@/components/userComponents/Authentication_User"),
     // checkOut: () => import("@/view_user/pages_user/checkOut"),
+    // Card_User: () => import("@/components/userComponents/Card_User"),
     // menuMenu: () => import('@/components/userComponents/menuMenu'),
     // menuMenuOthers: () => import('@/components/userComponents/menuOthers'),
     // productInStore:() => import("@/components/productInterface/productInStore"),
@@ -637,7 +637,7 @@ export default {
               "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_e0737a64b29e452f9c7eadb23300821a_large.jpg",
           name: "The Coffee House Sữa Đá",
           description: "Oishii2",
-          price: "19892",
+          price: "39000",
         },
         {
           id: 3,
