@@ -24,7 +24,7 @@
 
         <v-col cols="12" sm="12" md="8" lg="9" style="margin: 24px 0">
             <v-row class="menu_bar">
-                <v-col cols="12" sm="12" md="6" lg="4" v-for="item in items" :key="item.name">
+                <v-col cols="12" sm="12" md="6" lg="4" v-for="item in items" :key="item.name" @click="handleProduct(item.id, item.name)">
                     <!-- <v-card class="mx-auto" max-width="344" color="transparent">
           <v-card-actions>
             <BtnNew>
@@ -168,8 +168,8 @@ export default {
             return 0
         },
         getNameByIDCatgory(id) {
-            if(id == 0)
-              return "menu"
+            if (id == 0)
+                return "menu"
             for (let index in this.categories) {
                 const category = this.categories[index]
                 if (category.id == id) {
@@ -178,9 +178,9 @@ export default {
             }
             return 0
         },
-        getIDByPath(path){
-          console.log("input path: ", path)
-          for (let index in this.categories) {
+        getIDByPath(path) {
+            console.log("input path: ", path)
+            for (let index in this.categories) {
                 const category = this.categories[index]
                 console.log(this.removeVietnameseTones(category.name).replaceAll(' ', '-').toLowerCase())
                 if (this.removeVietnameseTones(category.name).replaceAll(' ', '-').toLowerCase() == path) {
@@ -326,9 +326,26 @@ export default {
         },
 
         handlePath() {
-          this.categoryType = this.getIDByPath(this.currentPath.replace("/collections/", ""))
+            this.categoryType = this.getIDByPath(this.currentPath.replace("/collections/", ""))
+        },
+        handleProduct(product_id, product_name) {
+            this.product_id = product_id;
+            this.product_name = product_name;
+            console.log(this.product_name_convert),
+                this.$router.push({
+                    path: `/${this.product_id}`,
+                    name: "item",
+                    params: {
+                        product_id: `${this.product_id}`,
+                        product_name_convert: `${this.product_name_convert_computed}`
+                    },
+                });
+        },
+    },
+    computed: {
+        product_name_convert_computed() {
+            return this.removeVietnameseTones(this.product_name).replaceAll(' ', '-').toLowerCase()
         }
-
     },
     watch: {
         selection(newValue) {
@@ -367,22 +384,25 @@ export default {
             this.$router.push({
                 path: `/${this.categoryName}`,
                 name: "menuMenu",
-                params: {category_name: `${this.categoryName}`, category_id: `${this.categoryType}` }
+                params: {
+                    category_name: `${this.categoryName}`,
+                    category_id: `${this.categoryType}`
+                }
             })
         },
 
-        '$route.params' (to, from) {
-        console.log("To: ",to)
-        console.log("From: ", from)
-        this.categoryType = this.getIDByPath(to.category_name)
-      }
+        '$route.params'(to, from) {
+            console.log("To: ", to)
+            console.log("From: ", from)
+            this.categoryType = this.getIDByPath(to.category_name)
+        }
     },
     created() {
         this.getItems();
         console.log("Categories:");
         this.getCategories();
         console.log("path:", this.currentPath)
-        console.log("Category Type: ",this.categoryType)
+        console.log("Category Type: ", this.categoryType)
     },
     components: {
         Item_User: () => import("@/components/Item_User"),
