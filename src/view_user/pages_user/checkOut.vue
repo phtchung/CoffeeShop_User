@@ -203,8 +203,8 @@
                            v-for="topping in order.topping_items"
                            :key="topping.id"
                         >
-                        <p v-if= "topping.count != 0">
-                          {{topping.name}}, x {{topping.count}}
+                        <p v-if= "topping.count != 0" style="margin: 0">
+                          {{topping.name}}, x {{topping.name}}
                           </p>
                         </div> <!---->
                         <p class="tch-order-delete-item"  >Xóa</p>
