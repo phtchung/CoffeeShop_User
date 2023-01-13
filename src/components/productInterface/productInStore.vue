@@ -6,7 +6,7 @@
             <v-col cols="12" xs="12" md="6" lg="6" sm="12">
               <div class="product_carousel">
                 <div class="product_image">
-                  <img :src = product_details[0].imageURL alt="">
+                  <img :src = Detail.imageURL alt="">
                 </div>
                 <div class="thumb_carousel">
                   <div class="thumb">
@@ -19,10 +19,10 @@
             <div>
               <div class="inforr_product">
                 <div>
-                  <p class="infor_pro__title">{{ product_details[0].name}}</p>
+                  <p class="infor_pro__title">{{Detail.name }}</p>
                 </div>
                 <div class="infor_pro_price">
-                  <span class="price">{{get_total_price()}} đ</span>
+                  <span class="price">{{get_total_price(Detail.price)}} đ</span>
                 </div>
               </div>
 
@@ -94,7 +94,7 @@
                 <hr>
                 <div>
                   <h4 class="product_des_title">Mô tả sản phẩm</h4>
-                  <p class="des_detail"> {{product_details[0].description}}</p>
+                  <p class="des_detail"> {{Detail.description}}</p>
                 </div>
                 <hr>
               </v-col>
@@ -131,6 +131,8 @@
 </template>
 
 <script>
+// import { mapState } from "vuex";
+
 export default {
   name: "productInStore",
   data () {
@@ -222,6 +224,11 @@ export default {
     ),
     this.getItems();
   },
+  computed:{
+    Detail () {
+      return this.$store.state.product_detail
+    },
+  },
 
   watch: {
     product_id() {
@@ -231,7 +238,6 @@ export default {
   },
 
   methods: {
-
     getItems() {
       this.product_id = this.$route.params.product_id;
     },
@@ -240,8 +246,8 @@ export default {
       str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       return str.join(".");
     },
-    get_total_price(){
-      let total_price  =  parseInt(this.product_details[0].price) + ( 10000 * this.checked_topping.length);
+    get_total_price(price){
+      let total_price  =  parseInt(price) + ( 10000 * this.checked_topping.length);
       if(this.big === true && this.small === false && this.medium === false){
         total_price += 10000 ;
       }else if(this.big === false && this.small === false && this.medium === true){
