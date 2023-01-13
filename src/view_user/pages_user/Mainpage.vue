@@ -6,7 +6,7 @@
 
   >
     <mainHeader > </mainHeader>
-
+<!-- thanh tự động chuyển ở mainpage -->
     <div>
       <template>
         <v-carousel cycle hide-delimiter-background show-arrows>
@@ -78,13 +78,14 @@
                 style="padding: 0; margin: 12px 0"
                 v-for="item in items.slice(0, 2)"
                 :key="item.id"
-                @click="handleProduct(item.id, item.name)"
+                @click="handleProduct(item.id, item.name,item.price,item.description,item.image_url)"
             >
               <Item_User
                 :image_url="item.image_url"
                 :name="item.name"
                 :description="item.description"
-                :price="item.price"
+                :price=separator(item.price)
+
               />
             </v-col>
           </v-row>
@@ -98,13 +99,13 @@
             style="padding: 0; margin: 36px 0 36px"
             v-for="item in items.slice(2)"
             :key="item.id"
-            @click="handleProduct(item.id, item.name)"
+            @click="handleProduct(item.id, item.name,item.price,item.description,item.image_url)"
         >
           <Item_User
             :image_url="item.image_url"
             :name="item.name"
             :description="item.description"
-            :price="item.price"
+            :price="separator(item.price)"
           />
         </v-col>
       </v-row>
@@ -585,15 +586,11 @@
 <script>
 
 
-// const $ = document.querySelector.bind(document);
-// const header = $('#my')
-
-// const header = document.getElementById('my')
-// console.log(header)
 export default {
   name: "Mainpage",
 
   components: {
+
     Item_User: () => import("@/components/Item_User"),
     mainHeader: () => import("@/layouts/Header/mainHeader"),
     // Authentication_User: () => import("@/components/userComponents/Authentication_User"),
@@ -608,6 +605,9 @@ export default {
       menuType: "The Coffee House",
       product_id: "-1",
       product_name: "",
+      product_img_url:"",
+      product_price:"",
+      product_description:"",
       activeHeader:false,
       dialog:0,
 
@@ -687,16 +687,35 @@ export default {
   },
 
   methods: {
-    handleProduct(product_id, product_name) {
+    handleProduct(product_id, product_name,product_price,product_description,product_url) {
       this.product_id = product_id;
       this.product_name = product_name;
-      console.log(this.product_name_convert),
+      this.product_price = product_price;
+      this.product_description = product_description;
+      this.product_img_url = product_url;
+
+      console.log(this.product_id,this.product_name,this.product_price,this.product_description,this.product_img_url)
+      var product_data ={
+        imageURL : this.product_img_url,
+        name :this.product_name,
+        description:this.product_description,
+        price:this.product_price,
+      }
+      this.$store.dispatch("product_Detail", product_data);
+
       this.$router.push({
         path: `/${this.product_id}`,
         name: "item",
         params: {product_id: `${this.product_id}`, product_name_convert: `${this.product_name_convert_computed}`},
       });
+
     },
+    separator(numb) {
+      var str = numb.toString().split(".");
+      str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return str.join(".");
+    },
+
     removeVietnameseTones(str) {
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
