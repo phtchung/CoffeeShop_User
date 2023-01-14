@@ -690,9 +690,9 @@ export default {
     handleProduct(product_id, product_name) {
       this.product_id = product_id;
       this.product_name = product_name;
-      console.log(this.product_name_convert),
+      // console.log(this.product_name_convert),
       this.$router.push({
-        path: `/${this.product_id}`,
+        path: `/${this.product_name_convert_computed}`,
         name: "item",
         params: {product_id: `${this.product_id}`, product_name_convert: `${this.product_name_convert_computed}`},
       });
