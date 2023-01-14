@@ -206,8 +206,19 @@ export default {
         }
     },
 
+    created() {
+        this.product_items[0].image_url = this.image_url
+        this.product_items[0].name = this.name
+        this.product_items[0].description = this.description
+        this.product_items[0].price = this.price
+    },
     methods: {
         handleChoseItem() {
+            this.product_items[0].image_url = this.image_url
+            this.product_items[0].name = this.name
+            this.product_items[0].description = this.description
+            this.product_items[0].price = this.price
+            console.log("name: ", this.product_items.name)
             // Parse any JSON previously stored in allEntries
             var order = JSON.parse(localStorage.getItem("order"));
             if (order == null) order = [];
@@ -217,25 +228,26 @@ export default {
                 count: this.count,
                 topping_items: this.topping_items
             };
+            console.log("entry: ", entry)
             localStorage.setItem("entry", JSON.stringify(entry));
             // Save allEntries back to local storage
             order.push(entry);
+            console.log("order: ", order)
             localStorage.setItem("order", JSON.stringify(order));
             window.dispatchEvent(new CustomEvent('order-localstorage-changed', {
                 detail: {
                     storage: localStorage.getItem('order')
                 }
             }));
-            this.dialog= false
+            this.dialog = false
             this.reset()
         },
-        reset(){
-          this.size= '';
-          this.count= 0;
-          for(let index in this.topping_items)
-          {
-            this.topping_items[index].count = 0
-          }
+        reset() {
+            this.size = '';
+            this.count = 0;
+            for (let index in this.topping_items) {
+                this.topping_items[index].count = 0
+            }
         },
         countProductsIncrea() {
             this.count += 1;

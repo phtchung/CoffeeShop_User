@@ -267,70 +267,14 @@ export default {
   name: "checkOut",
   data () {
     return {
-      orders: JSON.parse(localStorage.getItem("order"))
-      // orders:[
-      //   {
-      //     product_item: [
-      //       {
-      //         image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
-      //         name: "CloudTea Very Berry Mochi",
-      //         description: "CloudTea Very Berry Mochi với với mochi Phúc Bồn Tử cùng lớp foam cheese beo béo, vụn bánh quy phô mai giòn tan. Đặc biệt, trà sữa Lài thơm ngát hoà quyện cùng dâu tây ngọt ngào *Lưu ý: - Mochi có thể bị chìm do ảnh hưởng trong quá trình vận chuyển. - SẢN PHẨM KHÔNG ÁP DỤNG ĐỂ ĐÁ RIÊNG HOẶC KHÔNG ĐÁ",
-      //         price: "69000",
-      //       }
-      //     ],
-      //     size:"Vừa",
-      //     count:1,
-      //     topping_items: [{
-      //       id: "1",
-      //       name: "Kem Phô Mai Macchiato",
-      //       price: "10000",
-      //       count: 0,
-      //     }, {
-      //       id: "2",
-      //       name: "Shot Espresso",
-      //       price: "10000",
-      //       count: 0,
-      //     },
-      //       {
-      //         id: "3",
-      //         name: "Trân châu trắng",
-      //         price: "10000",
-      //         count: 0,
-      //       },
-      //     ],
-
-      //   },
-      //   {
-      //     product_item: [
-      //       {
-      //         image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
-      //         name: "CloudTea Very Berry Mochi",
-      //         description: "CloudTea Very Berry Mochi với với mochi Phúc Bồn Tử cùng lớp foam cheese beo béo, vụn bánh quy phô mai giòn tan. Đặc biệt, trà sữa Lài thơm ngát hoà quyện cùng dâu tây ngọt ngào *Lưu ý: - Mochi có thể bị chìm do ảnh hưởng trong quá trình vận chuyển. - SẢN PHẨM KHÔNG ÁP DỤNG ĐỂ ĐÁ RIÊNG HOẶC KHÔNG ĐÁ",
-      //         price: "69000",
-      //       }
-      //     ],
-      //     size:"Lớn",
-      //     count:2,
-      //     topping_items: [{
-      //       id: "1",
-      //       name: "Kem Phô Mai Macchiato",
-      //       price: "10000",
-      //       count: 0,
-      //     }, {
-      //       id: "2",
-      //       name: "Shot Espresso",
-      //       price: "10000",
-      //       count: 0,
-      //     },
-      //     ],
-      //   },
-      // ],
+      orders: []
+      
     }
   },
 
   created(){
     this.orders = JSON.parse(localStorage.getItem("order"))
-    console.log(this.orders)
+    console.log("order 2: ", this.orders)
   },
 
   methods:{
