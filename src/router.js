@@ -40,6 +40,11 @@ export default new Router({
                     component: () => import('@/view_user/pages_user/ThanhToan'),
                 },
                 {
+                    name: 'code',
+                    path: 'code=:product_id',
+                    component: () => import('@/view_user/pages_user/ProductCode'),
+                },
+                {
                     name: 'item',
                     path: 'item/:product_name_convert',
                     component: () => import('@/components/productInterface/productInStore'),
