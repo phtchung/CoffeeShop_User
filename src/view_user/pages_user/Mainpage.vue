@@ -636,7 +636,7 @@ export default {
           id: 1,
           image_url:
               "https://product.hstatic.net/1000075078/product/1639377770_cfsua-nong_016e05cb3a334141898e5677fec34784_large.jpg",
-          name: "Cà Phê Sữa Nóng",
+          name: "Cà Phê 1",
           description: "Oishii1",
           price: "34000",
         },
@@ -644,7 +644,7 @@ export default {
           id: 2,
           image_url:
               "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_e0737a64b29e452f9c7eadb23300821a_large.jpg",
-          name: "The Coffee House Sữa Đá",
+          name: "Cà Phê 2",
           description: "Oishii2",
           price: "39000",
         },
@@ -652,7 +652,7 @@ export default {
           id: 3,
           image_url:
               "https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_966117a7eb0e42d398937f44cc63aca9_large.png",
-          name: "Cà Phê Sữa Đá",
+          name: "Cloudtea1",
           description: "Oishii3",
           price: "19893",
         },
@@ -660,21 +660,21 @@ export default {
           id: 4,
           image_url:
               "https://product.hstatic.net/1000075078/product/1639377904_bac-siu_3df6607180474c2c81dfe213010be685_large.jpg",
-          name: "Bạc Sỉu",
+          name: "Cloudtea2",
           description: "Oishii4",
           price: "19894",
         },
         {
           id: 5,
           image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-          name: "Tra dao 5",
+          name: "Cloudtea3",
           description: "Oishii5",
           price: "19895",
         },
         {
           id: 6,
           image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-          name: "Tra dao 6",
+          name: "Cà phê Cao nguyên",
           description: "Oishii6",
           price: "19896",
         },
