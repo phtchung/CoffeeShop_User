@@ -22,6 +22,8 @@
                           flex-direction: column;
                           ">
 <!--            giao hàng -->
+<!--             nut chọn địa chỉ-->
+
             <div class="tch_checkbox_deli fix_position" >
               <div class="tch_checkout_cus_deli">
                 <h4 class="checkout_delivery_text">Giao hàng</h4>
@@ -33,15 +35,52 @@
               <div class="tch_delivery_img">
                 <img style="width: 40px" src="https://minio.thecoffeehouse.com/images/tch-web-order/Delivery2.png" alt="">
               </div>
-              <div class="tch_delivery_content">
-                <div>
-                  <h5 class="delivery_address mb-0" >Vincom MegaMall</h5>
-                  <p class="delivery_address_description mb-0">
-                    Vincom Mega Mall, 161 XL Hà Nội, Thảo Điền, Quận 2, Thành phố Hồ Chí Minh, Việt Nam
-                  </p>
-                </div>
+              <div class="tch_delivery_content" style="flex: 1">
+
+                <div justify="center" style="padding-left: 12px">
+                      <div  @click.stop="dialog = true">
+                        <h5 class="delivery_address mb-0" >182 Quang trung</h5>
+                        <p class="delivery_address_description mb-0">
+                         {{myInput}}
+                        </p>
+                      </div>
+
+                    <v-dialog
+                        v-model="dialog"
+                        width="376"
+                        style="z-index: 999;"
+                        content-class="my-custom-dialog"
+
+                    >
+                      <v-card class="fix_font" style="border-radius: 0.5rem">
+                        <div class="modal-header">
+                          <v-icon @click="dialog= false" small color="#262626">mdi-close-thick</v-icon>
+                          <h5 id="abc-title" class="modal-title">Giao hàng</h5>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form-group mb-0">
+                            <input type="text" v-model.lazy="myInput"  placeholder="Vui lòng nhập địa chỉ" class="form-control tch-delivery__input">
+                          </div>
+                        </div>
+
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+
+                          <v-btn
+                              color="green darken-1"
+                              text
+                              @click="dialog = false"
+                          >
+                            Xác nhận
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                  </div>
+
+
                 <span>
-                  <v-icon color="black" right x-large>mdi-chevron-right</v-icon>
+                  <v-icon color="black"  right x-large>mdi-chevron-right</v-icon>
                 </span>
               </div>
             </div>
@@ -267,7 +306,9 @@ export default {
   name: "checkOut",
   data () {
     return {
-      orders: JSON.parse(localStorage.getItem("order"))
+      orders: JSON.parse(localStorage.getItem("order")),
+      dialog:false,
+      myInput:"",
       // orders:[
       //   {
       //     product_item: [
@@ -358,6 +399,11 @@ export default {
 </script>
 
 <style scoped>
+/deep/.my-custom-dialog {
+  align-self: flex-start;
+  margin-top: 125px
+}
+
 .fix_font{
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
@@ -477,9 +523,12 @@ export default {
   }
   .tch-delivery__input{
     height: 2.75rem;
-    padding: 10px 12px;
+    padding: 10px 23px;
     background: #fafafa;
     border: 1px solid #ededed;
+    font-family: inherit;
+    font-size: 13.4px;
+    font-weight: 350;
   }
 
   .fix_position{
@@ -667,4 +716,31 @@ export default {
   /*  margin-top: 0;*/
   /*  margin-bottom: 1rem;*/
   /*}*/
+
+.modal-header{
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: calc(.3rem - 1px);
+  border-top-right-radius: calc(.3rem - 1px);
+}
+.icon{
+  color: black;
+  font-size: 0.8375rem;
+  line-height: 1.5rem;
+
+}
+.modal-title{
+  font-size: 0.8375rem;
+  line-height:1.5rem;
+  color: #262626;
+  margin: auto;
+  font-weight: 500;
+}
+
+.modal-body{
+  padding: 1rem;
+}
 </style>
