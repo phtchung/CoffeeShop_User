@@ -6,7 +6,7 @@
                 <v-col cols="12" xs="12" md="6" lg="6" sm="12">
                     <div class="product_carousel">
                         <div class="product_image">
-                            <img :src=product_details[0].imageURL alt="">
+                            <img :src=product.image_url alt="">
                         </div>
                         <div class="thumb_carousel">
                             <div class="thumb">
@@ -19,7 +19,7 @@
                     <div>
                         <div class="inforr_product">
                             <div>
-                                <p class="infor_pro__title">{{ product_details[0].name}}</p>
+                                <p class="infor_pro__title">{{ product.name}}</p>
                             </div>
                             <div class="infor_pro_price">
                                 <span class="price">{{get_total_price()}} đ</span>
@@ -91,7 +91,7 @@
                     <hr>
                     <div>
                         <h4 class="product_des_title">Mô tả sản phẩm</h4>
-                        <p class="des_detail"> {{product_details[0].description}}</p>
+                        <p class="des_detail"> {{product.description}}</p>
                     </div>
                     <hr>
                 </v-col>
@@ -103,7 +103,7 @@
                         <div class="menu__item_related">
                             <div class="menu__item_img">
                                 <a href="">
-                                    <img :src=product_relation.img_url alt="">
+                                    <img :src=product_relation.image_url alt="">
                                 </a>
                             </div>
                             <div class="menu__item_infor">
@@ -131,80 +131,83 @@ export default {
     data() {
         return {
             product_id: "-1",
-            product_name_covert: "",
+            product_name_convert: "",
             checked_topping: [],
             small: false,
             medium: false,
             big: false,
             checked_size: 0,
             items: [],
+            product: {},
+            topping_items: [],
+            product_relations: [],
             // product_details lay tu local storage
             // topping_items lay tu local storage
             // product_relation lay tu local storage
-            product_details: [{
-                    id: "1",
-                    imageURL: "https://product.hstatic.net/1000075078/product/choco-pp_c043519a9788468aaf8ca26fb4626216.jpg",
-                    name: "Cloud Tes's more Choco MasrchMallow",
-                    description: "Thức uống mang hương vị của nhãn, của sen, của trà Oolong đầy thanh mát cho tất cả các thành viên trong dịp Tết này. An lành, thư thái và đậm đà chính là những gì The Coffee House mong muốn gửi trao đến bạn và gia đình.",
-                    price: "69000",
-                },
+            // product_details: [{
+            //         id: "1",
+            //         image_url: "https://product.hstatic.net/1000075078/product/choco-pp_c043519a9788468aaf8ca26fb4626216.jpg",
+            //         name: "Cloud Tes's more Choco MasrchMallow",
+            //         description: "Thức uống mang hương vị của nhãn, của sen, của trà Oolong đầy thanh mát cho tất cả các thành viên trong dịp Tết này. An lành, thư thái và đậm đà chính là những gì The Coffee House mong muốn gửi trao đến bạn và gia đình.",
+            //         price: "69000",
+            //     },
 
-            ],
-            topping_items: [{
-                    id: 1,
-                    name: "Kem Phô Mai Macchiato",
-                    price: "10000",
-                    count: 0,
-                }, {
-                    id: 2,
-                    name: "Shot Espresso",
-                    price: "10000",
-                    count: 0,
-                },
-                {
-                    id: 3,
-                    name: "Trân châu trắng",
-                    price: "10000",
-                    count: 0,
-                },
-                {
-                    id: 4,
-                    name: "Sốt Caramel",
-                    price: "10000",
-                    count: 0,
-                },
-                {
-                    id: 5,
-                    name: "Thạch Cà Phê",
-                    price: "10000",
-                    count: 0,
-                },
-            ],
-            product_relations: [{
-                    id: 1,
-                    name: "CloudFee Caramel",
-                    price: "49000",
-                    img_url: "//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
-                },
-                {
-                    id: 2,
-                    name: "CloudFee Caramel",
-                    price: "49000",
-                    img_url: "//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
-                },
-                {
-                    id: 3,
-                    name: "CloudFee Caramel",
-                    price: "49000",
-                    img_url: "//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
-                },
-                {
-                    id: 4,
-                    name: "CloudFee Caramel",
-                    price: "49000",
-                    img_url: "//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
-                },
-            ],
+            // ],
+            // topping_items: [{
+            //         id: 1,
+            //         name: "Kem Phô Mai Macchiato",
+            //         price: "10000",
+            //         count: 0,
+            //     }, {
+            //         id: 2,
+            //         name: "Shot Espresso",
+            //         price: "10000",
+            //         count: 0,
+            //     },
+            //     {
+            //         id: 3,
+            //         name: "Trân châu trắng",
+            //         price: "10000",
+            //         count: 0,
+            //     },
+            //     {
+            //         id: 4,
+            //         name: "Sốt Caramel",
+            //         price: "10000",
+            //         count: 0,
+            //     },
+            //     {
+            //         id: 5,
+            //         name: "Thạch Cà Phê",
+            //         price: "10000",
+            //         count: 0,
+            //     },
+            // ],
+            // product_relations: [{
+            //         id: 1,
+            //         name: "CloudFee Caramel",
+            //         price: "49000",
+            //         image_url: "//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
+            //     },
+            //     {
+            //         id: 2,
+            //         name: "CloudFee Caramel",
+            //         price: "49000",
+            //         image_url: "//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
+            //     },
+            //     {
+            //         id: 3,
+            //         name: "CloudFee Caramel",
+            //         price: "49000",
+            //         image_url: "//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
+            //     },
+            //     {
+            //         id: 4,
+            //         name: "CloudFee Caramel",
+            //         price: "49000",
+            //         image_url: "//product.hstatic.net/1000075078/product/1653291164_da-tuyet-dao_364fd84dc42c4f11966a0f16604b96c3_large.jpg",
+            //     },
+            // ],
         }
     },
     created() {
@@ -214,7 +217,7 @@ export default {
                 (toParams, previousParams) => {
                     console.log("before:", toParams);
                     console.log("after:", previousParams);
-                    this.product_name_covert = this.$route.params.product_name_covert;
+                    this.product_name_convert = this.$route.params.product_name_convert;
                     // react to route changes...
                 }
             ),
@@ -231,9 +234,11 @@ export default {
     methods: {
         goToCode() {
             let route = this.$router.resolve({
-                path: "/code=" + this.product_details[0].product_id,
+                path: "/code=" + this.product.id,
                 name: "code",
-                params: {product_id: `${this.product_details[0].id}`},
+                params: {
+                    product_id: `${this.product.id}`
+                },
             });
             window.open(route.href);
         },
@@ -280,8 +285,16 @@ export default {
                     // console.log(response);
                     // console.log("END\n");
                     this.items = response.data.products;
-                    // console.log("ITEMS in function:")
-                    // console.log(this.items)
+                    console.log("this items: ",this.items)
+                    console.log("produduct name convert: ", this.product_name_convert)
+                    this.product_id = this.getIDByPath(this.product_name_convert)
+                    console.log("product_id: ", this.product_id)
+                    // call api get product_details
+                    // call api get topping_items
+                    // call api get product_relations
+                    this.getProductByID()
+                    // luu vao local storage
+                    // this.singleItem = 
                 })
                 .catch((error) => {
                     console.log(error.response);
@@ -291,14 +304,35 @@ export default {
 
         getItemByID() {
             console.log(this.$route.params)
-            this.product_name_covert = this.$route.params.product_name_covert
+            this.product_name_convert = this.$route.params.product_name_convert
             this.getItems()
-            this.product_id = this.getIDByPath(this.product_name_covert)
-            // call api get product_details
-            // call api get topping_items
-            // call api get product_relations
-            // luu vao local storage
-            // this.singleItem = 
+        },
+        getProductByID() {
+            axios
+                .post("http://127.0.0.1:8000/api/admin/product/getProductInfo", {
+                    product_id: this.product_id
+                })
+                .then((response) => {
+                    console.log("START res product\n");
+                    console.log(response);
+                    console.log("END\n");
+                    this.product = response.data.product;
+                    this.product.id = this.product_id
+                    this.topping_items = response.data.toppings
+                    this.product_relations = response.data.same
+                    for(let index in this.topping_items){
+                        let topping_item = this.topping_items[index]
+                        topping_item.count = 0
+                        // topping_item.id = index + 1
+                           
+                    }
+                    // console.log("ITEMS in function:")
+                    // console.log(this.items)
+                })
+                .catch((error) => {
+                    console.log("CAN NOT")
+                    console.log(error.response);
+                });
         },
         separator(numb) {
             var str = numb.toString().split(".");
@@ -306,7 +340,7 @@ export default {
             return str.join(".");
         },
         get_total_price() {
-            let total_price = parseInt(this.product_details[0].price) + (10000 * this.checked_topping.length);
+            let total_price = parseInt(this.product.price) + (10000 * this.checked_topping.length);
             if (this.big === true && this.small === false && this.medium === false) {
                 total_price += 10000;
             } else if (this.big === false && this.small === false && this.medium === true) {
