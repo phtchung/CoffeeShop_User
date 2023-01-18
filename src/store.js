@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+// import axios from "axios";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        authenticated:false,
         Sidebar_drawer: null,
         Customizer_drawer: false,
         SidebarColor: 'white',
         SidebarBg: '',
-        product_detail:[
-
-        ],
+        product_detail:[],
       },
 
     mutations: {
@@ -27,10 +27,16 @@ export default new Vuex.Store({
         SET_PRODUCT_DETAIL(state, value) {
             return state.product_detail = value
         },
+        SET_AUTH(state,auth){
+            return state.authenticated = auth
+        },
     },
     actions: {
         product_Detail({ commit }, value) {
            commit('SET_PRODUCT_DETAIL', value);
+        },
+        setAuth({commit}, auth){
+            commit('SET_AUTH',auth);
         },
     }
 })
