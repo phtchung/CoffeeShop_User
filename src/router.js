@@ -59,6 +59,7 @@ export default new Router({
                     path: 'collections/:category_name',
                     component: () => import('@/components/userComponents/menuMenu'),
                 },
+
                 
             ],
         },
