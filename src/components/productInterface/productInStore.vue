@@ -74,12 +74,20 @@
               </div>
 
               <div class="product_tocard">
-                <a href="" class="order__btn">
+                <router-link to="/test-vue" class="order__btn" target="_blank">
                   <div class="order__btn1">
                     <img src="https://file.hstatic.net/1000075078/file/vector_c337310f409d440f890b370ff9cefe44.png" alt="" style="">
+
                     <span class="order_name">Đặt giao tận nơi </span>
                   </div>
-                </a>
+                </router-link>
+<!--                <a href="/test-vue" class="order__btn" target="_blank">-->
+<!--                  <div class="order__btn1">-->
+<!--                    <img src="https://file.hstatic.net/1000075078/file/vector_c337310f409d440f890b370ff9cefe44.png" alt="" style="">-->
+
+<!--                    <span class="order_name">Đặt giao tận nơi </span>-->
+<!--                  </div>-->
+<!--                </a>-->
               </div>
             </div>
           </v-col>

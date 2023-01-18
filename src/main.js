@@ -7,8 +7,8 @@ import './plugins/base'
 
 const axios = require('axios')
 
-const EventBus = new Vue();
-export default EventBus;
+
+
 Vue.use(axios)
 Vue.config.productionTip = false
 
