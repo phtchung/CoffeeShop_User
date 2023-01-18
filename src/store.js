@@ -1,15 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+// import axios from "axios";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        authenticated:false,
         Sidebar_drawer: null,
         Customizer_drawer: false,
         SidebarColor: 'white',
-        SidebarBg: ''
+        SidebarBg: '',
+        product_detail:[],
       },
+
     mutations: {
         SET_SIDEBAR_DRAWER (state, payload) {
             state.Sidebar_drawer = payload
@@ -19,9 +23,20 @@ export default new Vuex.Store({
         },
         SET_SIDEBAR_COLOR (state, payload) {
             state.SidebarColor = payload
-        }, 
+        },
+        SET_PRODUCT_DETAIL(state, value) {
+            return state.product_detail = value
+        },
+        SET_AUTH(state,auth){
+            return state.authenticated = auth
+        },
     },
     actions: {
-
+        product_Detail({ commit }, value) {
+           commit('SET_PRODUCT_DETAIL', value);
+        },
+        setAuth({commit}, auth){
+            commit('SET_AUTH',auth);
+        },
     }
 })

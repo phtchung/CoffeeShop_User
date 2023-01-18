@@ -6,7 +6,7 @@
 
   >
     <mainHeader > </mainHeader>
-
+<!-- thanh tự động chuyển ở mainpage -->
     <div>
       <template>
         <v-carousel cycle hide-delimiter-background show-arrows>
@@ -54,7 +54,7 @@
               "
             >
               <img
-                  src="https://file.hstatic.net/1000075078/file/banner_app_59792ee4e6074b33aca7f140433e9292.jpg"
+                  src="https://file.hstatic.net/1000075078/file/highlight_cc022d45647d43e9bfbe1248b4573788.jpg"
                   alt=""
                   style="width: 100%; height: 100%"
               />
@@ -78,13 +78,14 @@
                 style="padding: 0; margin: 12px 0"
                 v-for="item in items.slice(0, 2)"
                 :key="item.id"
-                @click="handleProduct(item.id, item.name)"
+                @click="handleProduct(item.id, item.name,item.price,item.description,item.image_url)"
             >
               <Item_User
                 :image_url="item.image_url"
                 :name="item.name"
                 :description="item.description"
-                :price="item.price"
+                :price=separator(item.price)
+
               />
             </v-col>
           </v-row>
@@ -98,13 +99,16 @@
             style="padding: 0; margin: 36px 0 36px"
             v-for="item in items.slice(2)"
             :key="item.id"
-            @click="handleProduct(item.id, item.name)"
+            @click="handleProduct(item.id, item.name,item.price,item.description,item.image_url)"
+
         >
           <Item_User
             :image_url="item.image_url"
             :name="item.name"
             :description="item.description"
-            :price="item.price"
+            :price="separator(item.price)"
+
+
           />
         </v-col>
       </v-row>
@@ -292,7 +296,8 @@
             >
               <img
                   class="article_item_image"
-                  src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
+                  style="background-image:url(https://file.hstatic.net/1000075078/article/thecoffeehouse_caphe_7_db8def55acbf426ea725921529f6f01e_grande.jpg) "
+                  src="https://file.hstatic.net/1000075078/article/thecoffeehouse_caphe_7_db8def55acbf426ea725921529f6f01e_grande.jpg"
                   alt=""
                   title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
               />
@@ -580,20 +585,19 @@
     </section>
 
 
+
+
+
   </v-container>
 </template>
 <script>
 
 
-// const $ = document.querySelector.bind(document);
-// const header = $('#my')
-
-// const header = document.getElementById('my')
-// console.log(header)
 export default {
   name: "Mainpage",
 
   components: {
+
     Item_User: () => import("@/components/Item_User"),
     mainHeader: () => import("@/layouts/Header/mainHeader"),
     // Authentication_User: () => import("@/components/userComponents/Authentication_User"),
@@ -608,12 +612,17 @@ export default {
       menuType: "The Coffee House",
       product_id: "-1",
       product_name: "",
+      product_img_url:"",
+      product_price:"",
+      product_description:"",
       activeHeader:false,
       dialog:0,
 
       urls_header: [
-        "https://file.hstatic.net/1000075078/file/hiteaday_desktop_564c8568fc48441badd3a492cdd127d9.jpg",
-        "https://file.hstatic.net/1000075078/file/daitiec_desktop_2cd63f8cf8454da3ade2c990b9415c8b.jpg",
+        "https://file.hstatic.net/1000075078/file/thomngon_desktop_d33ff590c7f546ef8c00e15bdc7dcf5e.jpg",
+        "https://file.hstatic.net/1000075078/file/freeship_desktop_a796df9c403e45779c0c81f00d3a4c0f.jpg",
+          "https://file.hstatic.net/1000075078/file/keothom_desktop_c1c834943d864cd29e78a4ef30d05cf9.jpg",
+          "https://file.hstatic.net/1000075078/file/keothom3570_desktop_302b15f5f95a4e9ea455953e7385edca.jpg",
       ],
       urls: [
         "https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg",
@@ -697,6 +706,12 @@ export default {
         params: {product_id: `${this.product_id}`, product_name_convert: `${this.product_name_convert_computed}`},
       });
     },
+    separator(numb) {
+      var str = numb.toString().split(".");
+      str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return str.join(".");
+    },
+
     removeVietnameseTones(str) {
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
