@@ -73,7 +73,7 @@
                     alt=""
                   />
                   <h5
-                    style="deliver-giaohang; font-weight: 600; font-size: 13.4px; color: #fff; line-height: 22px;   font-family: -apple-system, system-ui, BlinkMacSystemFont; margin-left: 1rem; margin-bottom: 0rem;"
+                    style=" font-weight: 600; font-size: 13.4px; color: #fff; line-height: 22px;   font-family: -apple-system, system-ui, BlinkMacSystemFont; margin-left: 1rem; margin-bottom: 0rem;"
                   >
                     Giao hàng
                   </h5>
@@ -211,7 +211,7 @@
             <ul style="margin-top: 15px; margin-bottom: 15px;">
               <!---->
               <!---->
-              <div>
+              <div >
                 <li class="header-option-authen-item">
                   <img src="https://order.thecoffeehouse.com/_nuxt/img/user.db835c0.svg" alt="" />
                   <a href="/user/user-info" class="show-more"
@@ -242,10 +242,34 @@
                     alt=""
                   />
                   <a href="#" class="show-more">
-                  <span class = "text-authen">Thoát</span>
+                  <span @click="logout" class = "text-authen">Thoát</span>
                   </a>
                 </li>
               </div>
+<!--              <div >-->
+<!--                <li class="header-option-authen-item">-->
+<!--                  <img src="https://order.thecoffeehouse.com/icon/history-order.svg" alt="" />-->
+<!--                  <a href="/user/lich-su" class="show-more">-->
+<!--                    <span class= "text-authen">Tra cứu đơn hàng </span>-->
+<!--                    &lt;!&ndash; <ul style="margin-left: 20px; display: none">-->
+<!--                      <a href="/user-info/orderHistory" class="show-more"-->
+<!--                        ><span class = "text-authen">Xem thêm...</span></a-->
+<!--                      >-->
+<!--                    </ul> &ndash;&gt;-->
+<!--                  </a>-->
+<!--                </li>-->
+
+<!--                <li class="header-option-authen-item">-->
+<!--                  <img-->
+<!--                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxOSAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTZINVYxOEgxN1YySDVWNEgzVjFDMyAwLjczNDc4NCAzLjEwNTM2IDAuNDgwNDMgMy4yOTI4OSAwLjI5Mjg5M0MzLjQ4MDQzIDAuMTA1MzU3IDMuNzM0NzggMCA0IDBIMThDMTguMjY1MiAwIDE4LjUxOTYgMC4xMDUzNTcgMTguNzA3MSAwLjI5Mjg5M0MxOC44OTQ2IDAuNDgwNDMgMTkgMC43MzQ3ODQgMTkgMVYxOUMxOSAxOS4yNjUyIDE4Ljg5NDYgMTkuNTE5NiAxOC43MDcxIDE5LjcwNzFDMTguNTE5NiAxOS44OTQ2IDE4LjI2NTIgMjAgMTggMjBINEMzLjczNDc4IDIwIDMuNDgwNDMgMTkuODk0NiAzLjI5Mjg5IDE5LjcwNzFDMy4xMDUzNiAxOS41MTk2IDMgMTkuMjY1MiAzIDE5VjE2Wk01IDlIMTJWMTFINVYxNEwwIDEwTDUgNlY5WiIgZmlsbD0iI0M0QzRDNCIvPgo8L3N2Zz4K"-->
+<!--                      alt=""-->
+<!--                  />-->
+<!--                  <a href="#" class="show-more">-->
+<!--                    <span  class = "text-authen">Dăng nhập</span>-->
+<!--                  </a>-->
+<!--                </li>-->
+
+<!--              </div>-->
             </ul>
           </div>
         </div>
@@ -262,8 +286,10 @@ export default {
     return {
       itemCount: 0,
       displayClick: false,
+      auth:false,
     };
   },
+
   created(){
     console.log("local storage: ",JSON.parse(localStorage.getItem("order")))
     if(JSON.parse(localStorage.getItem("order")) == null){
@@ -274,6 +300,11 @@ export default {
       console.log(localStorage.getItem("order"))
     }
     console.log("item count: ", this.itemCount)
+  },
+  computed(){
+    this.auth = this.$store.state.authenticated
+    console.log('1')
+    console.log(this.auth)
   },
 
   // watch: {
@@ -286,11 +317,7 @@ export default {
     //   if (event.target == modal) {
     //     modal.style.display = "none";
     //   }
-    handleClick() {
-      this.displayClick = ! this.displayClick;
-      console.log(this.displayClick);
-      document.getElementById()
-    }
+
   },
   mounted() {
   window.addEventListener('order-localstorage-changed', (event) => {
