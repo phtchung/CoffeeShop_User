@@ -1,7 +1,7 @@
 <template>
 <div>
     <v-row justify="center">
-        <v-dialog v-model="dialog" open-on-click width="400px" height="100px">
+        <v-dialog v-model="dialog"  open-on-click width="400px" height="100px">
             <template v-slot:activator="{ on, attrs }">
                 <div style="width: 36px;height: 24px">
                     <v-icon color="#fa8c16" large style="cursor: pointer" @click="countProductsIncrea" class="fix_icon" v-bind="attrs" v-on="on">
@@ -74,17 +74,17 @@
                             </div>
                             <div class=" card-product-option-size-item" style="display: flex;justify-content: space-between;align-items: center">
                                 <div class=" custom-control card-product-option-item mb-0">
-                                    <input type="radio" name="size-product" id="Lớn" class="custom-control-input" value="L" @click="size = 'L'">
+                                    <input type="radio" name="size-product" id="Lớn" class="custom-control-input" value="L" @click.self="size = 'L'">
                                     <label for="Lớn" class="custom-control-label card-product-option-label  tch-custom-radio">
                                         <div class="card-product-option-value">
-                                            <span class="text card-product-option-size">Lớn</span>
+                                            <span class="text card-product-option-size">Lớn{{size}}</span>
                                             <span>+ 10.000đ</span>
                                         </div>
                                     </label>
                                 </div>
 
                                 <div class=" custom-control card-product-option-item mb-0">
-                                    <input type="radio" name="size-product" id="Vừa" class="custom-control-input" value="M" @click="size = 'M'">
+                                    <input type="radio" name="size-product" id="Vừa" class="custom-control-input" value="M" @click.self="size = 'M'">
                                     <label for="Vừa" class="custom-control-label card-product-option-label  tch-custom-radio">
                                         <div class="card-product-option-value">
                                             <span class="text card-product-option-size">Vừa</span>
@@ -94,7 +94,7 @@
                                 </div>
 
                                 <div class=" custom-control card-product-option-item mb-0">
-                                    <input type="radio" name="size-product" id="Nhỏ" class="custom-control-input" value="S" @click="size = 'S'">
+                                    <input type="radio" name="size-product" id="Nhỏ" class="custom-control-input" value="S" @click.self="size = 'S'">
                                     <label for="Nhỏ" class="custom-control-label card-product-option-label  tch-custom-radio">
                                         <div class="card-product-option-value">
                                             <span class="text card-product-option-size">Nhỏ</span>
