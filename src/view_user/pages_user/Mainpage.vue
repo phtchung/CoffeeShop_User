@@ -696,29 +696,15 @@ export default {
   },
 
   methods: {
-    handleProduct(product_id, product_name,product_price,product_description,product_url) {
+    handleProduct(product_id, product_name) {
       this.product_id = product_id;
       this.product_name = product_name;
-      this.product_price = product_price;
-      this.product_description = product_description;
-      this.product_img_url = product_url;
-
-      console.log(this.product_id,this.product_name,this.product_price,this.product_description,this.product_img_url)
-
-      var product_data ={
-        imageURL : this.product_img_url,
-        name :this.product_name,
-        description:this.product_description,
-        price:this.product_price,
-      }
-      this.$store.dispatch("product_Detail",product_data);
-
+      // console.log(this.product_name_convert),
       this.$router.push({
-        path: `/${this.product_id}`,
+        path: `/${this.product_name_convert_computed}`,
         name: "item",
         params: {product_id: `${this.product_id}`, product_name_convert: `${this.product_name_convert_computed}`},
       });
-
     },
     separator(numb) {
       var str = numb.toString().split(".");
