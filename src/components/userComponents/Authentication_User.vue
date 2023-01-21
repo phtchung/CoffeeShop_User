@@ -34,7 +34,7 @@
                   <img style="vertical-align: middle;margin-right: 4px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDI0LjM2NTdDMTguNjI3NCAyNC4zNjU3IDI0IDE4Ljk5MzEgMjQgMTIuMzY1N0MyNCA1LjczODMxIDE4LjYyNzQgMC4zNjU3MjMgMTIgMC4zNjU3MjNDNS4zNzI1OCAwLjM2NTcyMyAwIDUuNzM4MzEgMCAxMi4zNjU3QzAgMTguOTkzMSA1LjM3MjU4IDI0LjM2NTcgMTIgMjQuMzY1N1oiIGZpbGw9IiNGNTIyMkQiLz4KPHBhdGggZD0iTTEyLjAwMTYgMTUuMTY1OEwxNS45NjE2IDE3Ljk2NThMMTQuNDgxNiAxMy40MDU4TDE4LjQwMTYgMTAuNDQ1OEgxMy41MjE2TDEyLjAwMTYgNS45NjU4MkwxMC41MjE2IDEwLjQ0NThINS42MDE1Nkw5LjUyMTU2IDEzLjQwNThMOC4wNDE1NiAxNy45NjU4TDEyLjAwMTYgMTUuMTY1OFoiIGZpbGw9IiNGRkU2MkUiLz4KPC9zdmc+Cg==" alt="">
                   <span>+84</span>
                 </div>
-                <input type="text" class="phone-input" placeholder="Nhập số điện thoại" v-model="data.phonenumber">
+                <input type="text" class="phone-input" placeholder="Nhập số điện thoại" v-model="data.mobile_no">
               </div>
                 <v-btn type="submit" @click="otpActive = !otpActive;loginHidden = !loginHidden" width="100%" block depressed  color="#e87800" class="login_btn">Đăng nhập</v-btn>
               </form>
@@ -44,7 +44,7 @@
             <div :class="{ activeOtp : otpActive}" class="get-otp_content" style="background-color: white">
               <div class="welcome-login">Xác thực mã OTP</div>
               <div class="welcome-login" style="text-align: center">Một mã xác thực gồm 6 số đã được gửi đến số điện thoại
-              <span class="font-weight-bold" >{{data.phonenumber}}</span>
+              <span class="font-weight-bold" >{{data.mobile_no}}</span>
               </div>
               <div class="welcome-login">Nhập mã để tiếp tục</div>
               <!--                nhập otp-->
@@ -92,7 +92,7 @@
 import axios from "axios";
 // import router from "@/router";
 export default {
-  name: "Authentication_User",
+  name: "AuthenticationUser",
   setup(){
 
   },
@@ -103,9 +103,10 @@ export default {
       loginHidden:false,
       showError:false,
       data:{
-        phonenumber:'',
+        mobile_no:'',
         otp:'',
-      }
+      },
+      user: {}
     }
 
   },
@@ -146,8 +147,12 @@ export default {
 
 
     sendPhoneNumber() {
-      console.log(this.data.phonenumber)
-      axios.post("", this.data.phonenumber)
+      console.log("Gia tri truyen di: ",this.data.mobile_no)
+      axios.post("http://127.0.0.1:8000/api/user/auth/login", {
+        mobile_no: this.data.mobile_no
+      }).then((response) => {
+        console.log("Gia tri tra ve: ", response)
+      })
           .catch((error) => {
             console.log("ERR")
             console.log(error.response);
@@ -155,17 +160,26 @@ export default {
     },
     sendOTP(){
       axios
-          .post("",this.data)
+          .post("http://127.0.0.1:8000/api/user/auth/checkOTP",this.data)
           .then((response) => {
-              let id = response.data.id;
-              localStorage.setItem('id',id);
-              this.$router.push('/user/user-info')
-              this.$store.dispatch('setAuth',true);
+              // let id = response.data.id;
+              // Need to check
+              if(response.data.userInfo == null)
+              {
+                // Neef to do stthg else
+                alert("Khong thanh cong!")
+              }
+              else {
+                this.user = response.data.userInfo
+                localStorage.setItem('user',JSON.stringify(this.user));
+                this.$router.push('/userAcount')
+              }
+              // this.$store.dispatch('setAuth',true);
           })
           .catch((error) => {
             console.log("Start\n");
             console.log(error.response)
-            this.$store.dispatch('setAuth',false);
+            // this.$store.dispatch('setAuth',false);
           });
     }
   },
