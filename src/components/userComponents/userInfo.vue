@@ -150,23 +150,19 @@
 
       <div class="user-info-right">
         <div v-if="select === 1">
-          <div data-v-3a213b80="" class="processing">
-            <h1 data-v-3a213b80="" class="row user-information">
+          <div  class="processing">
+            <h1  class="row user-information" >
               Thông tin tài khoản
             </h1>
-            <form data-v-3a213b80="" class="form-user">
-              <div data-v-3a213b80="" class="form-group row">
+            <form  class="form-user">
+              <div  class="form-group row">
                 <div
-                  data-v-3a213b80=""
                   class="col-6 d-flex flex-column align-items-start name-input">
                   <label
-                    data-v-3a213b80=""
                     for="first-name"
                     class="form-control-label"
-                    >Tên khách hàng</label
-                  >
+                  >Tên khách hàng</label>
                   <input
-                    data-v-3a213b80=""
                     id="first-name"
                     name="name"
                     placeholder="Tên"
@@ -184,9 +180,7 @@
                   class="col-6 d-flex flex-column align-items-start name-input">
                   <label
                     for="last-name"
-                    class="form-control-label invisible"
-                    >.</label
-                  >
+                    class="form-control-label invisible">.</label>
                   <input
                     id="last-name"
                     name="number"
@@ -677,14 +671,12 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/880_v5Membership2star.png"
                           class="cover-image"
-                          alt=""
-                      />
+                          alt=""/>
                     </div>
                     <span>Cơ hội trải nghiệm &amp; hưởng đặc quyền đầu tiên</span>
                   </div>
@@ -694,8 +686,7 @@
                       d-flex
                       flex-column
                       justify-content-center
-                      align-items-center"
-                  >
+                      align-items-center">
                     <div  class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/881_v5Membership2store.png"
@@ -704,8 +695,7 @@
                       />
                     </div>
                     <span
-                    >Đặc quyền Đổi Ưu đãi bằng điểm BEAN tích lũy</span
-                    >
+                    >Đặc quyền Đổi Ưu đãi bằng điểm BEAN tích lũy</span>
                   </div>
                 </div>
               </div>
@@ -721,7 +711,6 @@
                 v-model="search"
                 placeholder="Tra cứu theo mã đơn hàng"
                 class="card-product-text"
-
               />
               <div style="background-color: #ededee">
               <v-icon  color="grey" dark style="font-weight: 900;cursor:pointer;margin: 9px 11px 12px">mdi-magnify</v-icon>
@@ -734,9 +723,7 @@
               <ul  class="card-history-list">
                 <li  class="card-history-item"
                   v-for="listOrder in filteredList"
-                     :key = listOrder.order_id
-
-                >
+                     :key = listOrder.order_id>
                   <div  class="card-history-head">
                     <span  class="card-history-type">Tại cửa hàng</span>
                     <span  class="card-history-status">Giao đơn hàng</span>
@@ -769,9 +756,11 @@
 </template>
 
 <script>
-
 export default {
   name: "userInfo",
+  components: {
+  },
+
   data() {
     return {
       select: 1,
