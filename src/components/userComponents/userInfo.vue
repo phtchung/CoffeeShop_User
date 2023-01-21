@@ -819,7 +819,17 @@ export default {
     };
   },
   created() {
-    this.handleChange();
+    if(localStorage.getItem('user') == null)
+    {
+      this.$route.push('#')
+    }
+    else {
+      this.handleChange();
+      // load userinfo from localStorage
+      // Can check dinh dang
+      this.userInfomation = JSON.parse(localStorage.getItem('user'))
+      // NEED get data order from BE
+    }
 
   },
 
