@@ -75,7 +75,7 @@
             />
           </div>
           <div  class="form-group row">
-            <label  for="#" style="display: flex"
+            <label  for="" style="display: flex"
             >Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label>
             <input
                 type="text"
@@ -134,7 +134,7 @@
                   name="gender-mapping"
                   id="2"
                   class="custom-control-input"
-                  :checked="userInfomation.sex = 'female'"/>
+                  :checked="userInfomation.sex === 'female'"/>
               <label
                   for="2"
                   class="
