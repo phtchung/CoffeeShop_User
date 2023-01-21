@@ -23,9 +23,8 @@
                 class="col-6 d-flex flex-column align-items-start name-input">
               <label
                   for="first-name"
-                  class="form-control-label"
-              >Tên khách hàng</label
-              >
+                  class="form-control-label">
+                Tên khách hàng</label>
               <input
                   id="first-name"
                   name="name"
@@ -34,7 +33,8 @@
                   required="required"
                   class="form-control"
                   style="margin-top: 10px"
-                  :value="userInfomation.firstName"/>
+                  v-model="userInfomation.firstName"
+              />
               <!-- <div data-v-3a213b80="" class="invalid-feedback">
                 Vui lòng nhập Tên
               </div> -->
@@ -52,7 +52,7 @@
                   required="required"
                   class="form-control"
                   style="margin-top: 10px"
-                  :value="userInfomation.lastName"
+                  v-model="userInfomation.lastName"
               />
               <!-- <div data-v-3a213b80="" class="invalid-feedback">
                 Vui lòng nhập Họ
@@ -71,17 +71,19 @@
                 type="text"
                 disabled="disabled"
                 class="form-control"
-                :value="userInfomation.phone"
+                v-model="userInfomation.phone"
             />
           </div>
           <div  class="form-group row">
-            <label  for="" style="display: flex"
-            >Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label>
+            <label  for="birthday" style="display: flex">
+              Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label>
             <input
                 type="text"
+                id="birthday"
                 class="form-control"
+                placeholder="DD-MM-YYYY"
                 disabled="disabled"
-                :value="userInfomation.birthday"
+                v-model="userInfomation.birthday"
             />
           </div>
           <div class="form-group row">
@@ -96,69 +98,49 @@
                 type="text"
                 disabled="disabled"
                 class="form-control"
-                :value="userInfomation.email"
+                v-model="userInfomation.email"
             />
           </div>
           <div class="d-flex justify-content-start">
-            <div class="
-                    custom-control
-                    card-product-option-item
-                    custom-radio
-                    mb-0
-                    cursor-pointer">
+            <div class="custom-control card-product-option-item custom-radio mb-0 cursor-pointer">
               <input
                   type="radio"
                   name="gender-mapping"
                   id="1"
                   class="custom-control-input"
-                  :checked="userInfomation.sex === 'male'"
+                  value="Nam"
+                  v-model="userInfomation.sex"
               />
-              <label for="1" class="
-                      custom-control-label
-                      card-product-option-label
-                      tch-custom-radio">
+              <label for="1" class=" custom-control-label card-product-option-label tch-custom-radio">
                 <div class="card-product-option-value">
-                      <span
-                          class="text card-product-option-size">Nam
-                      </span>
-                </div></label>
+                      <span class="text card-product-option-size">Nam</span>
+                </div>
+              </label>
             </div>
-            <div class="
-                    custom-control
-                    card-product-option-item
-                    custom-radio
-                    mb-0
-                    cursor-pointer">
+            <div class=" custom-control card-product-option-item custom-radio mb-0 cursor-pointer">
               <input
                   type="radio"
                   name="gender-mapping"
                   id="2"
                   class="custom-control-input"
-                  :checked="userInfomation.sex === 'female'"/>
-              <label
-                  for="2"
-                  class="
-                      custom-control-label
-                      card-product-option-label
-                      tch-custom-radio">
+                  value="Nữ"
+                  v-model="userInfomation.sex"
+              />
+              <label for="2" class=" custom-control-label card-product-option-label tch-custom-radio">
                 <div class="card-product-option-value">
-                      <span
-                          class="text card-product-option-size">Nữ
-                      </span>
-              </div></label>
+                      <span class="text card-product-option-size">Nữ</span>
+              </div>
+              </label>
             </div>
           </div>
           <div class="row d-flex justify-content-end">
             <button class="btn btn--orange btn-update" @click="handleUpdate">Cập nhật</button>
           </div>
         </form>
-
     </div>
-
   </div>
     </section>
   </div>
-
 </template>
 
 <script>
@@ -170,13 +152,13 @@ export default {
       // template can xet v-model
       userInfomation: {
         id: "",
-        score: "0",
-        lastName: "Phạm",
-        firstName: "Đức Huy",
-        phone: "0972521125",
-        birthday: "01/10/2001",
-        email: "duchuy01102001@gmail.com",
-        sex: "male",
+        score: "",
+        lastName: "",
+        firstName: "",
+        phone: "0987358921",
+        birthday: "",
+        email: "",
+        sex: "",
       },
     }
   },
@@ -201,14 +183,7 @@ export default {
 </script>
 
 <style scoped>
-/*.active{*/
-/*  border: none;*/
-/*  border-bottom: 3px solid #fa8c16;*/
-/*  color: #fa8c16;*/
-/*}*/
-.hidden{
-  display: none;
-}
+
 .body{
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
@@ -226,7 +201,7 @@ export default {
   background-color: white;
   flex-grow: 1;
   flex-shrink: 1;
-  flex-basis: 0%;
+  flex-basis: 0;
   border: none;
   width: 12.5rem;
   height: 100%;
