@@ -25,12 +25,13 @@ export default {
         menuType: String,
     },
 
+
     //  set up data base on menuType from backend
     // this data below is manually set up, neet to get from backend when have a api
     data() {
         return {
             category_id: -1,
-            items: JSON.parse(localStorage.getItem("items"))
+            items: []
         };
     },
 
@@ -61,7 +62,7 @@ export default {
                 }
             ),
             this.getItems();
-        this.items = JSON.parse(localStorage.getItem("items"))
+        // this.items = JSON.parse(localStorage.getItem("items"))
     },
     watch: {
         category_id() {

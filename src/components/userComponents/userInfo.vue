@@ -300,7 +300,7 @@
                 </div>
               </div>
               <div class="row d-flex justify-content-end">
-                <button class="btn btn--orange btn-update">Cập nhật</button>
+                <button class="btn btn--orange btn-update" @click="handUpdate">Cập nhật</button>
               </div>
             </form>
           </div>
@@ -819,7 +819,17 @@ export default {
     };
   },
   created() {
-    this.handleChange();
+    if(localStorage.getItem('user') == null)
+    {
+      this.$route.push('#')
+    }
+    else {
+      this.handleChange();
+      // load userinfo from localStorage
+      // Can check dinh dang
+      this.userInfomation = JSON.parse(localStorage.getItem('user'))
+      // NEED get data order from BE
+    }
 
   },
 
@@ -881,7 +891,11 @@ export default {
       {
         this.select = 4;
       }
-    }
+    },
+    handleUpdate(){
+      // luu vao localStorage
+      localStorage.setItem('user', this.userInfomation)
+      // send data to BE with post user/info/updateInfo
   }
 };
 </script>

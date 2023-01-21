@@ -149,7 +149,7 @@
             </div>
           </div>
           <div class="row d-flex justify-content-end">
-            <button class="btn btn--orange btn-update">Cập nhật</button>
+            <button class="btn btn--orange btn-update" @click="handleUpdate">Cập nhật</button>
           </div>
         </form>
 
@@ -166,6 +166,8 @@ export default {
   name: "accountUser",
   data() {
     return {
+      // Can kiem tra ten bien, yeu cau full truong
+      // template can xet v-model
       userInfomation: {
         id: "",
         score: "0",
@@ -176,6 +178,23 @@ export default {
         email: "duchuy01102001@gmail.com",
         sex: "male",
       },
+    }
+  },
+  created(){
+    if(localStorage.getItem('user') == null) {
+      alert("Ban chua dang nhap")
+    }
+    else {
+      // Can kiem tra cac ten bien
+      this.userInfomation = JSON.parse(localStorage.getItem('user'))
+    }
+  },
+
+  method: {
+    handleUpdate(){
+      // luu vao localStorage
+      localStorage.setItem('user', this.userInfomation)
+      // send data to BE
     }
   }
 }

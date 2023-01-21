@@ -40,6 +40,11 @@ export default new Router({
                     component: () => import('@/view_user/pages_user/ThanhToan'),
                 },
                 {
+                    name: 'userAcount',
+                    path: 'userAcount',
+                    component: () => import('@/components/userComponents/accountUser'),
+                },
+                {
                     name: 'code',
                     path: 'code=:product_id',
                     component: () => import('@/view_user/pages_user/ProductCode'),
