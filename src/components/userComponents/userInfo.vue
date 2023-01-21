@@ -300,7 +300,7 @@
                 </div>
               </div>
               <div class="row d-flex justify-content-end">
-                <button class="btn btn--orange btn-update">Cập nhật</button>
+                <button class="btn btn--orange btn-update" @click="handUpdate">Cập nhật</button>
               </div>
             </form>
           </div>
@@ -891,7 +891,11 @@ export default {
       {
         this.select = 4;
       }
-    }
+    },
+    handleUpdate(){
+      // luu vao localStorage
+      localStorage.setItem('user', this.userInfomation)
+      // send data to BE with post user/info/updateInfo
   }
 };
 </script>
