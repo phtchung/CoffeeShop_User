@@ -75,16 +75,13 @@
             />
           </div>
           <div  class="form-group row">
-            <label  for="birthday" style="display: flex">
+            <label  for="vueDatepicker" style="display: flex">
               Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label>
-            <input
-                type="text"
-                id="birthday"
-                class="form-control"
-                placeholder="DD-MM-YYYY"
-                disabled="disabled"
-                v-model="userInfomation.birthday"
-            />
+<!--            <input class="form-control" placeholder="DD-MM-YYYY" id="birthday"  type="datetime-local" v-model="userInfomation.birthday">-->
+            <span class="date">
+              <datepicker placeholder="DD-MM-YYYY"  id="vueDatepicker" v-model="userInfomation.birthday"  ></datepicker>
+            </span>
+
           </div>
           <div class="form-group row">
             <label
@@ -134,7 +131,7 @@
             </div>
           </div>
           <div class="row d-flex justify-content-end">
-            <button class="btn btn--orange btn-update" @click="handleUpdate">Cập nhật</button>
+            <button class="btn btn--orange btn-update" >Cập nhật</button>
           </div>
         </form>
     </div>
@@ -143,11 +140,16 @@
   </div>
 </template>
 
-<script>
+<script >
+import Datepicker from "vuejs-datepicker"
 export default {
   name: "accountUser",
+  components:{
+  Datepicker
+  },
   data() {
     return {
+      pickDate: '',
       // Can kiem tra ten bien, yeu cau full truong
       // template can xet v-model
       userInfomation: {
@@ -162,7 +164,9 @@ export default {
       },
     }
   },
+
   created(){
+
     if(localStorage.getItem('user') == null) {
       alert("Ban chua dang nhap")
     }
@@ -173,6 +177,9 @@ export default {
   },
 
   method: {
+    // dateSelected(){
+    //   window.externalJquery
+    // },
     handleUpdate(){
       // luu vao localStorage
       localStorage.setItem('user', this.userInfomation)
@@ -183,14 +190,42 @@ export default {
 </script>
 
 <style scoped>
+.date{
+  width: 100%;
+}
+.date >>> input{
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
+  border: 1px solid rgb(237, 237, 237);
+
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  margin-top: 10px;
+}
+.example{
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 0em 1em 1em;
+  margin-bottom: 2em;
+}
 .body{
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
-.card-product-note-icon {
-  cursor: pointer;
-  color: grey;
-}
+
 .card-product-note-icon {
   width: 18px;
   height: 20px;
