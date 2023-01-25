@@ -3,6 +3,7 @@
     class="container-lg container-fluid body"
     style="align-items: center; margin-top: 24px"
   >
+
     <div class="user-info-head">
       <img
         src="https://order.thecoffeehouse.com/_nuxt/img/user-icon-gold.5f2886d.svg"
@@ -11,6 +12,7 @@
       />
       <span class="user-info-text">Tài khoản của bạn</span>
     </div>
+
     <section class="user-info">
       <div class="user-info-left">
         <div
@@ -212,7 +214,7 @@
                 />
               </div>
               <div  class="form-group row">
-                <label data-v-3a213b80="" for="datepicker" style="display: flex"
+                <label  for="datepicker" style="display: flex"
                   >Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label
                 >
                 <input
@@ -227,8 +229,7 @@
                   for="email"
                   class="form-control-label"
                   style="display: flex"
-                  >Email</label
-                >
+                  >Email</label>
                 <input
                   id="email"
                   name="email"
@@ -239,8 +240,7 @@
                 />
               </div>
               <div class="d-flex justify-content-start">
-                <div
-                  class="
+                <div class="
                     custom-control
                     card-product-option-item
                     custom-radio
@@ -289,14 +289,13 @@
                       custom-control-label
                       card-product-option-label
                       tch-custom-radio
-                    "
-                    ><div class="card-product-option-value">
+                    ">
+                    <div class="card-product-option-value">
                       <span
                         class="text card-product-option-size"
                         >Nữ
                       </span>
-                    </div></label
-                  >
+                    </div></label>
                 </div>
               </div>
               <div class="row d-flex justify-content-end">
@@ -312,8 +311,7 @@
             <div style="overflow: auto">
               <div  class="card-cover"
                   v-for="(listAddress,index) in listAddresses"
-                    :key="index"
-              >
+                    :key="index">
                 <div  class="cover-card-address">
                   <div class="name">{{listAddress.user_name}}</div>
                   <div  class="full-address">
@@ -335,8 +333,7 @@
               <div
                 id="nav-tab"
                 role="tablist"
-                class="nav nav-tabs cursor-pointer"
-              >
+                class="nav nav-tabs cursor-pointer">
                 <a
                   data-toggle="tab"
                   role="tab"
@@ -344,14 +341,16 @@
                   :class="{active : active1}"
                   @click="active1 = true;active2 = false ; active3 = false;active4 = false ; active5 = false"
                   >Mới</a
-                ><a
+                >
+                <a
                   data-toggle="tab"
                   role="tab"
                   class="nav-item nav-link"
                   @click="active1 = false;active2 = true ; active3 = false;active4 = false ; active5 = false"
                   :class="{active : active2}"
-              >Đồng</a
-                ><a
+                >Đồng
+                </a>
+                <a
                   role="tab"
                   class="nav-item nav-link"
                   @click="active1 = false;active2 = false ; active3 = true;active4 = false ; active5 = false"
@@ -370,8 +369,7 @@
                   class="nav-item nav-link"
                   @click="active1 = false;active2 = false ; active3 = false;active4 = false ; active5 = true"
                   :class="{active : active5}"
-              >Kim Cương</a
-                >
+              >Kim Cương</a>
               </div>
             </nav>
             <div  id="nav-tabContent" class="tab-content">
@@ -388,17 +386,14 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div class="cover-image">
                       <img
                         src="https://minio.thecoffeehouse.com/image/tchmobileapp/878_v5Membership2coffeeCup.png"
-                        class="cover-image"
-                      />
+                        class="cover-image"/>
                     </div>
                     <span
-                      >Miễn phí upsize cho đơn đầu tiên</span
-                    >
+                      >Miễn phí upsize cho đơn đầu tiên</span>
                   </div>
                 </div>
               </div>
@@ -415,13 +410,11 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div class="cover-image">
                       <img
                         src="https://minio.thecoffeehouse.com/image/tchmobileapp/877_v5Membership2birthdayCake.png"
-                        class="cover-image"
-                      />
+                        class="cover-image"/>
                     </div>
                     <span >Tặng 01 phần bánh sinh nhật</span>
                   </div>
@@ -432,18 +425,15 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                         src="https://minio.thecoffeehouse.com/image/tchmobileapp/879_v5Membership2snack.png"
                         class="cover-image"
-                        alt=""
-                      />
+                        alt=""/>
                     </div>
                     <span
-                      >Miễn phí 01 phần Snack cho đơn hàng trên 100,000đ</span
-                    >
+                      >Miễn phí 01 phần Snack cho đơn hàng trên 100,000đ</span>
                   </div>
                   <div
                     class="
@@ -452,8 +442,7 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                         src="https://minio.thecoffeehouse.com/image/tchmobileapp/881_v5Membership2store.png"
@@ -480,13 +469,11 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/877_v5Membership2birthdayCake.png"
-                          class="cover-image"
-                      />
+                          class="cover-image"/>
                     </div>
                     <span >Tặng 01 phần bánh sinh nhật</span>
                   </div>
@@ -497,13 +484,11 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/882_v5Membership2voucher.png"
-                          class="cover-image"
-                      />
+                          class="cover-image"/>
                     </div>
                     <span >Ưu đãi Mua 2 tặng 1</span>
                   </div>
@@ -514,18 +499,15 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/881_v5Membership2store.png"
                           class="cover-image"
-                          alt=""
-                      />
+                          alt=""/>
                     </div>
                     <span
-                    >Đặc quyền Đổi Ưu đãi bằng điểm BEAN tích lũy</span
-                    >
+                    >Đặc quyền Đổi Ưu đãi bằng điểm BEAN tích lũy</span>
                   </div>
                 </div>
               </div>
@@ -555,8 +537,7 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/878_v5Membership2coffeeCup.png"
@@ -573,8 +554,7 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/881_v5Membership2store.png"
@@ -598,18 +578,15 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/876_v5Membership2bean.png"
                           class="cover-image"
-                          alt=""
-                      />
+                          alt=""/>
                     </div>
                     <span
-                    >Được nhân 1.5 BEAN tích lũy</span
-                    >
+                    >Được nhân 1.5 BEAN tích lũy</span>
                   </div>
                   <div
                       class="
@@ -618,8 +595,7 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/877_v5Membership2birthdayCake.png"
@@ -635,8 +611,7 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/878_v5Membership2coffeeCup.png"
@@ -653,8 +628,7 @@
                       flex-column
                       justify-content-center
                       align-items-center
-                    "
-                  >
+                    ">
                     <div  class="cover-image">
                       <img
                           src="https://minio.thecoffeehouse.com/image/tchmobileapp/882_v5Membership2voucher.png"
@@ -756,24 +730,26 @@
 </template>
 
 <script>
+// import accountUser from "@/components/userComponents/accountUser";
 export default {
   name: "userInfo",
   components: {
+
   },
 
   data() {
     return {
       select: 1,
-      active1:true,
-      active2:false,
-      active3:false,
-      active4:false,
-      active5:false,
+      active1: true,
+      active2: false,
+      active3: false,
+      active4: false,
+      active5: false,
       currentPath: this.$route.path,
-      search:'',
-      list:[],
-      bean:0,
-      rank:'',
+      search: '',
+      list: [],
+      bean: 0,
+      rank: '',
       userInfomation: {
         id: "",
         score: "0",
@@ -784,46 +760,44 @@ export default {
         email: "duchuy01102001@gmail.com",
         sex: "male",
       },
-      listOders:[
+      listOders: [
         {
-          order_id:"TCH20392818942022",
-          product_name:"TS CloudTea S’more Choco Marshmallow",
-          topping_name:"Chân trâu trắng",
-          total_price:"75000",
+          order_id: "TCH20392818942022",
+          product_name: "TS CloudTea S’more Choco Marshmallow",
+          topping_name: "Chân trâu trắng",
+          total_price: "75000",
         },
         {
-          order_id:"TCH23501809042022",
-          product_name:"TS CloudTea S’more HighTea Đào",
-          topping_name:"Caramel đen",
-          total_price:"56000",
+          order_id: "TCH23501809042022",
+          product_name: "TS CloudTea S’more HighTea Đào",
+          topping_name: "Caramel đen",
+          total_price: "56000",
         },
         {
-          order_id:"TCH23458202042022",
-          product_name:"Trà sen vàng thập cẩm chi lai",
-          topping_name:"Caramel vàng",
-          total_price:"66000",
+          order_id: "TCH23458202042022",
+          product_name: "Trà sen vàng thập cẩm chi lai",
+          topping_name: "Caramel vàng",
+          total_price: "66000",
         },
       ],
-      listAddresses:[
+      listAddresses: [
         {
-          user_name:"Thu Linh",
-          user_address:"Số 1 Cầu Long Biên, Kim Giang",
-          user_phone:"0912739235"
+          user_name: "Thu Linh",
+          user_address: "Số 1 Cầu Long Biên, Kim Giang",
+          user_phone: "0912739235"
         },
         {
-          user_name:"Thu Hằng",
-          user_address:"Số 100 Cầu Rồng, Thiên Mụ",
-          user_phone:"0987390173"
+          user_name: "Thu Hằng",
+          user_address: "Số 100 Cầu Rồng, Thiên Mụ",
+          user_phone: "0987390173"
         },
       ],
     };
   },
   created() {
-    if(localStorage.getItem('user') == null)
-    {
+    if (localStorage.getItem('user') == null) {
       this.$route.push('#')
-    }
-    else {
+    } else {
       this.handleChange();
       // load userinfo from localStorage
       // Can check dinh dang
@@ -844,9 +818,9 @@ export default {
 
   methods: {
 
-    checkBean(price){
+    checkBean(price) {
       let price_bean = parseInt(price);
-      return Math.round(Math.round(price_bean * 10)/100000) * 6
+      return Math.round(Math.round(price_bean * 10) / 100000) * 6
     },
     separator(numb) {
       var str = numb.toString().split(".");
@@ -856,48 +830,42 @@ export default {
     handleClick1() {
       this.select = 1;
       // this.$router.push({path:`/user-info`,name:'user', replace: true});
-      this.$router.push({path:`/user/user-info`});
+      this.$router.push({path: `/user/user-info`});
     },
     handleClick2() {
       this.select = 2;
       // this.$router.push({path:`/so-dia-chi`,name:'user', replace: true});
-      this.$router.push({path:`/user/so-dia-chi`});
+      this.$router.push({path: `/user/so-dia-chi`});
     },
     handleClick3() {
       this.select = 3;
       // this.$router.push({path:`/quyen-loi-thanh-vien`,name:'user', replace: true});
-      this.$router.push({path:`/user/quyen-loi-thanh-vien`});
+      this.$router.push({path: `/user/quyen-loi-thanh-vien`});
     },
     handleClick4() {
       this.select = 4;
       // this.$router.push({path:`/lich-su`,name:'user', replace: true});
-      this.$router.push({path:`/user/lich-su`});
+      this.$router.push({path: `/user/lich-su`});
     },
-    handleChange(){
-      if (this.currentPath === "/user/user-info") 
-      {
+    handleChange() {
+      if (this.currentPath === "/user/user-info") {
         this.select = 1;
         // console.log(this.select)
-      }
-      else if(this.currentPath === "/user/so-dia-chi")
-      {
+      } else if (this.currentPath === "/user/so-dia-chi") {
         this.select = 2;
-      }
-      else if(this.currentPath === "/user/quyen-loi-thanh-vien")
-      {
+      } else if (this.currentPath === "/user/quyen-loi-thanh-vien") {
         this.select = 3;
-      }
-      else if(this.currentPath === "/user/lich-su")
-      {
+      } else if (this.currentPath === "/user/lich-su") {
         this.select = 4;
       }
     },
-    handleUpdate(){
+    handleUpdate() {
       // luu vao localStorage
       localStorage.setItem('user', this.userInfomation)
       // send data to BE with post user/info/updateInfo
+    }
   }
-};
+}
 </script>
 
 
