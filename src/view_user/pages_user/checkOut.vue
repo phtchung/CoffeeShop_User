@@ -39,7 +39,7 @@
 
                 <div justify="center" style="padding-left: 12px">
                       <div  @click.stop="dialog = true">
-                        <h5 class="delivery_address mb-0" >182 Quang trung</h5>
+                        <h5 class="delivery_address mb-0" >Need to handle oldAddres</h5>
                         <p class="delivery_address_description mb-0">
                          {{myInput}}
                         </p>
@@ -103,12 +103,18 @@
               </div>
             </div>
 <!--            thẻ input tên-->
-            <div class="form-group fix_position" style="margin-left: 50px" >
-              <input type="text" id="name"  placeholder="Tên người nhận" class="form-control tch-delivery__input">
+            <div class="form-group fix_position" style="margin-left: 50px" v-if="logged==0">
+              <input type="text" id="name"  :placeholder="name" class="form-control tch-delivery__input">
+            </div>
+            <div class="form-group fix_position" style="margin-left: 50px" v-else>
+              <input type="text" id="name"  :value="name" class="form-control tch-delivery__input">
             </div>
 <!--            thẻ sdt -->
-            <div class="form-group fix_position" style="margin-left: 50px" >
-              <input type="text" id="phone_number"  placeholder="Số điện thoại" class="form-control tch-delivery__input">
+            <div class="form-group fix_position" style="margin-left: 50px" v-if="logged==0">
+              <input type="text" id="phone_number"  :placeholder="phone" class="form-control tch-delivery__input">
+            </div>
+            <div class="form-group fix_position" style="margin-left: 50px" v-else>
+              <input type="text" id="phone_number"  :value="phone" class="form-control tch-delivery__input">
             </div>
 <!--            hướng daanxc giao hàng-->
             <div class="form-group fix_position" style="margin-left: 50px" >
@@ -288,7 +294,7 @@
                 <div >
                   <p  class="tch-order-card__text text-white mb-0">Thành tiền</p>
                   <p  class="tch-order-card__text text-white mb-0" style="font-weight: 600">{{get_totalprice()}}đ</p>
-                </div> <button data-v-ccef1d60="" type="button" class="btn btn--white text-orange btn--radius-100">
+                </div> <button data-v-ccef1d60="" type="button" class="btn btn--white text-orange btn--radius-100" @click="handleDatHang">
                 Đặt hàng
               </button>
               </div>
@@ -306,6 +312,11 @@ export default {
   name: "checkOut",
   data () {
     return {
+      logged: 0,
+      user: {},
+      name: "",
+      phone: "",
+      oldAddress: " ",
       orders: [],
       dialog:false,
       myInput:"",
@@ -315,6 +326,19 @@ export default {
   created(){
     this.orders = JSON.parse(localStorage.getItem("order"))
     console.log("order 2: ", this.orders)
+    if (JSON.parse(localStorage.getItem("user")) == null) {
+            // this.user = localStorage.getItem("user")
+            this.logged = 0
+            this.name = "Tên người nhận"
+            this.phone = "Số điện thoại"
+            this.oldAddress = "Chưa có địa chỉ giao hàng"
+        } else {
+          this.logged = 1
+            this.user = JSON.parse(localStorage.getItem("user"))
+            this.name = this.user.lastName + " " + this.user.firstName
+            this.phone = this.user.phone
+            this.oldAddress = this.user.address
+        }
   },
 
   methods:{
@@ -335,6 +359,10 @@ export default {
       });
 
       return this.separator(price);
+    },
+
+    handleDatHang() {
+      // send this.orders ve BE
     }
   },
   userHeader: () => import("@/layouts/Header/userHeader"),

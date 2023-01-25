@@ -5,14 +5,14 @@
           transition="dialog-top-transition"
           max-width="26.25rem"
           content-class="my-custom-dialog"
-
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
+          <p
               color="primary"
               v-bind="attrs"
               v-on="on"
-          >Login</v-btn>
+              style="margin-left: 17px; width: 124.75px; margin-bottom: 0"
+          >Login</p>
         </template>
         <template >
           <div class="login_modal">
@@ -172,6 +172,7 @@ export default {
               else {
                 this.user = response.data.userInfo
                 localStorage.setItem('user',JSON.stringify(this.user));
+                localStorage.setItem('oldAddress', JSON.stringify(this.user.address))
                 this.$router.push('/userAcount')
               }
               // this.$store.dispatch('setAuth',true);
