@@ -897,7 +897,8 @@ export default {
       localStorage.setItem('user', this.userInfomation)
       // send data to BE with post user/info/updateInfo
   }
-};
+}
+}
 </script>
 
 
