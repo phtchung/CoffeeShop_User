@@ -48,8 +48,7 @@
                             <div class="div-deliver-text text-block" style="background-color: #fff;">
                                 <div class="address-detail">
                                     <p class="text-limit-1-line" style="margin-bottom: 0">
-                                        Tại: 30/24 Phan Đình Giót, Phường 2, Tân Bình, Thành phố Hồ
-                                        Chí Minh, Việt Nam
+                                        {{this.oldAddress}}
                                     </p>
                                     <button data-v-2659de6e="" type="button" class="btn border-0">
                                         <div data-v-2659de6e="">
@@ -115,10 +114,16 @@
                 <!-- nut click avatar khi click se hien ra danh muc chon -->
                 <a class="link-avatar" @click="displayClick = !displayClick">
                     <!---->
-                    <span>
-                        <img style="height: 50px; width: 50px" alt="" class="img-avatar" src="https://minio.thecoffeehouse.com/image/tchmobileapp/user_avt/default.png" /> </span></a>
+                    <span v-if="logged==1">
+                        <img style="height: 50px; width: 50px" alt="" class="img-avatar" src="https://minio.thecoffeehouse.com/image/tchmobileapp/user_avt/default.png" />
+                    </span>
+                    <span v-else>
+                        <img style="height: 50px; width: 50px" alt="" class="img-avatar" src="https://order.thecoffeehouse.com/_nuxt/img/Login.70dc3d8.png" />
+                    </span>
+                </a>
                 <!-- name -->
-                <span class="user-name" style="margin-right: 37px">Phạm</span>
+                <span class="user-name" style="margin-right: 37px" v-if="logged == 1">{{this.user.lastName}}</span>
+                <span style = "margin-right: 37px"></span>
                 <!-- icon thanh toan -->
                 <a href="thanh-toan" style="text-decoration: none">
                     <!---->
@@ -140,11 +145,11 @@
                 </a>
                 <!-- Cac danh muc chon khi an vao avatar -->
                 <div class="p-absolute" v-bind:class="{dBlockAvt: displayClick}">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMTUuMzg0NkwxNS4zODQ2IDBMMTYgMC42MTUzODRMMC42MTUzODQgMTZMMCAxNS4zODQ2WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTYuNjM5NzVlLTA2IDAuNjE1Mzk1TDE1LjM4NDYgMTZMMTYgMTUuMzg0NkwwLjYxNTM5MSAxLjAzNzQ2ZS0wNUw2LjYzOTc1ZS0wNiAwLjYxNTM5NVoiIGZpbGw9ImJsYWNrIi8+Cjwvc3ZnPgo=" class="icon-close-card-avt" />
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMTUuMzg0NkwxNS4zODQ2IDBMMTYgMC42MTUzODRMMC42MTUzODQgMTZMMCAxNS4zODQ2WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTYuNjM5NzVlLTA2IDAuNjE1Mzk1TDE1LjM4NDYgMTZMMTYgMTUuMzg0NkwwLjYxNTM5MSAxLjAzNzQ2ZS0wNUw2LjYzOTc1ZS0wNiAwLjYxNTM5NVoiIGZpbGw9ImJsYWNrIi8+Cjwvc3ZnPgo=" class="icon-close-card-avt" @click="displayClick = !displayClick"/>
                     <ul style="margin-top: 15px; margin-bottom: 15px;">
                         <!---->
                         <!---->
-                        <div>
+                        <div v-if="logged == 1">
                             <li class="header-option-authen-item">
                                 <img src="https://order.thecoffeehouse.com/_nuxt/img/user.db835c0.svg" alt="" />
                                 <a href="/user/user-info" class="show-more"><span class="text-authen">Thông tin tài khoản</span></a>
@@ -173,7 +178,20 @@
                                     <span @click="logout" class="text-authen">Thoát</span>
                                 </a>
                             </li>
-                            
+
+                        </div>
+                        <div v-else>
+                            <li class="header-option-authen-item">
+                                <img src="https://order.thecoffeehouse.com/icon/history-order.svg" alt="" />
+                                <a href="/user/user-info" class="show-more"><span class="text-authen">Tra cứu đơn hàng</span></a>
+                            </li>
+                            <hr />
+                            <li class="header-option-authen-item">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxOCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIgMTNINFYxOEgxNlYySDRWN0gyVjFDMiAwLjczNDc4NCAyLjEwNTM2IDAuNDgwNDMgMi4yOTI4OSAwLjI5Mjg5M0MyLjQ4MDQzIDAuMTA1MzU3IDIuNzM0NzggMCAzIDBIMTdDMTcuMjY1MiAwIDE3LjUxOTYgMC4xMDUzNTcgMTcuNzA3MSAwLjI5Mjg5M0MxNy44OTQ2IDAuNDgwNDMgMTggMC43MzQ3ODQgMTggMVYxOUMxOCAxOS4yNjUyIDE3Ljg5NDYgMTkuNTE5NiAxNy43MDcxIDE5LjcwNzFDMTcuNTE5NiAxOS44OTQ2IDE3LjI2NTIgMjAgMTcgMjBIM0MyLjczNDc4IDIwIDIuNDgwNDMgMTkuODk0NiAyLjI5Mjg5IDE5LjcwNzFDMi4xMDUzNiAxOS41MTk2IDIgMTkuMjY1MiAyIDE5VjEzWk04IDlWNkwxMyAxMEw4IDE0VjExSDBWOUg4WiIgZmlsbD0iI0M0QzRDNCIvPgo8L3N2Zz4K" alt="" />
+                                <!-- <a href="/user/so-dia-chi" class="show-more"><span class="text-authen">Đăng nhập</span></a> -->
+                                <AuthenticationUser style="margin-left: 17px"/>
+                            </li>
+                            <hr />
                         </div>
                         <!--              <div >-->
                         <!--                <li class="header-option-authen-item">-->
@@ -213,6 +231,9 @@ export default {
     name: "userHeader",
     data: () => {
         return {
+            oldAddress: "...",
+            logged: 0,
+            user: {},
             itemCount: 0,
             displayClick: false,
             auth: false,
@@ -227,6 +248,20 @@ export default {
             this.itemCount = JSON.parse(localStorage.getItem("order")).length
             console.log(localStorage.getItem("order"))
         }
+
+        if (JSON.parse(localStorage.getItem("user")) == null) {
+            this.logged = 0
+        } else {
+            this.user = JSON.parse(localStorage.getItem("user"))
+            this.logged = 1
+        }
+
+        if (JSON.parse(localStorage.getItem("oldAddress")) == null) {
+            this.oldAddress = "..."
+        } else {
+            this.oldAddress = JSON.parse(localStorage.getItem("oldAddres"))
+        }
+
         console.log("item count: ", this.itemCount)
     },
     computed() {
@@ -257,6 +292,9 @@ export default {
             console.log("item count in mounted: ", this.itemCount)
         });
     },
+    components: {
+    AuthenticationUser: () => import("@/components/userComponents/Authentication_User"),
+  },
 };
 </script>
 
