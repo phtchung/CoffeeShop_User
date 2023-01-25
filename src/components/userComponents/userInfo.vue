@@ -214,10 +214,11 @@
                 />
               </div>
               <div  class="form-group row">
-                <label  for="datepicker" style="display: flex"
+                <label  for="birthday" style="display: flex"
                   >Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label
                 >
                 <input
+                    id="birthday"
                   type="text"
                   class="form-control"
                   disabled="disabled"
@@ -866,6 +867,7 @@ export default {
     }
   }
 }
+
 </script>
 
 
