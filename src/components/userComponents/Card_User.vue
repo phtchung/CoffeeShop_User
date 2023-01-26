@@ -165,10 +165,10 @@ export default {
         name: String,
         description: String,
         price: String,
+        dialog: Boolean,
     },
     data: () => {
         return {
-            dialog: false,
             count: 0,
             count_topping: Array(8).fill(0),
             size: '',

@@ -1,7 +1,7 @@
 <template>
 <v-container rounded-0 fluid style="margin-top: 42px;">
 
-    <userHeader />
+    <userHeader :dialog="true"/>
 
     <div>
         <template style="board">
@@ -16,7 +16,7 @@
             </v-carousel>
         </template>
     </div>
-    <productListing />
+    <productListing :dialog="true"/>
     <div>
 
     </div>
