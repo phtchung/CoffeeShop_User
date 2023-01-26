@@ -97,6 +97,7 @@
                         
                         
                         <Card_User style="z-index : 999" 
+                          :id="product.id"
                           :image_url="product.image_url"
                           :name="product.name"
                           :description="product.description"
