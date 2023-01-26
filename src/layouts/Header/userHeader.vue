@@ -47,10 +47,8 @@
                             </div>
                             <div class="div-deliver-text text-block" style="background-color: #fff;">
                                 <div class="address-detail">
-                                    <p class="text-limit-1-line" style="margin-bottom: 0">
-                                        {{this.oldAddress}}
-                                    </p>
-                                    <button data-v-2659de6e="" type="button" class="btn border-0">
+                                    <input class="text-limit-1-line" v-model="oldAddress" style="margin-bottom: 0" />
+                                    <button data-v-2659de6e="" type="button" class="btn border-0" @click="handleDeleteAddress">
                                         <div data-v-2659de6e="">
                                             <img data-v-2659de6e="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGYSURBVHgBrZTbccIwEEVXmoFv//MYuwNSQUIFSSoI6SCpAKggoQLoIKQCJhXEHZjw+Oebl3OvxwqKLRtC2BmwtCsf35V2pcRhURR5lUqlo5S6juO4BZefhkL4prvd7r3ZbI5c76qsYzab3Wmthxh6UmIpuJ8Fa3uyWCxeAHs7BqNBuc8PL5fLrlMhA1jUk/PstV6vP/8AoayDx1D+Yfv9/h7pjw0wksPG27aSfPouX+LfbDaBTtX52SjS72PBFYZT4+NB0MeYA5hUhsaiW9fXttvtKAgCAtqEErZer9v0MZYqzYq4UVD4iXErG7QBqEufPjOGkokrK75DYCwFZkM5L4MZ03JhI3AqR9RRGX/2nhbwQh5K6AisbBjTrFarkwzUdShfGn8fDqAHwIO9Z2w1A2VMHLWINWOV3iyRFBSrnFjY3KJarRZopLBC2zyK27wTfcKbh8/klNmDkDuQM42dY66xX/fhfD7vQXr3j7BBo9F4MvPcBZv2NqG+lFuyVczOdqqi1QSzz3m6cmhN9nTIykDpsNdzpfMNzwr4YQY4/g8AAAAASUVORK5CYII=" alt="" />
                                         </div>
@@ -61,7 +59,8 @@
                                     <button class="btn-delivery" style="
                       margin-right: 10px;
                       font-family: -apple-system, system-ui, BlinkMacSystemFont;
-                    ">
+                    "
+                    @click="handleChosenAddress">
                                         Chọn địa chỉ này
                                     </button>
                                     <button class="btn-delivery" style="
@@ -229,6 +228,9 @@
 <script>
 export default {
     name: "userHeader",
+    props: {
+        dialog: Boolean,
+    },
     data: () => {
         return {
             oldAddress: "...",
@@ -256,10 +258,10 @@ export default {
             this.logged = 1
         }
 
-        if (JSON.parse(localStorage.getItem("oldAddress")) == null) {
-            this.oldAddress = "..."
+        if (JSON.parse(localStorage.getItem("oldAddress"))) {
+            this.oldAddress = JSON.parse(localStorage.getItem("oldAddress"))
         } else {
-            this.oldAddress = JSON.parse(localStorage.getItem("oldAddres"))
+            this.oldAddress = "..."
         }
 
         console.log("item count: ", this.itemCount)
@@ -276,6 +278,14 @@ export default {
     //   }
     // },
     methods: {
+        handleDeleteAddress() {
+            this.oldAddress = ""
+        },
+        handleChosenAddress() {
+            console.log("old Address: ", this.oldAddress)
+            localStorage.setItem("oldAddress", JSON.stringify(this.oldAddress))
+            this.dialog = false
+        }
         // closePopUp: function (event) {
         //   if (event.target == modal) {
         //     modal.style.display = "none";
