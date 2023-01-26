@@ -330,7 +330,12 @@ export default {
                     this.user = JSON.parse(localStorage.getItem("user"))
                     this.name = this.user.lastName + " " + this.user.firstName
                     this.phone = this.user.phone
-                    this.oldAddress = this.user.address
+                    if(JSON.parse(localStorage.getItem("oldAddress")) == null)
+                    {
+                        this.oldAddress = this.user.address
+                    } else {
+                        this.oldAddress = JSON.parse(localStorage.getItem("oldAddress"))
+                    }
                 }
                 this.getProductsInfo()
             }
