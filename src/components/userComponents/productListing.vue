@@ -97,6 +97,7 @@
                         
                         
                         <Card_User style="z-index : 999" 
+                          :currentID="currentID"
                           :dialog="dialog"
                           :id="product.id"
                           :image_url="product.image_url"
@@ -128,6 +129,7 @@ export default {
     Card_User: () => import("@/components/userComponents/Card_User"),
   },
   props: {
+    currentID: String,
     dialog: Boolean,
   },
   data() {
@@ -138,12 +140,13 @@ export default {
     };
   },
   created() {
+    console.log("Curent id: ", this.currentID)
     this.getCategories();
     this.getProducts();
-    console.log("Start\n");
-    console.log(this.categories);
-    console.log(this.products)
-    console.log("END\n");
+    // console.log("Start\n");
+    // console.log(this.categories);
+    // console.log(this.products)
+    // console.log("END\n");
   },
   methods: {
     getCategories() {
@@ -153,9 +156,9 @@ export default {
           parent_id: 0
         })
         .then((response) => {
-          console.log("RES:\n")
-          console.log(response);
-          console.log("END RES\n")
+          // console.log("RES:\n")
+          // console.log(response);
+          // console.log("END RES\n")
           this.categories = response.data.Categories;
         })
         .catch((error) => {
@@ -175,9 +178,9 @@ export default {
         // console.log(response);
       })
       .catch((error) => {
-        console.log("Start\n");
+        // console.log("Start\n");
         console.log(error.response)
-        console.log("END\n");
+        // console.log("END\n");
       });
     }
   },
