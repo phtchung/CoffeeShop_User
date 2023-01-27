@@ -77,10 +77,10 @@
           <div  class="form-group row">
             <label  for="vueDatepicker" style="display: flex">
               Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label>
-<!--            <input class="form-control" placeholder="DD-MM-YYYY" id="birthday"  type="datetime-local" v-model="userInfomation.birthday">-->
-            <span class="date">
-              <datepicker placeholder="DD-MM-YYYY"  id="vueDatepicker" v-model="userInfomation.birthday"  ></datepicker>
-            </span>
+            <input class="form-control" placeholder="DD-MM-YYYY" id="vueDatepicker"  type="datetime-local" v-model="userInfomation.birthday">
+<!--            <span class="date">-->
+<!--              <datepicker placeholder="DD-MM-YYYY"  id="vueDatepicker" v-model="userInfomation.birthday"  ></datepicker>-->
+<!--            </span>-->
 
           </div>
           <div class="form-group row">
@@ -141,11 +141,11 @@
 </template>
 
 <script >
-import Datepicker from "vuejs-datepicker"
+// import Datepicker from "vuejs-datepicker"
 export default {
   name: "accountUser",
   components:{
-  Datepicker
+
   },
   data() {
     return {

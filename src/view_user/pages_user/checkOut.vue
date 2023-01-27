@@ -54,6 +54,7 @@
                                                     <div class="modal-body">
                                                         <div class="form-group mb-0">
                                                             <input type="text" v-model.lazy="myInput" placeholder="Vui lòng nhập địa chỉ" class="form-control tch-delivery__input">
+                                                          <bulma-dropdown :options="options" @select="selected = $event" placeholder="Search"/>
                                                         </div>
                                                     </div>
 
@@ -204,6 +205,7 @@
                     <v-col cols="12" md="6" lg="6">
                         <!--            cột bên phải -->
                         <div style="    box-shadow: 0 -4px 10px rgb(0 0 0 / 12%);
+>>>>>>> main
     border-radius: 8px;">
                             <div class="px-5">
                                 <div class="py-3">
@@ -286,36 +288,53 @@
 </template>
 
 <script>
+
+import { BulmaDropdown } from 'vue-custom-google-autocomplete'
 import axios from 'axios'
 export default {
     name: "checkOut",
-    data() {
-        return {
-            logged: 0,
-            user: {},
-            name: "",
-            phone: "",
-            oldAddress: " ",
-            orders: [],
-            dialog: false,
-            myInput: "",
-            total_price: 0,
-            products_info: [],
-            orderInfo: {
-                user_id: 0,
-                user_name: "",
-                mobile_no: "",
-                order_date: "",
-                address: "",
-                note: null,
-                total_price: "",
-                payment_method: "",
-                products: []
-            }
-        }
+    components:{
+      BulmaDropdown,
+      // userHeader: () => import("@/layouts/Header/userHeader"),
     },
-
-    created() {
+    data() {
+      return {
+        logged: 0,
+        user: {},
+        name: "",
+        phone: "",
+        oldAddress: " ",
+        orders: [],
+        dialog: false,
+        myInput: "",
+        total_price: 0,
+        products_info: [],
+        orderInfo: {
+          user_id: 0,
+          user_name: "",
+          mobile_no: "",
+          order_date: "",
+          address: "",
+          note: null,
+          total_price: "",
+          payment_method: "",
+          products: []
+        },
+        selected: null,
+        options: {
+          apiKey: process.env.VUE_APP_PLACE_API_KEY,
+          deepSearch: true,
+          cors: true,
+          focus: false,
+          params: {
+            location: '-33.8688,151.2195',
+            radius: 1000,
+            language: 'en'
+          }
+        }
+      }
+    },
+    created(){
         if (JSON.parse(localStorage.getItem("order"))) {
                 this.orders = JSON.parse(localStorage.getItem("order"))
                 console.log("order 2: ", this.orders)
@@ -446,7 +465,9 @@ export default {
         }
     },
 
-    userHeader: () => import("@/layouts/Header/userHeader"),
+    handleDatHang() {
+      // send this.orders ve BE
+    }
 }
 </script>
 
