@@ -678,10 +678,9 @@ export default {
       this.product_name = product_name;
       // console.log(this.product_name_convert),
       this.$router.push({
-        path: `/${this.product_name_convert_computed}`,
         name: "item",
         params: {product_id: `${this.product_id}`, product_name_convert: `${this.product_name_convert_computed}`},
-      });
+      }).catch(() => true);
     },
     separator(numb) {
       var str = numb.toString().split(".");

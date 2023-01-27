@@ -51,7 +51,7 @@ export default new Router({
                 },
                 {
                     name: 'item',
-                    path: 'item/:product_name_convert',
+                    path: 'itemSale/:product_name_convert',
                     component: () => import('@/components/productInterface/productInStore'),
                 },
                 {

@@ -243,12 +243,12 @@ export default {
     },
 
     created() {
-        console.log("local storage: ", JSON.parse(localStorage.getItem("order")))
+        // console.log("local storage: ", JSON.parse(localStorage.getItem("order")))
         if (JSON.parse(localStorage.getItem("order")) == null) {
             this.itemCount = 0
         } else {
             this.itemCount = JSON.parse(localStorage.getItem("order")).length
-            console.log(localStorage.getItem("order"))
+            // console.log(localStorage.getItem("order"))
         }
 
         if (JSON.parse(localStorage.getItem("user")) == null) {
@@ -264,12 +264,12 @@ export default {
             this.oldAddress = "..."
         }
 
-        console.log("item count: ", this.itemCount)
+        // console.log("item count: ", this.itemCount)
     },
     computed() {
         this.auth = this.$store.state.authenticated
-        console.log('1')
-        console.log(this.auth)
+        // console.log('1')
+        // console.log(this.auth)
     },
 
     // watch: {
@@ -282,9 +282,11 @@ export default {
             this.oldAddress = ""
         },
         handleChosenAddress() {
-            console.log("old Address: ", this.oldAddress)
+            // console.log("old Address: ", this.oldAddress)
             localStorage.setItem("oldAddress", JSON.stringify(this.oldAddress))
             this.dialog = false
+            // setTimeout(()=>{}, 5000)
+            this.$emit('chosenAddress', true);
         }
         // closePopUp: function (event) {
         //   if (event.target == modal) {
@@ -294,12 +296,12 @@ export default {
     },
     mounted() {
         window.addEventListener('order-localstorage-changed', (event) => {
-            console.log(event.detail.storage)
+            // console.log(event.detail.storage)
             if (event.detail.storage == null) {
                 this.itemCount = 0
             } else
                 this.itemCount = JSON.parse(event.detail.storage).length;
-            console.log("item count in mounted: ", this.itemCount)
+            // console.log("item count in mounted: ", this.itemCount)
         });
     },
     components: {
