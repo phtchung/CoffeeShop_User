@@ -54,7 +54,7 @@
                                                     <div class="modal-body">
                                                         <div class="form-group mb-0">
                                                             <input type="text" v-model.lazy="myInput" placeholder="Vui lòng nhập địa chỉ" class="form-control tch-delivery__input">
-                                                          <bulma-dropdown :options="options" @select="selected = $event" placeholder="Search"/>
+                                                          <!-- <bulma-dropdown :options="options" @select="selected = $event" placeholder="Search"/> -->
                                                         </div>
                                                     </div>
 
@@ -289,12 +289,12 @@
 
 <script>
 
-import { BulmaDropdown } from 'vue-custom-google-autocomplete'
+// import { BulmaDropdown } from 'vue-custom-google-autocomplete'
 import axios from 'axios'
 export default {
     name: "checkOut",
     components:{
-      BulmaDropdown,
+    //   BulmaDropdown,
       // userHeader: () => import("@/layouts/Header/userHeader"),
     },
     data() {
