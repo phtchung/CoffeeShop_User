@@ -16,7 +16,10 @@ yarn add vuetify
 ```
 yarn serve
 ```
-
+### Add Calenders
+```
+yarn add datepicker
+```
 ### Compiles and minifies for production
 ```
 yarn build
@@ -25,6 +28,7 @@ yarn build
 ```
 yarn lint
 ```
+
 
 ## Roadmap
 
