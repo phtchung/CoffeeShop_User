@@ -37,7 +37,7 @@
               </div>
               <div class="tch_delivery_content" style="flex: 1">
 
-                <div justify="center" style="padding-left: 12px">
+                <div  style="padding-left: 12px;justify-content: center">
                       <div  @click.stop="dialog = true">
                         <h5 class="delivery_address mb-0" >Need to handle oldAddres</h5>
                         <p class="delivery_address_description mb-0">
@@ -59,7 +59,9 @@
                         </div>
                         <div class="modal-body">
                           <div class="form-group mb-0">
-                            <input type="text" v-model.lazy="myInput"  placeholder="Vui lòng nhập địa chỉ" class="form-control tch-delivery__input">
+<!--                            thanh search địa chỉ -->
+<!--                            <input type="text" v-model.lazy="myInput"  placeholder="Vui lòng nhập địa chỉ" class="form-control tch-delivery__input">-->
+                            <bulma-dropdown :options="options" @select="selected = $event" placeholder="Search"/>
                           </div>
                         </div>
 
@@ -103,14 +105,14 @@
               </div>
             </div>
 <!--            thẻ input tên-->
-            <div class="form-group fix_position" style="margin-left: 50px" v-if="logged==0">
+            <div class="form-group fix_position" style="margin-left: 50px" v-if="logged===0">
               <input type="text" id="name"  :placeholder="name" class="form-control tch-delivery__input">
             </div>
             <div class="form-group fix_position" style="margin-left: 50px" v-else>
               <input type="text" id="name"  :value="name" class="form-control tch-delivery__input">
             </div>
 <!--            thẻ sdt -->
-            <div class="form-group fix_position" style="margin-left: 50px" v-if="logged==0">
+            <div class="form-group fix_position" style="margin-left: 50px" v-if="logged===0">
               <input type="text" id="phone_number"  :placeholder="phone" class="form-control tch-delivery__input">
             </div>
             <div class="form-group fix_position" style="margin-left: 50px" v-else>
@@ -308,8 +310,12 @@
 </template>
 
 <script>
+import { BulmaDropdown } from 'vue-custom-google-autocomplete'
 export default {
   name: "checkOut",
+  components:{
+    BulmaDropdown
+  },
   data () {
     return {
       logged: 0,
@@ -320,6 +326,18 @@ export default {
       orders: [],
       dialog:false,
       myInput:"",
+      selected: null,
+      options: {
+        apiKey: process.env.VUE_APP_PLACE_API_KEY,
+        deepSearch: true,
+        cors: true,
+        focus: false,
+        params: {
+          location: '-33.8688,151.2195',
+          radius: 1000,
+          language: 'en'
+        }
+      }
     }
   },
 
@@ -366,6 +384,7 @@ export default {
     }
   },
   userHeader: () => import("@/layouts/Header/userHeader"),
+
 }
 </script>
 
