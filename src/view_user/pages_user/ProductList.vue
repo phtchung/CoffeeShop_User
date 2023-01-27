@@ -1,10 +1,10 @@
 <template>
     <v-container rounded-0 fluid style="margin-top: 42px;">
         
-            <userHeader/>
+            <userHeader :dialog="false"/>
             
        
-        <productListing/>
+        <productListing :dialog="false"/>
         <div>
         
         </div>

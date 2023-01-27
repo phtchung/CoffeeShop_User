@@ -160,18 +160,20 @@
 export default {
     name: "Card_User",
     props: {
+        id: String,
         image_url: String,
         name: String,
         description: String,
         price: String,
+        dialog: Boolean,
     },
     data: () => {
         return {
-            dialog: false,
             count: 0,
             count_topping: Array(8).fill(0),
             size: '',
             product_items: [{
+                    id: "",
                     image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
                     name: "CloudTea Very Berry Mochi",
                     description: "CloudTea Very Berry Mochi với với mochi Phúc Bồn Tử cùng lớp foam cheese beo béo, vụn bánh quy phô mai giòn tan. Đặc biệt, trà sữa Lài thơm ngát hoà quyện cùng dâu tây ngọt ngào *Lưu ý: - Mochi có thể bị chìm do ảnh hưởng trong quá trình vận chuyển. - SẢN PHẨM KHÔNG ÁP DỤNG ĐỂ ĐÁ RIÊNG HOẶC KHÔNG ĐÁ",
@@ -207,6 +209,8 @@ export default {
     },
 
     created() {
+        // localStorage.removeItem("order")
+        this.product_items[0].id = this.id
         this.product_items[0].image_url = this.image_url
         this.product_items[0].name = this.name
         this.product_items[0].description = this.description
@@ -214,6 +218,7 @@ export default {
     },
     methods: {
         handleChoseItem() {
+            this.product_items[0].id = this.id
             this.product_items[0].image_url = this.image_url
             this.product_items[0].name = this.name
             this.product_items[0].description = this.description
@@ -223,6 +228,7 @@ export default {
             var order = JSON.parse(localStorage.getItem("order"));
             if (order == null) order = [];
             var entry = {
+                id: this.id,
                 product_item: this.product_items,
                 size: this.size,
                 count: this.count,

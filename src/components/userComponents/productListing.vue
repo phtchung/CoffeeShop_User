@@ -97,6 +97,8 @@
                         
                         
                         <Card_User style="z-index : 999" 
+                          :dialog="dialog"
+                          :id="product.id"
                           :image_url="product.image_url"
                           :name="product.name"
                           :description="product.description"
@@ -125,9 +127,11 @@ export default {
   components:{
     Card_User: () => import("@/components/userComponents/Card_User"),
   },
+  props: {
+    dialog: Boolean,
+  },
   data() {
     return {
-      dialog:false,
       category_type: 1,
       categories: [],
       products: [],

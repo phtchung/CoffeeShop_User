@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <userHeader/>
+            <userHeader :dialog="false"/>
         </header>
         <div>
         <userInfo/>
