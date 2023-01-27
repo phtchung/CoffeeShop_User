@@ -65,7 +65,7 @@ export default {
     created(){
         this.currentID = this.$route.path.slice(6)
         this.getProductByID()
-        setTimeout(()=>{}, 5000)
+        // setTimeout(()=>{}, 5000)
     },
 
     methods: {
