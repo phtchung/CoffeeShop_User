@@ -160,6 +160,7 @@
 export default {
     name: "Card_User",
     props: {
+        currentID: String,
         id: String,
         image_url: String,
         name: String,
@@ -215,6 +216,18 @@ export default {
         this.product_items[0].name = this.name
         this.product_items[0].description = this.description
         this.product_items[0].price = this.price
+
+        console.log("This id: ", this.id)
+        if(this.id == this.currentID){
+            console.log("This current id: ", this.currentID)
+            console.log("This dialog: ", this.dialog)
+            // this.dialog = !this.dialog
+        } else {
+            console.log("Not this id: ", this.id)
+            this.dialog = false
+            console.log("This dialog: ", this.dialog)
+
+        }
     },
     methods: {
         handleChoseItem() {
@@ -223,7 +236,7 @@ export default {
             this.product_items[0].name = this.name
             this.product_items[0].description = this.description
             this.product_items[0].price = this.price
-            console.log("name: ", this.product_items.name)
+            // console.log("name: ", this.product_items.name)
             // Parse any JSON previously stored in allEntries
             var order = JSON.parse(localStorage.getItem("order"));
             if (order == null) order = [];
@@ -234,11 +247,11 @@ export default {
                 count: this.count,
                 topping_items: this.topping_items
             };
-            console.log("entry: ", entry)
+            // console.log("entry: ", entry)
             localStorage.setItem("entry", JSON.stringify(entry));
             // Save allEntries back to local storage
             order.push(entry);
-            console.log("order: ", order)
+            // console.log("order: ", order)
             localStorage.setItem("order", JSON.stringify(order));
             window.dispatchEvent(new CustomEvent('order-localstorage-changed', {
                 detail: {
@@ -284,7 +297,7 @@ export default {
             for (let i = 0; i < this.topping_items.length; i++) {
                 price_topp = price_topp + this.topping_items[i].count * parseInt(this.topping_items[i].price);
             }
-            console.log(this.count)
+            // console.log(this.count)
             let price = (parseInt(this.price) + price_topp) * this.count;
             if (this.size === 'L') {
                 price += 10000 * this.count;
