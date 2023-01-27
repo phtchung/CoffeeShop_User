@@ -3,7 +3,6 @@
       fluid
       class="down-top-padding "
       style="margin-top: -66px; padding: 0;"
-
   >
     <mainHeader > </mainHeader>
 <!-- thanh tự động chuyển ở mainpage -->
@@ -51,8 +50,7 @@
                 -webkit-box-shadow: 0 0 13px 0 #00000040;
                 box-shadow: 0 0 13px 0 #00000040;
                 padding: 0 !important;
-              "
-            >
+              ">
               <img
                   src="https://file.hstatic.net/1000075078/file/highlight_cc022d45647d43e9bfbe1248b4573788.jpg"
                   alt=""
@@ -67,8 +65,7 @@
             md="6"
             sm="12"
             lg="6"
-            style="font-size: 16px; display: flex"
-        >
+            style="font-size: 16px; display: flex">
           <v-row>
             <v-col
                 cols="12"
@@ -100,29 +97,17 @@
             v-for="item in items.slice(2)"
             :key="item.id"
             @click="handleProduct(item.id, item.name,item.price,item.description,item.image_url)"
-
         >
           <Item_User
             :image_url="item.image_url"
             :name="item.name"
             :description="item.description"
             :price="separator(item.price)"
-
-
           />
         </v-col>
       </v-row>
     </div>
 
-    <!--    <div v-else-if="menuType === 'Menu'">-->
-    <!--      <menuMenu></menuMenu>-->
-    <!--    </div>-->
-    <!--    <div v-else-if="menuType === 'Trà'">-->
-    <!--      <menuMenuOthers></menuMenuOthers>-->
-    <!--    </div>-->
-    <!--    <div v-if="menuType === 'Cà phê'">-->
-    <!--      <menuMenuOthers></menuMenuOthers>-->
-    <!--    </div>-->
     <div class="advertisement">
       <v-row>
         <v-col cols="12" md="6" lg="6" sm="12">
@@ -178,8 +163,7 @@
             align-content: center;
             flex-direction: column;
             justify-content: center;
-          "
-        >
+          ">
           <h3
               style="
               font-size: 28px;
@@ -187,8 +171,7 @@
               font-family: 'SF Pro Display', sans-serif;
               font-weight: 600;
               max-width: 75%;
-            "
-          >
+            ">
             The Coffee House
             <br />
             The Grace Tower
@@ -203,8 +186,7 @@
               /* -webkit-box-orient: vertical; */
               overflow: hidden;
               text-overflow: ellipsis;
-            "
-          >
+            ">
             Nhà mới Quận 7 toạ lạc tại The Grace Tower, thuộc khu phố nhộn
             nhiệp, sầm uất. Cửa hàng nổi bật với không gian nhỏ nhắn nhưng lại
             có nhiều nguồn sáng tự nhiên, mang đến sự hứng khởi, năng động
@@ -584,10 +566,6 @@
       </div>
     </section>
 
-
-
-
-
   </v-container>
 </template>
 <script>
@@ -595,9 +573,8 @@
 
 export default {
   name: "Mainpage",
-
   components: {
-
+    // accountUser: () => import("@/components/userComponents/accountUser"),
     Item_User: () => import("@/components/Item_User"),
     mainHeader: () => import("@/layouts/Header/mainHeader"),
     // Authentication_User: () => import("@/components/userComponents/Authentication_User"),
