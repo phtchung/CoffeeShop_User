@@ -1,9 +1,9 @@
 <template>
-<v-container>
+<v-container >
     <div class="productStore_Infor">
         <div class="prodcutStore_Wrap">
             <v-row>
-                <v-col cols="12" xs="12" md="6" lg="6" sm="12">
+                <v-col md="12" lg="6" sm="12" class="col-12 ">
                     <div class="product_carousel">
                         <div class="product_image">
                             <img :src=product.image_url alt="">
@@ -15,7 +15,7 @@
                         </div>
                     </div>
                 </v-col>
-                <v-col cols="12" xs="12" md="6" lg="6" sm="12">
+                <v-col  md="6" lg="6" sm="12">
                     <div>
                         <div class="inforr_product">
                             <div>
@@ -353,9 +353,8 @@ export default {
 </script>
 
 <style scoped>
-.prodcutStore_Wrap {
-    width: 75rem;
-}
+/* Mobile  < 740px*/
+
 
 .option_item .checkbox:checked~.active_normal {
     background: #E57905;
@@ -382,8 +381,8 @@ export default {
 }
 
 .product_image>img {
-    width: 570px;
-    height: 570px;
+    width: 35.625rem;
+    height: 35.625rem;
 }
 
 .thumb>img {
@@ -613,5 +612,37 @@ a:hover {
     color: #00000099;
     margin-bottom: 10px;
     font-family: 'SF Pro Display', sans-serif;
+}
+@media only screen and (max-width: 46.1875em) {
+
+  .opt_size .product__info__item__list__item {
+    padding: 0 10px;
+    margin-right: 10px;
+    margin-bottom: 10px!important;
+  }
+
+  .product_image>img {
+    height: 360px;
+    width: 100%;
+  }
+  /*.prodcutStore_Wrap {*/
+  /*  width: 75rem;*/
+  /*}*/
+  .thumb>img{
+    display: none;
+  }
+  hr{
+    width: 500px;
+  }
+  .product_option > .opt_size{
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+}
+@media only screen and (max-width: 599.98px) {
+  .v-application .hidden-xs-only {
+    display: none !important;
+  }
 }
 </style>

@@ -3,7 +3,7 @@
     class="container-lg container-fluid body"
     style="align-items: center; margin-top: 24px"
   >
-    <checkOut></checkOut>
+
     <div class="user-info-head">
       <img
         src="https://order.thecoffeehouse.com/_nuxt/img/user-icon-gold.5f2886d.svg"
@@ -732,11 +732,11 @@
 
 <script>
 // import accountUser from "@/components/userComponents/accountUser";
-import checkOut from "@/view_user/pages_user/checkOut";
+// import checkOut from "@/view_user/pages_user/checkOut";
 export default {
   name: "userInfo",
   components: {
-checkOut
+
   },
 
   data() {

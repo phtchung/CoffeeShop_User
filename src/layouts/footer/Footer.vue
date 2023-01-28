@@ -2,7 +2,7 @@
     <v-footer  color="white" class="footerpart" inset>
       <div class="container" style="background-color: black">
         <v-row>
-          <v-col cols="12" lg="3" md="3" sm="6" >
+          <v-col cols="12" lg="3" md="3" sm="6" xs="6" class="col-xs-6">
               <h3 class=" foot_title" style="color: white">Giới thiệu</h3>
               <ul class="ma-0 pa-0 footer_content"  >
                 <li>
@@ -26,7 +26,7 @@
               </ul>
           </v-col>
 
-          <v-col cols="12" lg="3" md="3" sm="6">
+          <v-col cols="12" lg="3" md="3" sm="6" xs="6" class="col-xs-6">
             <h3 class=" foot_title">Điều khoản</h3>
             <ul class="ma-0 pa-0 footer_content" >
               <li>
@@ -38,7 +38,7 @@
             </ul>
           </v-col>
 
-          <v-col cols="12" lg="3" md="3" sm="6" >
+          <v-col cols="12" lg="3" md="3" sm="6" xs="12">
             <div class="hotline_footer ">
             <p class="mb-6 " >
               <img src="https://file.hstatic.net/1000075078/file/phone_0a42df1c753c4fa0910108daa73fe2ef.png" alt="">
@@ -62,7 +62,7 @@
 
           </v-col>
 
-          <v-col cols="12" lg="3" md="3" sm="6" >
+          <v-col cols="12" lg="3" md="3" sm="6" xs="12">
             <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FThe.Coffee.House.2014&tabs=timeline&width=270&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="270" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             <div class="tch_social" >
               <ul>
@@ -135,7 +135,6 @@
             </v-dialog>
           </div>
 
-
         <v-col cols="12" lg="9" md="9" sm="9" class="ma-n3">
           <div class="footer_items">
           <ul>
@@ -146,9 +145,7 @@
           </ul>
           </div>
         </v-col>
-        <v-row>
 
-        </v-row>
       </div>
     </v-footer>
 </template>
@@ -168,10 +165,9 @@ export default {
     background-color: black !important;
   }
   .footerpart{
-    margin: 41px -11px -8px -11px;
+    margin: 41px 0px -8px 0px;
     font-family: 'SF Pro Text', sans-serif;
     background-color: black;
-
 
   }
   .container{
@@ -319,5 +315,11 @@ export default {
 
   .set_color{
     color: white;
+  }
+  @media screen and (max-width: 46.1875em) {
+    .col-xs-6{
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
   }
 </style>
