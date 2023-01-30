@@ -124,7 +124,7 @@
                 <span class="user-name" style="margin-right: 37px" v-if="logged == 1">{{this.user.lastName}}</span>
                 <span style = "margin-right: 37px"></span>
                 <!-- icon thanh toan -->
-                <a href="thanh-toan" style="text-decoration: none">
+                <a href="http://localhost:8080/thanh-toan" style="text-decoration: none">
                     <!---->
                     <div style="
                 background-color: #fff;
@@ -243,22 +243,24 @@ export default {
     },
 
     created() {
+        // localStorage.removeItem("user")
+        // localStorage.removeItem("oldAddress")
         // console.log("local storage: ", JSON.parse(localStorage.getItem("order")))
-        if (JSON.parse(localStorage.getItem("order")) == null) {
+        if (localStorage.getItem("order") == null) {
             this.itemCount = 0
         } else {
             this.itemCount = JSON.parse(localStorage.getItem("order")).length
             // console.log(localStorage.getItem("order"))
         }
 
-        if (JSON.parse(localStorage.getItem("user")) == null) {
+        if (localStorage.getItem("user") == null) {
             this.logged = 0
         } else {
             this.user = JSON.parse(localStorage.getItem("user"))
             this.logged = 1
         }
 
-        if (JSON.parse(localStorage.getItem("oldAddress"))) {
+        if (localStorage.getItem("oldAddress")) {
             this.oldAddress = JSON.parse(localStorage.getItem("oldAddress"))
         } else {
             this.oldAddress = "..."
@@ -278,6 +280,12 @@ export default {
     //   }
     // },
     methods: {
+
+        logout() {
+            localStorage.removeItem("user")
+            // localStorage.removeItem("oldAddress")
+            this.$router.push({name: "Mainpage"})
+        },
         handleDeleteAddress() {
             this.oldAddress = ""
         },
