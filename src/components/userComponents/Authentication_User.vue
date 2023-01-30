@@ -160,10 +160,11 @@ export default {
     },
     sendOTP(){
       axios
-          .post("http://127.0.0.1:8000/api/user/auth/checkOTP",this.data)
+          .post("http://127.0.0.1:8000/api/user/auth/checkOtp",this.data)
           .then((response) => {
               // let id = response.data.id;
               // Need to check
+              console.log(response.data)
               if(response.data.userInfo == null)
               {
                 // Neef to do stthg else
