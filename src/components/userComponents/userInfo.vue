@@ -33,7 +33,7 @@
             <span class="armorial-point-txt">Tích điểm</span>
           </div>
           <div class="user-info-card-header">
-            <span class="user-card-code">{{ userInfomation.lastName }}</span>
+            <span class="user-card-code">{{ userInfomation.last_name }}</span>
             <p class="user-bean">{{bean}} bean - Mới</p>
           </div>
           <div class="user-card-barcode d-flex flex-column align-items-center">
@@ -172,7 +172,7 @@
                     required="required"
                     class="form-control"
                     style="margin-top: 10px"
-                    :value="userInfomation.firstName"
+                    :value="userInfomation.first_name"
                   />
                   <!-- <div data-v-3a213b80="" class="invalid-feedback">
                     Vui lòng nhập Tên
@@ -191,7 +191,7 @@
                     required="required"
                     class="form-control"
                     style="margin-top: 10px"
-                    :value="userInfomation.lastName"
+                    :value="userInfomation.last_name"
                   />
                   <!-- <div data-v-3a213b80="" class="invalid-feedback">
                     Vui lòng nhập Họ
@@ -210,19 +210,19 @@
                   type="text"
                   disabled="disabled"
                   class="form-control"
-                  :value="userInfomation.phone"
+                  :value="userInfomation.mobile_no"
                 />
               </div>
               <div  class="form-group row">
-                <label  for="birthday" style="display: flex"
+                <label  for="birth" style="display: flex"
                   >Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label
                 >
                 <input
-                    id="birthday"
+                    id="birth"
                   type="text"
                   class="form-control"
                   disabled="disabled"
-                  :value="userInfomation.birthday"
+                  :value="userInfomation.birth"
                 />
               </div>
               <div class="form-group row">
@@ -253,7 +253,7 @@
                     name="gender-mapping"
                     id="1"
                     class="custom-control-input"
-                    :checked="userInfomation.sex === 'male'"
+                    :checked="userInfomation.gender == 'male'"
                   />
                   <label
                     for="1"
@@ -282,7 +282,7 @@
                     name="gender-mapping"
                     id="2"
                     class="custom-control-input"
-                    :checked="userInfomation.sex == 'female'"
+                    :checked="userInfomation.gender == 'female'"
                   />
                   <label
                     for="2"
@@ -300,7 +300,7 @@
                 </div>
               </div>
               <div class="row d-flex justify-content-end">
-                <button class="btn btn--orange btn-update" @click="handUpdate">Cập nhật</button>
+                <button class="btn btn--orange btn-update" @click="handleUpdate">Cập nhật</button>
               </div>
             </form>
           </div>
@@ -754,13 +754,12 @@ export default {
       rank: '',
       userInfomation: {
         id: "",
-        score: "0",
-        lastName: "Phạm",
-        firstName: "Đức Huy",
-        phone: "0972521125",
-        birthday: "01/10/2001",
+        last_name: "Phạm",
+        first_name: "Đức Huy",
+        mobile_no: "0972521125",
+        birth: "01/10/2001",
         email: "duchuy01102001@gmail.com",
-        sex: "male",
+        gender: "male",
       },
       listOders: [
         {
@@ -803,7 +802,9 @@ export default {
       this.handleChange();
       // load userinfo from localStorage
       // Can check dinh dang
+      console.log("user info: ", this.userInfomation)
       this.userInfomation = JSON.parse(localStorage.getItem('user'))
+      console.log("from local: ", this.userInfomation)
       // NEED get data order from BE
     }
 
@@ -831,33 +832,33 @@ export default {
     },
     handleClick1() {
       this.select = 1;
-      // this.$router.push({path:`/user-info`,name:'user', replace: true});
-      this.$router.push({path: `/user/user-info`});
+      this.$router.push({name:'user', params: {name:'user-info'}});
+      // this.$router.push({path: `/user/user-info`});
     },
     handleClick2() {
       this.select = 2;
-      // this.$router.push({path:`/so-dia-chi`,name:'user', replace: true});
-      this.$router.push({path: `/user/so-dia-chi`});
+      this.$router.push({name:'user', params: {name:'so-dia-chi'}});
+      // this.$router.push({path: `/user/so-dia-chi`});
     },
     handleClick3() {
       this.select = 3;
-      // this.$router.push({path:`/quyen-loi-thanh-vien`,name:'user', replace: true});
-      this.$router.push({path: `/user/quyen-loi-thanh-vien`});
+      this.$router.push({name:'user', params: {name:'quyen-loi-thanh-vien'}});
+      // this.$router.push({path: `/user/quyen-loi-thanh-vien`});
     },
     handleClick4() {
       this.select = 4;
-      // this.$router.push({path:`/lich-su`,name:'user', replace: true});
-      this.$router.push({path: `/user/lich-su`});
+      this.$router.push({name:'user', params: {name:'lich-su'}});
+      // this.$router.push({path: `/user/lich-su`});
     },
     handleChange() {
-      if (this.currentPath === "/user/user-info") {
+      if (this.currentPath == "/user/user-info") {
         this.select = 1;
         // console.log(this.select)
-      } else if (this.currentPath === "/user/so-dia-chi") {
+      } else if (this.currentPath == "/user/so-dia-chi") {
         this.select = 2;
-      } else if (this.currentPath === "/user/quyen-loi-thanh-vien") {
+      } else if (this.currentPath == "/user/quyen-loi-thanh-vien") {
         this.select = 3;
-      } else if (this.currentPath === "/user/lich-su") {
+      } else if (this.currentPath == "/user/lich-su") {
         this.select = 4;
       }
     },
