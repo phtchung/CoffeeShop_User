@@ -39,7 +39,7 @@
 
                                         <div justify="center" style="padding-left: 12px">
                                             <div @click.stop="dialog = true">
-                                                <h5 class="delivery_address mb-0">Need to handle oldAddres</h5>
+                                                <h5 class="delivery_address mb-0">{{oldAddress}}</h5>
                                                 <p class="delivery_address_description mb-0">
                                                     {{myInput}}
                                                 </p>
@@ -54,7 +54,7 @@
                                                     <div class="modal-body">
                                                         <div class="form-group mb-0">
                                                             <input type="text" v-model.lazy="myInput" placeholder="Vui lòng nhập địa chỉ" class="form-control tch-delivery__input">
-                                                          <!-- <bulma-dropdown :options="options" @select="selected = $event" placeholder="Search"/> -->
+                                                            <!-- <bulma-dropdown :options="options" @select="selected = $event" placeholder="Search"/> -->
                                                         </div>
                                                     </div>
 
@@ -97,14 +97,14 @@
                                     <input type="text" id="name" :placeholder="name" class="form-control tch-delivery__input">
                                 </div>
                                 <div class="form-group fix_position" style="margin-left: 50px" v-else>
-                                    <input type="text" id="name" :value="name" class="form-control tch-delivery__input">
+                                    <input type="text" id="name" v-model="name" class="form-control tch-delivery__input">
                                 </div>
                                 <!--            thẻ sdt -->
                                 <div class="form-group fix_position" style="margin-left: 50px" v-if="logged==0">
                                     <input type="text" id="phone_number" :placeholder="phone" class="form-control tch-delivery__input">
                                 </div>
                                 <div class="form-group fix_position" style="margin-left: 50px" v-else>
-                                    <input type="text" id="phone_number" :value="phone" class="form-control tch-delivery__input">
+                                    <input type="text" id="phone_number" v-model="phone" class="form-control tch-delivery__input">
                                 </div>
                                 <!--            hướng daanxc giao hàng-->
                                 <div class="form-group fix_position" style="margin-left: 50px">
@@ -122,7 +122,7 @@
                                 <ul class="tch-list-payment-method mb-0 fix_position">
                                     <li class="tch-payment-method-item">
                                         <div class="custom-control custom-radio mb-0">
-                                            <input type="radio" name="payment-method" id="COD" class="custom-control-input">
+                                            <input type="radio" name="payment-method" id="COD" class="custom-control-input" value="cash" v-model="paymentOptions">
                                             <label for="COD" class="custom-control-label tch-custom-radio" style="padding-left: 6px">
                                                 <span class="icon ml-3 mr-2">
                                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/1000_photo_2021-04-06_11-17-08.jpg" alt="">
@@ -133,7 +133,7 @@
                                     </li>
                                     <li class="tch-payment-method-item">
                                         <div class="custom-control custom-radio mb-0">
-                                            <input type="radio" name="payment-method" id="Momo" class="custom-control-input">
+                                            <input type="radio" name="payment-method" id="Momo" class="custom-control-input" value="momo" v-model="paymentOptions">
                                             <label for="Momo" class="custom-control-label tch-custom-radio" style="padding-left: 6px">
                                                 <span class="icon ml-3 mr-2">
                                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/386_ic_momo@3x.png" alt="">
@@ -144,7 +144,7 @@
                                     </li>
                                     <li class="tch-payment-method-item">
                                         <div class="custom-control custom-radio mb-0">
-                                            <input type="radio" name="payment-method" id="ZaloPay" class="custom-control-input">
+                                            <input type="radio" name="payment-method" id="ZaloPay" class="custom-control-input" value="zalopay" v-model="paymentOptions">
                                             <label for="ZaloPay" class="custom-control-label tch-custom-radio" style="padding-left: 6px">
                                                 <span class="icon ml-3 mr-2">
                                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/388_ic_zalo@3x.png" alt="">
@@ -155,18 +155,18 @@
                                     </li>
                                     <li class="tch-payment-method-item">
                                         <div class="custom-control custom-radio mb-0">
-                                            <input type="radio" name="payment-method" id="ShoppePay" class="custom-control-input">
-                                            <label for="ShoppePay" class="custom-control-label tch-custom-radio" style="padding-left: 6px">
+                                            <input type="radio" name="payment-method" id="vnpay" class="custom-control-input" value="vnpay" v-model="paymentOptions">
+                                            <label for="Vnpay" class="custom-control-label tch-custom-radio" style="padding-left: 6px">
                                                 <span class="icon ml-3 mr-2">
                                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/1120_1119_ShopeePay-Horizontal2_O.png" alt="">
                                                 </span>
-                                                <span class="text">ShoppePay</span>
+                                                <span class="text">vnpay</span>
                                             </label>
                                         </div>
                                     </li>
                                     <li class="tch-payment-method-item">
                                         <div class="custom-control custom-radio mb-0">
-                                            <input type="radio" name="payment-method" id="123PAY" class="custom-control-input">
+                                            <input type="radio" name="payment-method" id="123PAY" class="custom-control-input" value="atm" v-model="paymentOptions">
                                             <label for="123PAY" class="custom-control-label tch-custom-radio" style="padding-left: 6px">
                                                 <span class="icon ml-3 mr-2">
                                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/385_ic_atm@3x.png" alt="">
@@ -212,7 +212,7 @@
                                     <!--              các món đã chọn-->
                                     <div class="tch_checkout_cus_deli">
                                         <h4 class="checkout_delivery_text">Các món đã chọn </h4>
-                                        <a href="#" style="text-decoration: none; color: black;">
+                                        <a href="product-list" style="text-decoration: none; color: black;">
                                             <p class="checkout_delivery_btn">Thêm món</p>
                                         </a>
                                     </div>
@@ -288,77 +288,79 @@
 </template>
 
 <script>
-
 // import { BulmaDropdown } from 'vue-custom-google-autocomplete'
 import axios from 'axios'
 export default {
     name: "checkOut",
-    components:{
-    //   BulmaDropdown,
-      // userHeader: () => import("@/layouts/Header/userHeader"),
+    components: {
+        //   BulmaDropdown,
+        // userHeader: () => import("@/layouts/Header/userHeader"),
     },
     data() {
-      return {
-        logged: 0,
-        user: {},
-        name: "",
-        phone: "",
-        oldAddress: " ",
-        orders: [],
-        dialog: false,
-        myInput: "",
-        total_price: 0,
-        products_info: [],
-        orderInfo: {
-          user_id: 0,
-          user_name: "",
-          mobile_no: "",
-          order_date: "",
-          address: "",
-          note: null,
-          total_price: "",
-          payment_method: "",
-          products: []
-        },
-        selected: null,
-        options: {
-          apiKey: process.env.VUE_APP_PLACE_API_KEY,
-          deepSearch: true,
-          cors: true,
-          focus: false,
-          params: {
-            location: '-33.8688,151.2195',
-            radius: 1000,
-            language: 'en'
-          }
-        }
-      }
-    },
-    created(){
-        if (JSON.parse(localStorage.getItem("order"))) {
-                this.orders = JSON.parse(localStorage.getItem("order"))
-                console.log("order 2: ", this.orders)
-                if (JSON.parse(localStorage.getItem("user")) == null) {
-                    // this.user = localStorage.getItem("user")
-                    this.logged = 0
-                    this.name = "Tên người nhận"
-                    this.phone = "Số điện thoại"
-                    this.oldAddress = "Chưa có địa chỉ giao hàng"
-                } else {
-                    this.logged = 1
-                    this.user = JSON.parse(localStorage.getItem("user"))
-                    this.name = this.user.lastName + " " + this.user.firstName
-                    this.phone = this.user.phone
-                    if(JSON.parse(localStorage.getItem("oldAddress")) == null)
-                    {
-                        this.oldAddress = this.user.address
-                    } else {
-                        this.oldAddress = JSON.parse(localStorage.getItem("oldAddress"))
-                    }
+        return {
+            paymentOptions: "momo",
+            order_id: 0,
+            logged: 0,
+            user: {},
+            name: "",
+            phone: "",
+            oldAddress: " ",
+            orders: [],
+            dialog: false,
+            myInput: "",
+            total_price: 0,
+            products_info: [],
+            orderInfo: {
+                user_id: 0,
+                user_name: "",
+                mobile_no: "",
+                order_date: "",
+                address: "",
+                note: null,
+                total_price: "",
+                payment_method: "",
+                products: []
+            },
+            selected: null,
+            options: {
+                apiKey: process.env.VUE_APP_PLACE_API_KEY,
+                deepSearch: true,
+                cors: true,
+                focus: false,
+                params: {
+                    location: '-33.8688,151.2195',
+                    radius: 1000,
+                    language: 'en'
                 }
-                this.getProductsInfo()
             }
-         else {
+        }
+    },
+    created() {
+        if (JSON.parse(localStorage.getItem("order"))) {
+            this.orders = JSON.parse(localStorage.getItem("order"))
+            console.log("order 2: ", this.orders)
+            if (JSON.parse(localStorage.getItem("user")) == null) {
+                // this.user = localStorage.getItem("user")
+                this.logged = 0
+                this.name = "Tên người nhận"
+                this.phone = "Số điện thoại"
+                this.oldAddress = "Chưa có địa chỉ giao hàng"
+            } else {
+                this.logged = 1
+                this.user = JSON.parse(localStorage.getItem("user"))
+                this.name = this.user.last_name + " " + this.user.first_name
+                this.phone = this.user.mobile_no
+                console.log("name: ", this.name)
+                if (localStorage.getItem("oldAddress") == null || localStorage.getItem("oldAddress").length == 0) {
+                    console.log("here: ", this.user.address)
+                    this.oldAddress = this.user.address
+                } else {
+                    console.log("here2: ", localStorage.getItem("oldAddress"))
+                    this.oldAddress = JSON.parse(localStorage.getItem("oldAddress"))
+                }
+            }
+            this.getProductsInfo()
+        } else {
             console.log("NOTTTTTTTTTTTT")
             alert("Ban chua co gi de thanh toan")
             this.$router.push('mainpage')
@@ -421,52 +423,128 @@ export default {
         },
 
         handleDatHang() {
-            // send this.orders ve BE
-            axios
-                .post("http://127.0.0.1:8000/api/admin/order/addOrder", {
-                    // Truyen dong
-                    // user_id: this.user.id,
-                    // user_name: this.name,
-                    // mobile_no: this.user.mobile_no,
-                    // order_date: "2023-01-26",
-                    // address: this.oldAddress,
-                    // note: null,
-                    // total_price: this.total_price,
-                    // payment_method: "cash",
-                    // products: JSON.parse(JSON.stringify(this.products_info))
 
-                    user_id: 1,
-                    user_name: "this.name",
-                    mobile_no: "0123456789",
-                    address: "this.oldAddress",
-                    note: null,
-                    total_price: 15000,
-                    payment_method: "cash",
-                    products: JSON.parse(JSON.stringify(this.products_info))
-                })
-                .then((response) => {
-                    console.log("RES:\n")
-                    console.log(response);
-                    console.log("END RES\n")
-                    this.products_info = []
-                    console.log("1")
-                    this.orders = []
-                    console.log("2")
-                    localStorage.removeItem("order")
-                    console.log("3")
-                    console.log("4")
-                })
-                .catch((error) => {
-                    console.log("ERR")
-                    console.log(error.response);
-                });
-            alert("Ban da thanh toan thanh cong")
-            this.$router.push('mainpage')
+            // send this.orders ve BE
+            console.log("PaymentOptions: ", this.paymentOptions)
+            console.log("old Address: ", this.oldAddress)
+            // console.log("total price: ", Number(this.total_price))
+            if (this.paymentOptions == 'cash') {
+                axios
+                    .post("http://127.0.0.1:8000/api/admin/order/addOrder", {
+                        // Truyen dong
+                        // user_id: this.user.id,
+                        // user_name: this.name,
+                        // mobile_no: this.user.mobile_no,
+                        // order_date: "2023-01-26",
+                        // address: this.oldAddress,
+                        // note: null,
+                        // total_price: this.total_price,
+                        // payment_method: "cash",
+                        // products: JSON.parse(JSON.stringify(this.products_info))
+
+                        user_id: this.user.id,
+                        user_name: this.name,
+                        mobile_no: this.phone,
+                        address: this.oldAddress,
+                        note: null,
+                        total_price: Number(this.total_price) * 1000,
+                        payment_method: this.paymentOptions,
+                        products: JSON.parse(JSON.stringify(this.products_info))
+                    })
+                    .then((response) => {
+                        console.log("RES:\n")
+                        console.log("respon1: ", response);
+                        console.log("END RES\n")
+                        // this.order_id = response.data.order_id
+                        // console.log("orrderid: ", this.order_id)
+                        alert("Bạn đã đặt hàng thành công")
+                        this.products_info = []
+                        this.orders = []
+                        localStorage.removeItem("order")
+                        window.open("http://localhost:8080/mainpage#", "_self")
+                    })
+                    .catch((error) => {
+                        console.log("ERR1")
+                        console.log(error);
+                    });
+
+                // alert("Bạn đã đặt hàng thành công")
+            } else {
+
+                axios
+                    .post("http://127.0.0.1:8000/api/admin/order/addOrder", {
+                        // Truyen dong
+                        // user_id: this.user.id,
+                        // user_name: this.name,
+                        // mobile_no: this.user.mobile_no,
+                        // order_date: "2023-01-26",
+                        // address: this.oldAddress,
+                        // note: null,
+                        // total_price: this.total_price,
+                        // payment_method: "cash",
+                        // products: JSON.parse(JSON.stringify(this.products_info))
+
+                        user_id: this.user.id,
+                        user_name: this.name,
+                        mobile_no: this.phone,
+                        address: this.oldAddress,
+                        note: null,
+                        total_price: Number(this.total_price) * 1000,
+                        payment_method: this.paymentOptions,
+                        products: JSON.parse(JSON.stringify(this.products_info))
+                    })
+                    .then((response) => {
+                        console.log("RES:\n")
+                        console.log("respon1: ", response);
+                        console.log("END RES\n")
+                        this.order_id = response.data.order_id
+                        console.log("orrderid: ", this.order_id)
+                        axios
+                            .post("http://127.0.0.1:8000/api/payment/" + this.paymentOptions, {
+                                order_id: this.order_id,
+                                total_price: Number(this.total_price) * 1000
+                            })
+                            .then((response2) => {
+                                console.log("respon2: ", response2)
+                                axios
+                                    .post("http://127.0.0.1:8000/api/admin/order/paidOrder", {
+                                        order_id: this.order_id
+                                    })
+                                    .then((response) => {
+                                        console.log(response)
+                                        this.products_info = []
+                                        this.orders = []
+                                        localStorage.removeItem("order")
+                                        window.open(response2.data, "_self")
+                                        // this.userInfomation = response.data.products;
+                                        // console.log(response);
+                                    })
+                                    .catch((error) => {
+                                        console.log("Start\n");
+                                        console.log(error.response)
+                                        console.log("END\n");
+                                    });
+                                // alert(response2.data)
+                                // this.$router.push(response2.data)
+                                // this.userInfomation = response.data.products;
+                                // console.log(response);
+                            })
+                            .catch((error2) => {
+                                console.log("Start errr2\n");
+                                console.log(error2)
+                                console.log("END\n");
+                            });
+                    })
+                    .catch((error) => {
+                        console.log("ERR1")
+                        console.log(error);
+                    });
+            }
         }
     },
 
     handleDatHang() {
-      // send this.orders ve BE
+        // send this.orders ve BE
     }
 }
 </script>
