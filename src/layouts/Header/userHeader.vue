@@ -26,8 +26,7 @@
                                         Giao hàng
                                     </h5>
                                     <p class="text-limit-1-line address-font" style="font-size: 14px; margin-bottom: 0; font-weight: 400">
-                                        Tại: 30/24 Phan Đình Giót, Phường 2, Tân Bình, Thành phố Hồ
-                                        Chí Minh, Việt Nam
+                                        {{oldAddress}}
                                     </p>
                                 </div>
                                 <img data-v-e4be98d0="" style="width: 8px; height: 12px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEzIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik02LjUgNC40NTQ4N0wxMS4xNjY5IDBMMTIuNSAxLjI3MjU2TDYuNSA3TDAuNSAxLjI3MjU2TDEuODMzMTIgMEw2LjUgNC40NTQ4N1oiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuNSIvPgo8L3N2Zz4K" alt="" class="icon-vertor" />
@@ -260,7 +259,8 @@ export default {
             this.logged = 1
         }
 
-        if (localStorage.getItem("oldAddress")) {
+        if (localStorage.getItem("oldAddress") != undefined) {
+            console.log("oldAddress: ", localStorage.getItem("oldAddress"))
             this.oldAddress = JSON.parse(localStorage.getItem("oldAddress"))
         } else {
             this.oldAddress = "..."
