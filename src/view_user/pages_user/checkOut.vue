@@ -237,7 +237,7 @@
                                                 </div>
                                             </div>
                                             <div class="tch-order-card__right">
-                                                <p class="tch-order-card__price mb-0">{{separator(product.price)}}đ</p>
+                                                <p class="tch-order-card__price mb-0">{{getProductPrice(order)}}đ</p>
                                             </div>
                                         </div>
                                     </div>
@@ -375,6 +375,21 @@ export default {
             return str.join(".");
         },
 
+        getProductPrice(order) {
+            let price = 0;
+            price += Number(order.product_item[0].price) * order.count
+            order.topping_items.forEach((topping_item) => {
+                price += Number(topping_item.price) * topping_item.count
+            })
+
+            if (order.size == "M") {
+                price += 6000
+            } else if (order.size == "L") {
+                price += 10000
+            }
+            return this.separator(price);
+        },
+
         get_totalprice() {
             let price = 0;
             if (this.orders) {
@@ -383,6 +398,15 @@ export default {
                         order.product_item.forEach((product) => {
                             price += parseInt(product.price) * order.count;
                         });
+                        order.topping_items.forEach((topping_item) => {
+                            price += Number(topping_item.price) * topping_item.count
+                        });
+
+                        if (order.size == "M") {
+                            price += 6000
+                        } else if (order.size == "L") {
+                            price += 10000
+                        }
                     });
 
                     this.total_price = this.separator(price)
