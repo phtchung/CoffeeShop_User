@@ -173,7 +173,7 @@ export default {
               else {
                 this.user = response.data.userInfo
                 localStorage.setItem('user',JSON.stringify(this.user));
-                localStorage.setItem('oldAddress', JSON.stringify(this.user.address))
+                // localStorage.setItem('oldAddress', JSON.stringify(this.user.address))
                 this.$router.push('/userAcount')
               }
               // this.$store.dispatch('setAuth',true);
