@@ -120,7 +120,7 @@
                     </span>
                 </a>
                 <!-- name -->
-                <span class="user-name" style="margin-right: 37px" v-if="logged == 1">{{this.user.lastName}}</span>
+                <span class="user-name" style="margin-right: 37px" v-if="logged == 1">{{this.user.last_name}}</span>
                 <span style = "margin-right: 37px"></span>
                 <!-- icon thanh toan -->
                 <a href="http://localhost:8080/thanh-toan" style="text-decoration: none">
