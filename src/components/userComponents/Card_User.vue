@@ -41,7 +41,7 @@
                                         <span class="card-product-description">{{description }}
                                         </span>
                                         <div class="card-product-footer" style="display: flex;justify-content: space-between;align-items: center;margin-top: 1.25rem">
-                                            <span class="card-product-price">{{ separator(price) }}</span>
+                                            <span class="card-product-price">{{ separator(price) }}đ</span>
                                             <div class="card-product-quantity-config " style="display: flex">
                                                 <v-icon color="#fa8c16" large style="cursor: pointer" @click="countProductsDecrea">
                                                     mdi-minus-circle
@@ -115,7 +115,7 @@
                                 <div class="card-product-option-topping" style="display: flex">
                                     <div class="left-col">
                                         <span class="card-product-option-topping-name">{{topping_item.name}}</span>
-                                        <span class="card-product-option-topping-price">+ {{ topping_item.price}}đ</span>
+                                        <span class="card-product-option-topping-price">+ {{ separator(topping_item.price)}}đ</span>
                                     </div>
 
                                     <div class="card-product-quantity-config " style="display: flex;justify-content: space-between">
@@ -145,7 +145,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn-add-item" @click="handleChoseItem">{{ check_price() }} - Thêm vào giỏ hàng</button>
+                        <button class="btn-add-item" @click="handleChoseItem">{{ check_price() }}đ - Thêm vào giỏ hàng</button>
                     </div>
 
                 </div>

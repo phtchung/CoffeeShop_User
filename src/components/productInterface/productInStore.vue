@@ -110,7 +110,7 @@
                                 <h3>
                                     <a href="">{{product_relation.name}}</a>
                                 </h3>
-                                <div class="item__price">{{product_relation.price}} đ</div>
+                                <div class="item__price">{{separator(product_relation.price)}} đ</div>
                             </div>
                         </div>
                     </v-col>
