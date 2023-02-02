@@ -10,7 +10,7 @@
         <h3>
           <a href="#" title="CloudFee Hạnh Nhân Nướng">{{name}}</a>
         </h3>
-    <div class="price_product_item">{{price}}</div>
+    <div class="price_product_item">{{separator(price)}} đ</div>
     </div>
   </div>
 
@@ -29,6 +29,14 @@ export default {
     // product_id: "0",
     show: false,
   }),
+
+  methods: {
+    separator(numb) {
+      var str = numb.toString().split(".");
+      str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return str.join(".");
+    },
+  }
 
 };
 </script>

@@ -4,7 +4,7 @@
         <v-dialog v-model="dialog"  open-on-click width="400px" height="100px">
             <template v-slot:activator="{ on, attrs }">
                 <div style="width: 36px;height: 24px">
-                    <v-icon color="#fa8c16" large style="cursor: pointer" @click="countProductsIncrea" class="fix_icon" v-bind="attrs" v-on="on">
+                    <v-icon color="#fa8c16" large style="cursor: pointer" class="fix_icon" v-bind="attrs" v-on="on">
                         mdi-plus-circle
                         <v-btn class="card-product-decrease
                              quantity-product add-to-cart ">
@@ -41,7 +41,7 @@
                                         <span class="card-product-description">{{description }}
                                         </span>
                                         <div class="card-product-footer" style="display: flex;justify-content: space-between;align-items: center;margin-top: 1.25rem">
-                                            <span class="card-product-price">{{ separator(price) }}</span>
+                                            <span class="card-product-price">{{ separator(price) }}đ</span>
                                             <div class="card-product-quantity-config " style="display: flex">
                                                 <v-icon color="#fa8c16" large style="cursor: pointer" @click="countProductsDecrea">
                                                     mdi-minus-circle
@@ -68,24 +68,24 @@
                             <input type="text" placeholder="Ghi chú thêm cho món này" class="card-product-text">
                         </div>
                         <!--              chọn size -->
-                        <div class="card-product-size">
+                        <div>
                             <div class="card-product-option">
                                 <span class="card-product-option-text">CHỌN SIZE (BẮT BUỘC)</span>
                             </div>
-                            <div class=" card-product-option-size-item" style="display: flex;justify-content: space-between;align-items: center">
-                                <div class=" custom-control card-product-option-item mb-0">
-                                    <input type="radio" name="size-product" id="Lớn" class="custom-control-input" value="L" @click.self="size = 'L'">
-                                    <label for="Lớn" class="custom-control-label card-product-option-label  tch-custom-radio">
+                            <div class="card-product-option-size-item" style="display: flex;justify-content: space-between;align-items: center">
+                                <div class="custom-control card-product-option-item mb-0">
+                                    <input type="radio" name="size-product" id="L" class="custom-control-input" value="L" v-model="size">
+                                    <label for="L" class="custom-control-label card-product-option-label  tch-custom-radio">
                                         <div class="card-product-option-value">
-                                            <span class="text card-product-option-size">Lớn{{size}}</span>
+                                            <span class="text card-product-option-size">Lớn</span>
                                             <span>+ 10.000đ</span>
                                         </div>
                                     </label>
                                 </div>
 
-                                <div class=" custom-control card-product-option-item mb-0">
-                                    <input type="radio" name="size-product" id="Vừa" class="custom-control-input" value="M" @click.self="size = 'M'">
-                                    <label for="Vừa" class="custom-control-label card-product-option-label  tch-custom-radio">
+                                <div class="custom-control card-product-option-item mb-0">
+                                    <input type="radio" name="size-product" id="M" class="custom-control-input" value="M" v-model="size">
+                                    <label for="M" class="custom-control-label card-product-option-label  tch-custom-radio">
                                         <div class="card-product-option-value">
                                             <span class="text card-product-option-size">Vừa</span>
                                             <span>+ 6.000đ</span>
@@ -94,8 +94,8 @@
                                 </div>
 
                                 <div class=" custom-control card-product-option-item mb-0">
-                                    <input type="radio" name="size-product" id="Nhỏ" class="custom-control-input" value="S" @click.self="size = 'S'">
-                                    <label for="Nhỏ" class="custom-control-label card-product-option-label  tch-custom-radio">
+                                    <input type="radio" name="size-product" id="S" class="custom-control-input" value="S" v-model="size">
+                                    <label for="S" class="custom-control-label card-product-option-label  tch-custom-radio">
                                         <div class="card-product-option-value">
                                             <span class="text card-product-option-size">Nhỏ</span>
                                             <span>+ 0đ</span>
@@ -115,7 +115,7 @@
                                 <div class="card-product-option-topping" style="display: flex">
                                     <div class="left-col">
                                         <span class="card-product-option-topping-name">{{topping_item.name}}</span>
-                                        <span class="card-product-option-topping-price">+ {{ topping_item.price}}đ</span>
+                                        <span class="card-product-option-topping-price">+ {{ separator(topping_item.price)}}đ</span>
                                     </div>
 
                                     <div class="card-product-quantity-config " style="display: flex;justify-content: space-between">
@@ -145,7 +145,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn-add-item" @click="handleChoseItem">{{ check_price() }} - Thêm vào giỏ hàng</button>
+                        <button class="btn-add-item" @click="handleChoseItem">{{ check_price() }}đ - Thêm vào giỏ hàng</button>
                     </div>
 
                 </div>
@@ -170,9 +170,9 @@ export default {
     },
     data: () => {
         return {
-            count: 0,
+            count: 1,
             count_topping: Array(8).fill(0),
-            size: '',
+            size: "S",
             product_items: [{
                     id: "",
                     image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
@@ -262,8 +262,8 @@ export default {
             this.reset()
         },
         reset() {
-            this.size = '';
-            this.count = 0;
+            this.size = 'S';
+            this.count = 1;
             for (let index in this.topping_items) {
                 this.topping_items[index].count = 0
             }
@@ -427,11 +427,12 @@ export default {
     left: -10px;
     width: 1.5rem;
     height: 1.5rem;
-    opacity: 0;
+    opacity: 1;
     top: 70%;
     transform: translateY(-50%);
-
 }
+
+
 
 .card-product-option-label {
     padding-left: 0.75rem;
@@ -450,21 +451,6 @@ export default {
     justify-content: center;
 }
 
-.custom-control-label::before {
-    width: 1.5rem;
-    height: 1.5rem;
-    /*border-color: #fa8c16;*/
-    color: white;
-    position: absolute;
-    left: -2rem;
-    display: block;
-    content: "";
-    top: 70%;
-    transform: translateY(-50%);
-    border: 3px solid #fa8c16;
-    border-radius: 50%;
-    box-sizing: border-box;
-}
 
 /*.custom-control-label:focus{*/
 /*  top: 36px;*/
@@ -482,21 +468,6 @@ export default {
 /*  border-radius: 100%;*/
 
 /*}*/
-
-.custom-control-input:checked~.custom-control-label:after {
-    top: 36px;
-    left: -25px;
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
-    content: "";
-    /*background: orange unset no-repeat 50% 50%;*/
-    background-color: orange;
-    border-radius: 100%;
-}
 
 .card-product-option-size {
     padding-bottom: 8px;
