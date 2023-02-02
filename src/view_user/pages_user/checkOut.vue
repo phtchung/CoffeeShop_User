@@ -160,7 +160,7 @@
                                                 <span class="icon ml-3 mr-2">
                                                     <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/1120_1119_ShopeePay-Horizontal2_O.png" alt="">
                                                 </span>
-                                                <span class="text">vnpay</span>
+                                                <span class="text">VNPAY</span>
                                             </label>
                                         </div>
                                     </li>
