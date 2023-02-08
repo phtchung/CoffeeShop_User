@@ -4,8 +4,8 @@
       class="down-top-padding "
       style="margin-top: -66px; padding: 0;"
   >
-    <mainHeader > </mainHeader>
-<!-- thanh tự động chuyển ở mainpage -->
+    <mainHeader class="hidden-sm-only"> </mainHeader>
+<!-- thanh tự động chuyển ở mainpage carasourl-->
     <div>
       <template>
         <v-carousel cycle hide-delimiter-background show-arrows>
@@ -36,6 +36,7 @@
             sm="12"
             md="6"
             lg="6"
+            class="col-md-6 col-sm-6"
             style="padding: 0 26px; margin: 12px 0"
         >
           <v-row>
@@ -61,10 +62,11 @@
         </v-col>
 
         <v-col
-            cols="12"
+
             md="6"
             sm="12"
             lg="6"
+            class="col-md-6 col-sm-12 "
             style="font-size: 16px; display: flex">
           <v-row>
             <v-col
@@ -72,6 +74,7 @@
                 sm="6"
                 md="6"
                 lg="6"
+
                 style="padding: 0; margin: 12px 0"
                 v-for="item in items.slice(0, 2)"
                 :key="item.id"
@@ -82,7 +85,6 @@
                 :name="item.name"
                 :description="item.description"
                 :price=separator(item.price)
-
               />
             </v-col>
           </v-row>
@@ -110,14 +112,14 @@
 
     <div class="advertisement">
       <v-row>
-        <v-col cols="12" md="6" lg="6" sm="12">
+        <v-col cols="12" md="6" lg="6" sm="12" class="col-sm-12 col-md-6 col-xs-12" >
           <img
               src="https://file.hstatic.net/1000075078/file/cloudtea_1_5dc49fd17ba04030993d2f797dc570f2.png"
               alt=""
           />
         </v-col>
 
-        <v-col cols="12" md="6" lg="6" sm="12">
+        <v-col cols="12" md="6" lg="6" sm="12" class="col-sm-12 col-md-6 col-xs-12">
           <div>
             <img
                 src="https://file.hstatic.net/1000075078/file/cloudtea_tagline_1_c39d8fd0d46b4144be9cebd05e318796.png"
@@ -135,7 +137,7 @@
             là ghiền, nhớ mãi không thôi.
           </div>
 
-          <v-col cols="12" sm="6" md="6" lg="6" class="pa-0">
+          <div  class="pa-0" style="width: 50%">
             <a
                 href="#"
                 class="my-2"
@@ -145,7 +147,7 @@
                 Thử ngay
               </v-btn>
             </a>
-          </v-col>
+          </div>
         </v-col>
       </v-row>
     </div>
@@ -234,8 +236,8 @@
                 cols="12"
                 md="4"
                 lg="4"
-                sm="12"
-                class="blog_item"
+                sm="6"
+                class="blog_item col-xs-12 col-sm-6"
                 style="display: flex; flex-direction: column"
             >
               <img
@@ -258,8 +260,7 @@
                       href=""
                       title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
                   >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
-                    NGON</a
-                  >
+                    NGON</a>
                 </h3>
                 <p style="font-size: 14px; line-height: 24px">
                   Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương
@@ -272,8 +273,8 @@
                 cols="12"
                 md="4"
                 lg="4"
-                sm="12"
-                class="blog_item"
+                sm="6"
+                class="blog_item col-xs-12 col-sm-6"
                 style="display: flex; flex-direction: column"
             >
               <img
@@ -292,8 +293,7 @@
                       href=""
                       title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
                   >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
-                    NGON</a
-                  >
+                    NGON</a>
                 </h3>
                 <p style="font-size: 14px; line-height: 24px">
                   Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương
@@ -306,10 +306,9 @@
                 cols="12"
                 md="4"
                 lg="4"
-                sm="12"
-                class="blog_item"
-                style="display: flex; flex-direction: column"
-            >
+                sm="6"
+                class="blog_item col-xs-12 col-sm-6"
+                style="display: flex; flex-direction: column">
               <img
                   class="article_item_image"
                   src="https://file.hstatic.net/1000075078/article/1__1__88407c0ec0b84592ade162dcc6860bed_grande.jpg"
@@ -323,10 +322,7 @@
                 <h3>
                   <a
                       href=""
-                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON"
-                  >CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ
-                    NGON</a
-                  >
+                      title="CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON">CÀ PHÊ SỮA ESPRESSO THE COFFEE HOUSE - BẬT LON BẬT VỊ NGON</a>
                 </h3>
                 <p style="font-size: 14px; line-height: 24px">
                   Cà phê sữa Espresso là một lon cà phê sữa giải khát với hương
@@ -450,11 +446,9 @@
             </v-col>
           </v-row>
         </div>
-
         <h3 class="blog_home_blogtitle">
           <a href="" style="text-decoration: none; color: #191919"> Blog </a>
         </h3>
-
         <div class="blog_lists" style="display: flex">
           <v-row>
             <v-col
@@ -807,7 +801,30 @@ a {
 /*  background-color: rgba(0,0,0,.5);*/
 /*  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);*/
 /*}*/
-
+/*tablet*/
+@media screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .container_blog{
+    width: 100%px;
+  }
+}
+/*Mobile*/
+@media screen and (max-width: 46.25rem){
+  .col-sm-12{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .col-xs-12{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .container_blog{
+    max-width: 740px;
+  }
+}
 </style>
 
 <style>
