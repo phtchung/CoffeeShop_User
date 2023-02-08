@@ -1,5 +1,6 @@
 <template>
 <v-container >
+    <mainHeader></mainHeader>
     <div class="productStore_Infor">
         <div class="prodcutStore_Wrap">
             <v-row>
@@ -126,8 +127,12 @@
 
 <script>
 import axios from "axios";
+import mainHeader from "@/layouts/Header/mainHeader";
 export default {
     name: "productInStore",
+    components:{
+      mainHeader,
+    },
     data() {
         return {
             product_id: "-1",
