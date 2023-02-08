@@ -617,7 +617,7 @@ export default {
           price: "39000",
         },
         {
-          id: 3,
+          id: 53,
           image_url:
               "https://product.hstatic.net/1000075078/product/1669736893_hi-tea-vai_86427bfa982f48188db23833b7196f2a_large.png",
           name: "Hi-Tea Vải",
@@ -625,7 +625,7 @@ export default {
           price: "49000",
         },
         {
-          id: 4,
+          id: 2,
           image_url:
               "https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_ec94966a51e74a089779e4b761090321_large.png",
           name: "Cà Phê Sữa Đá",
@@ -633,14 +633,14 @@ export default {
           price: "29000",
         },
         {
-          id: 5,
+          id: 60,
           image_url: "https://product.hstatic.net/1000075078/product/1638440015_banh-mi-vietnam_02c90a5912f84a45b303eb5036b6dcb7_large.jpg",
           name: "Bánh Mì VN Thịt Nguội",
           description: "Gói gọn trong ổ bánh mì Việt Nam là từng lớp chả, từng lớp jambon hòa quyện cùng bơ và pate thơm lừng, thêm dưa rau cho bữa sáng đầy năng lượng. *Phần bánh sẽ ngon và đậm đà nhất khi kèm pate. Để đảm bảo hương vị được trọn vẹn, Nhà mong bạn thông cảm vì không thể thay đổi định lượng pate.",
           price: "35000",
         },
         {
-          id: 6,
+          id: 66,
           image_url: "https://product.hstatic.net/1000075078/product/1655348107_mochi-choco_6498979c562a466c91c61200bc86e96a_large.jpg",
           name: "Mochi Kem Chocolate",
           description: "Bao bọc bởi lớp vỏ Mochi dẻo thơm, bên trong là lớp kem lạnh cùng nhân chocolate độc đáo. Gọi 1 chiếc Mochi cho ngày thật tươi mát. Sản phẩm phải bảo quán mát và dùng ngon nhất trong 2h sau khi nhận hàng.",
