@@ -112,22 +112,22 @@
 
     <div class="advertisement"   style="width: 100%; padding: 50px 0; background: #FFF7E1 url('https://file.hstatic.net/1000075078/file/home_cloudfee_bg_d0aafa7f96c746329eaa1451a8441448.png') top center/cover no-repeat"
     >
-      <div style="display: flex;justify-content: center;    margin-left: 85px;margin-right: 85px;" >
-        <v-col cols="12" md="6" lg="6" sm="12" >
+      <v-row style="display: flex;justify-content: center;align-items: center; margin-left: 85px;margin-right: 85px;" >
+        <div class="col-sm-12 col-md-6 col-xs-12"  >
           <img
               src="https://file.hstatic.net/1000075078/file/cloudtea_1_44b35a015ef14a1ba798b209937eeeb7.png"
           />
-        </v-col>
+        </div>
 
-        <v-col cols="12" md="6" lg="6" sm="12" class="col-sm-12 col-md-6 col-xs-12">
+        <div  class="col-sm-12 col-md-6 col-xs-12" >
           <div>
             <img
                 src="https://file.hstatic.net/1000075078/file/tagline_2_2a16d1acfd32480299bfd999e9e67afb.png"
-                alt=""
+                style="margin-bottom: 12px"
             />
           </div>
 
-          <div class="text_mainpage">
+          <div class="text_mainpage" style="padding: 15px 0;font-size: 16px;line-height: 25px;color: rgba(0, 0, 0, 0.6);text-align: justify;}">
             Bộ sưu tập “Cầu Toàn Kèo Thơm” không chỉ là thức uống chăm da giữ dáng, mà còn là “vía may mắn” để năm mới thêm trọn vẹn.
             Với nền trà tốt cho sức khoẻ cùng hương vị mãng cầu và thơm giúp giải ngấy, topping đầy đặn, “Cầu Toàn Kèo Thơm” mang ý nghĩa sung túc cho năm 2023.
             Chiếc ly mèo đáng yêu còn như một lời chúc may mắn Nhà gửi đến bạn.
@@ -144,8 +144,8 @@
               </v-btn>
             </a>
           </div>
-        </v-col>
-      </div>
+        </div>
+      </v-row>
     </div>
 
     <div class="advertisement1">
