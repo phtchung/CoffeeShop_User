@@ -110,46 +110,42 @@
       </v-row>
     </div>
 
-    <div class="advertisement">
-      <v-row>
-        <v-col cols="12" md="6" lg="6" sm="12" class="col-sm-12 col-md-6 col-xs-12" >
+    <div class="advertisement"   style="width: 100%; padding: 50px 0; background: #FFF7E1 url('https://file.hstatic.net/1000075078/file/home_cloudfee_bg_d0aafa7f96c746329eaa1451a8441448.png') top center/cover no-repeat"
+    >
+      <div style="display: flex;justify-content: center;    margin-left: 85px;margin-right: 85px;" >
+        <v-col cols="12" md="6" lg="6" sm="12" >
           <img
-              src="https://file.hstatic.net/1000075078/file/cloudtea_1_5dc49fd17ba04030993d2f797dc570f2.png"
-              alt=""
+              src="https://file.hstatic.net/1000075078/file/cloudtea_1_44b35a015ef14a1ba798b209937eeeb7.png"
           />
         </v-col>
 
         <v-col cols="12" md="6" lg="6" sm="12" class="col-sm-12 col-md-6 col-xs-12">
           <div>
             <img
-                src="https://file.hstatic.net/1000075078/file/cloudtea_tagline_1_c39d8fd0d46b4144be9cebd05e318796.png"
+                src="https://file.hstatic.net/1000075078/file/tagline_2_2a16d1acfd32480299bfd999e9e67afb.png"
                 alt=""
             />
           </div>
 
           <div class="text_mainpage">
-            Vừa êm mượt dịu dàng, vừa bùng nổ nồng nàn, BST Trà Sữa CloudTea
-            Hương Vị Nụ Hôn Đầu mang đến trải nghiệm đầy mới mẻ. Chạm môi là
-            foam béo mịn bồng bềnh, càng thêm đậm đà nhờ topping vụn bánh quy
-            phô mai hoặc bột ca cao thơm lừng. Kế tiếp là tầng trà sữa sóng
-            sánh, đậm hương, rõ vị. Và tầng thạch nguyên chất, dai giòn giúp giữ
-            trọn vị trà sữa đến ngụm cuối cùng. 3 tầng hòa quyện, nhấp một ngụm
-            là ghiền, nhớ mãi không thôi.
+            Bộ sưu tập “Cầu Toàn Kèo Thơm” không chỉ là thức uống chăm da giữ dáng, mà còn là “vía may mắn” để năm mới thêm trọn vẹn.
+            Với nền trà tốt cho sức khoẻ cùng hương vị mãng cầu và thơm giúp giải ngấy, topping đầy đặn, “Cầu Toàn Kèo Thơm” mang ý nghĩa sung túc cho năm 2023.
+            Chiếc ly mèo đáng yêu còn như một lời chúc may mắn Nhà gửi đến bạn.
           </div>
 
-          <div  class="pa-0" style="width: 50%">
+          <div  class="pa-0" style="width: 100%">
             <a
                 href="#"
                 class="my-2"
                 style="text-decoration: none; padding: 0; border-radius: 8px"
             >
-              <v-btn x-large color="#B3DDCA" dark width="100%">
+              <v-btn  color="#C8070F" dark width="100%" style="border-radius: 10px">
                 Thử ngay
               </v-btn>
             </a>
           </div>
         </v-col>
-      </v-row>
+      </div>
     </div>
 
     <div class="advertisement1">
@@ -593,7 +589,7 @@ export default {
         "https://file.hstatic.net/1000075078/file/thomngon_desktop_d33ff590c7f546ef8c00e15bdc7dcf5e.jpg",
         "https://file.hstatic.net/1000075078/file/freeship_desktop_a796df9c403e45779c0c81f00d3a4c0f.jpg",
           "https://file.hstatic.net/1000075078/file/keothom_desktop_c1c834943d864cd29e78a4ef30d05cf9.jpg",
-          "https://file.hstatic.net/1000075078/file/keothom3570_desktop_302b15f5f95a4e9ea455953e7385edca.jpg",
+          "https://file.hstatic.net/1000075078/file/combo89_desktop_fb9f6ae2a13a4068a4a2a84d50f21fe3.jpg",
       ],
       urls: [
         "https://file.hstatic.net/1000075078/file/_kh_9431__1__e19a7a49963245b39b280271da3cd9fb_master.jpg",
@@ -604,50 +600,51 @@ export default {
 
       items: [
         {
-          id: 1,
+          id: 25,
           image_url:
-              "https://product.hstatic.net/1000075078/product/1639377770_cfsua-nong_016e05cb3a334141898e5677fec34784_large.jpg",
-          name: "Cà Phê 1",
-          description: "Oishii1",
-          price: "34000",
+              "https://product.hstatic.net/1000075078/product/cloudfee-hanh-nhan-nuong_ba00ec49e2c141ce957f0015cc52ffe7_large.png",
+          name: "CloudFee Hạnh Nhân Nướng",
+          description: "Vị đắng nhẹ từ cà phê phin truyền thống kết hợp Espresso Ý, lẫn chút ngọt ngào của kem sữa và lớp foam trứng cacao, nhấn thêm hạnh nhân nướng thơm bùi, kèm topping thạch cà phê dai giòn mê ly. Tất cả cùng quyện hoà trong một thức uống làm vị giác \"thức giấc\", thơm ngon hết nấc.\n" +
+              "",
+          price: "49000",
         },
         {
-          id: 2,
+          id: 1,
           image_url:
-              "https://product.hstatic.net/1000075078/product/1665655345_tch-sua-da_e0737a64b29e452f9c7eadb23300821a_large.jpg",
-          name: "Cà Phê 2",
-          description: "Oishii2",
+              "https://product.hstatic.net/1000075078/product/bg-tch-sua-da-no_3f754dc5ebfc49c6a73b231781dbc3d5_large.jpg",
+          name: "The Coffee House Sữa Đá",
+          description: "Thức uống giúp tỉnh táo tức thì để bắt đầu ngày mới thật hứng khởi. Không đắng khét như cà phê truyền thống, The Coffee House Sữa Đá mang hương vị hài hoà đầy lôi cuốn. Là sự đậm đà của 100% cà phê Arabica Cầu Đất rang vừa tới, biến tấu tinh tế với sữa đặc và kem sữa ngọt ngào cực quyến rũ. Càng hấp dẫn hơn với topping thạch 100% cà phê nguyên chất giúp giữ trọn vị ngon đến ngụm cuối cùng.",
           price: "39000",
         },
         {
           id: 3,
           image_url:
-              "https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_966117a7eb0e42d398937f44cc63aca9_large.png",
-          name: "Cloudtea1",
-          description: "Oishii3",
-          price: "19893",
+              "https://product.hstatic.net/1000075078/product/1669736893_hi-tea-vai_86427bfa982f48188db23833b7196f2a_large.png",
+          name: "Hi-Tea Vải",
+          description: "Chút ngọt ngào của Vải, mix cùng vị chua thanh tao từ trà hoa Hibiscus, mang đến cho bạn thức uống đúng chuẩn vừa ngon, vừa healthy.",
+          price: "49000",
         },
         {
           id: 4,
           image_url:
-              "https://product.hstatic.net/1000075078/product/1639377904_bac-siu_3df6607180474c2c81dfe213010be685_large.jpg",
-          name: "Cloudtea2",
-          description: "Oishii4",
-          price: "19894",
+              "https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_ec94966a51e74a089779e4b761090321_large.png",
+          name: "Cà Phê Sữa Đá",
+          description: "Cà phê Đắk Lắk nguyên chất được pha phin truyền thống kết hợp với sữa đặc tạo nên hương vị đậm đà, hài hòa giữa vị ngọt đầu lưỡi và vị đắng thanh thoát nơi hậu vị.",
+          price: "29000",
         },
         {
           id: 5,
-          image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-          name: "Cloudtea3",
-          description: "Oishii5",
-          price: "19895",
+          image_url: "https://product.hstatic.net/1000075078/product/1638440015_banh-mi-vietnam_02c90a5912f84a45b303eb5036b6dcb7_large.jpg",
+          name: "Bánh Mì VN Thịt Nguội",
+          description: "Gói gọn trong ổ bánh mì Việt Nam là từng lớp chả, từng lớp jambon hòa quyện cùng bơ và pate thơm lừng, thêm dưa rau cho bữa sáng đầy năng lượng. *Phần bánh sẽ ngon và đậm đà nhất khi kèm pate. Để đảm bảo hương vị được trọn vẹn, Nhà mong bạn thông cảm vì không thể thay đổi định lượng pate.",
+          price: "35000",
         },
         {
           id: 6,
-          image_url: "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
-          name: "Cà phê Cao nguyên",
-          description: "Oishii6",
-          price: "19896",
+          image_url: "https://product.hstatic.net/1000075078/product/1655348107_mochi-choco_6498979c562a466c91c61200bc86e96a_large.jpg",
+          name: "Mochi Kem Chocolate",
+          description: "Bao bọc bởi lớp vỏ Mochi dẻo thơm, bên trong là lớp kem lạnh cùng nhân chocolate độc đáo. Gọi 1 chiếc Mochi cho ngày thật tươi mát. Sản phẩm phải bảo quán mát và dùng ngon nhất trong 2h sau khi nhận hàng.",
+          price: "19000",
         },
       ],
       // menuType: 'NULL',
@@ -808,7 +805,7 @@ a {
     max-width: 50%;
   }
   .container_blog{
-    width: 100%px;
+    width: 100%;
   }
 }
 /*Mobile*/
