@@ -89,8 +89,8 @@
                         <!-- price -->
                         <p class="mb-0">
                           <span  class="d-block">{{
-                            product.price
-                          }}</span
+                            separator(product.price)
+                          }}đ</span
                           ><!---->
                         </p>
                         <!-- Nut + -->
@@ -149,6 +149,11 @@ export default {
     // console.log("END\n");
   },
   methods: {
+    separator(numb) {
+      var str = numb.toString().split(".");
+      str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return str.join(".");
+    },
     getCategories() {
       axios
         .post("http://127.0.0.1:8000/api/admin/category/indexByParentId", 
