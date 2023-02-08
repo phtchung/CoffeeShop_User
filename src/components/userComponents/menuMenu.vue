@@ -196,6 +196,7 @@ export default {
 
         // Create this.menuItem from this.categories (load from database)
         makeMenuItem() {
+            this.menuItems= []
             this.menuItems.push({
                 name: "Tất cả",
                 id: '0',
