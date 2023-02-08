@@ -1,6 +1,6 @@
 <template>
   <v-container>
-  <div class="main_header"  id="myHeader" >
+  <div class="main_header"  id="myHeader" style="border-bottom: 1px solid #d9d9d9">
     <div style="width: 17%;margin-right: 39px" class="categories_item" >
     <a href="http://localhost:8080/">
       <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/03/logo-the-coffee-house-chieu-dai.png" alt="" style="width: 100%">
@@ -14,7 +14,7 @@
       class="categories_item"
       @click="logout(header_path.header_id,header_path.header_path)"
     >
-      <a  >
+      <a >
         <span class="header_color">{{header_path.header_name}}</span>
       </a>
 
@@ -242,8 +242,6 @@ export default {
 
 
   }
-
-
 
   .menu_list > li > a{
     font-weight: 550;
