@@ -20,8 +20,10 @@
 
       <ul class="menu_list" v-if="header_path.header_active ===true">
         <li>
-
           <a href="http://localhost:8080/collections/menu" title="Tất cả">Tất cả</a>
+        </li>
+        <li>
+          <a href="http://localhost:8080/collections/product/ca-phe"  title="Cà phê">Cà phê</a>
           <ul class="list_item">
             <li class="item_font">
               <a href="http://localhost:8080/collections/ca-phe-viet-nam" title="Cà phê Việt Nam" >Cà phê Việt Nam</a>
@@ -29,32 +31,81 @@
             <li class="item_font">
               <a href="http://localhost:8080/collections/ca-phe-may" title="Cà phê Máy">Cà phê Máy</a>
             </li>
-
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/cold-brew" title="Cold Brew">Cold Brew</a>
+            </li>
           </ul>
         </li>
         <li>
-          <a href="http://localhost:8080/collections/product/ca-phe" title="Cà phê">Cà phê</a>
-        </li>
-        <li>
           <a href="http://localhost:8080/collections/cloudfee" title="CloudFee">CloudFee</a>
+          <ul class="list_item">
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/cloudfee" title="CloudFee">CloudFee</a>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="http://localhost:8080/collections/cloudtee" title="CloudTea">CloudTea</a>
+          <ul class="list_item">
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/cloudtea" title="CloudTea">CloudTea</a>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="http://localhost:8080/collections/product/tra" title="Trà">Trà</a>
+          <ul class="list_item">
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/tra-trai-cay" title="Trà trái cây">Trà trái cây</a>
+            </li>
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/tra-sua-macchiato" title="Trà sữa Macchiato">Trà sữa Macchiato</a>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="" title="Hi-Tea Healthy">Hi-Tea Healthy</a>
+          <ul class="list_item">
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/hi-tea-tra" title="Hi-Tea Trà">Hi-Tea Trà</a>
+            </li>
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/hi-tea-da-tuyet" title="Hi-Tea Đá Tuyết">Hi-Tea Đá Tuyết</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="" title="Bánh & Snack">Bánh & Snack</a>
+          <a href="http://localhost:8080/collections/banh-&-snack" title="Bánh & Snack">Bánh & Snack</a>
+          <ul class="list_item">
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/banh-man" title="Bánh mặn" >Bánh mặn</a>
+            </li>
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/banh-ngot" title="Bánh ngọt">Bánh ngọt</a>
+            </li>
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/snack" title="Snack">Snack</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="" title="Tại nhà">Tại nhà</a>
+          <a href="http://localhost:8080/collections/tai-nha" title="Tại nhà">Tại nhà</a>
+          <ul class="list_item">
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/ca-phe-tai-nha" title="Cà phê tại nhà">Cà phê tại nhà</a>
+            </li>
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/tra-tai-nha" title="Trà tại nhà">Trà tại nhà</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="" title="Thức uống khác">Thức uống khác</a>
+          <a href="http://localhost:8080/collections/thuc-uong-khac" title="Thức uống khác">Thức uống khác</a>
+          <ul class="list_item">
+            <li class="item_font">
+              <a href="http://localhost:8080/collections/chocolate" title="Chocolate">Chocolate</a>
+            </li>
+          </ul>
         </li>
       </ul>
 
