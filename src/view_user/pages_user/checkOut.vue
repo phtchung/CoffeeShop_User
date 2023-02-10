@@ -197,7 +197,8 @@
                                     <span class="icon mr-2">
                                         <v-icon color="#fa8c16">mdi-delete</v-icon>
 
-                                    </span><span>Xóa đơn hàng</span>
+                                    </span>
+                                    <span @click="handleDeleteTotal">Xóa đơn hàng</span>
                                 </p>
                             </div>
                         </div>
@@ -373,6 +374,14 @@ export default {
             var str = numb.toString().split(".");
             str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             return str.join(".");
+        },
+
+        handleDeleteTotal(){
+            alert("Xóa thành công")
+            this.products_info = []
+            this.orders = []
+            localStorage.removeItem("order")
+            window.open("http://localhost:8080/mainpage#", "_self")
         },
 
         getProductPrice(order) {
