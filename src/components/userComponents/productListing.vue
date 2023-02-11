@@ -103,7 +103,8 @@
                           :image_url="product.image_url"
                           :name="product.name"
                           :description="product.description"
-                          :price="product.price"> 
+                          :price="product.price"
+                          :isInProductListing=1 > 
                         </Card_User>
                        
                         

@@ -61,7 +61,7 @@
                             <div style="display: flex;flex-wrap: wrap">
                                 <div class="product_option" v-for="topping_item in topping_items" :key=topping_item.id>
                                     <label class="option_item  " type="checkbox">
-                                        <input type="checkbox" class="checkbox" name="topping_tch" :title=topping_item.name v-model="checked_topping" :value=topping_item.name>
+                                        <input type="checkbox" class="checkbox" name="topping_tch" :title=topping_item.name v-model="topping_item.count" :value=topping_item.name>
                                         <div class="top_detail active_normal">
                                             <div class="name">{{topping_item.name}} + {{separator(topping_item.price)}} đ</div>
                                         </div>
@@ -138,6 +138,7 @@ export default {
             product_id: "-1",
             product_name_convert: "",
             checked_topping: [],
+            size: 'S',
             small: false,
             medium: false,
             big: false,
@@ -238,11 +239,31 @@ export default {
 
     methods: {
         goToCode() {
+            if(this.small == true){
+                this.size = 'S'
+            } else if(this.medium == true){
+                this.size = 'M'
+            } else if(this.big == true){
+                this.size = 'L'
+            }
+            let topping_counts = []
+            for(let i in this.topping_items){
+                let topping_item = this.topping_items[i]
+                if(topping_item.count == true){
+                    topping_counts.push(1)
+                } else {
+                    topping_counts.push(0)
+                }
+            }
+            console.log("Info size: ", this.size)
+            console.log("Topping count: ", topping_counts)
+            localStorage.setItem('info_size', this.size)
+            localStorage.setItem('topping_counts', JSON.stringify(topping_counts))
             let route = this.$router.resolve({
                 path: "/code=" + this.product.id,
                 name: "code",
                 params: {
-                    product_id: `${this.product.id}`
+                    product_id: `${this.product.id}`,
                 },
             });
             window.open(route.href);
