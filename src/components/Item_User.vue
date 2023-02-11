@@ -1,14 +1,14 @@
 <template>
   <div class="menu_item">
     <div class="menu_item_image">
-      <a href="#" title="CloudFee Hạnh Nhân Nướng">
+      <a title="CloudFee Hạnh Nhân Nướng">
         <img :src="image_url" class="lazyloaded"/>
       </a>
     </div>
 
     <div class="menu_item_info">
         <h3>
-          <a href="#" title="CloudFee Hạnh Nhân Nướng">{{name}}</a>
+          <a title="CloudFee Hạnh Nhân Nướng">{{name}}</a>
         </h3>
     <div class="price_product_item">{{separator(price)}} đ</div>
     </div>
