@@ -293,7 +293,6 @@ export default {
             // console.log("old Address: ", this.oldAddress)
             localStorage.setItem("oldAddress", JSON.stringify(this.oldAddress))
             this.dialog = false
-            // setTimeout(()=>{}, 5000)
             this.$emit('chosenAddress', true);
         }
         // closePopUp: function (event) {
