@@ -47,6 +47,7 @@ export default {
         } else if (this.$route.params.path_name == "tra") {
             this.category_id = 2
         }
+        this.items = JSON.parse(localStorage.getItem("items"))
         this.$watch(
                 () => this.$route.params,
                 (toParams, previousParams) => {
@@ -61,6 +62,7 @@ export default {
                     // react to route changes...
                 }
             ),
+
             this.getItems();
         // this.items = JSON.parse(localStorage.getItem("items"))
     },
@@ -85,14 +87,20 @@ export default {
         //   // const response = await abc();
         // },
         getItems() {
-            this.category_id = this.$route.params.category_id;
-            // console.log(this.category_id);
+            if(this.$route.path.slice(21) == 'tra'){
+                this.category_id = 20
+            }
+            else if(this.$route.path.slice(21) == 'ca-phe') {
+                this.category_id = 19
+            }
+            console.log("from path: ",this.$route.path.slice(21));
             axios
                 .post("http://127.0.0.1:8000/api/admin/product/indexByCategoryId", {
                     category_id: this.category_id
                 })
                 .then((response) => {
                     this.items = response.data.products;
+                    localStorage.setItem("items", JSON.stringify(this.items))
                     // console.log(response);
                 })
                 .catch((error) => {
@@ -100,7 +108,6 @@ export default {
                     console.log(error.response)
                     console.log("END\n");
                 });
-            localStorage.setItem("items", JSON.stringify(this.items))
         },
         handleProduct(product_id, product_name) {
             this.product_id = product_id;
