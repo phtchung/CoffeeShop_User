@@ -1,7 +1,7 @@
 <template>
 <div>
     <v-row justify="center">
-        <v-dialog v-model="dialog"  open-on-click width="400px" height="100px">
+        <v-dialog v-model="dialog" open-on-click width="400px" height="100px">
             <template v-slot:activator="{ on, attrs }">
                 <div style="width: 36px;height: 24px">
                     <v-icon color="#fa8c16" large style="cursor: pointer" class="fix_icon" v-bind="attrs" v-on="on">
@@ -94,8 +94,8 @@
                                 </div>
 
                                 <div class=" custom-control card-product-option-item mb-0">
-                                    <input type="radio" name="size-product" id="S" class="custom-control-input" value="S" v-model="size">
-                                    <label for="S" class="custom-control-label card-product-option-label  tch-custom-radio">
+                                    <input type="radio" name="size-product" id='S' class="custom-control-input" value='S' v-model="size">
+                                    <label for='S' class="custom-control-label card-product-option-label  tch-custom-radio">
                                         <div class="card-product-option-value">
                                             <span class="text card-product-option-size">Nhỏ</span>
                                             <span>+ 0đ</span>
@@ -167,12 +167,14 @@ export default {
         description: String,
         price: String,
         dialog: Boolean,
+        isInProductListing: Number
     },
     data: () => {
         return {
             count: 1,
             count_topping: Array(8).fill(0),
-            size: "S",
+            size: 'S',
+            topping_counts: [0, 0, 0, 0, 0],
             product_items: [{
                     id: "",
                     image_url: "https://minio.thecoffeehouse.com/image/admin/1670897221_a_400x400.png",
@@ -205,12 +207,35 @@ export default {
                     price: "10000",
                     count: 0,
                 },
+                {
+                    id: "5",
+                    name: "Thạch Cà Phê",
+                    price: "10000",
+                    count: 0,
+                },
             ],
         }
     },
 
     created() {
-        // localStorage.removeItem("order")
+        if (this.isInProductListing == 0) {
+            console.log("local: ", localStorage)
+            // localStorage.removeItem("order")
+            if (localStorage['info_size']) {
+                this.size = localStorage.getItem('info_size')
+                console.log("size: ", localStorage.getItem('info_size'))
+            }
+            if (localStorage['topping_counts']) {
+                // console.log("topping_counts: ",localStorage.getItem('topping_counts'))
+                this.topping_counts = JSON.parse(localStorage.getItem('topping_counts'))
+            }
+
+            for (let i in this.topping_items) {
+                this.topping_items[i].count = this.topping_counts[i]
+            }
+            console.log("size_code: ", this.size)
+            console.log("topping_counts: ", this.topping_counts)
+        }
         this.product_items[0].id = this.id
         this.product_items[0].image_url = this.image_url
         this.product_items[0].name = this.name
@@ -218,7 +243,7 @@ export default {
         this.product_items[0].price = this.price
 
         console.log("This id: ", this.id)
-        if(this.id == this.currentID){
+        if (this.id == this.currentID) {
             console.log("This current id: ", this.currentID)
             console.log("This dialog: ", this.dialog)
             // this.dialog = !this.dialog
@@ -267,6 +292,10 @@ export default {
             for (let index in this.topping_items) {
                 this.topping_items[index].count = 0
             }
+            this.topping_counts = [0, 0, 0, 0, 0]
+            localStorage.setItem('info_size', 'S')
+            localStorage.setItem('topping_counts', JSON.stringify([0, 0, 0, 0, 0]))
+            console.log("NEW localStorage: ", localStorage)
         },
         countProductsIncrea() {
             this.count += 1;
@@ -432,8 +461,6 @@ export default {
     transform: translateY(-50%);
 }
 
-
-
 .card-product-option-label {
     padding-left: 0.75rem;
 
@@ -450,7 +477,6 @@ export default {
     flex-direction: column;
     justify-content: center;
 }
-
 
 /*.custom-control-label:focus{*/
 /*  top: 36px;*/

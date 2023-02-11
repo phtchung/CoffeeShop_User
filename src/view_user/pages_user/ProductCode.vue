@@ -1,7 +1,7 @@
 <template>
 <v-container rounded-0 fluid style="margin-top: 42px;">
 
-    <userHeader :dialog="true" @chosenAddress="openDialog = $event"/>
+    <userHeader :dialog="openAddress" @chosenAddress="openDialog = $event"/>
     <Card_User style="z-index : 999" 
                           :currentID="currentID"
                           :dialog="openDialog"
@@ -9,7 +9,9 @@
                           :image_url="product.image_url"
                           :name="product.name"
                           :description="product.description"
-                          :price="product.price"> 
+                          :price="product.price"
+                          :isInProductListing=0
+                          > 
                         </Card_User>
     <!-- <Card_User style="z-index : 999" 
                           :currentID="1"
@@ -51,6 +53,7 @@ export default {
     //   },
     data() {
         return {
+            openAddress: true,
             currentID: "0",
             openDialog: false,
             product: {},
@@ -65,6 +68,10 @@ export default {
     created(){
         this.currentID = this.$route.path.slice(6)
         this.getProductByID()
+        if(this.openDialog == true)
+        {
+            this.openAddress = false
+        }
         // setTimeout(()=>{}, 5000)
     },
 
@@ -79,7 +86,8 @@ export default {
                     console.log(response);
                     console.log("END\n");
                     this.product = response.data.product;
-                    this.product.id = this.product_id
+                    // console.log("Product 1 : ",this.product)
+                    // this.product.id = this.currentID
                     // this.topping_items = response.data.toppings
                     // this.product_relations = response.data.same
                     // for(let index in this.topping_items){
@@ -103,6 +111,10 @@ export default {
     watch: {
         openDialog() {
             console.log("Change: ", this.openDialog)
+            if(this.openDialog == true)
+            {
+                this.openAddress = false
+            }
         }
     },
     components: {
