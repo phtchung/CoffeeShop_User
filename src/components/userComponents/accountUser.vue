@@ -144,7 +144,7 @@ export default {
     },
 
     components: {
-      userHeader: () => import("@/layouts/Header/userHeader"),
+      userHeader: () => import("@/layouts/Header/UserHeader"),
     },
 
 }

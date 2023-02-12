@@ -478,7 +478,7 @@
 
 <script>
 import axios from "axios";
-// import accountUser from "@/components/userComponents/accountUser";
+// import accountUser from "@/components/UserComponents/accountUser";
 // import checkOut from "@/view_user/pages_user/checkOut";
 export default {
     name: "userInfo",

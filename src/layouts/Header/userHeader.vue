@@ -312,7 +312,7 @@ export default {
         });
     },
     components: {
-    AuthenticationUser: () => import("@/components/userComponents/Authentication_User"),
+    AuthenticationUser: () => import("@/components/UserComponents/AuthenticationUser"),
   },
 };
 </script>

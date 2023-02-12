@@ -36,8 +36,8 @@ export default {
     },
 
     components: {
-        Item_User: () => import("@/components/Item_User"),
-        mainHeader: () => import("@/layouts/Header/mainHeader")
+        Item_User: () => import("@/components/commonComponents/ItemUser"),
+        mainHeader: () => import("@/layouts/Header/MainHeader")
         // BtnNew: () => import("@/components/vuetifyComponents/BtnNew")
     },
     created() {

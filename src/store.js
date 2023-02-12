@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 // import axios from "axios";
+import CustomGoogleAutocomplete from 'vue-custom-google-autocomplete'
+Vue.use(CustomGoogleAutocomplete)
 Vue.use(Vuex)
 
 export default new Vuex.Store({

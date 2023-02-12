@@ -11,7 +11,6 @@
 // import Mainpage from "@/view_user/pages_user/Mainpage";
 export default {
   name: 'App',
-
   components: {
     // Mainpage
     
@@ -20,3 +19,6 @@ export default {
 };
 </script>
 
+<style>
+
+</style>

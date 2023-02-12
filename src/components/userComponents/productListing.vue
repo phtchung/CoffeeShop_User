@@ -127,7 +127,7 @@ import axios  from "axios";
 export default {
   name: "productListing",
   components:{
-    Card_User: () => import("@/components/userComponents/Card_User"),
+    Card_User: () => import("@/components/commonComponents/CardUser"),
   },
   props: {
     currentID: String,
