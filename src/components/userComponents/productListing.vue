@@ -16,7 +16,48 @@
                 <div style="display: flex">
                   <!-- icon + text title -->
                   <v-icon style="margin-right: 12px"> mdi-beer-outline </v-icon>
-                  <span data-v-5abbf04c="" class="text">Sản phẩm từ Nhà</span>
+                  <span class="text">Sản phẩm từ Nhà</span>
+                  <template>
+                    <v-row justify="center">
+                      <v-dialog
+                          v-model="dialog"
+                          max-width="700"
+                          content-class="my-custom-dialog"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-btn
+                              v-bind="attrs"
+                              v-on="on"
+                              color="#e3e3e3"
+                              style="border-radius: 10px;padding: 0;margin: 0 12px 0 42px"
+                              min-width="34px"
+                              min-height="32px"
+                          >
+                            <v-icon   style="font-weight: 200;font-size: 32px;color: #838387"> mdi-magnify </v-icon>
+
+                          </v-btn>
+                        </template>
+                        <v-card style="display: flex;flex-direction: column;border-radius: 8px">
+                          <div class="modal-header ">
+                            <v-btn
+                                text
+                                style="padding: 8px"
+                                @click="dialog = false">
+                              <v-icon x-large color="#808080" style="font-weight: 200;font-size: 32px"> mdi-close </v-icon>
+                            </v-btn>
+                            <div style="margin: auto;font-size: 14px;line-height: 24px;color: #262626;font-weight: 500">Tìm kiếm </div>
+                          </div>
+                          <hr style="color: #dee2e6">
+                          <div class="modal-body">
+                            <div class="card-product-note-item">
+                              <v-icon  color="#808080" style="font-weight: 200;font-size: 32px;padding: 12px"> mdi-magnify </v-icon>
+                              <input type="text" placeholder="Tìm kiếm theo sản phẩm bạn quan tâm " class="card-product-text" v-model="searchProduct">
+                            </div>
+                          </div>
+                        </v-card>
+                      </v-dialog>
+                    </v-row>
+                  </template>
                 </div>
 
                 <div>
@@ -135,9 +176,11 @@ export default {
   },
   data() {
     return {
+      searchProduct:"",
       category_type: 1,
       categories: [],
       products: [],
+
     };
   },
   created() {
@@ -199,8 +242,44 @@ export default {
 };
 </script>
 
-
 <style scoped>
+/deep/.my-custom-dialog {
+  margin-top: 110px;
+  align-self: flex-start;
+}
+.modal-header{
+    display: flex;
+    padding: 16px;
+  align-items: center;
+}
+
+.modal-body{
+  padding: 16px;
+
+}
+button.close{
+  background-color: transparent;
+  border: 0;
+}
+.card-product-note-item{
+  border: 1px solid #ededee;
+  border-radius: 4px;
+  background-color: #fafafa;
+  display: flex;
+  margin-top: 20px;
+  height: 2.75rem;
+}
+
+.card-product-text{
+  flex: 1 1 auto;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 300;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+
 .tch-box {
   /* padding-top: 3.125rem; */
   padding-bottom: 3.125rem;
