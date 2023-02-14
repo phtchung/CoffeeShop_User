@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="vueDatepicker" style="display: flex">
-                            Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label>
+                            Sinh nhật</label>
                         <input class="form-control" placeholder="DD-MM-YYYY" id="vueDatepicker" type="datetime-local" v-model="userInfomation.birth">
                         <!--            <span class="date">-->
                         <!--              <datepicker placeholder="DD-MM-YYYY"  id="vueDatepicker" v-model="userInfomation.birth"  ></datepicker>-->
