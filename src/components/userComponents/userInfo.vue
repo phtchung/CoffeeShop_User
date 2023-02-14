@@ -23,7 +23,7 @@
                     <p class="user-bean">{{bean}} bean - Mới</p>
                 </div>
                 <div class="user-card-barcode d-flex flex-column align-items-center">
-                    <!--            <barcode value="112335" class="barcode" width="244" height="122"></barcode>-->
+                    <!-- <barcode value="112335" class="barcode" width="244" height="122"></barcode> -->
                     <p class="code-number">M161682829</p>
                 </div>
                 <img src="" class="leaves-image" />
@@ -119,7 +119,7 @@
                             <input id="phone-number" name="phone-number" type="text" disabled="disabled" class="form-control" v-model="userInfomation.mobile_no" />
                         </div>
                         <div class="form-group row">
-                            <label for="birth" style="display: flex">Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)</label>
+                            <label for="birth" style="display: flex">Sinh nhật</label>
                             <input id="birth" type="text" class="form-control" disabled="disabled" v-model="userInfomation.birth" />
                         </div>
                         <div class="form-group row">
@@ -439,18 +439,18 @@
                                 <div class="card-history-body">
                                     <div class="order-info">
                                         <div class="product-info" style="display: flex;flex-direction: column">
-                                          <div v-for="(subProduct,subProduct_index) in listOrder.product" :key=subProduct.name>
-                                            <span class="product-name">
-                                                {{subProduct.name}}
-                                            </span>
-                                            <div v-for="(topping, index) in listOrder.product[subProduct_index].topping[0]" :key=index>
-                                                <span class="product-name" style="font-size: 14px; color: rgba(0, 0, 0, 0.45);" v-if="listOrder.product[subProduct_index].topping[1][index] > 0">
-                                                    {{topping.name}}
+                                            <div v-for="(subProduct,subProduct_index) in listOrder.product" :key=subProduct.name>
+                                                <span class="product-name">
+                                                    {{subProduct.name}}
                                                 </span>
+                                                <div v-for="(topping, index) in listOrder.product[subProduct_index].topping[0]" :key=index>
+                                                    <span class="product-name" style="font-size: 14px; color: rgba(0, 0, 0, 0.45);" v-if="listOrder.product[subProduct_index].topping[1][index] > 0">
+                                                        {{topping.name}}
+                                                    </span>
+                                                </div>
+                                                <span>------------</span>
                                             </div>
-                                            <span>------------</span>
-                                          </div>
-                                      
+
                                             <!-- <div v-for="(topping, index) in listOrder.product[0].topping[0]" :key=index>
                                                 <span class="product-name"  v-if="listOrder.product[0].topping[1][index] > 0">
                                                     {{topping.name}} - {{index}}
@@ -600,6 +600,10 @@ export default {
                     // this.listAddresses = response.data.address_note
                     // this.userInfomation = response.data.products;
                     // console.log(response);
+                    this.bean = 0
+                    for (let listOrder of this.listOrders) {
+                        this.bean += this.checkBean(listOrder.total_price)
+                    }
                 })
                 .catch((error) => {
                     console.log("Start\n");
@@ -687,29 +691,33 @@ export default {
             }
         },
         handleUpdate() {
-            // luu vao localStorage
-            localStorage.setItem('user', JSON.stringify(this.userInfomation))
-            // send data to BE with post user/info/updateInfo
-            axios
-                .post("http://127.0.0.1:8000/api/user/info/updateInfo", {
-                    id: this.userInfomation.id,
-                    last_name: this.userInfomation.last_name,
-                    first_name: this.userInfomation.first_name,
-                    mobile_no: this.userInfomation.mobile_no,
-                    birth: this.userInfomation.birth,
-                    email: this.userInfomation.email,
-                    gender: this.userInfomation.gender,
-                })
-                .then((response) => {
-                    console.log(response)
-                    // this.userInfomation = response.data.products;
-                    // console.log(response);
-                })
-                .catch((error) => {
-                    console.log("Start\n");
-                    console.log(error.response)
-                    console.log("END\n");
-                });
+            if (confirm('Bạn có chắc muốn update không?')) {
+                alert('Update thành công');
+
+                // luu vao localStorage
+                localStorage.setItem('user', JSON.stringify(this.userInfomation))
+                // send data to BE with post user/info/updateInfo
+                axios
+                    .post("http://127.0.0.1:8000/api/user/info/updateInfo", {
+                        id: this.userInfomation.id,
+                        last_name: this.userInfomation.last_name,
+                        first_name: this.userInfomation.first_name,
+                        mobile_no: this.userInfomation.mobile_no,
+                        birth: this.userInfomation.birth,
+                        email: this.userInfomation.email,
+                        gender: this.userInfomation.gender,
+                    })
+                    .then((response) => {
+                        console.log(response)
+                        // this.userInfomation = response.data.products;
+                        // console.log(response);
+                    })
+                    .catch((error) => {
+                        console.log("Start\n");
+                        console.log(error.response)
+                        console.log("END\n");
+                    });
+            }
         }
     }
 }
@@ -1561,11 +1569,11 @@ div {
 
 .card-history-list {
     padding-left: 0;
-    overflow:hidden; 
-    overflow-y:scroll;
-    min-height:200px;
-    height:600px; 
-    max-height:auto; 
+    overflow: hidden;
+    overflow-y: scroll;
+    min-height: 200px;
+    height: 600px;
+    max-height: auto;
 }
 
 .card-history-item {

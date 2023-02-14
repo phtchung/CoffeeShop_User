@@ -60,13 +60,12 @@
                             <p class="option_title">Topping</p>
                             <div style="display: flex;flex-wrap: wrap">
                                 <div class="product_option" v-for="topping_item in topping_items" :key=topping_item.id>
-                                    <label class="option_item  " type="checkbox">
-                                        <input type="checkbox" class="checkbox" name="topping_tch" :title=topping_item.name v-model="topping_item.count" :value=topping_item.name>
-                                        <div class="top_detail active_normal">
+                                    <div class="option_item  " type="checkbox">
+                                        <input type="checkbox" class="checkbox" name="topping_tch" :id="topping_item.id" :title=topping_item.name v-model="topping_item.count" :value=topping_item.name>
+                                        <label class="top_detail active_normal" :for="topping_item.id">
                                             <div class="name">{{topping_item.name}} + {{separator(topping_item.price)}} đ</div>
-                                        </div>
-                                    </label>
-
+                                        </label>
+                                    </div>     
                                 </div>
                             </div>
                         </div>
@@ -367,6 +366,12 @@ export default {
         },
         get_total_price() {
             let total_price = parseInt(this.product.price) + (10000 * this.checked_topping.length);
+            for(let topping_item of this.topping_items){
+                console.log("topping_item here: ",topping_item)
+                if(topping_item.count > 0){
+                    total_price += 10000
+                }
+            }
             if (this.big === true && this.small === false && this.medium === false) {
                 total_price += 10000;
             } else if (this.big === false && this.small === false && this.medium === true) {

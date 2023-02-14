@@ -198,7 +198,7 @@
                                         <v-icon color="#fa8c16">mdi-delete</v-icon>
 
                                     </span>
-                                    <span @click="handleDeleteTotal">Xóa đơn hàng</span>
+                                    <button @click="handleDeleteTotal">Xóa đơn hàng</button>
                                 </p>
                             </div>
                         </div>
@@ -234,7 +234,7 @@
                                                         </p>
                                                     </div>
                                                     <!---->
-                                                    <p class="tch-order-delete-item">Xóa</p>
+                                                    <p class="tch-order-delete-item" @click="handleDeleteOne(order)">Xóa</p>
                                                 </div>
                                             </div>
                                             <div class="tch-order-card__right">
@@ -337,6 +337,7 @@ export default {
         }
     },
     created() {
+        // localStorage.removeItem("order")
         if (JSON.parse(localStorage.getItem("order"))) {
             this.orders = JSON.parse(localStorage.getItem("order"))
             console.log("order 2: ", this.orders)
@@ -364,11 +365,26 @@ export default {
         } else {
             console.log("NOTTTTTTTTTTTT")
             alert("Ban chua co gi de thanh toan")
-            this.$router.push('mainpage')
+            this.$router.push('/mainpage')
         }
     },
 
     methods: {
+
+        handleDeleteOne(order) {
+            if (confirm("Bạn muốn xóa item này?")) {
+                this.orders = this.orders.filter(function (el) {
+                    return el != order;
+                })
+                localStorage.setItem("order", JSON.stringify(this.orders))
+                alert("Xóa thành công")
+                window.dispatchEvent(new CustomEvent('order-localstorage-changed', {
+                    detail: {
+                        storage: localStorage.getItem('order')
+                    }
+                }));
+            }
+        },
 
         separator(numb) {
             var str = numb.toString().split(".");
@@ -376,12 +392,14 @@ export default {
             return str.join(".");
         },
 
-        handleDeleteTotal(){
-            alert("Xóa thành công")
-            this.products_info = []
-            this.orders = []
-            localStorage.removeItem("order")
-            window.open("http://localhost:8080/mainpage#", "_self")
+        handleDeleteTotal() {
+            if (confirm("Bạn muốn hủy toàn bộ đơn hàng?")) {
+                alert("Xóa thành công")
+                this.products_info = []
+                this.orders = []
+                localStorage.removeItem("order")
+                window.open("http://localhost:8080/mainpage#", "_self")
+            }
         },
 
         getProductPrice(order) {
@@ -575,10 +593,6 @@ export default {
             }
         }
     },
-
-    handleDatHang() {
-        // send this.orders ve BE
-    }
 }
 </script>
 
