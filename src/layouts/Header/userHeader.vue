@@ -46,7 +46,7 @@
                             </div>
                             <div class="div-deliver-text text-block" style="background-color: #fff;">
                                 <div class="address-detail">
-                                    <input class="text-limit-1-line" v-model="oldAddress" style="margin-bottom: 0" />
+                                    <input class="text-limit-1-line class border-0 address_input" v-model="oldAddress" style="margin-bottom: 0" />
                                     <button data-v-2659de6e="" type="button" class="btn border-0" @click="handleDeleteAddress">
                                         <div data-v-2659de6e="">
                                             <img data-v-2659de6e="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGYSURBVHgBrZTbccIwEEVXmoFv//MYuwNSQUIFSSoI6SCpAKggoQLoIKQCJhXEHZjw+Oebl3OvxwqKLRtC2BmwtCsf35V2pcRhURR5lUqlo5S6juO4BZefhkL4prvd7r3ZbI5c76qsYzab3Wmthxh6UmIpuJ8Fa3uyWCxeAHs7BqNBuc8PL5fLrlMhA1jUk/PstV6vP/8AoayDx1D+Yfv9/h7pjw0wksPG27aSfPouX+LfbDaBTtX52SjS72PBFYZT4+NB0MeYA5hUhsaiW9fXttvtKAgCAtqEErZer9v0MZYqzYq4UVD4iXErG7QBqEufPjOGkokrK75DYCwFZkM5L4MZ03JhI3AqR9RRGX/2nhbwQh5K6AisbBjTrFarkwzUdShfGn8fDqAHwIO9Z2w1A2VMHLWINWOV3iyRFBSrnFjY3KJarRZopLBC2zyK27wTfcKbh8/klNmDkDuQM42dY66xX/fhfD7vQXr3j7BBo9F4MvPcBZv2NqG+lFuyVczOdqqi1QSzz3m6cmhN9nTIykDpsNdzpfMNzwr4YQY4/g8AAAAASUVORK5CYII=" alt="" />
@@ -67,7 +67,7 @@
                       color: rgba(0, 0, 0, 0.85);
                       border: 1px solid rgba(0, 0, 0, 0.15);
                       font-family: -apple-system, system-ui, BlinkMacSystemFont;
-                    ">
+                    " @click="handleDeleteAddress">
                                         Nhập địa chỉ mới
                                     </button>
                                 </div>
@@ -123,7 +123,7 @@
                 <span class="user-name" style="margin-right: 37px" v-if="logged == 1">{{this.user.last_name}}</span>
                 <span style = "margin-right: 37px"></span>
                 <!-- icon thanh toan -->
-                <a href="http://localhost:8080/thanh-toan" style="text-decoration: none">
+                <a href="/thanh-toan" style="text-decoration: none">
                     <!---->
                     <div style="
                 background-color: #fff;
@@ -179,11 +179,6 @@
 
                         </div>
                         <div v-else>
-                            <li class="header-option-authen-item">
-                                <img src="https://order.thecoffeehouse.com/icon/history-order.svg" alt="" />
-                                <a href="/user/user-info" class="show-more"><span class="text-authen">Tra cứu đơn hàng</span></a>
-                            </li>
-                            <hr />
                             <li class="header-option-authen-item">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxOCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIgMTNINFYxOEgxNlYySDRWN0gyVjFDMiAwLjczNDc4NCAyLjEwNTM2IDAuNDgwNDMgMi4yOTI4OSAwLjI5Mjg5M0MyLjQ4MDQzIDAuMTA1MzU3IDIuNzM0NzggMCAzIDBIMTdDMTcuMjY1MiAwIDE3LjUxOTYgMC4xMDUzNTcgMTcuNzA3MSAwLjI5Mjg5M0MxNy44OTQ2IDAuNDgwNDMgMTggMC43MzQ3ODQgMTggMVYxOUMxOCAxOS4yNjUyIDE3Ljg5NDYgMTkuNTE5NiAxNy43MDcxIDE5LjcwNzFDMTcuNTE5NiAxOS44OTQ2IDE3LjI2NTIgMjAgMTcgMjBIM0MyLjczNDc4IDIwIDIuNDgwNDMgMTkuODk0NiAyLjI5Mjg5IDE5LjcwNzFDMi4xMDUzNiAxOS41MTk2IDIgMTkuMjY1MiAyIDE5VjEzWk04IDlWNkwxMyAxMEw4IDE0VjExSDBWOUg4WiIgZmlsbD0iI0M0QzRDNCIvPgo8L3N2Zz4K" alt="" />
                                 <!-- <a href="/user/so-dia-chi" class="show-more"><span class="text-authen">Đăng nhập</span></a> -->
@@ -284,7 +279,7 @@ export default {
         logout() {
             localStorage.removeItem("user")
             // localStorage.removeItem("oldAddress")
-            this.$router.push({name: "Mainpage"})
+            this.$router.push('/mainpage')
         },
         handleDeleteAddress() {
             this.oldAddress = ""
@@ -330,7 +325,29 @@ hr {
     height: 0;
     overflow: visible;
 }
-
+.address_input{
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+  display: block;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-weight: 400;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: .25rem;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+.border-0{
+  border: none !important;
+}
 .history-list-wrap {
     display: flex;
     flex-direction: column;
