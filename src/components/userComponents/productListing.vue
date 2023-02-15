@@ -54,6 +54,30 @@
                               <input type="text" placeholder="Tìm kiếm theo sản phẩm bạn quan tâm " class="card-product-text" v-model="searchProduct">
                             </div>
                           </div>
+
+                          <v-row style="margin: 0 0px">
+                            <v-col cols="12" md="6" sm="6"
+                            v-for=" product_search in product_searchs"
+                                   :key="product_search.id"
+                            >
+                              <div class="cover-product">
+                                <div class="product-search">
+                                  <div class="product-search-img">
+                                    <img style="width: 100%;height: 100%" :src=product_search.img_url alt="">
+                                  </div>
+                                  <div class="product-search-right">
+                                    <div style="flex: 1">
+                                      <div class="product-search-name">{{product_search.name}}</div>
+                                    </div>
+                                    <div style="display: flex!important;justify-content: space-between;align-items: center">
+                                      <div class="product-search-price">{{product_search.price}}</div>
+<!--                                      <Card_User></Card_User> chỗ để Card_User-->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </v-col>
+                          </v-row>
                         </v-card>
                       </v-dialog>
                     </v-row>
@@ -161,7 +185,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import axios  from "axios";
 // /* global axios */
@@ -180,7 +203,20 @@ export default {
       category_type: 1,
       categories: [],
       products: [],
-
+      product_searchs: [
+        {
+          id:5,
+          img_url:"https://minio.thecoffeehouse.com/image/admin/1672731234_hitea-thom_400x400.jpg",
+          name :"H-Tea Thơm",
+          price :"75000",
+        },
+        {
+          id:10,
+          img_url:"https://minio.thecoffeehouse.com/image/admin/1672731234_hitea-thom_400x400.jpg",
+          name :"H-Tea Đào",
+          price :"72000",
+        }
+      ]
     };
   },
   created() {
@@ -279,6 +315,46 @@ button.close{
 textarea:focus, input:focus{
   outline: none;
 }
+
+.cover-product{
+  padding: 0 10px;
+  margin: 0 0 20px 0;
+}
+
+.product-search{
+  padding: 8px;
+  background-color: white;
+  display: flex;
+}
+.product-search-img{
+  width: 6.25rem;
+  height: 6.25rem;
+  position: relative!important;
+  flex-shrink: 0;
+}
+.product-search-img img{
+  object-fit: cover;
+}
+
+.product-search-right{
+  display: flex;
+  flex-direction: column;
+  padding-left: 14px;
+  flex:1
+}
+.product-search-name{
+  color: #262626;
+  font-size: 0.8375rem;
+  height: 3rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.product-search-price{
+  font-size: 14px;
+}
+
 
 .tch-box {
   /* padding-top: 3.125rem; */
