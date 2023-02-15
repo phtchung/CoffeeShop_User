@@ -133,7 +133,7 @@
                     custom-radio
                     mb-0
                     cursor-pointer">
-                                <input type="radio" name="gender-mapping" id="1" class="custom-control-input" :checked="userInfomation.gender == 'male'" />
+                                <input type="radio" name="gender-mapping" id="1" class="custom-control-input" :checked="userInfomation.gender == 'Nam'" />
                                 <label for="1" class="
                       custom-control-label
                       card-product-option-label
@@ -152,7 +152,7 @@
                     mb-0
                     cursor-pointer
                   ">
-                                <input type="radio" name="gender-mapping" id="2" class="custom-control-input" :checked="userInfomation.gender == 'female'" />
+                                <input type="radio" name="gender-mapping" id="2" class="custom-control-input" :checked="userInfomation.gender == 'Nữ'" />
                                 <label for="2" class="
                       custom-control-label
                       card-product-option-label
