@@ -49,7 +49,7 @@
                     </v-progress-linear>
                 </div>
                 <p class="user-next-bean">
-                    Còn {{Math.round(30*(100- this.persent))}} BEAN nữa bạn sẽ thăng hạng. Đổi quà không ảnh hưởng tới việc
+                    Còn {{3000 - this.bean}} BEAN nữa bạn sẽ thăng hạng. Đổi quà không ảnh hưởng tới việc
                     thăng hạng của bạn Chưa tích điểm
                 </p>
             </div>
