@@ -2,7 +2,7 @@
 <v-container rounded-0 fluid style="margin-top: 42px;">
 
     <userHeader :dialog="openAddress" @chosenAddress="openDialog = $event"/>
-    <Card_User style="z-index : 999" 
+    <Card_User style="z-index : 1000; display: none;" 
                           :currentID="currentID"
                           :dialog="openDialog"
                           :id="currentID"
