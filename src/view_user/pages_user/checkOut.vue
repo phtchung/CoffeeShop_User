@@ -219,12 +219,10 @@
                                     </div>
                                     <!--                  list các món đã chọn-->
                                     <!--                  sp1-->
-                                    <div class="tch-order-card product_chose_item" v-for="order in orders" :key="order.size" style="display:inherit;">
+                                    <div class="tch-order-card product_chose_item" v-for="(order,index) in orders" :key="index" style="display:inherit;">
                                         <div v-for="product in order.product_item" :key="product.name" class="product_chose_item">
                                             <div class="tch-order-card__left " style="display: flex">
-                                                <span class="tch-order-card__icon " style="display:flex;align-items: center">
-                                                    <v-icon small color="#fa8c16">mdi-pencil</v-icon>
-                                                </span>
+                                                <Card_Fix style="z-index : 999" :count="order.count" :index="index" :topping_1="order.topping_items[0].count" :topping_2="order.topping_items[1].count" :topping_3="order.topping_items[2].count" :topping_4="order.topping_items[3].count" :topping_5="order.topping_items[4].count" :size="order.size" :currentID="product.id" :dialog="false" :id="product.id" :image_url="product.image_url" :name="product.name" :description="product.description" :price="product.price" :isInProductListing=0> </Card_Fix>
                                                 <div class="tch-order-card__content">
                                                     <h5 class="tch-order-card__title mb-0">{{order.count}} x {{product.name}}</h5>
                                                     <p class="tch-order-card__description mb-0">{{order.size}}, {{order.count}} x {{order.size}}</p>
@@ -295,7 +293,8 @@ export default {
     name: "checkOut",
     components: {
         //   BulmaDropdown,
-        // userHeader: () => import("@/layouts/Header/userHeader"),
+        // userHeader: () => import("@/layouts/Header/userHeader"),components\userComponents\Card_Fix.vue
+        Card_Fix: () => import("@/components/userComponents/Card_Fix"),
     },
     data() {
         return {
@@ -367,6 +366,17 @@ export default {
             alert("Ban chua co gi de thanh toan")
             this.$router.push('/mainpage')
         }
+    },
+
+    mounted() {
+        window.addEventListener('order-total-changed', (event) => {
+            // console.log(event.detail.storage)
+            if (event.detail.storage == null) {
+                this.orders = 0
+            } else
+                this.orders = JSON.parse(event.detail.storage);
+            // console.log("item count in mounted: ", this.itemCount)
+        });
     },
 
     methods: {
