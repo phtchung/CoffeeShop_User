@@ -51,13 +51,13 @@
                           <div class="modal-body">
                             <div class="card-product-note-item">
                               <v-icon  color="#808080" style="font-weight: 200;font-size: 32px;padding: 12px"> mdi-magnify </v-icon>
-                              <input type="text" placeholder="Tìm kiếm theo sản phẩm bạn quan tâm " class="card-product-text" v-model="searchProduct">
+                              <input @keydown.delete="updateSearch()" type="text" placeholder="Tìm kiếm theo sản phẩm bạn quan tâm " class="card-product-text" v-model="searchProduct">
                             </div>
                           </div>
 
                           <v-row style="margin: 0 0px">
                             <v-col cols="12" md="6" sm="6"
-                            v-for=" product_search in product_searchs"
+                            v-for="product_search in filteredList"
                                    :key="product_search.id"
                             >
                               <div class="cover-product">
@@ -199,7 +199,7 @@ export default {
   },
   data() {
     return {
-      searchProduct:"",
+      searchProduct:null,
       category_type: 1,
       categories: [],
       products: [],
@@ -207,28 +207,44 @@ export default {
         {
           id:5,
           img_url:"https://minio.thecoffeehouse.com/image/admin/1672731234_hitea-thom_400x400.jpg",
-          name :"H-Tea Thơm",
+          name :"Hi-Tea Thơm",
           price :"75000",
         },
         {
           id:10,
           img_url:"https://minio.thecoffeehouse.com/image/admin/1672731234_hitea-thom_400x400.jpg",
-          name :"H-Tea Đào",
+          name :"Hi-Tea Đào",
           price :"72000",
         }
       ]
     };
   },
+  computed: {
+    filteredList() {
+
+      return this.product_searchs.filter(product_search => {
+        return product_search.name.match(this.searchProduct)
+      })
+    },
+
+  },
   created() {
     console.log("Curent id: ", this.currentID)
     this.getCategories();
     this.getProducts();
+
     // console.log("Start\n");
     // console.log(this.categories);
     // console.log(this.products)
     // console.log("END\n");
   },
   methods: {
+    updateSearch(){
+      if(this.searchProduct.length == 1){
+        this.searchProduct = null;
+        console.log(this.searchProduct)
+      }
+    },
     separator(numb) {
       var str = numb.toString().split(".");
       str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
