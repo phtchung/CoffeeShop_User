@@ -398,7 +398,7 @@ export default {
                 this.products_info = []
                 this.orders = []
                 localStorage.removeItem("order")
-                window.open("http://localhost:8080/mainpage#", "_self")
+                window.open("/mainpage#", "_self")
             }
         },
 
@@ -476,120 +476,125 @@ export default {
         handleDatHang() {
 
             // send this.orders ve BE
-            console.log("PaymentOptions: ", this.paymentOptions)
-            console.log("old Address: ", this.oldAddress)
-            // console.log("total price: ", Number(this.total_price))
-            if (this.paymentOptions == 'cash') {
-                axios
-                    .post("http://127.0.0.1:8000/api/admin/order/addOrder", {
-                        // Truyen dong
-                        // user_id: this.user.id,
-                        // user_name: this.name,
-                        // mobile_no: this.user.mobile_no,
-                        // order_date: "2023-01-26",
-                        // address: this.oldAddress,
-                        // note: null,
-                        // total_price: this.total_price,
-                        // payment_method: "cash",
-                        // products: JSON.parse(JSON.stringify(this.products_info))
-
-                        user_id: this.user.id,
-                        user_name: this.name,
-                        mobile_no: this.phone,
-                        address: this.oldAddress,
-                        note: null,
-                        total_price: Number(this.total_price) * 1000,
-                        payment_method: this.paymentOptions,
-                        products: JSON.parse(JSON.stringify(this.products_info))
-                    })
-                    .then((response) => {
-                        console.log("RES:\n")
-                        console.log("respon1: ", response);
-                        console.log("END RES\n")
-                        // this.order_id = response.data.order_id
-                        // console.log("orrderid: ", this.order_id)
-                        alert("Bạn đã đặt hàng thành công")
-                        this.products_info = []
-                        this.orders = []
-                        localStorage.removeItem("order")
-                        window.open("http://localhost:8080/mainpage#", "_self")
-                    })
-                    .catch((error) => {
-                        console.log("ERR1")
-                        console.log(error);
-                    });
-
-                // alert("Bạn đã đặt hàng thành công")
+            if (this.logged == 0) {
+                alert("Bạn cần đăng nhập để tiếp tục")
             } else {
 
-                axios
-                    .post("http://127.0.0.1:8000/api/admin/order/addOrder", {
-                        // Truyen dong
-                        // user_id: this.user.id,
-                        // user_name: this.name,
-                        // mobile_no: this.user.mobile_no,
-                        // order_date: "2023-01-26",
-                        // address: this.oldAddress,
-                        // note: null,
-                        // total_price: this.total_price,
-                        // payment_method: "cash",
-                        // products: JSON.parse(JSON.stringify(this.products_info))
+                console.log("PaymentOptions: ", this.paymentOptions)
+                console.log("old Address: ", this.oldAddress)
+                // console.log("total price: ", Number(this.total_price))
+                if (this.paymentOptions == 'cash') {
+                    axios
+                        .post("http://127.0.0.1:8000/api/admin/order/addOrder", {
+                            // Truyen dong
+                            // user_id: this.user.id,
+                            // user_name: this.name,
+                            // mobile_no: this.user.mobile_no,
+                            // order_date: "2023-01-26",
+                            // address: this.oldAddress,
+                            // note: null,
+                            // total_price: this.total_price,
+                            // payment_method: "cash",
+                            // products: JSON.parse(JSON.stringify(this.products_info))
 
-                        user_id: this.user.id,
-                        user_name: this.name,
-                        mobile_no: this.phone,
-                        address: this.oldAddress,
-                        note: null,
-                        total_price: Number(this.total_price) * 1000,
-                        payment_method: this.paymentOptions,
-                        products: JSON.parse(JSON.stringify(this.products_info))
-                    })
-                    .then((response) => {
-                        console.log("RES:\n")
-                        console.log("respon1: ", response);
-                        console.log("END RES\n")
-                        this.order_id = response.data.order_id
-                        console.log("orrderid: ", this.order_id)
-                        axios
-                            .post("http://127.0.0.1:8000/api/payment/" + this.paymentOptions, {
-                                order_id: this.order_id,
-                                total_price: Number(this.total_price) * 1000
-                            })
-                            .then((response2) => {
-                                console.log("respon2: ", response2)
-                                axios
-                                    .post("http://127.0.0.1:8000/api/admin/order/paidOrder", {
-                                        order_id: this.order_id
-                                    })
-                                    .then((response) => {
-                                        console.log(response)
-                                        this.products_info = []
-                                        this.orders = []
-                                        localStorage.removeItem("order")
-                                        window.open(response2.data, "_self")
-                                        // this.userInfomation = response.data.products;
-                                        // console.log(response);
-                                    })
-                                    .catch((error) => {
-                                        console.log("Start\n");
-                                        console.log(error.response)
-                                        console.log("END\n");
-                                    });
-                                // alert(response2.data)
-                                // this.$router.push(response2.data)
-                                // this.userInfomation = response.data.products;
-                                // console.log(response);
-                            })
-                            .catch((error2) => {
-                                console.log("Start errr2\n");
-                                console.log(error2)
-                                console.log("END\n");
-                            });
-                    })
-                    .catch((error) => {
-                        console.log("ERR1")
-                        console.log(error);
-                    });
+                            user_id: this.user.id,
+                            user_name: this.name,
+                            mobile_no: this.phone,
+                            address: this.oldAddress,
+                            note: null,
+                            total_price: Number(this.total_price) * 1000,
+                            payment_method: this.paymentOptions,
+                            products: JSON.parse(JSON.stringify(this.products_info))
+                        })
+                        .then((response) => {
+                            console.log("RES:\n")
+                            console.log("respon1: ", response);
+                            console.log("END RES\n")
+                            // this.order_id = response.data.order_id
+                            // console.log("orrderid: ", this.order_id)
+                            alert("Bạn đã đặt hàng thành công")
+                            this.products_info = []
+                            this.orders = []
+                            localStorage.removeItem("order")
+                            window.open("/mainpage#", "_self")
+                        })
+                        .catch((error) => {
+                            console.log("ERR1")
+                            console.log(error);
+                        });
+
+                    // alert("Bạn đã đặt hàng thành công")
+                } else {
+
+                    axios
+                        .post("http://127.0.0.1:8000/api/admin/order/addOrder", {
+                            // Truyen dong
+                            // user_id: this.user.id,
+                            // user_name: this.name,
+                            // mobile_no: this.user.mobile_no,
+                            // order_date: "2023-01-26",
+                            // address: this.oldAddress,
+                            // note: null,
+                            // total_price: this.total_price,
+                            // payment_method: "cash",
+                            // products: JSON.parse(JSON.stringify(this.products_info))
+
+                            user_id: this.user.id,
+                            user_name: this.name,
+                            mobile_no: this.phone,
+                            address: this.oldAddress,
+                            note: null,
+                            total_price: Number(this.total_price) * 1000,
+                            payment_method: this.paymentOptions,
+                            products: JSON.parse(JSON.stringify(this.products_info))
+                        })
+                        .then((response) => {
+                            console.log("RES:\n")
+                            console.log("respon1: ", response);
+                            console.log("END RES\n")
+                            this.order_id = response.data.order_id
+                            console.log("orrderid: ", this.order_id)
+                            axios
+                                .post("http://127.0.0.1:8000/api/payment/" + this.paymentOptions, {
+                                    order_id: this.order_id,
+                                    total_price: Number(this.total_price) * 1000
+                                })
+                                .then((response2) => {
+                                    console.log("respon2: ", response2)
+                                    axios
+                                        .post("http://127.0.0.1:8000/api/admin/order/paidOrder", {
+                                            order_id: this.order_id
+                                        })
+                                        .then((response) => {
+                                            console.log(response)
+                                            this.products_info = []
+                                            this.orders = []
+                                            localStorage.removeItem("order")
+                                            window.open(response2.data, "_self")
+                                            // this.userInfomation = response.data.products;
+                                            // console.log(response);
+                                        })
+                                        .catch((error) => {
+                                            console.log("Start\n");
+                                            console.log(error.response)
+                                            console.log("END\n");
+                                        });
+                                    // alert(response2.data)
+                                    // this.$router.push(response2.data)
+                                    // this.userInfomation = response.data.products;
+                                    // console.log(response);
+                                })
+                                .catch((error2) => {
+                                    console.log("Start errr2\n");
+                                    console.log(error2)
+                                    console.log("END\n");
+                                });
+                        })
+                        .catch((error) => {
+                            console.log("ERR1")
+                            console.log(error);
+                        });
+                }
             }
         }
     },
