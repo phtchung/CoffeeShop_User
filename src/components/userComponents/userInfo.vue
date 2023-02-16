@@ -32,24 +32,24 @@
                 <div class="user-rank">
                     <span class="user-txt">VÀNG</span>
                     <span class="user-rank-detail">KIM CƯƠNG</span>
-                    <div class="user-progress-bar" style="
+
+                    <v-progress-linear :value=persent :reverse="$vuetify.rtl" color="yellow " class="user-progress-bar" style="
                 background: linear-gradient(
                   rgb(255, 149, 34) 0%,
                   rgb(218, 84, 9) 50%
                 );
               ">
-                        <div class="dot-begin">
-                        </div>
-                        <div class="dot" style="
+                        <div class="dot-begin"></div>
+                        <div class="dot" :style="{ 'left': persent -13 + '%' }" style="
                   transform: translateY(-50%);
                   top: 60%;
-                  left: calc(0% - 30px);
+                  /*left: calc(80% - 30px);*/
                 "></div>
                         <div class="dot-after"></div>
-                    </div>
+                    </v-progress-linear>
                 </div>
                 <p class="user-next-bean">
-                    Còn 100 BEAN nữa bạn sẽ thăng hạng. Đổi quà không ảnh hưởng tới việc
+                    Còn {{3000 - this.bean}} BEAN nữa bạn sẽ thăng hạng. Đổi quà không ảnh hưởng tới việc
                     thăng hạng của bạn Chưa tích điểm
                 </p>
             </div>
@@ -133,7 +133,7 @@
                     custom-radio
                     mb-0
                     cursor-pointer">
-                                <input type="radio" name="gender-mapping" id="1" class="custom-control-input" :checked="userInfomation.gender == 'male'" />
+                                <input type="radio" name="gender-mapping" id="1" class="custom-control-input" :checked="userInfomation.gender == 'Nam'" />
                                 <label for="1" class="
                       custom-control-label
                       card-product-option-label
@@ -152,7 +152,7 @@
                     mb-0
                     cursor-pointer
                   ">
-                                <input type="radio" name="gender-mapping" id="2" class="custom-control-input" :checked="userInfomation.gender == 'female'" />
+                                <input type="radio" name="gender-mapping" id="2" class="custom-control-input" :checked="userInfomation.gender == 'Nữ'" />
                                 <label for="2" class="
                       custom-control-label
                       card-product-option-label
@@ -488,6 +488,7 @@ export default {
 
     data() {
         return {
+            persent: 0,
             select: 1,
             active1: true,
             active2: false,
@@ -543,6 +544,7 @@ export default {
         };
     },
     created() {
+        this.persent = this.bean / 5000
         if (localStorage.getItem('user') == null) {
             this.$route.push('#')
         } else {
@@ -604,6 +606,7 @@ export default {
                     for (let listOrder of this.listOrders) {
                         this.bean += this.checkBean(listOrder.total_price)
                     }
+                    this.persent = this.bean / 3000 * 100
                 })
                 .catch((error) => {
                     console.log("Start\n");

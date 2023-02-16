@@ -2,7 +2,7 @@
   <v-container>
   <div class="main_header"  id="myHeader" style="border-bottom: 1px solid #d9d9d9">
     <div style="width: 17%;margin-right: 39px" class="categories_item" >
-    <a href="http://localhost:8080/">
+    <a href="/">
       <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/03/logo-the-coffee-house-chieu-dai.png" alt="" style="width: 100%">
     </a>
     </div>
@@ -20,46 +20,46 @@
 
       <ul class="menu_list" v-if="header_path.header_active ===true">
         <li>
-          <a href="http://localhost:8080/collections/menu" title="Tất cả">Tất cả</a>
+          <a href="/collections/menu" title="Tất cả">Tất cả</a>
         </li>
         <li>
-          <a href="http://localhost:8080/collections/product/ca-phe"  title="Cà phê">Cà phê</a>
+          <a href="/collections/product/ca-phe"  title="Cà phê">Cà phê</a>
           <ul class="list_item">
             <li class="item_font">
-              <a href="http://localhost:8080/collections/ca-phe-viet-nam" title="Cà phê Việt Nam" >Cà phê Việt Nam</a>
+              <a href="/collections/ca-phe-viet-nam" title="Cà phê Việt Nam" >Cà phê Việt Nam</a>
             </li>
             <li class="item_font">
-              <a href="http://localhost:8080/collections/ca-phe-may" title="Cà phê Máy">Cà phê Máy</a>
+              <a href="/collections/ca-phe-may" title="Cà phê Máy">Cà phê Máy</a>
             </li>
             <li class="item_font">
-              <a href="http://localhost:8080/collections/cold-brew" title="Cold Brew">Cold Brew</a>
+              <a href="/collections/cold-brew" title="Cold Brew">Cold Brew</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="http://localhost:8080/collections/cloudfee" title="CloudFee">CloudFee</a>
+          <a href="/collections/cloudfee" title="CloudFee">CloudFee</a>
           <ul class="list_item">
             <li class="item_font">
-              <a href="http://localhost:8080/collections/cloudfee" title="CloudFee">CloudFee</a>
+              <a href="/collections/cloudfee" title="CloudFee">CloudFee</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="http://localhost:8080/collections/cloudtee" title="CloudTea">CloudTea</a>
+          <a href="/collections/cloudtee" title="CloudTea">CloudTea</a>
           <ul class="list_item">
             <li class="item_font">
-              <a href="http://localhost:8080/collections/cloudtea" title="CloudTea">CloudTea</a>
+              <a href="/collections/cloudtea" title="CloudTea">CloudTea</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="http://localhost:8080/collections/product/tra" title="Trà">Trà</a>
+          <a href="/collections/product/tra" title="Trà">Trà</a>
           <ul class="list_item">
             <li class="item_font">
-              <a href="http://localhost:8080/collections/tra-trai-cay" title="Trà trái cây">Trà trái cây</a>
+              <a href="/collections/tra-trai-cay" title="Trà trái cây">Trà trái cây</a>
             </li>
             <li class="item_font">
-              <a href="http://localhost:8080/collections/tra-sua-macchiato" title="Trà sữa Macchiato">Trà sữa Macchiato</a>
+              <a href="/collections/tra-sua-macchiato" title="Trà sữa Macchiato">Trà sữa Macchiato</a>
             </li>
           </ul>
         </li>
@@ -67,43 +67,43 @@
           <a href="" title="Hi-Tea Healthy">Hi-Tea Healthy</a>
           <ul class="list_item">
             <li class="item_font">
-              <a href="http://localhost:8080/collections/hi-tea-tra" title="Hi-Tea Trà">Hi-Tea Trà</a>
+              <a href="/collections/hi-tea-tra" title="Hi-Tea Trà">Hi-Tea Trà</a>
             </li>
             <li class="item_font">
-              <a href="http://localhost:8080/collections/hi-tea-da-tuyet" title="Hi-Tea Đá Tuyết">Hi-Tea Đá Tuyết</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="http://localhost:8080/collections/banh-&-snack" title="Bánh & Snack">Bánh & Snack</a>
-          <ul class="list_item">
-            <li class="item_font">
-              <a href="http://localhost:8080/collections/banh-man" title="Bánh mặn" >Bánh mặn</a>
-            </li>
-            <li class="item_font">
-              <a href="http://localhost:8080/collections/banh-ngot" title="Bánh ngọt">Bánh ngọt</a>
-            </li>
-            <li class="item_font">
-              <a href="http://localhost:8080/collections/snack" title="Snack">Snack</a>
+              <a href="/collections/hi-tea-da-tuyet" title="Hi-Tea Đá Tuyết">Hi-Tea Đá Tuyết</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="http://localhost:8080/collections/tai-nha" title="Tại nhà">Tại nhà</a>
+          <a href="/collections/banh-&-snack" title="Bánh & Snack">Bánh & Snack</a>
           <ul class="list_item">
             <li class="item_font">
-              <a href="http://localhost:8080/collections/ca-phe-tai-nha" title="Cà phê tại nhà">Cà phê tại nhà</a>
+              <a href="/collections/banh-man" title="Bánh mặn" >Bánh mặn</a>
             </li>
             <li class="item_font">
-              <a href="http://localhost:8080/collections/tra-tai-nha" title="Trà tại nhà">Trà tại nhà</a>
+              <a href="/collections/banh-ngot" title="Bánh ngọt">Bánh ngọt</a>
+            </li>
+            <li class="item_font">
+              <a href="/collections/snack" title="Snack">Snack</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="http://localhost:8080/collections/thuc-uong-khac" title="Thức uống khác">Thức uống khác</a>
+          <a href="/collections/tai-nha" title="Tại nhà">Tại nhà</a>
           <ul class="list_item">
             <li class="item_font">
-              <a href="http://localhost:8080/collections/chocolate" title="Chocolate">Chocolate</a>
+              <a href="/collections/ca-phe-tai-nha" title="Cà phê tại nhà">Cà phê tại nhà</a>
+            </li>
+            <li class="item_font">
+              <a href="/collections/tra-tai-nha" title="Trà tại nhà">Trà tại nhà</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/collections/thuc-uong-khac" title="Thức uống khác">Thức uống khác</a>
+          <ul class="list_item">
+            <li class="item_font">
+              <a href="/collections/chocolate" title="Chocolate">Chocolate</a>
             </li>
           </ul>
         </li>
@@ -157,7 +157,7 @@ export default {
         {
           header_id : "0",
           header_name : "Menu",
-          header_path : "http://localhost:8080/#/menu",
+          header_path : "/#/menu",
           header_active : true,
         },
         {

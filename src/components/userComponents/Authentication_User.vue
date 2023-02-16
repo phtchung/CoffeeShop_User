@@ -147,6 +147,7 @@ export default {
 
 
     sendPhoneNumber() {
+      this.data.mobile_no = "+84".concat(this.data.mobile_no.slice(1))
       console.log("Gia tri truyen di: ",this.data.mobile_no)
       axios.post("http://127.0.0.1:8000/api/user/auth/login", {
         mobile_no: this.data.mobile_no
@@ -159,6 +160,7 @@ export default {
           });
     },
     sendOTP(){
+      console.log("Data send OTP: ", this.data)
       axios
           .post("http://127.0.0.1:8000/api/user/auth/checkOtp",this.data)
           .then((response) => {
